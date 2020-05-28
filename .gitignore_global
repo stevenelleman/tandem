@@ -1,0 +1,6 @@
+# IDE files #
+#############
+.vscode
+.idea
+.iml
+*.sublime-workspace
