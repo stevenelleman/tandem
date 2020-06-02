@@ -1,3 +1,6 @@
+## Terms
+Concepts used to organize the pull request.
+
 ## What 
 Describe the impact of the pull request if merged. 
 
@@ -12,3 +15,6 @@ Sometimes there are things to do before merging. Add a checklist here to display
 
 ## Notes to Reviewers 
 Put any comments or questions that you would like to direct to reviewers.
+
+## Meta 
+Suggestions about process-level (PRs, reviews, testing) decisions.
