@@ -10,7 +10,7 @@
 ## Docs
 - Spec ([./docs/spec.md](./docs/spec.md))
 - App Setup Docs ([./app/README.md](./app/README.md))
-- Frontend Layout ([./app/src/components/README.md](./app/src/components/README.md))
+- Frontend + API Plan ([./app/src/components/README.md](./app/src/components/README.md))
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 

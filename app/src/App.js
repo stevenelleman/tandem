@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Panel } from './components/framing/Panel';
+import { Panel } from './containers/Panel';
 
 function App() {
   return (
