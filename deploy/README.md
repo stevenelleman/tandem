@@ -15,7 +15,7 @@ The format of the file should be as follows:
 aws_access_key_id=${key id from console}
 aws_secret_access_key=${secret key from console}
 ```
-Where `${...}` indicates a variable. Other info can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+Where `${...}` indicates a variable. Other info can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 6. Run `terraform plan`. If everything has been set up properly, the call should be successful.
 7. Run `terraform apply` to spin up updated web service.
 
