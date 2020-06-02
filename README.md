@@ -19,3 +19,10 @@
 - PRs should include documentation. Documentation should be kept with its relevant code to minimize drift.
 - Correct known trip-wires (little annoyances, mistakes, gotchas) immediately - quick fixes pay off dividends.
 - Prefix branch name with creator's initials.
+
+## Tasks 
+- [ ] Deployment Process [Tuesday]
+- [ ] Local VM Setup [Friday]
+- [ ] Frontend w/ Mock Endpoint/Data [Tuesday]
+- [ ] Backend w/ Mock Data [Wednesday]
+- [ ] Postgres DB [Thursday]
