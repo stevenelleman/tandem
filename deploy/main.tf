@@ -39,4 +39,16 @@ resource "aws_instance" "web" {
   key_name = var.key_name
   vpc_security_group_ids = [var.sourcegraph_sg]
   subnet_id = var.subnet_id
+
+  user_data = templatefile("./userdata.tmpl", {})
 }
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.web.id
+  allocation_id = "i-039c70ba7e1457a17" // Set to existing aws_eip to keep the public_ip the same
+}
+
+/*resource "aws_eip" "eip" {
+  vpc = true
+  public_ip = "54.163.138.213"
+}*/

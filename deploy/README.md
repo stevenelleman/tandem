@@ -17,6 +17,7 @@ aws_secret_access_key=${secret key from console}
 ```
 Where `${...}` indicates a variable. Other info can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 5. Run `terraform plan`. If everything has been set up properly, the call should be successful.
+6. Run `terraform apply` to spin up updated web service.
 
 
 ## Tips

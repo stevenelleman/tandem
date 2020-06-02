@@ -11,6 +11,7 @@
 - Spec ([./docs/spec.md](./docs/spec.md))
 - App Setup Docs ([./app/README.md](./app/README.md))
 - Frontend + API Plan ([./app/src/components/README.md](./app/src/components/README.md))
+- Service Deployment ([./deploy/README.md](./deploy/README.md))
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 
@@ -22,7 +23,8 @@
 
 ## Tasks 
 - [ ] Deployment Process [Tuesday]
-- [ ] Local VM Setup [Friday]
 - [ ] Frontend w/ Mock Endpoint/Data [Tuesday]
 - [ ] Backend w/ Mock Data [Wednesday]
 - [ ] Postgres DB [Thursday]
+- [ ] Local VM Setup (Using Tilt preferably) [Friday]
+- [ ] Build Process for Dashboard and API service [Friday]

@@ -1,0 +1,18 @@
+#!/bin/bash
+apt-get update -y
+apt-get upgrade -y
+apt-get install nginx -y
+
+cd /etc/nginx/conf.d
+mv default.conf default.conf.bak
+cd
+
+wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/index.html --output-document /usr/share/nginx/www/sourcegraph.wtf/html/index.html
+wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/app.conf --output-document /etc/nginx/conf.d/app.conf
+
+add-apt-repository ppa:certbot/certbot -y
+apt-get install python-certbot-nginx
+certbot --nginx -d sourcegraph.wtf -d www.sourcegraph.wtf
+certbot renew --dry-run
+
+systemctl restart nginx
