@@ -22,9 +22,10 @@
 - Prefix branch name with creator's initials.
 
 ## Tasks 
-- [ ] Deployment Process [Tuesday]
+- [x] Initial Deployment Process [Tuesday]
 - [ ] Frontend w/ Mock Endpoint/Data [Tuesday]
 - [ ] Backend w/ Mock Data [Wednesday]
 - [ ] Postgres DB [Thursday]
 - [ ] Local VM Setup (Using Tilt preferably) [Friday]
 - [ ] Build Process for Dashboard and API service [Friday]
+- [ ] Microservice Deployment Process [Saturday]
