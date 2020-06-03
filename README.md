@@ -11,6 +11,7 @@
 - Spec ([./docs/spec.md](./docs/spec.md))
 - App Setup Docs ([./app/README.md](./app/README.md))
 - Frontend + API Plan ([./app/src/components/README.md](./app/src/components/README.md))
+- Service Deployment ([./deploy/README.md](./deploy/README.md))
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 
@@ -19,3 +20,11 @@
 - PRs should include documentation. Documentation should be kept with its relevant code to minimize drift.
 - Correct known trip-wires (little annoyances, mistakes, gotchas) immediately - quick fixes pay off dividends.
 - Prefix branch name with creator's initials.
+
+## Tasks 
+- [ ] Deployment Process [Tuesday]
+- [ ] Frontend w/ Mock Endpoint/Data [Tuesday]
+- [ ] Backend w/ Mock Data [Wednesday]
+- [ ] Postgres DB [Thursday]
+- [ ] Local VM Setup (Using Tilt preferably) [Friday]
+- [ ] Build Process for Dashboard and API service [Friday]

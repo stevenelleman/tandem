@@ -1,0 +1,18 @@
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install nginx -y
+
+sudo mkdir -p ./www/sourcegraph.wtf/html
+sudo wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/index.html --output-document /home/ubuntu/www/sourcegraph.wtf/html/index.html
+sudo wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/app.conf --output-document /etc/nginx/conf.d/app.conf
+
+sudo add-apt-repository ppa:certbot/certbot -y
+sudo apt-get install python-certbot-nginx -y
+sudo certbot --nginx -d sourcegraph.wtf -d www.sourcegraph.wtf
+sudo certbot renew --dry-run
+
+sudo systemctl restart nginx
+
+# Note: this is how to feed in responses to the bash prompt in a programmatic way:
+# printf 'steven.elleman@gmail.com\nA' | sudo bash test.sh

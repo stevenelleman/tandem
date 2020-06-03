@@ -9,6 +9,7 @@
 - [Scope Example](#scope-example)
 - [Interface](#interface)
 - [V0 Requirements](#v0-requirements)
+- [V0 TODO](#v0-todo)
 - [Data Structure](#data-structure)
 - [Social Abstractions](#social-abstractions-siloes-and-forums)
     - [Siloes](#silo-vertical-trust-network)
@@ -145,6 +146,14 @@ How to show a sequence of plasmid transformation as a simulation?
 6. Version-controlled: By default the history of changes is saved.
 7. Scoped: Sources can be organized into collections. A document is one type of scope, it is a collection of connected sources. 
 8. Set Logic: Set logic can be applied to collections, such that new scopes can be derived from existing scopes.  
+
+## V0 TODO
+1. Text Editor React Front End
+	- Save button converts text box to document sends to backend
+2. Encoding link into file (some kind of markup?)
+3. Link Database UUID -> (Source_Head, Source_Tail), Links are functional
+4. Git-like diff management for versions, Edits are functional
+5. UI for visualizing sourcegraph (to motivate further development on scope UI/logic)
 
 ## Data Structure
 
