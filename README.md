@@ -5,12 +5,12 @@
 2. `cd ./sg/app`
 3. `yarn start`
 4. Navigate to `http://localhost:3000/`
-5. Additional information can be found in the [app docs](./app/README.md)
+5. Additional information can be found in the [app docs](./services/web-frontend/README.md)
 
 ## Docs
 - Spec ([./docs/spec.md](./docs/spec.md))
-- App Setup Docs ([./app/README.md](./app/README.md))
-- Frontend + API Plan ([./app/src/components/README.md](./app/src/components/README.md))
+- App Setup Docs ([./services/web-frontend/README.md](./services/web-frontend/README.md))
+- Frontend + API Plan ([./services/web-frontend/src/components/README.md](./services/web-frontend/src/components/README.md))
 - Service Deployment ([./deploy/README.md](./deploy/README.md))
 
 ## Code-Amendment Best Practices 
