@@ -29,7 +29,7 @@ variable key_name {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
   shared_credentials_file = "$HOME/.aws/credentials" // default credentials value, just wanted to be explicit
 }
 
@@ -45,7 +45,7 @@ resource "aws_instance" "web" {
 
 resource "aws_eip_association" "eip_assoc" {
   instance_id   = aws_instance.web.id
-  allocation_id = "i-039c70ba7e1457a17" // Set to existing aws_eip to keep the public_ip the same
+  allocation_id = "eipalloc-0cabdab2d8aec5451" // Set to existing aws_eip to keep the public_ip the same
 }
 
 /*resource "aws_eip" "eip" {
