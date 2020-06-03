@@ -1,18 +1,18 @@
 #!/bin/bash
-apt-get update -y
-apt-get upgrade -y
-apt-get install nginx -y
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install nginx -y
 
-cd /etc/nginx/conf.d
-mv default.conf default.conf.bak
-cd
+sudo mkdir -p ./www/sourcegraph.wtf/html
+sudo wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/index.html --output-document /home/ubuntu/www/sourcegraph.wtf/html/index.html
+sudo wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/app.conf --output-document /etc/nginx/conf.d/app.conf
 
-wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/index.html --output-document /usr/share/nginx/www/sourcegraph.wtf/html/index.html
-wget https://raw.githubusercontent.com/stevenelleman/sg/master/deploy/app.conf --output-document /etc/nginx/conf.d/app.conf
+sudo add-apt-repository ppa:certbot/certbot -y
+sudo apt-get install python-certbot-nginx -y
+sudo certbot --nginx -d sourcegraph.wtf -d www.sourcegraph.wtf
+sudo certbot renew --dry-run
 
-add-apt-repository ppa:certbot/certbot -y
-apt-get install python-certbot-nginx
-certbot --nginx -d sourcegraph.wtf -d www.sourcegraph.wtf
-certbot renew --dry-run
+sudo systemctl restart nginx
 
-systemctl restart nginx
+# Note: this is how to feed in responses to the bash prompt in a programmatic way:
+# printf 'steven.elleman@gmail.com\nA' | sudo bash test.sh
