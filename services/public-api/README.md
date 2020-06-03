@@ -28,7 +28,6 @@ Useful Curl Commands:
 - [ ] Table migration into PSQL 
 - [ ] API testing 
 - [ ] Map request object
-- [ ] makefile
 
 ## Layers 
 
