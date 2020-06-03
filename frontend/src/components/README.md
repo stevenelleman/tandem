@@ -73,7 +73,7 @@ Silos: An authorization context must be included that includes a Faceted Identit
 - `GET`-`v1/silos/${id}`: Get silo details.
 - `POST`-`v1/silos/${id}`: Create silo.  
 - `PUT`-`v1/silos/${id}`: Edit silo. 
-- `DELETE`-`v1/silos/${id}`: Soft-delete silo. Unless explicitly soft-deleted, scopes are opened up to the public. 
+- `DELETE`-`v1/silos/${id}`: Soft-delete silo. Need to decide what happens to scopes - are they still accessible by members? Are they publicized? 
 
 Silo FIs: 
 - `GET`-`v1/silos/${id}/scopes/${id}/members`: List of members of silo. 
@@ -87,7 +87,7 @@ Scopes:
 - `GET`-`v1/silos/${id}/scopes/${id}`: Get scope details.
 - `POST`-`v1/silos/${id}/scopes/${id}`: Create scope.
 - `PUT`-`v1/silos/${id}/scopes/${id}`: Edit scope details.
-- `DELETE`-`v1/silos/${id}/scopes/${id}`: Soft-delete silo.
+- `DELETE`-`v1/silos/${id}/scopes/${id}`: Soft-delete scope.
 
 Scope Versions: 
 - `GET`-`v1/silos/${id}/scopes/${id}/version/${int}`
