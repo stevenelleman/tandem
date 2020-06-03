@@ -10,8 +10,11 @@
 ## Docs
 - Spec ([./docs/spec.md](./docs/spec.md))
 - App Setup Docs ([./services/web-frontend/README.md](./services/web-frontend/README.md))
-- Frontend + API Plan ([./services/web-frontend/src/components/README.md](./services/web-frontend/src/components/README.md))
 - Service Deployment ([./deploy/README.md](./deploy/README.md))
+
+Services: 
+- Web Frontend Service ([./services/web-frontend/src/components/README.md](./services/web-frontend/src/components/README.md))
+- Public API Service ([./services/public-api/README.md](./services/public-api/README.md))
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 

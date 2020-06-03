@@ -7,7 +7,6 @@
 - [Chunking](#chunking)
 - [Separation of Concerns](#separation-of-concerns)
 - [Faceted Identities](#faceted-identities)
-- [API Routes](#api-routes)
 - [Routing](#routing)
 - [Timeline](#timeline)
     - [Timeline Modes](#modes)
@@ -65,59 +64,6 @@ When a panel is selected a `focused` boolean will be set to `true`. While focuse
 All API requests should include an authorization context, which include cookies belonging to each FI.  
 
 Give a UI options for all FIs, explicitly marking them includes the corresponding FI with the request. The cookie is then translated into the corresponding identity in some authn/authz step in the API. That way only the selected FI will be included in the responses.
-
-## API Routes 
-
-Silos: An authorization context must be included that includes a Faceted Identity (FI) of a silo member. All child routes must also include corresponding FI. 
-- `GET`-`v1/silos`: List silos of FIs.  
-- `GET`-`v1/silos/${id}`: Get silo details.
-- `POST`-`v1/silos/${id}`: Create silo.  
-- `PUT`-`v1/silos/${id}`: Edit silo. 
-- `DELETE`-`v1/silos/${id}`: Soft-delete silo. Need to decide what happens to scopes - are they still accessible by members? Are they publicized? 
-
-Silo FIs: 
-- `GET`-`v1/silos/${id}/scopes/${id}/members`: List of members of silo. 
-- `GET`-`v1/silos/${id}/scopes/${id}/members/${id}`: Get member details of silo. 
-- `POST`-`v1/silos/${id}/scopes/${id}/members/${id}`: Add member.
-- `PUT`-`v1/silos/${id}/scopes/${id}/members/${id}`: Edit member.
-- `DELETE`-`v1/silos/${id}/scopes/${id}/members/${id}`: Remove member.
-
-Scopes: 
-- `GET`-`v1/silos/${id}/scopes`: List of scopes corresponding to silo. 
-- `GET`-`v1/silos/${id}/scopes/${id}`: Get scope details.
-- `POST`-`v1/silos/${id}/scopes/${id}`: Create scope.
-- `PUT`-`v1/silos/${id}/scopes/${id}`: Edit scope details.
-- `DELETE`-`v1/silos/${id}/scopes/${id}`: Soft-delete scope.
-
-Scope Versions: 
-- `GET`-`v1/silos/${id}/scopes/${id}/version/${int}`
-- `POST`-`v1/silos/${id}/scopes/${id}/version/${int}`: Create new scope version. Version must be n + 1, where n is the current last version. 
-No edit or delete endpoints. Versions are immutable. 
-
-Scope FIs: 
-- `GET`-`v1/silos/${id}/scopes/${id}/members`: List contributors. 
-- `GET`-`v1/silos/${id}/scopes/${id}/members/${id}`: List contributor details. 
-No edit or delete endpoints.
-
-Forums: 
-- `GET`-`v1/forums`: List all forums corresponding to FIs.
-- `GET`-`v1/forums/${id}`: Get forums details.
-- `POST`-`v1/forums/${id}`: Create forum.
-- `PUT`-`v1/forums/${id}`: Update forums details.
-- `DELETE`-`v1/forums/${id}`: Soft delete forum.
-
-Forum silos: 
-- `GET`-`v1/forums/${id}/silos`: List all silos belonging to forum.
-- `GET`-`v1/forums/${id}/silos/${id}`: Get silo details belonging to forum.
-- `POST`-`v1/forums/${id}/silos/${id}`: Add silo to forum.
-- `PUT`-`v1/forums/${id}/silos/${id}`: Update silo details.
-- `DELETE`-`v1/forums/${id}/silos/${id}`: Remove silo from froum. 
-
-Forum FIs: 
-- `GET`-`v1/forums/${id}/members`: List all members belonging to forum.
-- `GET`-`v1/forums/${id}/members/${id}`: Get members details.
-- `PUT`-`v1/forums/${id}/members/${id}`: Update silo details, in particular the ability to soft-exile/delete a member from a forum. 
-No create or delete endpoints. Create or delete are controlled at the silo-level.  
  
 ## Timeline 
 One frontend feature I would like is he ability for a document to be viewed over its full history. The UI component would be a timeline on the botton of the UI panel, which allows sources to be applied or unapplied.
