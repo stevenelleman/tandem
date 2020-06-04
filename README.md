@@ -26,10 +26,15 @@ Services:
 
 ## Tasks 
 - [x] Initial Deployment Process [Tuesday]
-- [ ] Frontend w/ Mock Endpoint/Data [Tuesday]
-- [x] Backend w/ Mock Data [Wednesday]
+- [x] Frontend w/ Mock Endpoint/Data [Tuesday]
+- [x] API Service w/ Mock Data [Wednesday]
 - [x] Postgres DB [Thursday]
 - [ ] Local VM Setup (Using Tilt preferably) [Friday]
 - [ ] Build Process for Dashboard and API service [Friday]
-- [ ] Microservice Deployment Process [Saturday]
-- [ ] Server-Side Transformations
+- [ ] API Table Migrations [Thursday]
+- [ ] API Test Setup [Thursday]
+- [ ] Authz Context and Login [Thursday]
+- [ ] Server-Side Transformations [Friday]
+
+Later:
+- [ ] Microservice Deployment Process
