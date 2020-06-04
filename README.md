@@ -10,8 +10,11 @@
 ## Docs
 - Spec ([./docs/spec.md](./docs/spec.md))
 - App Setup Docs ([./services/web-frontend/README.md](./services/web-frontend/README.md))
-- Frontend + API Plan ([./services/web-frontend/src/components/README.md](./services/web-frontend/src/components/README.md))
 - Service Deployment ([./deploy/README.md](./deploy/README.md))
+
+Services: 
+- Web Frontend Service ([./services/web-frontend/src/components/README.md](./services/web-frontend/src/components/README.md))
+- Public API Service ([./services/public-api/README.md](./services/public-api/README.md))
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 
@@ -24,8 +27,9 @@
 ## Tasks 
 - [x] Initial Deployment Process [Tuesday]
 - [ ] Frontend w/ Mock Endpoint/Data [Tuesday]
-- [ ] Backend w/ Mock Data [Wednesday]
-- [ ] Postgres DB [Thursday]
+- [x] Backend w/ Mock Data [Wednesday]
+- [x] Postgres DB [Thursday]
 - [ ] Local VM Setup (Using Tilt preferably) [Friday]
 - [ ] Build Process for Dashboard and API service [Friday]
 - [ ] Microservice Deployment Process [Saturday]
+- [ ] Server-Side Transformations
