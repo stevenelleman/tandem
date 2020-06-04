@@ -262,6 +262,7 @@ Forums should also be imagined as niche marketplaces where consumers pay creator
 - How should transformation error handling be considered?  
 
 ## Lingering Questions
+- Overlay vs doc? How to express in the endpoints?
 - How to express relationships? 
 - Should a starting scope function take an empty argument? 
 - What is an efficient way to apply all the sources to find the current state of a doc?
