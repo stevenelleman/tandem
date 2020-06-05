@@ -1,6 +1,6 @@
-import React from "react";
-import {Sidebar} from "../components/reuseable/Sidebar";
-import {Workspace} from "./Workspace";
+import React from 'react';
+import { Sidebar } from '../components/reuseable/Sidebar';
+import { Workspace } from './Workspace';
 
 export class WorkspaceRow extends React.Component {
   constructor(props) {
@@ -13,27 +13,30 @@ export class WorkspaceRow extends React.Component {
     this.state = {
       left: defaultWidth,
       right: defaultWidth,
-    }
+    };
   }
 
   // Used for updating the component dimensions on resize events
   componentDidMount() {
-    window.addEventListener('resize', () => this.forceUpdate())
+    window.addEventListener('resize', () => this.forceUpdate());
   }
 
   // Used for changing width of sidebars
   changeWidth(name, w) {
-    var state = {};
+    const state = {};
     state[name] = w;
-    this.setState(state)
+    this.setState(state);
   }
 
   render() {
-    var width = window.innerWidth - (this.state.left + this.state.right);
-    return <div className="row">
-      <Sidebar left type={"silos"} width={this.state.left} changeWidth={this.changeWidth}/>
-      <Workspace width={width}/>
-      <Sidebar type={"forums"} width={this.state.right} changeWidth={this.changeWidth}/>
-    </div>
+    const { left, right } = this.state;
+    const width = window.innerWidth - (left + right);
+    return (
+      <div className="row">
+        <Sidebar left type="silos" width={left} changeWidth={this.changeWidth} />
+        <Workspace width={width} />
+        <Sidebar type="forums" width={right} changeWidth={this.changeWidth} />
+      </div>
+    );
   }
 }

@@ -29,6 +29,7 @@ Services:
 - [x] Frontend w/ Mock Endpoint/Data [Tuesday]
 - [x] API Service w/ Mock Data [Wednesday]
 - [x] Postgres DB [Thursday]
+- [x] Frontend Linter [Thursday]
 - [ ] Local VM Setup (Using Tilt preferably) [Friday]
 - [ ] Build Process for Dashboard and API service [Friday]
 - [ ] API Table Migrations [Thursday]
