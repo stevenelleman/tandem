@@ -30,8 +30,7 @@ html, body {margin:0;padding:0;height:100%;}
 .workspace {
   display: flex;
   height: 100%;
-  width: 100%;
-  background: blueviolet;
+  background: #3249e2;
 }
 
 /* Sidebar + Workspace Styles */

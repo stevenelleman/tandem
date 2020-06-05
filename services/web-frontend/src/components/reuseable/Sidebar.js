@@ -17,12 +17,18 @@ export class Sidebar extends React.Component {
     super(props);
     this.state = {
       active: true,
-      width: props.width,
     }
   }
 
   // Use for collapsing and opening sidebar
   toggleBar() {
+    const orientation = this.props.left ? "left" : "right";
+    if (this.state.active) {
+      this.props.changeWidth(orientation, 20);
+    } else {
+      this.props.changeWidth(orientation, 120);
+    }
+
     this.setState({
       active: !this.state.active,
     })
@@ -30,7 +36,7 @@ export class Sidebar extends React.Component {
 
   openSymbol() {
     var left = this.props.left ? this.props.left : false;
-    if (left != this.state.active) {
+    if (left !== this.state.active) {
       return "->";
     }
     return "<-";
@@ -41,17 +47,23 @@ export class Sidebar extends React.Component {
   // Drag Button: Change the width of the sidebars
   // Options Button: Dropdown to switch one sidebar with another
   sidebarButtons() {
+    // Title width
+    const width = this.props.width - 60
+
+    // Generate classes
     const floatClass = this.props.left ? "float-right" : "float-left";
     const titleClass = !this.state.active ? "sidebar-title-collapsed" : "sidebar-title";
     const sidebarClass = "sidebar-buttons " + (this.props.left ? "left" : "right");
 
+    // Generate divs
     var openSymbol = this.openSymbol();
     var openBtn = <div key="open" onClick={() => this.toggleBar()} className={`sidebar-open-btn ${floatClass}`}>{openSymbol}</div>
     var collapseBtn = <div key="collapse" onClick={() => this.toggleBar()} className={`sidebar-collapse-btn ${floatClass}`}>{openSymbol}</div>;
-    var dragBtn = <div key="drag" className={`sidebar-drag-btn ${floatClass}`}></div>;
-    var optionsBtn = <div key="options" className={`sidebar-options-btn ${floatClass}`}></div>;
-    var title =  <div key="title" className={`${titleClass} ${floatClass}`} style={{width: this.state.width - 60}}>{this.props.type}</div>
+    var dragBtn = <div key="drag" className={`sidebar-drag-btn ${floatClass}`}/>;
+    var optionsBtn = <div key="options" className={`sidebar-options-btn ${floatClass}`}/>;
+    var title =  <div key="title" className={`${titleClass} ${floatClass}`} style={{width}}>{this.props.type}</div>
 
+    // Push divs into array
     var buttons = [];
     if (!this.state.active) {
       buttons.push(openBtn)
@@ -67,7 +79,7 @@ export class Sidebar extends React.Component {
 
 
   render() {
-    const width = this.state.active ? this.state.width : 20;
+    const width = this.props.width;
     const orientation = this.props.left ? "left" : "right";
     const sidebarClass = orientation + (!this.state.active ? " sidebar-collapsed" : " sidebar");
     const contentsClass = orientation + (!this.state.active ? " sidebar-contents-collapsed" : " sidebar-contents");
