@@ -29,13 +29,7 @@ export class WorkspaceRow extends React.Component {
   }
 
   render() {
-    // Why 20px off? Only when left is triggered
     var width = window.innerWidth - (this.state.left + this.state.right);
-    // Spooky mystery: this works but why???
-    if (this.state.left === 20) {
-      width += 20;
-    }
-
     return <div className="row">
       <Sidebar left type={"silos"} width={this.state.left} changeWidth={this.changeWidth}/>
       <Workspace width={width}/>
