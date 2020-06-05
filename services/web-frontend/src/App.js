@@ -1,18 +1,19 @@
 import React from 'react';
-import './App.css';
-import { Panel } from './containers/Panel';
+
+// Import all styles
+import './styles/App.css';
+import './styles/Sidebar.css';
+import './styles/Topbar.css';
+
+import { Topbar } from './containers/Topbar';
+import { WorkspaceRow } from './containers/WorkspaceRow';
 
 function App() {
+  const defaultHeight = 50;
   return (
-    <div className="App">
-      <div className="PanelFrame">
-        <Panel>
-
-        </Panel>
-        <Panel>
-
-        </Panel>
-      </div>
+    <div className="app">
+      <Topbar height={defaultHeight} />
+      <WorkspaceRow />
     </div>
   );
 }

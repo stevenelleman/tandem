@@ -1,4 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Web Frontend Service 
+
+## Table of Contents 
+- [TODO](#todo)
+- [Available Scripts](#available-scripts)
+    - [depcheck](#depcheck)
+- [Original README](#original-readme)
+
+## TODO: 
+- [ ] Lint
+- [ ] Jest Tests
+
+## Questions: 
+- How to use separate requests to get the silos, forums, and faceted identities? It should be constantly updating. User info endpoint?
+
+## UI Overview:
+Topbar: Faceted Identities, Search bar
+Rightbar: Forums
+Leftbar: Silos
+Bottombar: Panel info (undisplayed state, still cached)
+
+Overkill to be able to swap/collapse bars? I like it. `x` and dropdown to express that.
+
+Internal `workspace`. Ideally would be able to handle n panels, but initially just allow a few.
 
 ## Available Scripts
 
@@ -7,6 +30,10 @@ In the project directory, you can run:
 ### `depcheck`
 
 To check if dependencies are unused or missing.
+
+## Original README
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### `yarn start`
 

@@ -1,0 +1,68 @@
+/* Sidebar Styles */
+.sidebar {
+    background-color: slategray;
+    display: flex;
+    height: 100%;
+}
+
+.sidebar-collapsed {
+    background-color: slategray;
+    display: flex;
+    height: 100%;
+}
+
+.sidebar-contents {
+    background-color: blueviolet;
+}
+
+.sidebar-contents-collapsed {
+
+}
+
+.sidebar-buttons {
+    background-color: cornflowerblue;
+    display: inline-block;
+    height: 20px;
+    width: 100%;
+    float: left; /* need to be based on the orientation */
+}
+
+.sidebar-title {
+    background-color: blanchedalmond;
+    height: 20px;
+}
+
+.sidebar-title-collapsed {
+
+}
+
+.sidebar-create-btn {
+    background-color: yellow;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-collapse-btn {
+    background-color: darkred;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-open-btn {
+    background-color: palegreen;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-options-btn {
+    background-color: orange;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-drag-btn {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+}
