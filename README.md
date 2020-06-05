@@ -30,12 +30,24 @@ Services:
 - [x] API Service w/ Mock Data [Wednesday]
 - [x] Postgres DB [Thursday]
 - [x] Frontend Linter [Thursday]
-- [ ] Local VM Setup (Using Tilt preferably) [Friday]
-- [ ] Build Process for Dashboard and API service [Friday]
-- [ ] API Table Migrations [Thursday]
-- [ ] API Test Setup [Thursday]
-- [ ] Authz Context and Login [Thursday]
-- [ ] Server-Side Transformations [Friday]
+- [ ] React-Router [Friday]
+- [ ] Redux State Management [Friday]
+- [ ] Connect DB to the Frontend [Friday]
+- [ ] API Table Migrations 
+- [ ] Local VM Setup (Using Tilt preferably)
+- [ ] Server-Side Transformations
 
-Later:
+Backlog:
+- [ ] Build Process for Dashboard and API service
 - [ ] Microservice Deployment Process
+- [ ] API Service Test Pattern (Any way to generalize?)
+- [ ] Authz Context and Login
+    - [ ] Browser Cookier Manager 
+    - [ ] User Info Endpoint
+- [ ] Frontend Jest Testing 
+- [ ] Frontend Redux Testing
+- [ ] Frontend Linter ([eslint](https://www.npmjs.com/package/eslint-config-airbnb))
+- [ ] Backend Go Linter
+- [ ] API Service Error Handling 
+- [ ] API Service Logging
+- [ ] Per-Request DB Connection Instantiation
