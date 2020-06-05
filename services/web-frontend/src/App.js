@@ -5,8 +5,8 @@ import './styles/App.css';
 import './styles/Sidebar.css';
 import './styles/Topbar.css';
 
-import { Topbar } from './containers/Topbar';
-import { WorkspaceRow } from './containers/WorkspaceRow';
+import { Topbar } from './ui/containers/Topbar';
+import { WorkspaceRow } from './ui/containers/WorkspaceRow';
 
 function App() {
   const defaultHeight = 50;
