@@ -30,12 +30,24 @@ Services:
 - [x] API Service w/ Mock Data [Wednesday]
 - [x] Postgres DB [Thursday]
 - [x] Frontend Linter [Thursday]
-- [ ] Local VM Setup (Using Tilt preferably) [Friday]
-- [ ] Build Process for Dashboard and API service [Friday]
-- [ ] API Table Migrations [Thursday]
-- [ ] API Test Setup [Thursday]
-- [ ] Authz Context and Login [Thursday]
-- [ ] Server-Side Transformations [Friday]
+- [x] Redux State Management [Friday]
+- [x] Web-Frontend Client [Friday]
+- [x] Connect DB to the Frontend [Friday]
+- [ ] React-Router [Saturday]
+- [ ] API Table Migrations [Saturday]
+- [ ] Backend Go Linter
+- [ ] Frontend Jest Testing 
+- [ ] Local VM Setup (Using Tilt preferably)
+- [ ] API Service Test Pattern
+- [ ] Server-Side Transformations
 
-Later:
+Backlog:
+- [ ] Build Process for Dashboard and API service
 - [ ] Microservice Deployment Process
+- [ ] Authz Context and Login
+    - [ ] Browser Cookier Manager 
+    - [ ] User Info Endpoint
+- [ ] Frontend Redux Testing
+- [ ] API Service Error Handling 
+- [ ] API Service Logging
+- [ ] Per-Request DB Connection Instantiation

@@ -1,6 +1,7 @@
 import React from 'react';
 
-export class Workspace extends React.Component {
+type PropsType = {width: number};
+export class Workspace extends React.Component<PropsType> {
   render() {
     const { width } = this.props;
     return <div className="workspace" style={{ width }} />;
