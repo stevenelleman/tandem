@@ -1,19 +1,18 @@
 import { Dispatch } from 'redux';
-import { dispatcher } from "./utils";
-import { Client } from "../../client/client";
-import { VERB_GET } from "../../client/constants";
-import { REQUEST_SILOS, REQUEST_SILOS_ERROR, RECEIVE_SILOS } from "../constants";
+import { dispatcher } from './utils';
+import { Client } from '../../client';
+import { VERB_GET } from '../../client/constants';
+import { REQUEST_SILOS, REQUEST_SILOS_ERROR, RECEIVE_SILOS } from '../constants';
 
-// TODO: Move to silos.ts... 
 function shouldFetchSilos(state: any) {
   const { silos } = state;
-  if (!silos || Array.isArray([])) {
+  if (!silos || !Object.keys(silos).length) {
     return true;
-  } else if (silos.isFetching) {
-    return false;
-  } else {
-    return silos.didInvalidate;
   }
+  if (silos.isFetching) {
+    return false;
+  }
+  return silos.didInvalidate;
 }
 
 function requestSilos() {

@@ -1,8 +1,4 @@
-// Single Silo Actions
-export const SILO_GET = 'SILO_CREATE';
-export const SILO_CREATE = 'SILO_CREATE';
-export const SILO_UPDATE = 'SILO_UPDATE';
-export const SILO_DELETE = 'SILO_DELETE';
-
 // Plural Silo Actions
-export const SILOS_LIST = 'SILOS_LIST';
+export const REQUEST_SILOS = 'SILOS_LIST_REQUEST';
+export const REQUEST_SILOS_ERROR = 'SILOS_LIST_REQUEST_ERROR';
+export const RECEIVE_SILOS = 'SILOS_LIST_RESPONSE';

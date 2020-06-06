@@ -1,3 +1,7 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import { silos } from './silos';
 
-export default combineReducers({})
+// Export all reducers in combined reducer object
+export default combineReducers({
+  silos,
+});
