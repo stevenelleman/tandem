@@ -1,10 +1,27 @@
 {
-  "extends": "airbnb",
-  "rules": {
-    "func-names": ["error", "never"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["airbnb-typescript"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
   },
   "env": {
     "browser": true
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    // "export default" is explicitly avoided because it creates refactoring problems if the filename changes.
+    // default exports use the name of filename to name the object. If the filename is changed _all_ its uses _also_ have to change.
+    "react/prefer-stateless-function": 0,
+    // Many components are sufficiently complex that they should benefit from react components props/state management,
+    // even if they could be represented as pure stateless components.
+    "jsx-a11y/interactive-supports-focus": 0,
+    // Overkill. Prevents "interactive roles" from being able to trigger events, in the particular instance a div from being clickable.
+    "max-len": [2, {"code": 200, "tabWidth": 2, "ignoreUrls": true}],
+    // 100 lines is too restrictive
   }
 }
+
+// Iffy Rules:
+// "prefer-object-spread": 0,
+// I may come to regret this one. Rule wants to convert Object.assign to object spreads: {...obj1, ...obj2}.
