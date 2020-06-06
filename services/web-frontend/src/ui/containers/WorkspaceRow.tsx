@@ -2,6 +2,12 @@ import React from 'react';
 import { Sidebar } from '../components/reuseable/Sidebar';
 import { Workspace } from './Workspace';
 
+/*
+  TODO:
+    - Need to disp
+
+ */
+
 export class WorkspaceRow extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +28,8 @@ export class WorkspaceRow extends React.Component {
   }
 
   // Used for changing width of sidebars
-  changeWidth(name, w) {
-    const state = {};
+  changeWidth(name:string, w:number) {
+    const state: any = {};
     state[name] = w;
     this.setState(state);
   }
