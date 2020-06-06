@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+// jsx-a11y/click-events-have-key-events: disabled because collapseBtn.onClick
+// should only be triggered by click, not keyboard return
+
 import React from 'react';
 
 /*
@@ -12,8 +16,17 @@ Arguments:
 - switch dropdown -> function
  */
 
-export class Sidebar extends React.Component {
-  constructor(props) {
+// Types
+type PropsType = {
+  left: boolean,
+  width: number,
+  type: string,
+  changeWidth: (name:string, w:number) => void
+};
+type StateType = {active: boolean};
+
+export class Sidebar extends React.Component<PropsType, StateType> {
+  constructor(props: PropsType) {
     super(props);
     this.state = {
       active: true,
@@ -39,8 +52,7 @@ export class Sidebar extends React.Component {
   openSymbol() {
     const { left } = this.props;
     const { active } = this.state;
-    // Left may be undefined instead of false. !! converts it to false.
-    if (!!left !== active) {
+    if (left !== active) {
       return '->';
     }
     return '<-';
@@ -65,12 +77,12 @@ export class Sidebar extends React.Component {
 
     // Generate divs
     const openSymbol = this.openSymbol();
-    const openBtn = <div key="open" onClick={() => this.toggleBar()} className={`sidebar-open-btn ${floatClass}`}>{openSymbol}</div>;
-    const collapseBtn = <div key="collapse" onClick={() => this.toggleBar()} className={`sidebar-collapse-btn ${floatClass}`}>{openSymbol}</div>;
+    const openBtn = <div key="open" role="button" onClick={() => this.toggleBar()} className={`sidebar-open-btn ${floatClass}`}>{openSymbol}</div>;
+    const collapseBtn = <div key="collapse" role="button" onClick={() => this.toggleBar()} className={`sidebar-collapse-btn ${floatClass}`}>{openSymbol}</div>;
     const createBtn = <div key="create" className={`sidebar-create-btn ${floatClass}`}>+</div>;
-    const dragBtn = <div key="drag" className={`sidebar-drag-btn ${floatClass}`}/>;
-    const optionsBtn = <div key="options" className={`sidebar-options-btn ${floatClass}`}/>;
-    const title = <div key="title" className={`${titleClass} ${floatClass}`} style={{ titleWidth }}>{type}</div>;
+    const dragBtn = <div key="drag" className={`sidebar-drag-btn ${floatClass}`} />;
+    const optionsBtn = <div key="options" className={`sidebar-options-btn ${floatClass}`} />;
+    const title = <div key="title" className={`${titleClass} ${floatClass}`} style={{ width: titleWidth }}>{type}</div>;
 
     // Push divs into array
     const buttons = [];
@@ -85,7 +97,6 @@ export class Sidebar extends React.Component {
       </div>
     );
   }
-
 
   render() {
     const { width, left } = this.props;

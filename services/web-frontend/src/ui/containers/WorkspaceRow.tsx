@@ -1,15 +1,21 @@
 import React from 'react';
+import { Dispatch, Action } from 'redux';
+import { connect } from 'react-redux';
 import { Sidebar } from '../components/reuseable/Sidebar';
-import { Workspace } from './Workspace';
+import { Workspace } from '../components/Workspace';
+import { fetchSilosIfNeeded } from '../../redux/actions/silos';
+import { Client } from '../../client';
+import { ReceiveSiloActionType } from '../../types';
 
-/*
-  TODO:
-    - Need to disp
+// Types
+type PropsType = {
+  client: Client,
+  fetchSilos: (client: Client) => Dispatch<Action<ReceiveSiloActionType>>
+};
+type StateType = {left:number, right:number};
 
- */
-
-export class WorkspaceRow extends React.Component {
-  constructor(props) {
+class PrivateWorkspaceRow extends React.Component<PropsType, StateType> {
+  constructor(props: PropsType) {
     super(props);
 
     // Need to bind method to pass them down to child component
@@ -25,6 +31,12 @@ export class WorkspaceRow extends React.Component {
   // Used for updating the component dimensions on resize events
   componentDidMount() {
     window.addEventListener('resize', () => this.forceUpdate());
+    this.initProps();
+  }
+
+  initProps() {
+    const { fetchSilos, client } = this.props;
+    fetchSilos(client);
   }
 
   // Used for changing width of sidebars
@@ -41,8 +53,22 @@ export class WorkspaceRow extends React.Component {
       <div className="row">
         <Sidebar left type="silos" width={left} changeWidth={this.changeWidth} />
         <Workspace width={width} />
-        <Sidebar type="forums" width={right} changeWidth={this.changeWidth} />
+        <Sidebar left={false} type="forums" width={right} changeWidth={this.changeWidth} />
       </div>
     );
   }
 }
+
+const mapStateToProps = (state: any) => {
+  const { silos, forums } = state;
+  return {
+    silos,
+    forums,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchSilos: (client: Client) => dispatch(fetchSilosIfNeeded(client)),
+});
+
+export const WorkspaceRow = connect(mapStateToProps, mapDispatchToProps)(PrivateWorkspaceRow);
