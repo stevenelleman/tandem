@@ -9,6 +9,7 @@
 ## TODO: 
 - [ ] Lint
 - [ ] Jest Tests
+- [ ] Add build failures for (1) eslint errors, (2) depcheck packages
 
 ## Questions: 
 - How to use separate requests to get the silos, forums, and faceted identities? It should be constantly updating. User info endpoint?
