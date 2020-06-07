@@ -34,7 +34,7 @@ Services:
 - [x] Web-Frontend Client [Friday]
 - [x] Connect DB to the Frontend [Friday]
 - [x] Frontend Jest Testing [Sunday]
-- [ ] React-Router [Sunday]
+- [x] React-Router [Sunday]
 - [ ] API Table Migrations [Sunday]
 - [ ] Local VM Setup (Using Tilt preferably) [Sunday]
 - [ ] Backend Go Linter
