@@ -79,13 +79,18 @@ export class Sidebar extends React.Component<PropsType, StateType> {
     const openSymbol = this.openSymbol();
     const openBtn = <div key="open" role="button" onClick={() => this.toggleBar()} className={`sidebar-open-btn ${floatClass}`}>{openSymbol}</div>;
     const collapseBtn = <div key="collapse" role="button" onClick={() => this.toggleBar()} className={`sidebar-collapse-btn ${floatClass}`}>{openSymbol}</div>;
-    const createBtn = <div key="create" className={`sidebar-create-btn ${floatClass}`}>+</div>;
+    const createBtn = <div key="create" className={`sidebar-create-btn ${floatClass}`}>
+      <a href={`/${type}/create`}>
+        +
+      </a>
+    </div>;
     const dragBtn = <div key="drag" className={`sidebar-drag-btn ${floatClass}`} />;
     const optionsBtn = <div key="options" className={`sidebar-options-btn ${floatClass}`} />;
     const title = <div key="title" className={`${titleClass} ${floatClass}`} style={{ width: titleWidth }}>{type}</div>;
 
     // Push divs into array
-    const buttons = [];
+    // TODO: Import Element
+    const buttons: JSX.Element[] = [];
     if (!active) {
       buttons.push(openBtn);
     } else {
