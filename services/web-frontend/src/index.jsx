@@ -21,6 +21,7 @@ const store = createStore(
   applyMiddleware(...middleware),
 );
 
+// TODO: Convert jsx -> tsx
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

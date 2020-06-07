@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, ReactNode } from 'react';
 import { Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Sidebar } from '../components/reuseable/Sidebar';
@@ -9,12 +9,13 @@ import { ReceiveSiloActionType } from '../../types';
 
 // Types
 type PropsType = {
+  children: ReactNode,
   client: Client,
   fetchSilos: (client: Client) => Dispatch<Action<ReceiveSiloActionType>>
 };
 type StateType = {left:number, right:number};
 
-class PrivateWorkspaceRow extends React.Component<PropsType, StateType> {
+class PrivateWorkspaceRow extends Component<PropsType, StateType> {
   constructor(props: PropsType) {
     super(props);
 
@@ -52,7 +53,9 @@ class PrivateWorkspaceRow extends React.Component<PropsType, StateType> {
     return (
       <div className="row">
         <Sidebar left type="silos" width={left} changeWidth={this.changeWidth} />
-        <Workspace width={width} />
+        <Workspace width={width}>
+          { this.props.children }
+        </Workspace>
         <Sidebar left={false} type="forums" width={right} changeWidth={this.changeWidth} />
       </div>
     );
