@@ -33,11 +33,11 @@ Services:
 - [x] Redux State Management [Friday]
 - [x] Web-Frontend Client [Friday]
 - [x] Connect DB to the Frontend [Friday]
-- [ ] React-Router [Saturday]
-- [ ] API Table Migrations [Saturday]
+- [x] Frontend Jest Testing [Sunday]
+- [ ] React-Router [Sunday]
+- [ ] API Table Migrations [Sunday]
+- [ ] Local VM Setup (Using Tilt preferably) [Sunday]
 - [ ] Backend Go Linter
-- [ ] Frontend Jest Testing 
-- [ ] Local VM Setup (Using Tilt preferably)
 - [ ] API Service Test Pattern
 - [ ] Server-Side Transformations
 
