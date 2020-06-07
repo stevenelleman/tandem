@@ -3,6 +3,7 @@
     background-color: slategray;
     display: flex;
     height: 100%;
+    overflow: hidden;
 }
 
 .sidebar-collapsed {
