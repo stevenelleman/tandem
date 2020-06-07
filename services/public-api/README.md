@@ -11,11 +11,11 @@
 1. Run `go mod tidy`. This will download all necessary go packages. 
 2. Run `go build` in `api` directory. 
 3. Run `./api` in directory. 
-4. ~ Postgres setup ~ 
+4. ~ Postgres setup ~ CREATE TABLE silos (id varchar(255), state varchar(255));
 5. Access `psql` db via `psql stevenelleman`
 
 Useful Curl Commands: 
-- `curl -X POST localhost:8000/v1/silos/${id} -H 'Content-Type:application/json' -d '{"state",'
+- `curl -X POST localhost:8000/v1/silos/${id} -H 'Content-Type:application/json' -d '{"state",'`
 
 ## Questions
 - Capitalized properties or now in models? 
