@@ -7,6 +7,11 @@ import (
 	"sg/services/public-api/handlers/requests"
 )
 
+type SiloRequest struct {
+	State string `json:"state"`
+	// separate struct from silos bc requests need auth tokens eventually
+}
+
 func ListSilos(c *gin.Context) {
 	silos, err := controller.ListSilos()
 	if err != nil {
@@ -30,14 +35,20 @@ func GetSilo(c *gin.Context) {
 
 func CreateSilo(c *gin.Context) {
 	// TODO: should the id be in the request rather than the path?
-	id := c.Param("silo_id")
-
-	// Must map request object
-	siloReq := &requests.Silo{
-		Id: id,
+	var json SiloRequest
+	err := c.BindJSON(&json)
+	if err != nil {
+		ReturnError(c, 400, err)
+		return
 	}
 
-	err := controller.CreateSilo(siloReq)
+	id := c.Param("silo_id")
+	siloReq := &requests.Silo{
+		Id: id,
+		State: json.State,
+	}
+
+	err = controller.CreateSilo(siloReq)
 	if err != nil {
 		ReturnError(c, 400, err)
 		return
@@ -46,14 +57,21 @@ func CreateSilo(c *gin.Context) {
 }
 
 func UpdateSilo(c *gin.Context) {
-	id := c.Param("silo_id")
+	var json SiloRequest
 
-	// Must map request object
-	siloReq := &requests.Silo{
-		Id: id,
+	err := c.BindJSON(&json)
+	if err != nil {
+		ReturnError(c, 400, err)
+		return
 	}
 
-	err := controller.UpdateSilo(siloReq)
+	id := c.Param("silo_id")
+	siloReq := &requests.Silo{
+		Id: id,
+		State: json.State,
+	}
+
+	err = controller.UpdateSilo(siloReq)
 	if err != nil {
 		ReturnError(c, 400, err)
 		return
