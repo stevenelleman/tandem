@@ -34,6 +34,7 @@ From highest priority to lowest.
 - Parent-child scopes? Ex: document scope vs chapter scope. Should the chapter scope exist within the document? How should scopes be linked? 
 - Should the UI interface also be a sourcegraph? 
 - What dictates whether two scopes can interact? An overlap in transformations?
+- Should go mod be initialized in each golang service, as opposed in the root ./sg directory?
 
 ## Answered
 - What is an efficient way to apply all the sources to find the current state of a doc?
