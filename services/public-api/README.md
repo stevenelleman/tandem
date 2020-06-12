@@ -15,7 +15,8 @@
 5. Access `psql` db via `psql stevenelleman`
 
 Useful Curl Commands: 
-- `curl -X POST localhost:8000/v1/silos/${id} -H 'Content-Type:application/json' -d '{"state",'`
+- `curl -X POST localhost:8000/v1/silos/420 -H 'Content-Type:application/json' -d '{"state":"yeet"}'`
+- `curl -X PUT localhost:8000/v1/silos/420 -H 'Content-Type:application/json' -d '{"state":"skeet"}'`
 
 ## Questions
 - Capitalized properties or now in models? 
