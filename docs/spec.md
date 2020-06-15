@@ -19,9 +19,8 @@
 - [The Economic Layer](#the-economic-layer)
     - [Siloes](#siloes)
     - [Forums as Niche Markets](#forum-markets)
-- [Known Unknowns](#known-unknowns)       
-- [Questions](#lingering-questions)
-- [Notes](#notes)
+- [Layering](#layering)
+- [Notes](#scratch-notes)
 
 ## Problem
 
@@ -127,14 +126,14 @@ How should signature types (arguments, outputs) be considered? This is a [known 
 
 Should an argument only be able to take two arguments, the original document and the new source? Will there ever be a situation where multiple values are required at once? For v0 it may make sense to use two arguments, and see if we run into any snags. 
 
-## Use Case: Synthetic Biology 
+## Use Case: Synthetic Biology [WIP]
 
 How to show a sequence of plasmid transformation as a simulation? 
 
 1. There should be a scope specifically for the transformations, and there should be a time dimension in the source-material 
 2. The history of edits is still saved, but it's separate from the end document. 
 
-## How to Make a Graph Doc? 
+## How to Make a Graph Doc? [WIP]
 
 ## V0 Requirements
 1. Text: Only supports text file types.  
@@ -155,7 +154,7 @@ How to show a sequence of plasmid transformation as a simulation?
 4. Git-like diff management for versions, Edits are functional
 5. UI for visualizing sourcegraph (to motivate further development on scope UI/logic)
 
-## Data Structure
+## Data Structure [WIP]
 
 Each source is a row. 
 
@@ -205,9 +204,9 @@ Siloes own scopes. A silo is a vertical. A vertical is determined by a shared se
 
 Forums can share scopes. A forum is a horizontal _between_ verticals, specifically verticals that _depend_ on each other but don't _trust_ each other. When a forum is created, a set of silos is added to the forum, and the silo members have access to shared scopes, but in a conditional way (i.e. access may be contingent on money transaction... more on that later). Forums exist all around us. Markets in both the abstract and real sense are forums, they are places where _verticals_ (producers, buyers, sellers, companies, etc) meet for specific reasons relating to cross dependencies. A career fair is a forum between companies and the college. Calapalooza is a forum between student groups and the college. Enterprise tech conferences are forums between the provider company (Amazon/AWS) and its client companies. Forums can be long-term (like a markerplace) or they can an event (a career fair). So why can't this occur within a silo? Siloes imply trust and therefore access. Forums are places for different siloes to meet and satisfy their mutual needs, not for them to trust each other with full information.  
 
-##### Silo Philosophy: Alignment and Pay-It Forward
+##### Silo Philosophy: Alignment Through Surplus and Pay-It Forward
 
-The intention of silos is to _align_ the incentives of all its members around collective ownership of scopes. Silos are necessary for creating collective cash flow, organizing scopes around relevancy, and enabling privacy. One other _hope_ for silos is to enable "pay-it forward"/karmic economics. This has been a pet idea of mine for a while. A dominant way we currently engage with needs is through transactionality. I pay you X for the Y I need. A necessary middleman for this to work is the state, both for enforcement of the transaction but also for the currency used in the transaction. An _alternative_ model for some needs, in particular for care and education (ie community and creativity), is a "pay-it forward" model. Picture this: I give a friend something - care, money, opportunity, knowledge, a helping hand - but on a loose condition: when given the chance, pay something similar forward to a future person in need. If my friend faithfully does this, and the recipient of their care does the same thing, and all the future people in the chain of their care do the same, my one action has turned into an _infinite_ chain of care. And some of that care will come back to me, indirectly. This is the logic behind karma. _The problem_ with this logic is that the original "igniter" of the chain of care will _only_ do so if they have the security to do so. The best way of gauranteeing that security is if the "chain of care" comes back to them eventually, justifying their original "gift" and giving them the security (and faith in the logic) _to give more_. The smaller the silo, the more likely that chain of care will come back to its original gifter, enabling the chain in the first place. Therefore silos could be an ideal environment for "pay-it forward" logic. The upside of the logic is drastically reduced transaction costs around a variety of needs. Today, we need to pay some for everything we need. This seems there are transaction costs around _everything_ we need. In a world of pay-it forward logic the transaction costs _within_ a silo are zero.   
+The intention of silos is to _align_ the incentives of all its members around collective ownership of scopes. Silos are necessary for creating collective cash flow, organizing scopes around relevancy, and enabling privacy. Whatever surpluses that are produced are distributed to the members of the silo. One other _hope_ for silos is to enable "pay-it forward"/karmic economics. This has been a pet idea of mine for a while. A dominant way we currently engage with needs is through transactionality. I pay you X for the Y I need. A necessary middleman for this to work is the state, both for enforcement of the transaction but also for the currency used in the transaction. An _alternative_ model for some needs, in particular for care and education (ie community and creativity), is a "pay-it forward" model. Picture this: I give a friend something - care, money, opportunity, knowledge, a helping hand - but on a loose condition: when given the chance, pay something similar forward to a future person in need. If my friend faithfully does this, and the recipient of their care does the same thing, and all the future people in the chain of their care do the same, my one action has turned into an _infinite_ chain of care. And some of that care will come back to me, indirectly. This is the logic behind karma. _The problem_ with this logic is that the original "igniter" of the chain of care will _only_ do so if they have the security to do so. The best way of gauranteeing that security is if the "chain of care" comes back to them eventually, justifying their original "gift" and giving them the security (and faith in the logic) _to give more_. The smaller the silo, the more likely that chain of care will come back to its original gifter, enabling the chain in the first place. Therefore silos could be an ideal environment for "pay-it forward" logic. The upside of the logic is drastically reduced transaction costs around a variety of needs. Today, we need to pay some for everything we need. This seems there are transaction costs around _everything_ we need. In a world of pay-it forward logic the transaction costs _within_ a silo are zero.   
 
 #### Forum Philosophy: Cosmic Serendipity 
 
@@ -249,38 +248,15 @@ Silos can be imagined as both a private _or_ public entity in today's world. Whi
 
 Forums should also be imagined as niche marketplaces where consumers pay creators to be able to (a) view scope end-documents and (b) use sources/scopes for their own content creation. If there are cross-dependencies between a user and a silo it creates the incentive for the user to join the silo annulling costs. In other words, forums are a necessary component for the emergence of new silos - cross-dependencies beget new silos. 
 
-## Known Unknowns
-- Where does metrics design "fit". How to allow metaness, i.e. make metrics on top of the information regarding silos and forums. 
-- Is it possible to produce end-documents from scopes describing scopes?
-- How to functionally express/generalize how a scope relates to an end-document? 
-- Parent-child scopes? Document scope vs chapter scope? 
-- Should the UI interface also be a sourcegraph? 
-- What dictates whether two scopes can interact? An overlap in transformations?
-- Think about branching UI: to do this, instead of a text blob would the end-document have to be a graph of text blobs? 
-- How do different interfaces handle different argument types?
-- How should transformation signature types (arguments, outputs) be considered?
-- How should transformation error handling be considered?  
+### Layering 
+What is the relationship between sourcegraph, social abstractions, and the economic layer? How can they be cleanly organized?
 
-## Lingering Questions
-- Overlay vs doc? How to express in the endpoints?
-- How to express relationships? 
-- Should a starting scope function take an empty argument? 
-- What is an efficient way to apply all the sources to find the current state of a doc?
-- When should a document be saved? Should it be explicit based on pressing publish button or should it be implicit via auto-saves? I suspect the default should be implicit, with the ability to change it. For areas where language is extremely important (law, for instance), they may want to change the default so saves only occur explicitly.  
-- Should it be possible to delete history? 
-- Should it be possible to decouple an edge and source? Is there any use-value to that? 
-- Increasingly I think a source and edge are fundamentally related. Is there any velocity-position metaphor that can be drawn? Intuitively they seem related (and I would love to rope the Heisenberg Principle into this idea)
-- Should faceted identities be allowed to own multiple silos? Upsides? Downsides?  
-- Should multiple silos be able to own one scope? 
-- Silo awards? Minimum and maximum metrics? How to fit metrics in? [Important question]
-- Idea: Individual makes a silo of one to own specific scopes, corresponds with a faceted identity? Should individuals only be able to own scopes via silos? Not a terrible idea. 
-
-## Notes: 
+## Scratch Notes: 
 Imagine a world where new end-documents could be created between an infinite number of file types, creating currently inconceivable document formats and creative production. I want a Renaissance in the framing of thought itself, Sourcegraph is a meta-framing, and its strength will come from how expressively it describe new framings.   \
 -- privacy information should be immutable, set at the time of creation and respected forever afterwards... but that also means it can't be publicized... Seems like a one-direction issue, i.e. private -> public is possible but the reverse is not. 
 - reference, makes new source, most basic transformation is enclosure
 Does it require a defined transformation? Is there a case where a source should be created but the transformation not recorded? Maybe at the base-layer all transformations to produce new sources are created. Let's go 
 Where do edges fit into this model? If a septum encloses, it must enclose something. The edge points to what is being enclosed and distilled. Therefore, the edge is fundamental to what the septum is describing. A first-degree septum has no edge: it connects to Reality. 
 I'm inclined to think of an edge as fundamental to a source. What does it even mean to have an edge between two undefined documents? An edge only makes sense within its necessary context. 
-
 The downside of this approach is that an individual can take a silo hostage, if they've contributed vital sources. While this is true, an individual would be sacrificing their future credibility as well, indicating either extreme integrity or desperation, either way such extremes indicate a real underlying problem, and giving recourse to individuals is essential for solving problems (or, even better, preventing them in the first place).
+- Increasingly I think a source and edge are fundamentally related. Is there any velocity-position metaphor that can be drawn? Intuitively they seem related (and I would love to rope the Heisenberg Principle into this idea)
