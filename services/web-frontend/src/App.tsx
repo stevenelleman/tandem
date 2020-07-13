@@ -19,9 +19,11 @@ type StateType = {client: Client};
 class App extends React.Component<any, StateType> {
   constructor(props: any) {
     super(props);
-    // TODO: Is this the best place for the client to be?
+
+    const host = process.env.REACT_APP_HOST;
+    const port = 8000;
     this.state = {
-      client: new Client('localhost:8000'),
+      client: new Client(`${host}:${port}`), // Public API IP:Port
     };
   }
 
