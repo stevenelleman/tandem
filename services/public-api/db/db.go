@@ -8,17 +8,22 @@ import (
 )
 
 const (
-	host     = "localhost"
 	port     = "5432"
-	user     = "stevenelleman"
-	password = ""
-	name     = "dbname"
+	dockerUser = "postgres"
+	password = "secret"
+	name     = "postgres"
 )
 
 // TODO: currently is a global variable. Connection to db should be instantiated on a per-request basis.
 var DB *sql.DB
 
-func InitDb() {
+func InitDb(host string) {
+	user := dockerUser
+	if host == "localhost" {
+		// For postgres running in the background on local machine
+		user = "stevenelleman"
+	}
+
 	var err error
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
 		"password=%s dbname=%s sslmode=disable",
