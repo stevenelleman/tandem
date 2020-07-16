@@ -9,7 +9,7 @@ import (
 
 const (
 	port     = "5432"
-	dockerUser = "postgres"
+	user = "postgres"
 	password = "secret"
 	name     = "postgres"
 )
@@ -18,12 +18,6 @@ const (
 var DB *sql.DB
 
 func InitDb(host string) {
-	user := dockerUser
-	if host == "localhost" {
-		// For postgres running in the background on local machine
-		user = "stevenelleman"
-	}
-
 	var err error
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
 		"password=%s dbname=%s sslmode=disable",
