@@ -24,7 +24,7 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_HOST=\"localhost\" react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

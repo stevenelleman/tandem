@@ -23,9 +23,9 @@ func GetSilo(c *gin.Context) {
 	silo, err := controller.GetSilo(id)
 	if err != nil {
 		ReturnError(c, 400, err)
-		return
+	} else {
+		ReturnJSON(c, 200, silo)
 	}
-	ReturnJSON(c, 200, silo)
 }
 
 func CreateSilo(c *gin.Context) {
@@ -40,9 +40,9 @@ func CreateSilo(c *gin.Context) {
 	err := controller.CreateSilo(siloReq)
 	if err != nil {
 		ReturnError(c, 400, err)
-		return
+	} else {
+		c.Status(200)
 	}
-	c.Status(200)
 }
 
 func UpdateSilo(c *gin.Context) {
@@ -56,9 +56,9 @@ func UpdateSilo(c *gin.Context) {
 	err := controller.UpdateSilo(siloReq)
 	if err != nil {
 		ReturnError(c, 400, err)
-		return
+	} else {
+		c.Status(200)
 	}
-	c.Status(200)
 }
 
 func DeleteSilo(c *gin.Context) {
@@ -66,7 +66,7 @@ func DeleteSilo(c *gin.Context) {
 	err := controller.DeleteSilo(id)
 	if err != nil {
 		ReturnError(c, 400, err)
-		return
+	} else {
+		c.Status(200)
 	}
-	c.Status(200)
 }

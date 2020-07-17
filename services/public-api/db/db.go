@@ -8,17 +8,16 @@ import (
 )
 
 const (
-	host     = "localhost"
 	port     = "5432"
-	user     = "stevenelleman"
-	password = ""
-	name     = "dbname"
+	user = "postgres"
+	password = "secret"
+	name     = "postgres"
 )
 
 // TODO: currently is a global variable. Connection to db should be instantiated on a per-request basis.
 var DB *sql.DB
 
-func InitDb() {
+func InitDb(host string) {
 	var err error
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
 		"password=%s dbname=%s sslmode=disable",

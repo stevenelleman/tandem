@@ -1,12 +1,5 @@
 # sg
 
-## Local Application Setup 
-1. Clone project: `git clone https://github.com/stevenelleman/sg.git`
-2. `cd ./sg/app`
-3. `yarn start`
-4. Navigate to `http://localhost:3000/`
-5. Additional information can be found in the [app docs](./services/web-frontend/README.md)
-
 ## Docs
 - TODO ([./TODO.md](./TODO.md))
 - Spec ([./docs/spec.md](./docs/spec.md))
@@ -16,6 +9,9 @@
 Services: 
 - Web Frontend Service ([./services/web-frontend/src/components/README.md](./services/web-frontend/src/components/README.md))
 - Public API Service ([./services/public-api/README.md](./services/public-api/README.md))
+
+## Docker Setup
+Run `docker-compose up`
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 

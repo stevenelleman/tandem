@@ -1,15 +1,21 @@
 # Web Frontend Service 
 
 ## Table of Contents 
-- [TODO](#todo)
+- [Local Service Setup](#local-service-setup)
+- [Docker Setup](#docker-setup)
 - [Available Scripts](#available-scripts)
     - [depcheck](#depcheck)
 - [Original README](#original-readme)
 
-## TODO: 
-- [ ] Lint
-- [ ] Jest Tests
-- [ ] Add build failures for (1) eslint errors, (2) depcheck packages
+## Setup 
+1. `yarn start`
+2. Navigate to `http://localhost:3000/`
+
+## Docker Setup 
+1. `docker build -t web-frontend .`
+2. `docker run -p 80:80 web-frontend` (running over HTTP, `443:443` for HTTPS)
+3. Run [`Public-API` service](./public-api) (`make run` in `./public-api`) 
+3. Open `http://localhost`
 
 ## Questions: 
 - How to use separate requests to get the silos, forums, and faceted identities? It should be constantly updating. User info endpoint?

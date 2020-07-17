@@ -1,24 +1,44 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"os"
 	"sg/services/public-api/db"
 	"sg/services/public-api/handlers"
 )
 
 func main() {
-	db.InitDb()
+	// Pass in target IP of Public API service. Localhost for individually run, 172.17.0.2 for container
+	ip := os.Args[1]
+	if ip == "" {
+		panic("IP not defined")
+	}
+
+	host := "172.18.0.3" // Postgres IP:Port
+	if ip == "localhost" {
+		// If host is localhost then use `stevenelleman` db
+		host = ip
+	}
+
+	db.InitDb(host)
 	defer db.DB.Close()
 
 	// TODO: need authz middleware to convert cookie into FI list
 	router := gin.Default()
 
-	// TODO: Pass in as argument
 	router.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
-			return origin == "http://localhost:3000"
+			fmt.Println("Allowed origin", origin)
+
+			// Local web-frontend: http://localhost:3000
+			// Container web-frontend: http://localhost
+			isLocal := origin == "http://localhost:3000"
+			isContainer := origin == "http://localhost"
+
+			return isLocal || isContainer
 		},
 	}))
 
@@ -31,6 +51,6 @@ func main() {
 	v1.PUT("/silos/:silo_id", handlers.UpdateSilo)
 	v1.DELETE("/silos/:silo_id", handlers.DeleteSilo)
 
-	// TODO: Pass in as argument
-	router.Run("localhost:8000")
+	origin := fmt.Sprintf("%s:%d", ip, 8000)
+	router.Run(origin) // Public API IP:Port
 }

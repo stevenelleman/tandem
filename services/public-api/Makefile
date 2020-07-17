@@ -1,5 +1,5 @@
 run:
-	go run ./api/api.go
+	go run ./api/api.go localhost
 
 build:
-	go build -o ~/go/bin/sg ./api/api.go
+	go build -o main ./api/api.go

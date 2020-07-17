@@ -1,12 +1,15 @@
 # Public API Service 
 
 ## Table of Contents 
-- [Local Setup](#setup)
+- [Local Setup](#code-setup)
+- [Docker Setup](#docker-setup)
+    - [Postgres Setup](#postgres)
+    - [API Setup](#api)
 - [Questions](#questions)
 - [Layers](#layers)
 - [API Routes](#api-routes)
 
-## Setup
+## Code Setup
 1. Intellij File-Watcher: gofmt and goimports
 1. Run `go mod tidy`. This will download all necessary go packages. 
 2. Run `go build` in `api` directory. 
@@ -14,8 +17,14 @@
 4. ~ Postgres setup ~ 
 5. Access `psql` db via `psql stevenelleman`
 
-Useful Curl Commands: 
-- `curl -X POST localhost:8000/v1/silos/${id} -H 'Content-Type:application/json' -d '{"state",'
+## Docker Setup
+
+### API  
+1. Run `docker build -t public-api .` in `./public-api` 
+2. Run `docker run -p 8000:8000 public-api`
+
+Useful Curl Commands:
+- `curl -X POST localhost:8000/v1/silos/${id} -H 'Content-Type:application/json' -d '{"state":"active"}'`: To make a REST request to the API service.
 
 ## Questions
 - Capitalized properties or now in models? 
