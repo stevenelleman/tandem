@@ -6,8 +6,10 @@ WORKDIR /app
 COPY go.mod .
 COPY go.sum .
 
-RUN go mod download
+COPY vendor ./vendor
+RUN ls
+
 COPY . .
 
-RUN go build -o main ./api/api.go
+RUN go build -mod=vendor -o main ./api/api.go
 CMD ["./main", "172.18.0.4"]
