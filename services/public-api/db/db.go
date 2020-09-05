@@ -3,13 +3,14 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"libraries/datastore/migrater"
 
 	_ "github.com/lib/pq"
 )
 
 const (
 	port     = "5432"
-	user = "postgres"
+	user     = "postgres"
 	password = "secret"
 	name     = "postgres"
 )
@@ -32,5 +33,14 @@ func InitDb(host string) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Successfully connected!")
+	fmt.Println("Public-API Datastore: Successfully connected!")
+
+	// Apply database migrations on Public-API Datastore
+	m := migrater.Migrater{}
+	count, err := m.Up(DB)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Public-API Datastore: Executed %d migrations\n", count)
 }
