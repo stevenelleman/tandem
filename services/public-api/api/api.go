@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"sg/services/public-api/db"
 	"sg/services/public-api/handlers"
 
 	"github.com/gin-contrib/cors"
@@ -23,17 +22,20 @@ func main() {
 		host = ip
 	}
 
-	db.InitDb(host)
-	defer db.DB.Close()
+	h := handlers.NewAPIHandler(host, 40)
+	defer h.Close()
 
-	// TODO: need authz middleware to convert cookie into FI list
+	// TODO: need authz middleware to convert cookie into faceted identity list.
+	// 	The faceted identity will be associated with a list of silos
+	// 	One or more FIs must belong to the subject silo
+	//	One or more Silos must belong to the subject forum
+	//	How to avoid leakage? Only want to grab relevant FI, not everything. Pass in FI list and subject forum/silo
+	//	And confirm an overlap
+
 	router := gin.Default()
-
 	router.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
-			fmt.Println("Allowed origin", origin)
-
 			// Local web-frontend: http://localhost:3000
 			// Container web-frontend: http://localhost
 			isLocal := origin == "http://localhost:3000"
@@ -43,14 +45,12 @@ func main() {
 		},
 	}))
 
-	// TODO: Also pass in some kind of response writer object
-	// Let the API endpoints begin...
 	v1 := router.Group("/v1")
-	v1.GET("/silos", handlers.ListSilos)
-	v1.GET("/silos/:silo_id", handlers.GetSilo)
-	v1.POST("/silos/:silo_id", handlers.CreateSilo)
-	v1.PUT("/silos/:silo_id", handlers.UpdateSilo)
-	v1.DELETE("/silos/:silo_id", handlers.DeleteSilo)
+	v1.GET("/silos", h.ListSilos)
+	v1.GET("/silos/:silo_id", h.GetSilo)
+	v1.POST("/silos/:silo_id", h.CreateSilo)
+	v1.PUT("/silos/:silo_id", h.UpdateSilo)
+	v1.DELETE("/silos/:silo_id", h.DeleteSilo)
 
 	origin := fmt.Sprintf("%s:%d", ip, 8000)
 	router.Run(origin) // Public API IP:Port
