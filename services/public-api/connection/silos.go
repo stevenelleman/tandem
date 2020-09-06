@@ -1,14 +1,13 @@
-package dbi
+package connection
 
 import (
-	"sg/services/public-api/db"
 	"sg/services/public-api/handlers/requests"
 	"sg/services/public-api/models"
 )
 
-func ListSilos() ([]*models.Silo, error) {
+func (c *Connection) ListSilos() ([]*models.Silo, error) {
 	// TODO: use query / prepared statement builder
-	rows, err := db.DB.Query(`SELECT * FROM silos`)
+	rows, err := c.db.Query(`SELECT * FROM silos`)
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +23,7 @@ func ListSilos() ([]*models.Silo, error) {
 			return nil, err
 		}
 		silos = append(silos, &models.Silo{
-			Id: id,
+			Id:    id,
 			State: state,
 		})
 	}
@@ -36,8 +35,8 @@ func ListSilos() ([]*models.Silo, error) {
 	return silos, nil
 }
 
-func GetSilo(id string) (*models.Silo, error) {
-	rows, err := db.DB.Query(`SELECT * FROM silos WHERE id=$1;`, id)
+func (c *Connection) GetSilo(id string) (*models.Silo, error) {
+	rows, err := c.db.Query(`SELECT * FROM silos WHERE id=$1;`, id)
 	if err != nil {
 		return nil, err
 	}
@@ -57,17 +56,17 @@ func GetSilo(id string) (*models.Silo, error) {
 	return nil, nil
 }
 
-func CreateSilo(s *requests.Silo) error {
-	_, err := db.DB.Exec(`INSERT INTO silos (id, state) VALUES ($1, $2);`, s.Id, s.State)
+func (c *Connection) CreateSilo(s *requests.Silo) error {
+	_, err := c.db.Exec(`INSERT INTO silos (id, state) VALUES ($1, $2);`, s.Id, s.State)
 	return err
 }
 
-func UpdateSilo(s *requests.Silo) error {
-	_, err := db.DB.Exec(`UPDATE silos SET state=$1 WHERE id=$2;`, s.State, s.Id)
+func (c *Connection) UpdateSilo(s *requests.Silo) error {
+	_, err := c.db.Exec(`UPDATE silos SET state=$1 WHERE id=$2;`, s.State, s.Id)
 	return err
 }
 
-func DeleteSilo(id string) error {
-	_, err := db.DB.Exec(`DELETE FROM silos WHERE id=$1;`, id)
+func (c *Connection) DeleteSilo(id string) error {
+	_, err := c.db.Exec(`DELETE FROM silos WHERE id=$1;`, id)
 	return err
 }
