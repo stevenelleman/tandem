@@ -1,33 +1,19 @@
 package connection
 
 import (
+	"errors"
 	"sg/services/public-api/handlers/requests"
 	"sg/services/public-api/models"
 )
 
 func (c *Connection) ListSilos() ([]*models.Silo, error) {
-	// TODO: use query / prepared statement builder
-	rows, err := c.db.Query(`SELECT * FROM silos`)
+	query, args, err := c.qb.Select("*").From("silos").ToSql()
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
-	silos := []*models.Silo{}
 
-	// TODO: need better technique for mapping rows to object
-	for rows.Next() {
-		var id string
-		var state string
-		err = rows.Scan(&id, &state)
-		if err != nil {
-			return nil, err
-		}
-		silos = append(silos, &models.Silo{
-			Id:    id,
-			State: state,
-		})
-	}
-	err = rows.Err()
+	silos := []*models.Silo{}
+	_, err = c.db.Select(&silos, query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -36,37 +22,51 @@ func (c *Connection) ListSilos() ([]*models.Silo, error) {
 }
 
 func (c *Connection) GetSilo(id string) (*models.Silo, error) {
-	rows, err := c.db.Query(`SELECT * FROM silos WHERE id=$1;`, id)
+	query, args, err := c.qb.Select("*").From("silos").Where("id=?", id).ToSql()
 	if err != nil {
 		return nil, err
 	}
-	for rows.Next() {
-		var id string
-		var state string
-		err = rows.Scan(&id, &state)
-		if err != nil {
-			return nil, err
-		}
-		return &models.Silo{
-			Id:    id,
-			State: state,
-		}, nil
+
+	silo := &models.Silo{}
+	err = c.db.SelectOne(silo, query, args...)
+	if err != nil {
+		return nil, err
 	}
 
-	return nil, nil
+	return silo, nil
 }
 
 func (c *Connection) CreateSilo(s *requests.Silo) error {
-	_, err := c.db.Exec(`INSERT INTO silos (id, state) VALUES ($1, $2);`, s.Id, s.State)
-	return err
+	err := c.db.Insert(s)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *Connection) UpdateSilo(s *requests.Silo) error {
-	_, err := c.db.Exec(`UPDATE silos SET state=$1 WHERE id=$2;`, s.State, s.Id)
-	return err
+	count, err := c.db.Update(s)
+	if err != nil {
+		return err
+	} else if count != 1 {
+		return errors.New("Single silo not updated.")
+	}
+	return nil
 }
 
 func (c *Connection) DeleteSilo(id string) error {
-	_, err := c.db.Exec(`DELETE FROM silos WHERE id=$1;`, id)
+	// TODO: soft-delete
+	query, args, err := c.qb.Delete("silos").Where("id=?", id).ToSql()
+
+	result, err := c.db.Exec(query, args)
+	if err != nil {
+		return err
+	}
+	rows, err := result.RowsAffected()
+	if err != nil {
+		return err
+	} else if rows != 1 {
+		return errors.New("Single silo not deleted.")
+	}
 	return err
 }
