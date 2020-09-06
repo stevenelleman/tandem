@@ -40,7 +40,7 @@ Useful Curl Commands:
 
 ## Layers 
 
-[API](./api) -request-> [Handler](./handlers) -req-> [Controller](./controller) -req-> [DBI](./dbi) -req-> [DB](./db) 
+[API](./api) -request-> [Handler](./handlers) -req-> [Controller](./controller) -req-> [DBI](connection) -req-> [DB](./db) 
 
 API <-resp- Handlers <-resp- Controllers <-resp- DBI <-resp- DB
 
