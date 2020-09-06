@@ -3,12 +3,11 @@ package handlers
 import (
 	"github.com/gin-gonic/gin"
 
-	"sg/services/public-api/controller"
 	"sg/services/public-api/handlers/requests"
 )
 
-func ListSilos(c *gin.Context) {
-	silos, err := controller.ListSilos()
+func (h *APIHandler) ListSilos(c *gin.Context) {
+	silos, err := h.Controller.ListSilos()
 	if err != nil {
 		ReturnError(c, 400, err)
 		// TODO: Someone is going to forget to put the return statement - how to refactor to avoid?
@@ -18,9 +17,9 @@ func ListSilos(c *gin.Context) {
 	return
 }
 
-func GetSilo(c *gin.Context) {
+func (h *APIHandler) GetSilo(c *gin.Context) {
 	id := c.Param("silo_id")
-	silo, err := controller.GetSilo(id)
+	silo, err := h.Controller.GetSilo(id)
 	if err != nil {
 		ReturnError(c, 400, err)
 	} else {
@@ -28,7 +27,7 @@ func GetSilo(c *gin.Context) {
 	}
 }
 
-func CreateSilo(c *gin.Context) {
+func (h *APIHandler) CreateSilo(c *gin.Context) {
 	// TODO: should the id be in the request rather than the path?
 	id := c.Param("silo_id")
 
@@ -37,7 +36,7 @@ func CreateSilo(c *gin.Context) {
 		Id: id,
 	}
 
-	err := controller.CreateSilo(siloReq)
+	err := h.Controller.CreateSilo(siloReq)
 	if err != nil {
 		ReturnError(c, 400, err)
 	} else {
@@ -45,7 +44,7 @@ func CreateSilo(c *gin.Context) {
 	}
 }
 
-func UpdateSilo(c *gin.Context) {
+func (h *APIHandler) UpdateSilo(c *gin.Context) {
 	id := c.Param("silo_id")
 
 	// Must map request object
@@ -53,7 +52,7 @@ func UpdateSilo(c *gin.Context) {
 		Id: id,
 	}
 
-	err := controller.UpdateSilo(siloReq)
+	err := h.Controller.UpdateSilo(siloReq)
 	if err != nil {
 		ReturnError(c, 400, err)
 	} else {
@@ -61,9 +60,9 @@ func UpdateSilo(c *gin.Context) {
 	}
 }
 
-func DeleteSilo(c *gin.Context) {
+func (h *APIHandler) DeleteSilo(c *gin.Context) {
 	id := c.Param("silo_id")
-	err := controller.DeleteSilo(id)
+	err := h.Controller.DeleteSilo(id)
 	if err != nil {
 		ReturnError(c, 400, err)
 	} else {

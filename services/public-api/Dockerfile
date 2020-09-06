@@ -6,9 +6,8 @@ WORKDIR /app
 COPY go.mod .
 COPY go.sum .
 
+# Copy local vendor file
 COPY vendor ./vendor
-RUN ls
-
 COPY . .
 
 RUN go build -mod=vendor -o main ./api/api.go

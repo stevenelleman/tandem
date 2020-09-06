@@ -1,27 +1,26 @@
 package controller
 
 import (
-	"sg/services/public-api/dbi"
 	"sg/services/public-api/handlers/requests"
 	"sg/services/public-api/models"
 )
 
-func ListSilos() ([]*models.Silo, error) {
-	return dbi.ListSilos()
+func (c *Controller) ListSilos() ([]*models.Silo, error) {
+	return c.Connection.ListSilos()
 }
 
-func GetSilo(id string) (*models.Silo, error) {
-	return dbi.GetSilo(id)
+func (c *Controller) GetSilo(id string) (*models.Silo, error) {
+	return c.Connection.GetSilo(id)
 }
 
-func CreateSilo(s *requests.Silo) error {
-	return dbi.CreateSilo(s)
+func (c *Controller) CreateSilo(s *requests.Silo) error {
+	return c.Connection.CreateSilo(s)
 }
 
-func UpdateSilo(s *requests.Silo) error {
-	return dbi.UpdateSilo(s)
+func (c *Controller) UpdateSilo(s *requests.Silo) error {
+	return c.Connection.UpdateSilo(s)
 }
 
-func DeleteSilo(id string) error {
-	return dbi.DeleteSilo(id)
+func (c *Controller) DeleteSilo(id string) error {
+	return c.Connection.DeleteSilo(id)
 }
