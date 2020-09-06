@@ -40,7 +40,7 @@ func NewConnectionFactory(host string, conns int) *ConnectionFactory {
 
 func (f *ConnectionFactory) Connection() *Connection {
 	return &Connection{
-		db: f.db.Db,
+		db: f.db,
 		qb: f.qb,
 	}
 }

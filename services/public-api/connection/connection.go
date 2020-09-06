@@ -1,15 +1,15 @@
 package connection
 
 import (
-	"database/sql"
 	"github.com/Masterminds/squirrel"
+	"gopkg.in/gorp.v2"
 )
 
 type Connection struct {
-	db *sql.DB
+	db *gorp.DbMap
 	qb *squirrel.StatementBuilderType
 }
 
 func (c *Connection) Close() {
-	c.db.Close()
+	c.db.Db.Close()
 }
