@@ -8,12 +8,17 @@
 - [Completed](#completed)
 
 ## Tasks 
-From highest priority to lowest. 
-- [ ] API Table Migrations
-- [ ] Local VM Setup (Using Tilt preferably)
+From highest priority to lowest.
+- [ ] Set up graph db source-store 
+- [ ] Set up grpc client for sourcegraph service
+    - Should service be an extensible API? I like the idea of a single endpoint with two arguments: transformation type `{label: string, id: string}`, and a jsonb of arguments, specific to the type. after the type is verified, the arguments will be validated -- how to return
+- [ ] Set up 
+- [ ] Tilt Setup: 
+    - [ ] Be able to access web-frontend 
+    - [ ] Public-api run and web-frontend can hit it 
+    - [x] Public-api initialized api-store
 - [ ] Backend Go Linter
 - [ ] API Service Test Pattern
-- [ ] Server-Side Transformations / Transformation Service / Transformation Service Doc 
 
 ## Backlog
 - [ ] Build Process for Dashboard and API service
@@ -72,7 +77,12 @@ From highest priority to lowest.
     - History of read/writes
 
 ## Completed
-From most recent to oldest. 
+From most recent to oldest.
+- [x] Use squirrel querybuilder 
+- [x] API Layering abstraction
+- [x] Shared Code and Vendored Library Pattern
+- [x] Mapper
+- [x] API Table Migrations
 - [x] React-Router
 - [x] Frontend Jest Testing
 - [x] Connect DB to the Frontend
