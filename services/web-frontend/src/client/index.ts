@@ -22,10 +22,14 @@ import { isValidUrl } from '../utils';
 export class Client {
   // Prop Types
   origin: string;
+  protocol: string;
+  port: number;
 
   // Constructor
-  constructor(origin: string) {
+  constructor(origin: string, protocol: string, port:number) {
     this.origin = origin;
+    this.protocol = protocol;
+    this.port = port
     // TODO: include cookies when instantiated.
   }
 
@@ -40,7 +44,8 @@ export class Client {
   //  - Better stateHandler type
   //  - Pass in a generic error action in App
   public request(verb: string, route: string, args: any, opts: any, stateHandler: any, errorHandler: any) {
-    const url = `http://${this.origin}/${route}`;
+    //const url = `${this.protocol}://${this.origin}:${this.port}/${route}`;
+    const url = `${this.origin}:${this.port}/${route}`;
     if (!isValidUrl(url)) {
       return Client.emitError(`invalid url: ${url}`);
     }

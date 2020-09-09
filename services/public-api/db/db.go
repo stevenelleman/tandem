@@ -11,7 +11,7 @@ const (
 	port     = "5432"
 	user     = "postgres-user"
 	password = "secret"
-	name     = "postgres"
+	name     = "postgresdb"
 )
 
 func InitDb(host string, conns int) *sql.DB {
