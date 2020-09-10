@@ -17,7 +17,6 @@ k8s_resource('sg-api-store')
 k8s_resource('sg-public-api', port_forwards='9001', resource_deps=['sg-api-store'])
 k8s_resource('sg-web-frontend', port_forwards='9002', resource_deps=['sg-public-api'])
 
-
 # 1. Docker Images
 
 # 2. Kubernetes Service YAMLs

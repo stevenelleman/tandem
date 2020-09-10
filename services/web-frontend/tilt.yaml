@@ -21,27 +21,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sg-web-frontend-svc
+  name: sg-web-frontend
+  namespace: default
   labels:
     app: sg-web-frontend
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: sg-web-frontend
   ports:
     - protocol: "TCP"
       port: 80
       targetPort: 80
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: sg-web-frontend-ingress
-spec:
-  rules:
-    - http:
-        paths:
-          - path: /v1
-            backend:
-              serviceName: sg-web-frontend-svc
-              servicePort: 3000
