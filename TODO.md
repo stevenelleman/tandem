@@ -9,28 +9,52 @@
 
 ## Tasks 
 From highest priority to lowest.
+UI: 
+- [ ] Mapping Actions to Transformations 
+- [ ] Mapping UI to Actions 
+- [ ] Managing requests from multiple Panes
+
+Architecture: 
+- [ ] Doc chunking design 
 - [ ] Set up graph db source-store 
-- [ ] Set up grpc client for sourcegraph service
-    - Should service be an extensible API? I like the idea of a single endpoint with two arguments: transformation type `{label: string, id: string}`, and a jsonb of arguments, specific to the type. after the type is verified, the arguments will be validated -- how to return
-- [ ] Set up 
+    - [ ] Think of pattern for sg service and source-store
+        - [ ] Interface 
+        - [ ] Layering 
+        - [ ] Use-Cases / Requirements 
+- [ ] Where to apply transformations? How to represent? 
+    - Would like some kind of function-db where functions are dumbly applied to objects
+- [ ] Representing Transformations, Actions, and UI as graph-doc 
+ 
+Environment:    
 - [ ] Tilt Setup: 
+    - [ ] Convert docker-compose over
     - [ ] Be able to access web-frontend 
     - [ ] Public-api run and web-frontend can hit it 
     - [x] Public-api initialized api-store
+
+Public-API: 
+- [ ] Request JSON-to-Struct Mapping
 - [ ] Backend Go Linter
 - [ ] API Service Test Pattern
+- [ ] API Service Error Handling 
+- [ ] API Service Logging
+
+Other: 
+- [ ] Clean up READMEs 
 
 ## Backlog
+- [ ] Migrate command
 - [ ] Build Process for Dashboard and API service
 - [ ] Microservice Deployment Process
-- [ ] Sourcegraph Service 
 - [ ] Authz Context and Login
     - [ ] Browser Cookier Manager 
     - [ ] User Info Endpoint
 - [ ] Frontend Redux Testing
-- [ ] API Service Error Handling 
-- [ ] API Service Logging
 - [ ] Per-Request DB Connection Instantiation
+
+## Future Backlog 
+- [ ] Redis: Map session id to cached chunks 
+
 
 ## Known Unknowns
 - How can scopes express collections of other scopes? Or should that involve a separate abstraction? 
@@ -78,6 +102,7 @@ From highest priority to lowest.
 
 ## Completed
 From most recent to oldest.
+- [x] Set up grpc client for sourcegraph service
 - [x] Use squirrel querybuilder 
 - [x] API Layering abstraction
 - [x] Shared Code and Vendored Library Pattern
