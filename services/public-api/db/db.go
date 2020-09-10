@@ -9,7 +9,7 @@ import (
 
 const (
 	port     = "5432"
-	user     = "postgres"
+	user     = "postgres-user"
 	password = "secret"
 	name     = "postgres"
 )
@@ -33,5 +33,6 @@ func InitDb(host string, conns int) *sql.DB {
 		panic(err)
 	}
 	fmt.Println("Public-API Datastore: Successfully connected!")
+
 	return db
 }

@@ -1,11 +1,15 @@
 package controller
 
-import "sg/services/public-api/connection"
+import (
+	"sg/services/public-api/connection"
+	sg_client "sg/services/public-api/controller/sgclient"
+)
 
 type Controller struct {
-	Connection *connection.Connection
+	conn     *connection.Connection
+	sgClient *sg_client.SGClient
 }
 
 func (c Controller) Close() {
-	c.Connection.Close()
+	c.conn.Close()
 }
