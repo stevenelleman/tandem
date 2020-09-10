@@ -8,6 +8,10 @@ COPY go.sum .
 
 # Copy local vendor file
 COPY vendor ./vendor
+
+# Copy migrations
+COPY db/migrations ./migrations
+
 COPY . .
 
 RUN go build -mod=vendor -o main ./api/api.go

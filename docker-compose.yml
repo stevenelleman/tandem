@@ -17,12 +17,13 @@ services:
     ports:
       - "5432:5432"
     environment:
+      - POSTGRES_USER=postgres-user
       - POSTGRES_PASSWORD=secret
     networks:
       net:
         ipv4_address: 172.18.0.3
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres-user"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -33,6 +34,16 @@ services:
     networks:
       net:
         ipv4_address: 172.18.0.2
+  sg:
+    build: "./services/sg"
+    ports:
+      - "50051:50051"
+    environment:
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=2
+    networks:
+      net:
+        ipv4_address: 172.18.0.5
 
 networks:
   net:
