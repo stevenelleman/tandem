@@ -10,9 +10,9 @@ services:
       net:
         ipv4_address: 172.18.0.4
     depends_on:
-      postgres:
+      api_store:
         condition: service_healthy
-  postgres:
+  api_store:
     image: postgres
     ports:
       - "5432:5432"

@@ -13,6 +13,35 @@
 ## Objective
 Offer a separate service (and database) for transforming sources into scopes. The service will not be publicly accessible. It will be accessed through the `Public-API`.
 
+## Use-Cases 
+- Reader is advancing through doc and needs to pull more chunks 
+    [Size of Pane determines how much content can fit -- need some kind of sizing interface that can be applied for different content types -- put first on text. For text just needs to be frontsize, height, width and starting character index -- can calculate the end based on this]
+- Reader is going through history of doc and needs to get chunk for correct version -- suggests some kind of caching for that current version, don't want to have to recalculate the doc every time 
+    [Alternatively can naively store chunk every version]
+
+## Implementation Ideas 
+
+1. Chunking Cases: 
+- Same version:  
+    - Have a version of the doc, only send some window of the doc. 
+- Between different versions: 
+    - How to keep same position, as perceived by person? Assume that focus is at the top of the page, stick with that specific text, until it's replaced or deleted. When replaced, switch that using text that spatially replaced it. When deleted, use text immediately before or after to fix  
+- Translate doc from one version to the next? 
+    - Need some kind of patching method -- very similar to the transformation function itself -- maybe the same thing? Would be convenient 
+    - Alternatively could cache remotely for some kind of session id -- that makes the most sense to me 
+    - Would need some kind of caching service that's really a key-value store between a session id and the current version (Redis?) 
+    - Could put the client in the controller 
+    - No need for this initially, initially just prep some kind of window object and redo all the logic until it's prohibitive -- with text it would probably would be too prohibitive provided some kind of chunking is used
+    - How to decouple session id with FIs? 
+        - But session id into each FI cookie, session id just maps to the chunks
+    - Any way to "restore" what was saved from previous session? Any security concerns? 
+    - session 
+    
+   
+2. Resolving Commits: [Necessary for social version] 
+
+## Interface 
+
 ## Questions
 - What DB type should be used? 
 - Any DB for functions? How will the functional transformations be saved? 
@@ -35,4 +64,4 @@ Offer a separate service (and database) for transforming sources into scopes. Th
 Use GRPC interface. 
 
 ## Database 
-GraphQL? 
+GraphQL? -- Seems like most appropriate db type.  
