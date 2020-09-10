@@ -19,9 +19,6 @@ func NewConnectionFactory(host string, conns int) *ConnectionFactory {
 	database := db.InitDb(host, conns)
 	qb := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
-	dbMap := &gorp.DbMap{Db: database, Dialect: gorp.PostgresDialect{}}
-	mapTables(dbMap)
-
 	// Apply database migrations on Public-API Datastore
 	m := &migrater.Migrater{}
 	count, err := m.Up(database)
@@ -29,6 +26,9 @@ func NewConnectionFactory(host string, conns int) *ConnectionFactory {
 		panic(err)
 	}
 	fmt.Printf("Public-API Datastore: Executed %d migrations\n", count)
+
+	dbMap := &gorp.DbMap{Db: database, Dialect: gorp.PostgresDialect{}}
+	mapTables(dbMap)
 
 	cf := &ConnectionFactory{
 		db: dbMap,

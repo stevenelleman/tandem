@@ -12,9 +12,7 @@ type ControllerFactory struct {
 
 func NewControllerFactory(host string, conns int) *ControllerFactory {
 	cf := &ControllerFactory{}
-	// Can also consider passing the connection factory
 	cf.connectionFactory = connection.NewConnectionFactory(host, conns)
-
 	cf.sgClient = &sg_client.SGClient{}
 	return cf
 }

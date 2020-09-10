@@ -9,7 +9,7 @@ import (
 
 const pql = "postgres"
 const tableName = "public-api"
-const migrationPath = "./migrations" // Need to figure out the actual path to the migrations
+const migrationPath = "./migrations"
 
 type Migrater struct{}
 
