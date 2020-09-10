@@ -1,10 +1,14 @@
 package handlers
 
 import (
+	"log"
+
 	"github.com/gin-gonic/gin"
 )
 
+// TODO: Better error handling
 func ReturnError(c *gin.Context, status int, err error) {
+	log.Fatalf("Error: %v", err)
 	c.JSON(status, gin.H{
 		"error": err.Error(),
 	})
