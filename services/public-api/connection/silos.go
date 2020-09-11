@@ -49,7 +49,7 @@ func (c *Connection) UpdateSilo(s *requests.Silo) error {
 	if err != nil {
 		return err
 	} else if count != 1 {
-		return errors.New("Single silo not updated.")
+		return errors.New("Silo not updated.")
 	}
 	return nil
 }
