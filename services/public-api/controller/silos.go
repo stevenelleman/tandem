@@ -7,10 +7,12 @@ import (
 	"sg/services/public-api/handlers/requests"
 	"sg/services/public-api/models"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
-func (c *Controller) ListSilos() ([]*models.Silo, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+func (c *Controller) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
+	reqctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
 	// Dummy code to demonstrate that the grpc connection works
@@ -19,28 +21,28 @@ func (c *Controller) ListSilos() ([]*models.Silo, error) {
 
 	client := pb.NewSGClient(conn)
 	for i := range [10]int{} {
-		reply, err := client.SayHello(ctx, &pb.HelloRequest{Name: "BLAHBLAHBLAH"})
+		reply, err := client.SayHello(reqctx, &pb.HelloRequest{Name: "BLAHBLAHBLAH"})
 		if err != nil {
 			return nil, err
 		}
 		fmt.Println("Reply", i, reply.GetMessage())
 	}
 
-	return c.conn.ListSilos()
+	return c.conn.ListSilos(ctx)
 }
 
-func (c *Controller) GetSilo(id string) (*models.Silo, error) {
-	return c.conn.GetSilo(id)
+func (c *Controller) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) {
+	return c.conn.GetSilo(ctx, id)
 }
 
-func (c *Controller) CreateSilo(s *requests.Silo) error {
-	return c.conn.CreateSilo(s)
+func (c *Controller) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
+	return c.conn.CreateSilo(ctx, s)
 }
 
-func (c *Controller) UpdateSilo(s *requests.Silo) error {
-	return c.conn.UpdateSilo(s)
+func (c *Controller) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
+	return c.conn.UpdateSilo(ctx, s)
 }
 
-func (c *Controller) DeleteSilo(id string) error {
-	return c.conn.DeleteSilo(id)
+func (c *Controller) DeleteSilo(ctx *gin.Context, id string) error {
+	return c.conn.DeleteSilo(ctx, id)
 }
