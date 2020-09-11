@@ -13,6 +13,7 @@ type SGClient struct {
 	Client *pb.SGClient
 }
 
+// TODO: Consider following a controller factory pattern
 func (sgc *SGClient) Dial() *grpc.ClientConn {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(constants.SGServiceAddress, grpc.WithInsecure(), grpc.WithBlock())

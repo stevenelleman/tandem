@@ -8,6 +8,7 @@
 - Correct known trip-wires (little annoyances, mistakes, gotchas) immediately - quick fixes pay off dividends.
 - Prefix branch name with creator's initials.
 - As new items come up, add to [TODO](./TODO.md). 
+- Maximize code reuse, minimize service directory size and complexity
 
 ## Setup
 Run `tilt up`

@@ -13,6 +13,12 @@ UI:
 - [ ] Mapping Actions to Transformations 
 - [ ] Mapping UI to Actions 
 - [ ] Managing requests from multiple Panes
+- [ ] Panes -- iterm-like UI that maps to some local storage 
+- [ ] Sidebar 
+- [ ] Top-bar 
+- [ ] Account 
+- [ ] Frontend Redux Testin
+- [ ] Clean up directory structure
 
 Architecture: 
 - [ ] Doc chunking design 
@@ -24,15 +30,25 @@ Architecture:
 - [ ] Where to apply transformations? How to represent? 
     - Would like some kind of function-db where functions are dumbly applied to objects
 - [ ] Representing Transformations, Actions, and UI as graph-doc 
- 
-Environment:    
+
+Environment:
+- [ ] Envoy (https://www.envoyproxy.io/)
 - [ ] Tilt: Convert to using DNS names -- finally connected the web-frontend 
         and public-api by opening public-api -- need to make it private 
 
 Public-API: 
+- [ ] Cleaner client connection creation 
+- [ ] Move Handler-Controller-Connection to libraries 
+    need to pass in store information at beginning, if provided then connection is initialized. 
+    alternatively could move out a copy and play there 
+    need to imagine what this would look like and how complex it is. Upside is that there would a common way of init-ing golang services 
+    downside is "one-size fits all". 
 - [ ] Health endpoint (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Graceful shutdown (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Request JSON-to-Struct Mapping
+- [ ] Authz 
+    - [ ] Require token with all requests + API calls 
+    - [ ] Session object 
 - [ ] Backend Go Linter
 - [ ] Pagination pattern
 - [ ] Jaegar spanner
@@ -40,34 +56,55 @@ Public-API:
 - [ ] API Service Error Handling 
 - [ ] API Service Logging
 
+Deployment: 
+- [ ] Running kubernetes-orchestrated cluster
+- [ ] Per-commit automated deployments 
+
 Other: 
+- [ ] Chrome extension to extract and import text 
 - [ ] Clean up READMEs 
 
 ## Backlog
 - [ ] Migrate command
-- [ ] Build Process for Dashboard and API service
-- [ ] Microservice Deployment Process
-- [ ] Authz Context and Login
-    - [ ] Browser Cookier Manager 
-    - [ ] User Info Endpoint
-- [ ] Frontend Redux Testing
 - [ ] Per-Request DB Connection Instantiation
 - [ ] Feature-flagging -- what's the proper level? 
 
 ## Future Backlog 
 - [ ] Redis: Map session id to cached chunks 
 
-
 ## Known Unknowns
+- What would it take to make a MVP? 
+    - Necessary:
+        - Login 
+        - Base Set of Transformations
+        - Transformations have corresponding Actions 
+        - Start off 
+        - Create doc 
+    - Not:
+        - Actions/UI (that are graphdocs themselves)
+        - Chunking 
+        - Silos
+        - Forums  
+    - Ideas: 
+        - Initial version would be stored persistently in volume and you use it with tilt up <-- love it 
 - How can scopes express collections of other scopes? Or should that involve a separate abstraction? 
 - Data preprocessing is extremely expensive for ML models. This is a known opportunity. How can sourcegraph be organized to act as a foundation for ML models? 
 - Is it possible to produce end-documents from scopes describing scopes? 
 - Parent-child scopes? Ex: document scope vs chapter scope. Should the chapter scope exist within the document? How should scopes be linked? 
-- Should the UI interface also be a sourcegraph? 
 - What dictates whether two scopes can interact? An overlap in transformations?
-- Should go mod be initialized in each golang service, as opposed in the root ./sg directory?
+- How to properly use Neo4j? 
 
 ## Answered
+- Should the UI interface also be a sourcegraph? 
+    - Yes, but not initially, initially just open source the project, but make clean abstractions that you can easily iterate on 
+- Should go mod be initialized in each golang service, as opposed in the root ./sg directory?
+    - Yup, each service has it's own so it can dockerize individually 
+- How to identify copies? 
+    - Large files are red flag
+- How to make actions and transformations into graph-docs? 
+    - Initially don't, turn to open-source first, and then as you have more resources make the transition, in the intervening time prepare a space for it, think about it
+- UI/Actions/Transformation relationship? 
+    - Action should take a transformation, funct(funct), UI should be a collection of Actions(Transformations) that are applied as a method 
 - What is an efficient way to apply all the sources to find the current state of a doc?
     - Separate service. Separate service is responsible for 
 - How to offer different UI interfaces? 

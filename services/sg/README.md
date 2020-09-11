@@ -13,6 +13,12 @@
 ## Objective
 Offer a separate service (and database) for transforming sources into scopes. The service will not be publicly accessible. It will be accessed through the `Public-API`.
 
+## Versions 
+### V1: MVP 
+Maximally dumb. 
+1. Pull the entire document initially 
+2. Change historical versions pulls the entire document (which would likely work on small documents)
+
 ## Use-Cases 
 - Reader is advancing through doc and needs to pull more chunks 
     [Size of Pane determines how much content can fit -- need some kind of sizing interface that can be applied for different content types -- put first on text. For text just needs to be frontsize, height, width and starting character index -- can calculate the end based on this]
@@ -20,7 +26,6 @@ Offer a separate service (and database) for transforming sources into scopes. Th
     [Alternatively can naively store chunk every version]
 
 ## Implementation Ideas 
-
 1. Chunking Cases: 
 - Same version:  
     - Have a version of the doc, only send some window of the doc. 
@@ -37,8 +42,12 @@ Offer a separate service (and database) for transforming sources into scopes. Th
     - Any way to "restore" what was saved from previous session? Any security concerns? 
     - session 
     
-   
-2. Resolving Commits: [Necessary for social version] 
+2. Transformations 
+- How to represent the inverse? 
+    - fxn(doc0, src0) => doc1
+    - fxn^-1(doc1) => doc0, src0, probably the easiest way is simply saving the version and pulling, when going back may not have src0 
+    
+3. Resolving Commits: [Necessary for social version] 
 
 ## Interface 
 

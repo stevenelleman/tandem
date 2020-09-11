@@ -8,7 +8,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func InitDb(host string, conns int) *sql.DB {
+func InitDbConn(host string, conns int) *sql.DB {
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host,

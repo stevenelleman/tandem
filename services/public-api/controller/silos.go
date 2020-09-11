@@ -12,11 +12,12 @@ import (
 )
 
 func (c *Controller) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
-  // TODO: Clean up pattern
+	// TODO: Clean up pattern
 	reqctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
 	// Dummy code to demonstrate that the grpc connection works
+	// The addition of this client begins to specify/"fix" this pattern
 	conn := c.sgClient.Dial()
 	defer conn.Close()
 
