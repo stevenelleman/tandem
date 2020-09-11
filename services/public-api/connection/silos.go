@@ -4,16 +4,18 @@ import (
 	"errors"
 	"sg/services/public-api/handlers/requests"
 	"sg/services/public-api/models"
+
+	"github.com/gin-gonic/gin"
 )
 
-func (c *Connection) ListSilos() ([]*models.Silo, error) {
+func (c *Connection) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
 	query, args, err := c.qb.Select("*").From("silos").ToSql()
 	if err != nil {
 		return nil, err
 	}
 
 	silos := []*models.Silo{}
-	_, err = c.db.Select(&silos, query, args...)
+	_, err = c.db.WithContext(ctx).Select(&silos, query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -21,14 +23,14 @@ func (c *Connection) ListSilos() ([]*models.Silo, error) {
 	return silos, nil
 }
 
-func (c *Connection) GetSilo(id string) (*models.Silo, error) {
+func (c *Connection) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) {
 	query, args, err := c.qb.Select("*").From("silos").Where("id=?", id).ToSql()
 	if err != nil {
 		return nil, err
 	}
 
 	silo := &models.Silo{}
-	err = c.db.SelectOne(silo, query, args...)
+	err = c.db.WithContext(ctx).SelectOne(silo, query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -36,16 +38,16 @@ func (c *Connection) GetSilo(id string) (*models.Silo, error) {
 	return silo, nil
 }
 
-func (c *Connection) CreateSilo(s *requests.Silo) error {
-	err := c.db.Insert(s)
+func (c *Connection) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
+	err := c.db.WithContext(ctx).Insert(s)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *Connection) UpdateSilo(s *requests.Silo) error {
-	count, err := c.db.Update(s)
+func (c *Connection) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
+	count, err := c.db.WithContext(ctx).Update(s)
 	if err != nil {
 		return err
 	} else if count != 1 {
@@ -54,11 +56,11 @@ func (c *Connection) UpdateSilo(s *requests.Silo) error {
 	return nil
 }
 
-func (c *Connection) DeleteSilo(id string) error {
+func (c *Connection) DeleteSilo(ctx *gin.Context, id string) error {
 	// TODO: soft-delete
 	query, args, err := c.qb.Delete("silos").Where("id=?", id).ToSql()
 
-	result, err := c.db.Exec(query, args)
+	result, err := c.db.WithContext(ctx).Exec(query, args)
 	if err != nil {
 		return err
 	}

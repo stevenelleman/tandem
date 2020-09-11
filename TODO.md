@@ -26,14 +26,7 @@ Architecture:
 - [ ] Representing Transformations, Actions, and UI as graph-doc 
  
 Environment:    
-- [ ] Tilt Setup: 
-    - [x] Convert docker-compose over
-    - [x] Be able to access web-frontend 
-    - [x] Public-api run 
-    - [x] web-frontend can hit public-api 
-    - [x] Public-api initialized api-store
-    - [x] Add sg service
-    - [ ] Convert to using DNS names -- finally connected the web-frontend 
+- [ ] Tilt: Convert to using DNS names -- finally connected the web-frontend 
         and public-api by opening public-api -- need to make it private 
 
 Public-API: 
@@ -41,6 +34,8 @@ Public-API:
 - [ ] Graceful shutdown (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Request JSON-to-Struct Mapping
 - [ ] Backend Go Linter
+- [ ] Pagination pattern
+- [ ] Jaegar spanner
 - [ ] API Service Test Pattern
 - [ ] API Service Error Handling 
 - [ ] API Service Logging
@@ -57,6 +52,7 @@ Other:
     - [ ] User Info Endpoint
 - [ ] Frontend Redux Testing
 - [ ] Per-Request DB Connection Instantiation
+- [ ] Feature-flagging -- what's the proper level? 
 
 ## Future Backlog 
 - [ ] Redis: Map session id to cached chunks 
@@ -108,6 +104,14 @@ Other:
 
 ## Completed
 From most recent to oldest.
+- [x] Wire ctx through public-api
+- [x] Tilt Setup: 
+    - [x] Convert docker-compose over
+    - [x] Be able to access web-frontend 
+    - [x] Public-api run 
+    - [x] web-frontend can hit public-api 
+    - [x] Public-api initialized api-store
+    - [x] Add sg service
 - [x] Set up grpc client for sourcegraph service
 - [x] Use squirrel querybuilder 
 - [x] API Layering abstraction
