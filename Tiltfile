@@ -4,30 +4,26 @@
 # For more on Extensions, see: https://docs.tilt.dev/extensions.html
 # load('ext://restart_process', 'docker_build_with_restart')
 
-# docker_compose('docker-compose.yml')
+# 1. Build Images
+services = {
+    "api-store": False,
+    "sg": True,
+    "public-api": True,
+    "web-frontend": True
+}
 
-docker_build('sg/public-api-image', context='services/public-api')
-docker_build('sg/web-frontend-image', context='services/web-frontend')
-docker_build('sg/sg-image', context='services/sg')
+for s in services.keys():
+    if services[s]:
+        docker_build('sg/{svc}-image'.format(svc = s), context='services/{svc}'.format(svc = s))
 
-k8s_yaml("services/api-store/tilt.yaml")
-k8s_yaml("services/public-api/tilt.yaml")
-k8s_yaml("services/web-frontend/tilt.yaml")
-k8s_yaml("services/sg/tilt.yaml")
+# 2. Load yaml Configs
+yamls = ["./services/{svc}/tilt.yaml".format(svc = s) for s in services.keys()]
+k8s_yaml(yamls)
 
+# 3. Create k8s Resources (w/ Dependencies)
 k8s_resource('sg-api-store')
 k8s_resource('sg-sg')
 k8s_resource('sg-public-api', resource_deps=['sg-api-store', 'sg-sg'])
 k8s_resource('sg-web-frontend', resource_deps=['sg-public-api'])
-
-# 1. Docker Images
-
-# 2. Kubernetes Service YAMLs
-# services = ['api-store','public-api','web-frontend',]
-# kubes = ["./services/{service}/tilt.yaml".format(service = s) for s in services]
-# k8s_yaml(kubes)
-
-# 3. Tilt Resources
-# Group 1: Public API
 
 
