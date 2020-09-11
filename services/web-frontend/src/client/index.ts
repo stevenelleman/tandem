@@ -10,25 +10,14 @@ import {
 } from './constants';
 import { isValidUrl } from '../utils';
 
-/*
-   TODO:
-    - Authz context. Must include cookie(s) in request.
-    - Test fetch logic
-    - Arg/opts handler
-    - Make a ts Client interface
-    - Make object types
-*/
-
 export class Client {
-  // Prop Types
-  origin: string;
   protocol: string;
+  origin: string;
   port: number;
 
-  // Constructor
-  constructor(origin: string, protocol: string, port:number) {
-    this.origin = origin;
+  constructor(protocol: string, origin: string, port:number) {
     this.protocol = protocol;
+    this.origin = origin;
     this.port = port
     // TODO: include cookies when instantiated.
   }
@@ -44,8 +33,7 @@ export class Client {
   //  - Better stateHandler type
   //  - Pass in a generic error action in App
   public request(verb: string, route: string, args: any, opts: any, stateHandler: any, errorHandler: any) {
-    //const url = `${this.protocol}://${this.origin}:${this.port}/${route}`;
-    const url = `${this.origin}:${this.port}/${route}`;
+    const url = `${this.protocol}://${this.origin}:${this.port}/${route}`;
     if (!isValidUrl(url)) {
       return Client.emitError(`invalid url: ${url}`);
     }
