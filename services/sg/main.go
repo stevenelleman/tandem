@@ -6,13 +6,9 @@ import (
 	pb "libraries/pb/sg"
 	"log"
 	"net"
+	"sg/services/sourcegraph/constants"
 
 	"google.golang.org/grpc"
-)
-
-// TODO: Move to central constant location
-const (
-	port = ":8001"
 )
 
 func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
@@ -20,8 +16,8 @@ func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) 
 }
 
 func main() {
-	fmt.Printf("Listen on %s\n", port)
-	lis, err := net.Listen("tcp", port)
+	fmt.Printf("Listen on %s\n", constants.Port)
+	lis, err := net.Listen("tcp", constants.Port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

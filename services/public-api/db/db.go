@@ -3,24 +3,22 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"sg/services/public-api/constants"
 
 	_ "github.com/lib/pq"
 )
 
-const (
-	port     = "5432"
-	user     = "postgres-user"
-	password = "secret"
-	name     = "postgresdb"
-)
-
 func InitDb(host string, conns int) *sql.DB {
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
-		host, port,
-		user, password, name)
+		host,
+		constants.APIStorePort,
+		constants.APIStoreUser,
+		constants.APIStorePassword,
+		constants.APIStoreName,
+	)
 
-	db, err := sql.Open("postgres", psqlInfo)
+	db, err := sql.Open(constants.APIStoreDriver, psqlInfo)
 	if err != nil {
 		panic(err)
 	}

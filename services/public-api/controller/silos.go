@@ -12,6 +12,7 @@ import (
 )
 
 func (c *Controller) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
+  // TODO: Clean up pattern
 	reqctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 

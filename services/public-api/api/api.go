@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sg/services/public-api/constants"
 	"sg/services/public-api/handlers"
 
 	"github.com/gin-contrib/cors"
@@ -20,7 +21,7 @@ func main() {
 		panic("Store not defined")
 	}
 	// Store host set to sg-api-store
-	h := handlers.NewAPIHandler(store, 40)
+	h := handlers.NewAPIHandler(store, constants.MaxConns)
 	defer h.Close()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.
@@ -35,12 +36,9 @@ func main() {
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
 			// TODO: Must change origin
-			// Local web-frontend: http://localhost:3000
-			// Container web-frontend: http://localhost
-			// Tilt: http://localhost:8000
-			isLocal := origin == "http://localhost:3000"
-			isContainer := origin == "http://localhost"
-			isTilt := origin == "http://localhost:8000"
+			isLocal := origin == constants.LocalWebFrontendHost
+			isContainer := origin == constants.DockerComposeHost
+			isTilt := origin == constants.TiltHost
 			return isLocal || isContainer || isTilt
 		},
 	}))
@@ -52,6 +50,6 @@ func main() {
 	v1.PUT("/silos/:silo_id", h.UpdateSilo)
 	v1.DELETE("/silos/:silo_id", h.DeleteSilo)
 
-	origin := fmt.Sprintf(":%d", 8000)
+	origin := fmt.Sprintf(":%d", constants.PublicAPIPort)
 	router.Run(origin) // Public API IP:Port
 }

@@ -2,15 +2,11 @@ package sg_client
 
 import (
 	"log"
+	"sg/services/public-api/constants"
 
 	pb "libraries/pb/sg"
 
 	grpc "google.golang.org/grpc"
-)
-
-// TODO: Move to central constant config
-const (
-	address = "sg-sg:8001"
 )
 
 type SGClient struct {
@@ -19,7 +15,7 @@ type SGClient struct {
 
 func (sgc *SGClient) Dial() *grpc.ClientConn {
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial(constants.SGServiceAddress, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
