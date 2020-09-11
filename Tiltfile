@@ -8,14 +8,17 @@
 
 docker_build('sg/public-api-image', context='services/public-api')
 docker_build('sg/web-frontend-image', context='services/web-frontend')
+docker_build('sg/sg-image', context='services/sg')
 
 k8s_yaml("services/api-store/tilt.yaml")
 k8s_yaml("services/public-api/tilt.yaml")
 k8s_yaml("services/web-frontend/tilt.yaml")
+k8s_yaml("services/sg/tilt.yaml")
 
 k8s_resource('sg-api-store')
-k8s_resource('sg-public-api', port_forwards='9001', resource_deps=['sg-api-store'])
-k8s_resource('sg-web-frontend', port_forwards='9002', resource_deps=['sg-public-api'])
+k8s_resource('sg-sg')
+k8s_resource('sg-public-api', resource_deps=['sg-api-store', 'sg-sg'])
+k8s_resource('sg-web-frontend', resource_deps=['sg-public-api'])
 
 # 1. Docker Images
 
