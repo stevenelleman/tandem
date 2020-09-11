@@ -47,7 +47,6 @@ spec:
   selector:
     matchLabels:
       app: sg-api-store
-  replicas: 1
   template:
     metadata:
       labels:

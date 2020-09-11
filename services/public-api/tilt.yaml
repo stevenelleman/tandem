@@ -6,7 +6,6 @@ metadata:
   labels:
     app: sg-public-api
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: sg-public-api
