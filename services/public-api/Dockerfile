@@ -14,5 +14,7 @@ COPY db/migrations ./migrations
 
 COPY . .
 
+EXPOSE 8000
+
 RUN go build -mod=vendor -o main ./api/api.go
-CMD ["./main", "172.18.0.4"]
+CMD ["./main", "sg-public-api", "sg-api-store"]

@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sg-sg
+  labels:
+    app: sg-sg
+spec:
+  selector:
+    matchLabels:
+      app: sg-sg
+  template:
+    metadata:
+      labels:
+        app: sg-sg
+    spec:
+      containers:
+        - name: sg-sg
+          image: sg/sg-image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sg-sg
+  labels:
+    app: sg-sg
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8001
+  selector:
+    app: sg-sg

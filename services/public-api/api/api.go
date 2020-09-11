@@ -11,18 +11,17 @@ import (
 
 func main() {
 	// Pass in target IP of Public API service. Localhost for individually run, 172.17.0.2 for container
-	ip := os.Args[1]
-	if ip == "" {
-		panic("IP not defined")
+	host := os.Args[1]
+	if host == "" {
+		panic("Host not defined")
+	}
+	store := os.Args[2]
+	if store == "" {
+		panic("Store not defined")
 	}
 
-	host := "172.18.0.3" // Postgres IP:Port
-	if ip == "localhost" {
-		// If host is localhost then use `stevenelleman` db
-		host = ip
-	}
-
-	h := handlers.NewAPIHandler(host, 40)
+	// Store host set to sg-api-store
+	h := handlers.NewAPIHandler(store, 40)
 	defer h.Close()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.
@@ -36,12 +35,14 @@ func main() {
 	router.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
+			// TODO: Must change origin
 			// Local web-frontend: http://localhost:3000
 			// Container web-frontend: http://localhost
+			// Tilt: http://localhost:8000
 			isLocal := origin == "http://localhost:3000"
 			isContainer := origin == "http://localhost"
-
-			return isLocal || isContainer
+			isTilt := origin == "http://localhost:8000"
+			return isLocal || isContainer || isTilt
 		},
 	}))
 
@@ -52,6 +53,6 @@ func main() {
 	v1.PUT("/silos/:silo_id", h.UpdateSilo)
 	v1.DELETE("/silos/:silo_id", h.DeleteSilo)
 
-	origin := fmt.Sprintf("%s:%d", ip, 8000)
+	origin := fmt.Sprintf(":%d", 8000)
 	router.Run(origin) // Public API IP:Port
 }

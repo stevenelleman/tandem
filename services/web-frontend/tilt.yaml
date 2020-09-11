@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sg-web-frontend
+spec:
+  selector:
+    matchLabels:
+      app: sg-web-frontend
+  template:
+    metadata:
+      labels:
+        app: sg-web-frontend
+    spec:
+      containers:
+        - name: sg-web-frontend
+          image: sg/web-frontend-image
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sg-web-frontend
+  namespace: default
+  labels:
+    app: sg-web-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: sg-web-frontend
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80

@@ -10,6 +10,7 @@ type PropsType = {
 export class CreateView extends React.Component<PropsType> {
   render() {
     const { type } = this.props;
+
     return <div>
       {` ${type} woot woot!`}
     </div>;

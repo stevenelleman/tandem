@@ -9,12 +9,11 @@ import (
 func (h *APIHandler) ListSilos(c *gin.Context) {
 	silos, err := h.Controller.ListSilos()
 	if err != nil {
-		ReturnError(c, 400, err)
 		// TODO: Someone is going to forget to put the return statement - how to refactor to avoid?
-		return
+		ReturnError(c, 400, err)
+	} else {
+		ReturnJSONList(c, 200, silos)
 	}
-	ReturnJSONList(c, 200, silos)
-	return
 }
 
 func (h *APIHandler) GetSilo(c *gin.Context) {

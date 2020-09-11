@@ -10,8 +10,9 @@ import (
 	"google.golang.org/grpc"
 )
 
+// TODO: Move to central constant location
 const (
-	port = ":50051"
+	port = ":8001"
 )
 
 func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
@@ -19,7 +20,7 @@ func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) 
 }
 
 func main() {
-	fmt.Println("Listen on 50051")
+	fmt.Printf("Listen on %s\n", port)
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

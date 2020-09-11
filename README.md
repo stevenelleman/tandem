@@ -10,7 +10,9 @@
 - As new items come up, add to [TODO](./TODO.md). 
 
 ## Setup
-Run `docker-compose up`
+Run `tilt up`
+ 
+Or run `docker-compose up`
 
 ## Services: 
 - [Web Frontend Service](./services/web-frontend/src/components/README.md)

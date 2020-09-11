@@ -10,7 +10,7 @@ import (
 
 // TODO: Move to central constant config
 const (
-	address = "172.18.0.5:50051"
+	address = "sg-sg:8001"
 )
 
 type SGClient struct {
