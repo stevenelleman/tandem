@@ -27,12 +27,18 @@ Architecture:
  
 Environment:    
 - [ ] Tilt Setup: 
-    - [ ] Convert docker-compose over
-    - [ ] Be able to access web-frontend 
-    - [ ] Public-api run and web-frontend can hit it 
+    - [x] Convert docker-compose over
+    - [x] Be able to access web-frontend 
+    - [x] Public-api run 
+    - [x] web-frontend can hit public-api 
     - [x] Public-api initialized api-store
+    - [x] Add sg service
+    - [ ] Convert to using DNS names -- finally connected the web-frontend 
+        and public-api by opening public-api -- need to make it private 
 
 Public-API: 
+- [ ] Health endpoint (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
+- [ ] Graceful shutdown (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Request JSON-to-Struct Mapping
 - [ ] Backend Go Linter
 - [ ] API Service Test Pattern
