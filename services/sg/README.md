@@ -47,11 +47,9 @@ Maximally dumb.
     - fxn(doc0, src0) => doc1
     - fxn^-1(doc1) => doc0, src0, probably the easiest way is simply saving the version and pulling, when going back may not have src0 
     
-   
 3. Resolving Commits: [Necessary for social version] 
 
 ## Interface 
-
 
 ## Questions
 - What DB type should be used? 

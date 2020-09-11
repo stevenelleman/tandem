@@ -37,6 +37,12 @@ Environment:
         and public-api by opening public-api -- need to make it private 
 
 Public-API: 
+- [ ] Cleaner client connection creation 
+- [ ] Move Handler-Controller-Connection to libraries 
+    need to pass in store information at beginning, if provided then connection is initialized. 
+    alternatively could move out a copy and play there 
+    need to imagine what this would look like and how complex it is. Upside is that there would a common way of init-ing golang services 
+    downside is "one-size fits all". 
 - [ ] Health endpoint (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Graceful shutdown (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Request JSON-to-Struct Mapping
@@ -65,17 +71,6 @@ Other:
 
 ## Future Backlog 
 - [ ] Redis: Map session id to cached chunks 
-
-
-## Questions 
-1. Would would it take to use? 
-    - Necessary: 
-        - Login 
-        
-    - Unnecessary: 
-        - Silos
-        - Forums  
-
 
 ## Known Unknowns
 - What would it take to make a MVP? 
