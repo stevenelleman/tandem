@@ -20,6 +20,7 @@ func main() {
 		panic("Store not defined")
 	}
 
+	// Store host set to sg-api-store
 	h := handlers.NewAPIHandler(store, 40)
 	defer h.Close()
 
@@ -31,17 +32,17 @@ func main() {
 	//	And confirm an overlap
 
 	router := gin.Default()
-
-	// TODO: Must change origin
 	router.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
+			// TODO: Must change origin
 			// Local web-frontend: http://localhost:3000
 			// Container web-frontend: http://localhost
+			// Tilt: http://localhost:8000
 			isLocal := origin == "http://localhost:3000"
 			isContainer := origin == "http://localhost"
-
-			return isLocal || isContainer
+			isTilt := origin == "http://localhost:8000"
+			return isLocal || isContainer || isTilt
 		},
 	}))
 
@@ -52,6 +53,6 @@ func main() {
 	v1.PUT("/silos/:silo_id", h.UpdateSilo)
 	v1.DELETE("/silos/:silo_id", h.DeleteSilo)
 
-	origin := fmt.Sprintf("%s:%d", host, 8000)
+	origin := fmt.Sprintf(":%d", 8000)
 	router.Run(origin) // Public API IP:Port
 }

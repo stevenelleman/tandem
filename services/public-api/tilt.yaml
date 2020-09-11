@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sg-public-api-svc
+  name: sg-public-api
+  labels:
+    app: sg-public-api
 spec:
-  type: NodePort
+  type: LoadBalancer
+  ports:
+    - port: 8000
   selector:
     app: sg-public-api
-  ports:
-    - protocol: TCP
-      port: 8000
-      targetPort: 8000
