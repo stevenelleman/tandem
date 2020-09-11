@@ -20,7 +20,6 @@ func main() {
 	if store == "" {
 		panic("Store not defined")
 	}
-
 	// Store host set to sg-api-store
 	h := handlers.NewAPIHandler(store, constants.MaxConns)
 	defer h.Close()
