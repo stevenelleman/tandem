@@ -1,3 +1,16 @@
-package sg
+package sg_conn
 
-type SgConnection struct{}
+import (
+	"libraries/pb/sg"
+
+	"google.golang.org/grpc"
+)
+
+type SgConnection struct {
+	conn   *grpc.ClientConn
+	client *sg.SGClient
+}
+
+func (c *SgConnection) Close() {
+	c.conn.Close()
+}
