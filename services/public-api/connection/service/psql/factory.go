@@ -1,4 +1,4 @@
-package psql
+package psql_conn
 
 import (
 	"fmt"
@@ -10,25 +10,12 @@ import (
 	"gopkg.in/gorp.v2"
 )
 
-/*
-// Possible organization to generalize interfacing with stores
-type PsqlConnectionFactory struct {
-	APIStoreClient{
-		db *gorp.DbMap
-		qb *squirrel.StatementBuilderType
-	},
-	SGClient{},
-}
-*/
-
 type PsqlConnectionFactory struct {
 	db *gorp.DbMap
 	qb *squirrel.StatementBuilderType
 }
 
-// TODO: Pass in config objects: APIStoreConfig, SGConfig
 func NewPsqlConnFactory(host string, conns int) *PsqlConnectionFactory {
-	// TODO: Consider adding other clients here
 	conn := db.InitDbConn(host, conns)
 	qb := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 

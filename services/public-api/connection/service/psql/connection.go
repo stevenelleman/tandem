@@ -1,4 +1,4 @@
-package psql
+package psql_conn
 
 import (
 	"github.com/Masterminds/squirrel"
