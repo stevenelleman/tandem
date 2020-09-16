@@ -1,4 +1,4 @@
-package connection
+package psql
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (c *Connection) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
+func (c *PsqlConnection) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
 	query, args, err := c.qb.Select("*").From("silos").ToSql()
 	if err != nil {
 		return nil, err
@@ -23,7 +23,7 @@ func (c *Connection) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
 	return silos, nil
 }
 
-func (c *Connection) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) {
+func (c *PsqlConnection) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) {
 	query, args, err := c.qb.Select("*").From("silos").Where("id=?", id).ToSql()
 	if err != nil {
 		return nil, err
@@ -38,7 +38,7 @@ func (c *Connection) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) 
 	return silo, nil
 }
 
-func (c *Connection) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *PsqlConnection) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
 	err := c.db.WithContext(ctx).Insert(s)
 	if err != nil {
 		return err
@@ -46,7 +46,7 @@ func (c *Connection) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
 	return nil
 }
 
-func (c *Connection) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *PsqlConnection) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
 	count, err := c.db.WithContext(ctx).Update(s)
 	if err != nil {
 		return err
@@ -56,7 +56,7 @@ func (c *Connection) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
 	return nil
 }
 
-func (c *Connection) DeleteSilo(ctx *gin.Context, id string) error {
+func (c *PsqlConnection) DeleteSilo(ctx *gin.Context, id string) error {
 	// TODO: soft-delete
 	query, args, err := c.qb.Delete("silos").Where("id=?", id).ToSql()
 

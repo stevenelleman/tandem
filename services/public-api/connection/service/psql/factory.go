@@ -1,4 +1,4 @@
-package connection
+package psql
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 
 /*
 // Possible organization to generalize interfacing with stores
-type ConnectionFactory struct {
+type PsqlConnectionFactory struct {
 	APIStoreClient{
 		db *gorp.DbMap
 		qb *squirrel.StatementBuilderType
@@ -21,13 +21,13 @@ type ConnectionFactory struct {
 }
 */
 
-type ConnectionFactory struct {
+type PsqlConnectionFactory struct {
 	db *gorp.DbMap
 	qb *squirrel.StatementBuilderType
 }
 
 // TODO: Pass in config objects: APIStoreConfig, SGConfig
-func NewConnectionFactory(host string, conns int) *ConnectionFactory {
+func NewPsqlConnFactory(host string, conns int) *PsqlConnectionFactory {
 	// TODO: Consider adding other clients here
 	conn := db.InitDbConn(host, conns)
 	qb := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
@@ -44,15 +44,15 @@ func NewConnectionFactory(host string, conns int) *ConnectionFactory {
 	dbMap := &gorp.DbMap{Db: conn, Dialect: gorp.PostgresDialect{}}
 	mapTables(dbMap)
 
-	cf := &ConnectionFactory{
+	cf := &PsqlConnectionFactory{
 		db: dbMap,
 		qb: &qb,
 	}
 	return cf
 }
 
-func (f *ConnectionFactory) Connection() *Connection {
-	return &Connection{
+func (f *PsqlConnectionFactory) Connection() *PsqlConnection {
+	return &PsqlConnection{
 		db: f.db,
 		qb: f.qb,
 	}
