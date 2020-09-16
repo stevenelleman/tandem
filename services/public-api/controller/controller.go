@@ -1,15 +1,16 @@
 package controller
 
 import (
-	"sg/services/public-api/connection"
-	sg_client "sg/services/public-api/controller/sgclient"
+	psql_conn "sg/services/public-api/connection/service/psql"
+	sg_conn "sg/services/public-api/connection/service/sg"
 )
 
 type Controller struct {
-	conn     *connection.Connection
-	sgClient *sg_client.SGClient
+	psqlConn *psql_conn.PsqlConnection
+	sgConn   *sg_conn.SgConnection
 }
 
 func (c Controller) Close() {
-	c.conn.Close()
+	c.psqlConn.Close()
+	c.sgConn.Close()
 }
