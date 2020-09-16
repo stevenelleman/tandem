@@ -1,25 +1,27 @@
 package controller
 
 import (
-	"sg/services/public-api/connection"
-	sg_client "sg/services/public-api/controller/sgclient"
+	psql_conn "sg/services/public-api/connection/service/psql"
+	sg_conn "sg/services/public-api/connection/service/sg"
+	"sg/services/public-api/constants"
 )
 
 type ControllerFactory struct {
-	connectionFactory *connection.ConnectionFactory
-	sgClient          *sg_client.SGClient
+	psqlConnFactory *psql_conn.PsqlConnectionFactory
+	sgConnFactory   *sg_conn.SgConnectionFactory
 }
 
+// TODO: Pass in config objects: APIStoreConfig, SGConfig
 func NewControllerFactory(host string, conns int) *ControllerFactory {
 	cf := &ControllerFactory{}
-	cf.connectionFactory = connection.NewConnectionFactory(host, conns)
-	cf.sgClient = &sg_client.SGClient{}
+	cf.psqlConnFactory = psql_conn.NewPsqlConnFactory(host, conns)
+	cf.sgConnFactory = sg_conn.NewSgConnFactory(constants.SGServiceAddress)
 	return cf
 }
 
 func (f *ControllerFactory) Controller() *Controller {
 	return &Controller{
-		conn:     f.connectionFactory.Connection(),
-		sgClient: f.sgClient,
+		psqlConn: f.psqlConnFactory.Connection(),
+		sgConn:   f.sgConnFactory.Connection(),
 	}
 }

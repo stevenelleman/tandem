@@ -22,6 +22,7 @@ UI:
 
 Architecture: 
 - [ ] Doc chunking design 
+- [ ] Connection/ConnectionFactory interface 
 - [ ] Set up graph db source-store 
     - [ ] Think of pattern for sg service and source-store
         - [ ] Interface 
