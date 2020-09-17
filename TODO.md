@@ -13,6 +13,7 @@ UI:
 - [ ] Mapping Actions to Transformations 
 - [ ] Mapping UI to Actions 
 - [ ] Managing requests from multiple Panes
+    - [ ] Likely need a mapping between pane and content 
 - [ ] Panes -- iterm-like UI that maps to some local storage 
 - [ ] Sidebar 
 - [ ] Top-bar 
@@ -20,8 +21,11 @@ UI:
 - [ ] Frontend Redux Testin
 - [ ] Clean up directory structure
 
-Architecture: 
+Puzzles: 
 - [ ] Doc chunking design 
+- [ ] Transformations and Sourcegraph Data Structure 
+
+Architecture: 
 - [ ] Connection/ConnectionFactory interface 
 - [ ] Set up graph db source-store 
     - [ ] Think of pattern for sg service and source-store
@@ -33,17 +37,17 @@ Architecture:
 - [ ] Representing Transformations, Actions, and UI as graph-doc 
 
 Environment:
-- [ ] Envoy (https://www.envoyproxy.io/)
 - [ ] Tilt: Convert to using DNS names -- finally connected the web-frontend 
         and public-api by opening public-api -- need to make it private 
+- [ ] Envoy (https://www.envoyproxy.io/)
 
 Public-API: 
-- [ ] Cleaner client connection creation 
+- [x] Cleaner client connection creation 
 - [ ] Move Handler-Controller-Connection to libraries 
     need to pass in store information at beginning, if provided then connection is initialized. 
     alternatively could move out a copy and play there 
     need to imagine what this would look like and how complex it is. Upside is that there would a common way of init-ing golang services 
-    downside is "one-size fits all". 
+    downside is "one-size fits all". Requires better layered interface before moving it out into an external library.
 - [ ] Health endpoint (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Graceful shutdown (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Request JSON-to-Struct Mapping

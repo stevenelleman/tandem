@@ -21,6 +21,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+	// TODO: How to image as part of handler-controller-connection pattern?
 	s := grpc.NewServer()
 	pb.RegisterSGService(s, &pb.SGService{SayHello: sayHello})
 	if err := s.Serve(lis); err != nil {
