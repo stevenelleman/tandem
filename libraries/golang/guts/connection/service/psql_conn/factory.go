@@ -13,24 +13,26 @@ import (
 )
 
 type StoreArgs struct {
-	driver   string
-	host     string
-	user     string
-	password string
-	dbname   string
-	port     int
-	maxConns int
+	driver       string
+	host         string
+	user         string
+	password     string
+	dbname       string
+	port         int
+	maxConns     int
+	migraterArgs *migrater.Args
 }
 
-func MakeArgs(driver, host, user, password, dbname string, port, conns int) *StoreArgs {
+func MakeArgs(driver, host, user, password, dbname string, port, conns int, migraterArgs *migrater.Args) *StoreArgs {
 	return &StoreArgs{
-		driver:   driver,
-		host:     host,
-		user:     user,
-		password: password,
-		dbname:   dbname,
-		port:     port,
-		maxConns: conns,
+		driver:       driver,
+		host:         host,
+		user:         user,
+		password:     password,
+		dbname:       dbname,
+		port:         port,
+		maxConns:     conns,
+		migraterArgs: migraterArgs,
 	}
 }
 
@@ -45,7 +47,6 @@ func InitDbConn(args *StoreArgs) *sql.DB {
 	)
 
 	db, err := sql.Open(args.driver, psqlInfo)
-	fmt.Println("Db", db, err)
 	if err != nil {
 		panic(err)
 	}
@@ -75,7 +76,7 @@ func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
 
 	// Apply database migrations on Public-API Datastore
 	// TODO: Move outside of factory -- does not need to be run every time a new connection is initialized
-	m := &migrater.Migrater{}
+	m := migrater.MakeMigrater(args.migraterArgs)
 	count, err := m.Up(conn)
 	if err != nil {
 		panic(err)
