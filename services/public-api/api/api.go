@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"os"
+	"sg/libraries/golang/guts/connection/service/psql_conn"
+	"sg/libraries/golang/guts/connection/service/sg_conn"
+	"sg/libraries/golang/guts/handlers"
 	"sg/services/public-api/constants"
-	"sg/services/public-api/handlers"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -25,7 +27,24 @@ func main() {
 	}
 	// Store host set to sg-api-store
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
-	h := handlers.NewAPIHandler(store, constants.MaxConns)
+
+	psqlArgs := psql_conn.MakeArgs(
+		constants.APIStoreDriver,
+		store,
+		constants.APIStoreUser,
+		constants.APIStorePassword,
+		constants.APIStoreName,
+		constants.APIStorePort,
+		constants.MaxConns,
+	)
+
+	//fmt.Println(psqlArgs)
+
+	sgArgs := sg_conn.MakeArgs(constants.SGServiceAddress)
+
+	h := handlers.NewPublicAPIHandler(psqlArgs, sgArgs)
+
+	// TODO: May be better to have per-store Close method, defer all stores for this particular API
 	defer h.Close()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.
