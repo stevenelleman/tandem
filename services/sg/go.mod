@@ -1,11 +1,11 @@
-module sg/services/sourcegraph
+module sg/services/sg
 
 go 1.13
 
 require (
 	google.golang.org/grpc v1.32.0
 
-	libraries v0.0.0
+	libraries/golang v0.0.0
 )
 
-replace libraries v0.0.0 => ../../libraries/golang
+replace libraries/golang v0.0.0 => ../../libraries/golang
