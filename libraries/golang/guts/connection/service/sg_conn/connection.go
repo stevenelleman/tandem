@@ -1,7 +1,7 @@
 package sg_conn
 
 import (
-	"libraries/pb/sg"
+	"sg/libraries/golang/pb/sg"
 
 	"google.golang.org/grpc"
 )

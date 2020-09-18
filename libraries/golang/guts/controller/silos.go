@@ -1,11 +1,19 @@
 package controller
 
 import (
-	"sg/services/public-api/handlers/requests"
-	"sg/services/public-api/models"
+	"sg/libraries/golang/guts/handlers/requests"
+	"sg/libraries/golang/guts/models"
 
 	"github.com/gin-gonic/gin"
 )
+
+func (c *Controller) PsqlClose() {
+	c.psqlConn.Close()
+}
+
+func (c *Controller) SgClose() {
+	c.sgConn.Close()
+}
 
 func (c *Controller) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
 	err := c.sgConn.SayHello(ctx)

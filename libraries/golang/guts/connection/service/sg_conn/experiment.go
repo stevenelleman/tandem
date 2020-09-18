@@ -3,7 +3,7 @@ package sg_conn
 import (
 	"context"
 	"fmt"
-	pb "libraries/pb/sg"
+	pb "sg/libraries/golang/pb/sg"
 	"time"
 
 	"github.com/gin-gonic/gin"

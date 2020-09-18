@@ -1,20 +1,34 @@
 package sg_conn
 
 import (
-	"libraries/pb/sg"
-	pb "libraries/pb/sg"
 	"log"
+	"sg/libraries/golang/pb/sg"
+	pb "sg/libraries/golang/pb/sg"
 
 	"google.golang.org/grpc"
 )
+
+type StoreArgs struct {
+	address string
+}
+
+func MakeArgs(address string) *StoreArgs {
+	return &StoreArgs{
+		address: address,
+	}
+}
+
+func (a *StoreArgs) Address() string {
+	return a.address
+}
 
 type SgConnectionFactory struct {
 	conn   *grpc.ClientConn
 	client *sg.SGClient
 }
 
-func NewSgConnFactory(address string) *SgConnectionFactory {
-	sgConn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+func NewSgConnFactory(args *StoreArgs) *SgConnectionFactory {
+	sgConn, err := grpc.Dial(args.Address(), grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
