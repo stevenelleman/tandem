@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sg/libraries/golang/datastore/migrater"
 	"sg/libraries/golang/guts/connection/service/psql_conn"
 	"sg/libraries/golang/guts/connection/service/sg_conn"
 	"sg/libraries/golang/guts/handlers"
@@ -28,6 +29,12 @@ func main() {
 	// Store host set to sg-api-store
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
 
+	migraterArgs := migrater.MakeArgs(
+		constants.APIStoreDriver,
+		constants.APIStoreMigraterTableName,
+		constants.APIStoreMigrationPath,
+	)
+
 	psqlArgs := psql_conn.MakeArgs(
 		constants.APIStoreDriver,
 		store,
@@ -36,6 +43,7 @@ func main() {
 		constants.APIStoreName,
 		constants.APIStorePort,
 		constants.MaxConns,
+		migraterArgs,
 	)
 
 	//fmt.Println(psqlArgs)
