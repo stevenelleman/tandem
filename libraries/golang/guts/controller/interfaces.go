@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"sg/libraries/golang/guts/handlers/requests"
 	"sg/libraries/golang/guts/models"
 
 	"github.com/gin-gonic/gin"
@@ -18,8 +17,8 @@ type PsqlController interface {
 
 	ListSilos(*gin.Context) ([]*models.Silo, error)
 	GetSilo(*gin.Context, string) (*models.Silo, error)
-	CreateSilo(*gin.Context, *requests.Silo) error
-	UpdateSilo(*gin.Context, *requests.Silo) error
+	CreateSilo(*gin.Context, *models.Silo) error
+	UpdateSilo(*gin.Context, *models.Silo) error
 	DeleteSilo(*gin.Context, string) error
 }
 
