@@ -10,7 +10,7 @@ COPY go.sum .
 COPY vendor ./vendor
 
 # Copy migrations
-COPY db/migrations ./migrations
+COPY migrations ./migrations
 
 COPY . .
 

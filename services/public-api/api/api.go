@@ -3,13 +3,20 @@ package main
 import (
 	"fmt"
 	"os"
+	"sg/libraries/golang/datastore/migrater"
+	"sg/libraries/golang/guts/connection/service/psql_conn"
+	"sg/libraries/golang/guts/connection/service/sg_conn"
+	"sg/libraries/golang/guts/handlers"
 	"sg/services/public-api/constants"
-	"sg/services/public-api/handlers"
+	"sg/services/public-api/mapper"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
+// TODO: Use same structure in sg service, but a grpc router instead of a rest one
+// 	Followed by handler which returns controller object into a specific interface, controller object will be dependent on data stores
+// 	and other connected services
 func main() {
 	// Pass in target IP of Public API service. Localhost for individually run, 172.17.0.2 for container
 	host := os.Args[1]
@@ -22,8 +29,29 @@ func main() {
 	}
 	// Store host set to sg-api-store
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
-	h := handlers.NewAPIHandler(store, constants.MaxConns)
-	defer h.Close()
+
+	migraterArgs := migrater.MakeArgs(
+		constants.APIStoreDriver,
+		constants.APIStoreMigraterTableName,
+		constants.APIStoreMigrationPath,
+	)
+
+	psqlArgs := psql_conn.MakeArgs(
+		constants.APIStoreDriver,
+		store,
+		constants.APIStoreUser,
+		constants.APIStorePassword,
+		constants.APIStoreName,
+		constants.APIStorePort,
+		constants.MaxConns,
+		migraterArgs,
+		mapper.MapTables,
+	)
+
+	sgArgs := sg_conn.MakeArgs(constants.SGServiceAddress)
+
+	h := handlers.NewPublicAPIHandler(psqlArgs, sgArgs)
+	defer h.PublicAPIClose()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.
 	// 	The faceted identity will be associated with a list of silos
