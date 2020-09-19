@@ -2,10 +2,19 @@ package handlers
 
 import "sg/libraries/golang/guts/controller"
 
-type Handler struct {
-	controller *controller.Controller
+type BaseHandler struct {
+	controller *controller.BaseController
 }
 
-func (c Handler) Close() {
-	c.controller.Close()
+func (h *BaseHandler) PublicAPIController() controller.PublicAPIController {
+	return h.controller
+}
+
+func (h *BaseHandler) Controller() *controller.BaseController {
+	return h.controller
+}
+
+func (c BaseHandler) PublicAPIClose() {
+	c.controller.PsqlClose()
+	c.controller.SgClose()
 }
