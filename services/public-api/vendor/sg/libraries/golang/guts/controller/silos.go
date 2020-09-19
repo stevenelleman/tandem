@@ -7,16 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (c *Controller) PsqlClose() {
-	c.psqlConn.Close()
-}
-
-func (c *Controller) SgClose() {
-	c.sgConn.Close()
-}
-
-func (c *Controller) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
-	err := c.sgConn.SayHello(ctx)
+func (c *BaseController) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
+	err := c.SayHello(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -24,18 +16,23 @@ func (c *Controller) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
 	return c.psqlConn.ListSilos(ctx)
 }
 
-func (c *Controller) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) {
+func (c *BaseController) GetSilo(ctx *gin.Context, id string) (*models.Silo, error) {
 	return c.psqlConn.GetSilo(ctx, id)
 }
 
-func (c *Controller) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *BaseController) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
 	return c.psqlConn.CreateSilo(ctx, s)
 }
 
-func (c *Controller) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *BaseController) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
 	return c.psqlConn.UpdateSilo(ctx, s)
 }
 
-func (c *Controller) DeleteSilo(ctx *gin.Context, id string) error {
+func (c *BaseController) DeleteSilo(ctx *gin.Context, id string) error {
 	return c.psqlConn.DeleteSilo(ctx, id)
+}
+
+// Dummy method to demonstrate that grpc connection to sg service works
+func (c *BaseController) SayHello(ctx *gin.Context) error {
+	return c.sgConn.SayHello(ctx)
 }
