@@ -12,6 +12,8 @@ var (
 
 // TODO: Apply to POST/PUT requests
 func MapParams(c *gin.Context, dst interface{}) error {
+	c.Bind(dst)
+
 	v := c.Request.URL.Query()
 	err := urlDecoder.Decode(dst, v)
 	if err != nil {

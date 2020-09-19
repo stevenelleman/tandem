@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"sg/libraries/golang/datastore/migrater"
-	"sg/libraries/golang/guts/models"
 
 	"github.com/Masterminds/squirrel"
 	"gopkg.in/gorp.v2"
@@ -21,9 +20,10 @@ type StoreArgs struct {
 	port         int
 	maxConns     int
 	migraterArgs *migrater.Args
+	mapper       func(*gorp.DbMap)
 }
 
-func MakeArgs(driver, host, user, password, dbname string, port, conns int, migraterArgs *migrater.Args) *StoreArgs {
+func MakeArgs(driver, host, user, password, dbname string, port, conns int, migraterArgs *migrater.Args, mapper func(*gorp.DbMap)) *StoreArgs {
 	return &StoreArgs{
 		driver:       driver,
 		host:         host,
@@ -33,6 +33,7 @@ func MakeArgs(driver, host, user, password, dbname string, port, conns int, migr
 		port:         port,
 		maxConns:     conns,
 		migraterArgs: migraterArgs,
+		mapper:       mapper,
 	}
 }
 
@@ -84,7 +85,7 @@ func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
 	fmt.Printf("Public-API Datastore: Executed %d migrations\n", count)
 
 	dbMap := &gorp.DbMap{Db: conn, Dialect: gorp.PostgresDialect{}}
-	mapTables(dbMap)
+	args.mapper(dbMap)
 
 	cf := &PsqlConnectionFactory{
 		db: dbMap,
@@ -98,12 +99,4 @@ func (f *PsqlConnectionFactory) Connection() *PsqlConnection {
 		db: f.db,
 		qb: f.qb,
 	}
-}
-
-// Map golang model to postgres table
-// All table primary keys should be id
-// TODO: better code reuse?
-func mapTables(dbmap *gorp.DbMap) {
-	silos := dbmap.AddTableWithName(models.Silo{}, "silos")
-	silos.SetKeys(false, "id")
 }

@@ -1,15 +1,13 @@
-package main
+package mapper
 
 import (
 	"sg/libraries/golang/guts/models"
 
-	"gopkg.in/gorp.v1"
+	"gopkg.in/gorp.v2"
 )
 
-// Map golang model to postgres table
 // All table primary keys should be id
-// TODO: better code reuse?
-func mapTables(dbmap *gorp.DbMap) {
+func MapTables(dbmap *gorp.DbMap) {
 	silos := dbmap.AddTableWithName(models.Silo{}, "silos")
 	silos.SetKeys(false, "id")
 }

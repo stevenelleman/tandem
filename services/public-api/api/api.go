@@ -8,6 +8,7 @@ import (
 	"sg/libraries/golang/guts/connection/service/sg_conn"
 	"sg/libraries/golang/guts/handlers"
 	"sg/services/public-api/constants"
+	"sg/services/public-api/mapper"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -44,16 +45,13 @@ func main() {
 		constants.APIStorePort,
 		constants.MaxConns,
 		migraterArgs,
+		mapper.MapTables,
 	)
-
-	//fmt.Println(psqlArgs)
 
 	sgArgs := sg_conn.MakeArgs(constants.SGServiceAddress)
 
 	h := handlers.NewPublicAPIHandler(psqlArgs, sgArgs)
-
-	// TODO: May be better to have per-store Close method, defer all stores for this particular API
-	defer h.Close()
+	defer h.PublicAPIClose()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.
 	// 	The faceted identity will be associated with a list of silos
