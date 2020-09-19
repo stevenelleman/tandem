@@ -5,6 +5,7 @@ go 1.13
 require (
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.6.3
+	gopkg.in/gorp.v2 v2.2.0
 	sg/libraries/golang v0.0.0
 )
 
