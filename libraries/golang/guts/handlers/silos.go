@@ -34,11 +34,11 @@ func (h *BaseHandler) CreateSilo(ctx *gin.Context) {
 	}
 
 	req := &createSiloReq{}
-	err := ctx.Bind(req)
+	err := ctx.BindJSON(req)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
-		silo.State = req.state
+		silo.State = req.State
 	}
 
 	err = h.PublicAPIController().CreateSilo(ctx, silo)
@@ -56,11 +56,11 @@ func (h *BaseHandler) UpdateSilo(ctx *gin.Context) {
 	}
 
 	req := &updateSiloReq{}
-	err := ctx.Bind(req)
+	err := ctx.BindJSON(req)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
-		silo.State = req.state
+		silo.State = req.State
 	}
 
 	err = h.PublicAPIController().UpdateSilo(ctx, silo)

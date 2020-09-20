@@ -1,9 +1,10 @@
 package handlers
 
+// Note: The attribute field must be capitalized, otherwise it's private to BindJSON
 type createSiloReq struct {
-	state string
+	State string `json:"state"`
 }
 
 type updateSiloReq struct {
-	state string
+	State string `json:"state"`
 }
