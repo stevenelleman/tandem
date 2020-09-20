@@ -3,7 +3,7 @@ package handlers
 import (
 	"github.com/gin-gonic/gin"
 
-	"sg/libraries/golang/guts/handlers/requests"
+	"sg/libraries/golang/guts/models"
 )
 
 func (h *BaseHandler) ListSilos(ctx *gin.Context) {
@@ -29,13 +29,19 @@ func (h *BaseHandler) GetSilo(ctx *gin.Context) {
 func (h *BaseHandler) CreateSilo(ctx *gin.Context) {
 	// TODO: should the id be in the request rather than the path?
 	id := ctx.Param("silo_id")
-
-	// Must map request object
-	siloReq := &requests.Silo{
+	silo := &models.Silo{
 		Id: id,
 	}
 
-	err := h.PublicAPIController().CreateSilo(ctx, siloReq)
+	req := &createSiloReq{}
+	err := ctx.Bind(req)
+	if err != nil {
+		ReturnError(ctx, 400, err)
+	} else {
+		silo.State = req.state
+	}
+
+	err = h.PublicAPIController().CreateSilo(ctx, silo)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
@@ -45,13 +51,19 @@ func (h *BaseHandler) CreateSilo(ctx *gin.Context) {
 
 func (h *BaseHandler) UpdateSilo(ctx *gin.Context) {
 	id := ctx.Param("silo_id")
-
-	// Must map request object
-	siloReq := &requests.Silo{
+	silo := &models.Silo{
 		Id: id,
 	}
 
-	err := h.PublicAPIController().UpdateSilo(ctx, siloReq)
+	req := &updateSiloReq{}
+	err := ctx.Bind(req)
+	if err != nil {
+		ReturnError(ctx, 400, err)
+	} else {
+		silo.State = req.state
+	}
+
+	err = h.PublicAPIController().UpdateSilo(ctx, silo)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
