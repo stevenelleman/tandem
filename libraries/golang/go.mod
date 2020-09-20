@@ -9,7 +9,6 @@ require (
 	github.com/gobuffalo/packr/v2 v2.8.0
 	github.com/golang/protobuf v1.4.1
 	github.com/google/uuid v1.0.0
-	github.com/gorilla/schema v1.2.0
 	github.com/lib/pq v1.2.0
 	github.com/poy/onpar v1.0.0 // indirect
 	github.com/rubenv/sql-migrate v0.0.0-20200616145509-8d140a17f351

@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"sg/libraries/golang/guts/handlers/requests"
 	"sg/libraries/golang/guts/models"
 
 	"github.com/gin-gonic/gin"
@@ -20,11 +19,11 @@ func (c *BaseController) GetSilo(ctx *gin.Context, id string) (*models.Silo, err
 	return c.psqlConn.GetSilo(ctx, id)
 }
 
-func (c *BaseController) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *BaseController) CreateSilo(ctx *gin.Context, s *models.Silo) error {
 	return c.psqlConn.CreateSilo(ctx, s)
 }
 
-func (c *BaseController) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *BaseController) UpdateSilo(ctx *gin.Context, s *models.Silo) error {
 	return c.psqlConn.UpdateSilo(ctx, s)
 }
 

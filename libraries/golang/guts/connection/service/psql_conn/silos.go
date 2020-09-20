@@ -2,7 +2,6 @@ package psql_conn
 
 import (
 	"errors"
-	"sg/libraries/golang/guts/handlers/requests"
 	"sg/libraries/golang/guts/models"
 
 	"github.com/gin-gonic/gin"
@@ -38,7 +37,7 @@ func (c *PsqlConnection) GetSilo(ctx *gin.Context, id string) (*models.Silo, err
 	return silo, nil
 }
 
-func (c *PsqlConnection) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *PsqlConnection) CreateSilo(ctx *gin.Context, s *models.Silo) error {
 	err := c.db.WithContext(ctx).Insert(s)
 	if err != nil {
 		return err
@@ -46,7 +45,7 @@ func (c *PsqlConnection) CreateSilo(ctx *gin.Context, s *requests.Silo) error {
 	return nil
 }
 
-func (c *PsqlConnection) UpdateSilo(ctx *gin.Context, s *requests.Silo) error {
+func (c *PsqlConnection) UpdateSilo(ctx *gin.Context, s *models.Silo) error {
 	count, err := c.db.WithContext(ctx).Update(s)
 	if err != nil {
 		return err
