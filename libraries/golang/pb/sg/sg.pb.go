@@ -6,16 +6,17 @@
 // 	protoc        v3.13.0
 // source: sg.proto
 
-// option go_package = "libraries/golang/pb/sg";
+// option go_package = "sg/libraries/golang/pb/sg";
 
 package sg
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (

@@ -2,7 +2,7 @@
 
 syntax = "proto3";
 
-// option go_package = "libraries/golang/pb/sg";
+// option go_package = "sg/libraries/golang/pb/sg";
 
 package sg;
 
