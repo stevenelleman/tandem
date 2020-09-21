@@ -1,3 +1,4 @@
+
 # TODO 
 
 ## Table of Contents 
@@ -42,7 +43,6 @@ Environment:
 - [ ] Envoy (https://www.envoyproxy.io/)
 
 Public-API: 
-- [x] Cleaner client connection creation 
 - [ ] Move Handler-Controller-Connection to libraries 
     need to pass in store information at beginning, if provided then connection is initialized. 
     alternatively could move out a copy and play there 
@@ -146,6 +146,7 @@ Other:
 
 ## Completed
 From most recent to oldest.
+- [x] Cleaner client connection creation 
 - [x] Wire ctx through public-api
 - [x] Tilt Setup: 
     - [x] Convert docker-compose over
