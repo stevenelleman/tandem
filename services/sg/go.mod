@@ -3,10 +3,12 @@ module sg/services/sg
 go 1.13
 
 require (
-	github.com/stretchr/testify v1.5.1
+	github.com/google/uuid v1.0.0
+	github.com/stretchr/testify v1.6.1
 	google.golang.org/grpc v1.32.0
 
-	libraries/golang v0.0.0
+	sg/libraries/golang v0.0.0
 )
 
-replace libraries/golang v0.0.0 => ../../libraries/golang
+// HERE: Need to make consistent with path relative to project root
+replace sg/libraries/golang v0.0.0 => ../../../sg/libraries/golang
