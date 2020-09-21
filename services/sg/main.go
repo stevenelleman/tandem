@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	pb "libraries/golang/pb/sg"
+	pb "sg/libraries/golang/pb/sg"
 	"log"
 	"net"
 
