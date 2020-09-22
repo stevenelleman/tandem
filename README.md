@@ -13,7 +13,9 @@
 ## Setup
 Run `tilt up`
  
-Or run `docker-compose up`
+or run `docker-compose up`
+
+and navigate to `localhost` (no port). 
 
 ## Services: 
 - [Web Frontend Service](./services/web-frontend/src/components/README.md)
