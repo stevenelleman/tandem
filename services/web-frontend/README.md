@@ -16,33 +16,6 @@
 2. `docker run -p 80:80 web-frontend` (running over HTTP, `443:443` for HTTPS)
 3. Run [`Public-API` service](./public-api) (`make run` in `./public-api`) 
 3. Open `http://localhost`
-
-## Questions: 
-- How to use separate requests to get the silos, forums, and faceted identities? It should be constantly updating. User info endpoint?
-
-## UI Overview:
-Topbar: Faceted Identities, Search bar
-Rightbar: Forums
-Leftbar: Silos
-Bottombar: Panel tabs (undisplayed state, still cached)
-
-Overkill to be able to swap/collapse bars? I like it. `x` and dropdown to express that.
-
-Internal `workspace`. Ideally would be able to handle n panels, but initially just allow a few.
-
-In the future would like to be able to drag and drop silos, forums, and panel tabs into their own groupings. These groupings will be saved for later automatically. One question to answer: how will groupings be allowed across FIs? I think provided the silos/forums aren't leaked it's fine for the group information to be shared. That also begs the question: how will tabs be saved? Which FI will they correspond to? I would advice all the currently logged-in FIs and there's some easy way to add more FIs. That way, even if you're only logged into a single FI you can still access all your tabs. 
-
-## State Management
-There are several types of state that need to be managed: 
-- FI Authz Info (Stored as cookies by the browser, which is translated into the FI info) 
-- User Info: 
-    - Silos 
-    - Forums 
-    - FI Info 
-- Panel data 
-    - sources
-    - user-data 
-        - current position in document 
         
 How will user-data be organized? Also should there be a more comprehensive user action history? In other words, a completely private history of metadata. It would be pretty cool if this was default scope. What would a user history scope look like? Also it would likely need to be several scopes: one for each FI and then in combination. This seems like a fascinating application of scopes - can the same sources (log entries) be tied together into 
 
