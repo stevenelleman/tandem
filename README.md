@@ -1,4 +1,4 @@
-# sg
+# Web Microservice Shell
 
 ## Code-Amendment Best Practices 
 - Don't commit directly to master, make PRs. 
@@ -21,10 +21,8 @@ and navigate to `localhost` (no port).
 - [Web Frontend Service](./services/web-frontend/src/components/README.md)
 - [Public API Service](./services/public-api/README.md)
 - [Postgres API Store](./services/api-store/README.md)
-- [Sourcegraph Service](./services/api-store/README.md)
 
 ## Docs
 - [TODO](./TODO.md)
-- [Spec](./docs/spec.md)
 - [Libraries](./libraries/golang/README.md)
 - [Service Deployment](./deploy/README.md)
