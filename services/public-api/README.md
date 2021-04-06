@@ -7,7 +7,6 @@
     - [API Setup](#api)
 - [Questions](#questions)
 - [Layers](#layers)
-- [API Routes](#api-routes)
 
 ## Code Setup
 1. Intellij File-Watcher: gofmt and goimports
@@ -32,11 +31,6 @@ Useful Curl Commands:
     - I generally like the idea of a personal silo, but this begs the question: can a scope have multiple parent silos? 
     - I think this is something you have to play around with.
 - Type mappings are required at two interfaces: the API and the DBI. Some or many of these mappings will be used for both mappings, but it would be nice to have a logical separation. For the DB `models` seems to communicate what's going on. 
-
-## TODO: 
-- [ ] Table migration into PSQL 
-- [ ] API testing 
-- [ ] Map request object
 
 ## Layers 
 

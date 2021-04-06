@@ -23,6 +23,5 @@ and navigate to `localhost` (no port).
 - [Postgres API Store](./services/api-store/README.md)
 
 ## Docs
-- [TODO](./TODO.md)
 - [Libraries](./libraries/golang/README.md)
 - [Service Deployment](./deploy/README.md)
