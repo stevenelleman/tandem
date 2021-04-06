@@ -27,7 +27,7 @@ func main() {
 	if store == "" {
 		panic("Store not defined")
 	}
-	// Store host set to sg-api-store
+	// Store host set to api-store
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
 
 	migraterArgs := migrater.MakeArgs(

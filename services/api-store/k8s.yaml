@@ -1,9 +1,9 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: sg-api-store-config
+  name: api-store-config
   labels:
-    app: sg-api-store
+    app: api-store
 data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: postgres-user
@@ -12,7 +12,7 @@ data:
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: sg-api-store-volume
+  name: api-store-volume
   labels:
     type: local
     app: api-store
@@ -28,9 +28,9 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: sg-api-store-claim
+  name: api-store-claim
   labels:
-    app: sg-api-store
+    app: api-store
 spec:
   storageClassName: manual
   accessModes:
@@ -42,42 +42,42 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: sg-api-store
+  name: api-store
 spec:
   selector:
     matchLabels:
-      app: sg-api-store
+      app: api-store
   template:
     metadata:
       labels:
-        app: sg-api-store
+        app: api-store
     spec:
       containers:
-        - name: sg-api-store
+        - name: api-store
           image: postgres:12.3
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: sg-api-store-config
+                name: api-store-config
           volumeMounts:
             - mountPath: /data
               name: postgredb
       volumes:
         - name: postgredb
           persistentVolumeClaim:
-            claimName: sg-api-store-claim
+            claimName: api-store-claim
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: sg-api-store
+  name: api-store
   labels:
-    app: sg-api-store
+    app: api-store
 spec:
   type: NodePort
   ports:
     - port: 5432
   selector:
-    app: sg-api-store
+    app: api-store
