@@ -14,16 +14,16 @@ services = {
 
 for s in services.keys():
     if services[s]:
-        docker_build('sg/{svc}-image'.format(svc = s), context='services/{svc}'.format(svc = s))
+        docker_build('{svc}-image'.format(svc = s), context='services/{svc}'.format(svc = s))
 
 # 2. Load yaml Configs
 yamls = ["./services/{svc}/tilt.yaml".format(svc = s) for s in services.keys()]
 k8s_yaml(yamls)
 
 # 3. Create k8s Resources (w/ Dependencies)
-k8s_resource('sg-api-store')
-k8s_resource('sg-grpc')
-k8s_resource('sg-public-api', resource_deps=['sg-api-store', 'sg-grpc'])
-k8s_resource('sg-web-frontend', resource_deps=['sg-public-api'])
+k8s_resource('api-store')
+k8s_resource('grpc')
+k8s_resource('public-api', resource_deps=['api-store', 'grpc'])
+k8s_resource('web-frontend', resource_deps=['public-api'])
 
 

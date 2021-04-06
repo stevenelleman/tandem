@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sg-grpc
+  name: grpc
   labels:
-    app: sg-grpc
+    app: grpc
 spec:
   selector:
     matchLabels:
-      app: sg-grpc
+      app: grpc
   template:
     metadata:
       labels:
-        app: sg-grpc
+        app: grpc
     spec:
       containers:
-        - name: sg-grpc
-          image: sg/grpc-image
+        - name: grpc
+          image: grpc-image
           imagePullPolicy: Never
           ports:
             - containerPort: 8001
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sg-grpc
+  name: grpc
   labels:
-    app: sg-grpc
+    app: grpc
 spec:
   type: LoadBalancer
   ports:
     - port: 8001
   selector:
-    app: sg-grpc
+    app: grpc
