@@ -12,12 +12,14 @@ services = {
     "web-frontend": True
 }
 
+# Change to whatever repo name is
+repo = 'sg'
 for s in services.keys():
     if services[s]:
-        docker_build('sg/{svc}-image'.format(svc = s), context='services/{svc}'.format(svc = s))
+        docker_build('{repo}/{service}-image'.format(repo = repo, service = s), context='services/{svc}'.format(svc = s))
 
 # 2. Load yaml Configs
-yamls = ["./services/{svc}/tilt.yaml".format(svc = s) for s in services.keys()]
+yamls = ["./services/{svc}/k8s.yaml".format(svc = s) for s in services.keys()]
 k8s_yaml(yamls)
 
 # 3. Create k8s Resources (w/ Dependencies)
