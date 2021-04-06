@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"sg/libraries/golang/guts/connection/service/psql_conn"
-	"sg/libraries/golang/guts/connection/service/sg_conn"
+	"web-microservice-shell/libraries/golang/guts/connection/service/psql_conn"
+	"web-microservice-shell/libraries/golang/guts/connection/service/sg_conn"
 )
 
 // Has all connection types and all methods, interface layer between datastores

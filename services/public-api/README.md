@@ -19,7 +19,7 @@
 ## Docker Setup
 
 ### API  
-1. Run `docker build -t sg_public_api .` in `./public-api` 
+1. Run `docker build -t public-api .` in `./public-api` 
 2. Run `docker run -p 8000:8000 public-api`
 
 Useful Curl Commands:

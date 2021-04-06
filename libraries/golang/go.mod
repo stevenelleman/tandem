@@ -1,4 +1,4 @@
-module sg/libraries/golang
+module web-microservice-shell/libraries/golang
 
 go 1.13
 

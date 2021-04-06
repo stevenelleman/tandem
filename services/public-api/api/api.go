@@ -3,12 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"sg/libraries/golang/datastore/migrater"
-	"sg/libraries/golang/guts/connection/service/psql_conn"
-	"sg/libraries/golang/guts/connection/service/sg_conn"
-	"sg/libraries/golang/guts/handlers"
-	"sg/services/public-api/constants"
-	"sg/services/public-api/mapper"
+
+	"web-microservice-shell/libraries/golang/datastore/migrater"
+	"web-microservice-shell/libraries/golang/guts/connection/service/psql_conn"
+	"web-microservice-shell/libraries/golang/guts/connection/service/sg_conn"
+	"web-microservice-shell/libraries/golang/guts/handlers"
+
+	"web-microservice-shell/services/public-api/constants"
+	"web-microservice-shell/services/public-api/mapper"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -27,7 +29,7 @@ func main() {
 	if store == "" {
 		panic("Store not defined")
 	}
-	// Store host set to sg-api-store
+	// Store host set to api-store
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
 
 	migraterArgs := migrater.MakeArgs(

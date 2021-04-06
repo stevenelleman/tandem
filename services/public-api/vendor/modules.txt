@@ -166,11 +166,11 @@ gopkg.in/gorp.v1
 gopkg.in/gorp.v2
 # gopkg.in/yaml.v2 v2.2.8
 gopkg.in/yaml.v2
-# sg/libraries/golang v0.0.0 => ../../../sg/libraries/golang
-sg/libraries/golang/datastore/migrater
-sg/libraries/golang/guts/connection/service/psql_conn
-sg/libraries/golang/guts/connection/service/sg_conn
-sg/libraries/golang/guts/controller
-sg/libraries/golang/guts/handlers
-sg/libraries/golang/guts/models
-sg/libraries/golang/pb/sg
+# web-microservice-shell/libraries/golang v0.0.0 => ../../../web-microservice-shell/libraries/golang
+web-microservice-shell/libraries/golang/datastore/migrater
+web-microservice-shell/libraries/golang/guts/connection/service/psql_conn
+web-microservice-shell/libraries/golang/guts/connection/service/sg_conn
+web-microservice-shell/libraries/golang/guts/controller
+web-microservice-shell/libraries/golang/guts/handlers
+web-microservice-shell/libraries/golang/guts/models
+web-microservice-shell/libraries/golang/pb/sg
