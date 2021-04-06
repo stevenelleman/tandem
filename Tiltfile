@@ -7,7 +7,7 @@
 # 1. Build Images
 services = {
     "api-store": False,
-    "sg": True,
+    "grpc": True,
     "public-api": True,
     "web-frontend": True
 }
@@ -22,8 +22,8 @@ k8s_yaml(yamls)
 
 # 3. Create k8s Resources (w/ Dependencies)
 k8s_resource('sg-api-store')
-k8s_resource('sg-sg')
-k8s_resource('sg-public-api', resource_deps=['sg-api-store', 'sg-sg'])
+k8s_resource('sg-grpc')
+k8s_resource('sg-public-api', resource_deps=['sg-api-store', 'sg-grpc'])
 k8s_resource('sg-web-frontend', resource_deps=['sg-public-api'])
 
 
