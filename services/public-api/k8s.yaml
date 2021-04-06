@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: public-api
-          image: sg/public-api-image
+          image: public-api-image
           imagePullPolicy: Never
           ports:
             - containerPort: 8000

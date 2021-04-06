@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: grpc
-          image: sg/grpc-image
+          image: grpc-image
           imagePullPolicy: Never
           ports:
             - containerPort: 8001

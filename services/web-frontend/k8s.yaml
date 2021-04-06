@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web-frontend
-          image: sg/web-frontend-image
+          image: web-frontend-image
           imagePullPolicy: Never
 ---
 apiVersion: v1

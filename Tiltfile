@@ -12,11 +12,9 @@ services = {
     "web-frontend": True
 }
 
-# Change to whatever repo name is
-repo = 'sg'
 for s in services.keys():
     if services[s]:
-        docker_build('{repo}/{service}-image'.format(repo = repo, service = s), context='services/{svc}'.format(svc = s))
+        docker_build('{service}-image'.format(service = s), context='services/{svc}'.format(svc = s))
 
 # 2. Load yaml Configs
 yamls = ["./services/{svc}/k8s.yaml".format(svc = s) for s in services.keys()]

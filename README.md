@@ -17,8 +17,6 @@ or run `docker-compose up`
 
 and navigate to `localhost` (no port). 
 
-If the repo has been forced, change `web-microservice-shell` to new repo name. 
-
 ## Services: 
 - [Web Frontend Service](./services/web-frontend/src/components/README.md)
 - [Public API Service](./services/public-api/README.md)
