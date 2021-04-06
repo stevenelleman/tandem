@@ -6,8 +6,8 @@ require (
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.6.3
 	gopkg.in/gorp.v2 v2.2.0
-	web-microservice-shell/libraries/golang v0.0.0
+	libraries/golang v0.0.0
 )
 
 // HERE: Need to make consistent with path relative to project root
-replace web-microservice-shell/libraries/golang v0.0.0 => ../../../web-microservice-shell/libraries/golang
+replace libraries/golang v0.0.0 => ../../libraries/golang

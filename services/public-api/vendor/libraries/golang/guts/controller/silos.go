@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"web-microservice-shell/libraries/golang/guts/models"
+	"libraries/golang/guts/models"
 
 	"github.com/gin-gonic/gin"
 )

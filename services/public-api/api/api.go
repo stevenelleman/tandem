@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"web-microservice-shell/libraries/golang/datastore/migrater"
-	"web-microservice-shell/libraries/golang/guts/connection/service/psql_conn"
-	"web-microservice-shell/libraries/golang/guts/connection/service/sg_conn"
-	"web-microservice-shell/libraries/golang/guts/handlers"
+	"libraries/golang/datastore/migrater"
+	"libraries/golang/guts/connection/service/psql_conn"
+	"libraries/golang/guts/connection/service/sg_conn"
+	"libraries/golang/guts/handlers"
 
 	"web-microservice-shell/services/public-api/constants"
 	"web-microservice-shell/services/public-api/mapper"

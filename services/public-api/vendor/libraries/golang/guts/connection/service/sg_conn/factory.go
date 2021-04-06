@@ -1,11 +1,9 @@
 package sg_conn
 
 import (
-	"log"
-	"web-microservice-shell/libraries/golang/pb/sg"
-	pb "web-microservice-shell/libraries/golang/pb/sg"
-
 	"google.golang.org/grpc"
+	sg2 "libraries/golang/pb/sg"
+	"log"
 )
 
 type StoreArgs struct {
@@ -24,7 +22,7 @@ func (a *StoreArgs) Address() string {
 
 type SgConnectionFactory struct {
 	conn   *grpc.ClientConn
-	client *sg.SGClient
+	client *sg2.SGClient
 }
 
 func NewSgConnFactory(args *StoreArgs) *SgConnectionFactory {
@@ -33,7 +31,7 @@ func NewSgConnFactory(args *StoreArgs) *SgConnectionFactory {
 		log.Fatalf("did not connect: %v", err)
 	}
 
-	client := pb.NewSGClient(sgConn)
+	client := sg2.NewSGClient(sgConn)
 
 	return &SgConnectionFactory{
 		conn:   sgConn,

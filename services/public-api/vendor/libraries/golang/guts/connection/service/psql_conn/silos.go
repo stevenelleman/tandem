@@ -2,9 +2,8 @@ package psql_conn
 
 import (
 	"errors"
-	"web-microservice-shell/libraries/golang/guts/models"
-
 	"github.com/gin-gonic/gin"
+	"libraries/golang/guts/models"
 )
 
 func (c *PsqlConnection) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {

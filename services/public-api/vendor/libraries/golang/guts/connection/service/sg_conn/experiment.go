@@ -3,10 +3,9 @@ package sg_conn
 import (
 	"context"
 	"fmt"
-	pb "web-microservice-shell/libraries/golang/pb/sg"
-	"time"
-
 	"github.com/gin-gonic/gin"
+	"libraries/golang/pb/sg"
+	"time"
 )
 
 // Dummy code to demonstrate that the grpc connection works
@@ -16,7 +15,7 @@ func (c *SgConnection) SayHello(ctx *gin.Context) error {
 
 	for i := range [10]int{} {
 		// TODO: Is this a terrible pattern?
-		reply, err := (*c.client).SayHello(reqctx, &pb.HelloRequest{Name: "BLAHBLAHBLAH"})
+		reply, err := (*c.client).SayHello(reqctx, &sg.HelloRequest{Name: "BLAHBLAHBLAH"})
 		if err != nil {
 			return err
 		}

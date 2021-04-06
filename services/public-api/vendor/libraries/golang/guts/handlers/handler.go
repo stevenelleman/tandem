@@ -1,6 +1,6 @@
 package handlers
 
-import "web-microservice-shell/libraries/golang/guts/controller"
+import "libraries/golang/guts/controller"
 
 type BaseHandler struct {
 	controller *controller.BaseController

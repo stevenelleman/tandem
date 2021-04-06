@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"web-microservice-shell/libraries/golang/guts/connection/service/psql_conn"
-	"web-microservice-shell/libraries/golang/guts/connection/service/sg_conn"
+	"libraries/golang/guts/connection/service/psql_conn"
+	"libraries/golang/guts/connection/service/sg_conn"
 )
 
 type ControllerFactory struct {
