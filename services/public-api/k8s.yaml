@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sg-public-api
+  name: public-api
   labels:
-    app: sg-public-api
+    app: public-api
 spec:
   selector:
     matchLabels:
-      app: sg-public-api
+      app: public-api
   template:
     metadata:
       labels:
-        app: sg-public-api
+        app: public-api
     spec:
       containers:
-        - name: sg-public-api
+        - name: public-api
           image: sg/public-api-image
           imagePullPolicy: Never
           ports:
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sg-public-api
+  name: public-api
   labels:
-    app: sg-public-api
+    app: public-api
 spec:
   type: LoadBalancer
   ports:
     - port: 8000
   selector:
-    app: sg-public-api
+    app: public-api

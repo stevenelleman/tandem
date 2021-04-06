@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8000
 
 RUN go build -mod=vendor -o main ./api/api.go
-CMD ["./main", "sg-public-api", "sg-api-store"]
+CMD ["./main", "public-api", "api-store"]
