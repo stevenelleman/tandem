@@ -5,8 +5,8 @@ WORKDIR /app
 COPY package*.json /app/
 RUN yarn install
 COPY ./ /app/
-# TODO: Confused why localhost works instead of specified ip
-RUN REACT_APP_HOST="localhost" yarn run build
+# HOST can also be "localhost"
+RUN REACT_APP_HOST="www.grouphouse.io" yarn run build
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.18
