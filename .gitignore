@@ -6,5 +6,6 @@
 *.sublime-workspace
 
 # Personal directories
+credentials
 keys
 scratch
