@@ -9,7 +9,8 @@ services = {
     "api-store": False,
     "grpc": True,
     "public-api": True,
-    "web-frontend": True
+    "web-frontend": True,
+    "external-dns": False
 }
 
 for s in services.keys():
@@ -25,5 +26,5 @@ k8s_resource('api-store')
 k8s_resource('grpc')
 k8s_resource('public-api', resource_deps=['api-store', 'grpc'])
 k8s_resource('web-frontend', resource_deps=['public-api'])
-
+k8s_resource('external-dns', resource_deps=['web-frontend'])
 

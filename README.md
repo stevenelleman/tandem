@@ -11,16 +11,26 @@
 - Maximize code reuse, minimize service directory size and complexity
 
 ## Setup
-Run `tilt up`
- 
-or run `docker-compose up`
+Change the domain to your target domain in these files: 
+- [Domain Filter in external-dns service](./services/external-dns/k8s.yaml)
+- [Hostname annotation in web-frontend service](./services/web-frontend/k8s.yaml)
+- [REACT_APP_HOST in web-frontend dockerfile](./services/web-frontend/Dockerfile)
+- [TiltHost in public-api service](./services/public-api/constants/constants.go)
 
-and navigate to `localhost` (no port). 
+Follow [`external-dns` instructions](./services/external-dns/README.md) if you intend to use it.
+
+Run `tilt up` 
+
+and navigate to your target domain (no port). 
+
+You can also run the services via `docker-compose up`, individually via dockerfile, or in terminal.
 
 ## Services: 
+- [External DNS](./services/external-dns/README.md)
 - [Web Frontend Service](./services/web-frontend/src/components/README.md)
 - [Public API Service](./services/public-api/README.md)
 - [Postgres API Store](./services/api-store/README.md)
+- [Example GRPC Service](./services/grpc)
 
 ## Docs
 - [TODO](./TODO.md)
