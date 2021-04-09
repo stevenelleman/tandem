@@ -30,7 +30,7 @@ To enable External DNS to modify records we will need to associate an IAM policy
 }
 ```
 2. Make AWS IAM user using this policy. 
-3. Locally run: `kubectl create secret generic test-secret --from-literal=AWS_ACCESS_KEY_ID='< access key id >' --from-literal=AWS_SECRET_ACCESS_KEY='< access key >'` using the credential info of this user. `envFrom.secretRef` will pick up on this key and run as the user.  
+3. Locally run: `kubectl create secret generic test-secret --from-literal=AWS_ACCESS_KEY_ID='< access key id >' --from-literal=AWS_SECRET_ACCESS_KEY='< access key >' --from-literal=AWS_HOSTED_ZONE_ID='< your target hosted zone id >'` using the credential info of this user. `envFrom.secretRef` will pick up on this key and run as the user.  
 4. Update the `--domain-filter` and `external-dns.alpha.kubernetes.io/hostname` to whatever the hostname of the hosted zone is. 
 
  
