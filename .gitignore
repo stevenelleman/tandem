@@ -5,6 +5,9 @@
 .iml
 *.sublime-workspace
 
+# Terraform
+.terraform*
+
 # Personal directories
 secrets
 
