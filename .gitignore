@@ -6,6 +6,9 @@
 *.sublime-workspace
 
 # Personal directories
-credentials
-keys
-scratch
+secrets
+
+# Environment variables
+dev.yaml
+prod.yaml
+shared.yaml
