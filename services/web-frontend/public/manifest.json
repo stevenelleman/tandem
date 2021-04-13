@@ -1,6 +1,6 @@
 {
-  "short_name": "sg",
-  "name": "Sourcegraph",
+  "short_name": "web-microservice-shell",
+  "name": "shell",
   "icons": [
     {
       "src": "favicon.ico",

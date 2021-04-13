@@ -44,7 +44,7 @@ Useful Curl Commands:
 
 API <-resp- Handlers <-resp- Controllers <-resp- DBI <-resp- DB
 
-1. `API`: Public interface to Sourcegraph. The interface should be seen as an inviolable contract with the public and our users. The _whole point_ of an interface is to be fixed so that the _complexity behind it_ can be flexible.  
+1. `API`: Public interface to application. The interface should be seen as an inviolable contract with the public and our users. The _whole point_ of an interface is to be fixed so that the _complexity behind it_ can be flexible.  
 2. `Handler`: Methods corresponding to `API` endpoints. `Handlers` _use_ `Controller` methods to interact with the `DB`. The `Handler` will also handle logging, as it's the "top-level" 
 3. `Controller`: `Controller` methods use `DBI` methods to interact with the `DB` Additional layer of indirection for greater flexibility and reuseability. 
 4. `Database Interface (DBI)`: Methods that act as an interface with the `DB`. Allows the ability to input queries to the `DB` without using the query language itself. 

@@ -35,4 +35,4 @@ You can also run the services via `docker-compose up`, individually via dockerfi
 ## Docs
 - [TODO](./TODO.md)
 - [Libraries](./libraries/golang/README.md)
-- [Service Deployment](./deploy/README.md)
+- [Service Deployment](deployment/website/README.md)
