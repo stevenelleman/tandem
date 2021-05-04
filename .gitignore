@@ -5,6 +5,12 @@
 .iml
 *.sublime-workspace
 
+# Terraform
+.terraform*
+terraform.tfstate*
+crash.log
+kubeconfig
+
 # Personal directories
 secrets
 

@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: public-api
-          image: public-api-image
-          imagePullPolicy: Never
+          image: docker.io/selleman/web-microservice-shell_public-api:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
 ---
