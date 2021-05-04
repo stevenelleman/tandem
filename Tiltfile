@@ -10,14 +10,14 @@ services = {
     'grpc': True,
     'public-api': True,
     'web-frontend': True,
-    'external-dns': False
+    # 'external-dns': False
 }
 
 # TODO: change name to match the source directory, local images should take precedence
-registryRoot = ''
+registryRoot = 'docker.io/selleman/web-microservice-shell_'
 for s in services.keys():
     if services[s]:
-        docker_build('{root}{service}-image'.format(root = registryRoot, service = s), context='services/{svc}'.format(svc = s))
+        docker_build('{root}{service}'.format(root = registryRoot, service = s), context='services/{svc}'.format(svc = s))
 
 # 2. Load Environment Variable yamls
 environment = 'dev'
@@ -33,5 +33,7 @@ k8s_resource('api-store')
 k8s_resource('grpc')
 k8s_resource('public-api', resource_deps=['api-store', 'grpc'])
 k8s_resource('web-frontend', resource_deps=['public-api'])
-k8s_resource('external-dns', resource_deps=['web-frontend'])
+
+# TODO: on tilt up create a subdomain with a uuid prefix that'll only be used by development purposes
+# k8s_resource('external-dns', resource_deps=['web-frontend'])
 

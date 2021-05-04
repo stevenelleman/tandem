@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: grpc
-          image: grpc-image
-          imagePullPolicy: Never
+          image: docker.io/selleman/web-microservice-shell_grpc:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8001
 ---
