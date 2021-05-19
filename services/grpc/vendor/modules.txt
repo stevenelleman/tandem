@@ -11,6 +11,10 @@ github.com/pmezard/go-difflib/difflib
 # github.com/stretchr/testify v1.6.1
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
+# github.com/web-microservice-shell/libraries/golang v0.0.0 => ../../libraries/golang
+github.com/web-microservice-shell/libraries/golang/pb/sg
+# github.com/web-microservice-shell/services/grpc v0.0.0 => ./
+github.com/web-microservice-shell/services/grpc/constants
 # golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
@@ -100,5 +104,3 @@ google.golang.org/protobuf/types/known/durationpb
 google.golang.org/protobuf/types/known/timestamppb
 # gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
 gopkg.in/yaml.v3
-# libraries/golang v0.0.0 => ../../libraries/golang
-libraries/golang/pb/sg

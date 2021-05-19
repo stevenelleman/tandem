@@ -70,6 +70,17 @@ github.com/rubenv/sql-migrate/sqlparse
 github.com/sirupsen/logrus
 # github.com/ugorji/go/codec v1.1.7
 github.com/ugorji/go/codec
+# github.com/web-microservice-shell/libraries/golang v0.0.0 => ../../libraries/golang
+github.com/web-microservice-shell/libraries/golang/datastore/migrater
+github.com/web-microservice-shell/libraries/golang/guts/connection/service/psql_conn
+github.com/web-microservice-shell/libraries/golang/guts/connection/service/sg_conn
+github.com/web-microservice-shell/libraries/golang/guts/controller
+github.com/web-microservice-shell/libraries/golang/guts/handlers
+github.com/web-microservice-shell/libraries/golang/guts/models
+github.com/web-microservice-shell/libraries/golang/pb/sg
+# github.com/web-microservice-shell/services/public-api v0.0.0 => ./
+github.com/web-microservice-shell/services/public-api/constants
+github.com/web-microservice-shell/services/public-api/mapper
 # golang.org/x/crypto v0.0.0-20191122220453-ac88ee75c92c
 golang.org/x/crypto/ssh/terminal
 # golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
@@ -166,11 +177,3 @@ gopkg.in/gorp.v1
 gopkg.in/gorp.v2
 # gopkg.in/yaml.v2 v2.2.8
 gopkg.in/yaml.v2
-# sg/libraries/golang v0.0.0 => ../../../sg/libraries/golang
-sg/libraries/golang/datastore/migrater
-sg/libraries/golang/guts/connection/service/psql_conn
-sg/libraries/golang/guts/connection/service/sg_conn
-sg/libraries/golang/guts/controller
-sg/libraries/golang/guts/handlers
-sg/libraries/golang/guts/models
-sg/libraries/golang/pb/sg

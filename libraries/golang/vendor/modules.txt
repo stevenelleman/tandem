@@ -70,6 +70,13 @@ github.com/rubenv/sql-migrate/sqlparse
 github.com/sirupsen/logrus
 # github.com/ugorji/go/codec v1.1.7
 github.com/ugorji/go/codec
+# github.com/web-microservice-shell/libraries/golang v0.0.0 => ./
+github.com/web-microservice-shell/libraries/golang/datastore/migrater
+github.com/web-microservice-shell/libraries/golang/guts/connection/service/psql_conn
+github.com/web-microservice-shell/libraries/golang/guts/connection/service/sg_conn
+github.com/web-microservice-shell/libraries/golang/guts/controller
+github.com/web-microservice-shell/libraries/golang/guts/models
+github.com/web-microservice-shell/libraries/golang/pb/sg
 # golang.org/x/crypto v0.0.0-20191122220453-ac88ee75c92c
 golang.org/x/crypto/ssh/terminal
 # golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
