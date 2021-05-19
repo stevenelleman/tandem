@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/web-microservice-shell/libraries/golang/datastore/migrater"
-	"github.com/web-microservice-shell/libraries/golang/guts/connection/service/psql_conn"
-	"github.com/web-microservice-shell/libraries/golang/guts/connection/service/sg_conn"
-	"github.com/web-microservice-shell/libraries/golang/guts/handlers"
-	"github.com/web-microservice-shell/services/public-api/constants"
-	"github.com/web-microservice-shell/services/public-api/mapper"
+	"github.com/shell/libraries/golang/datastore/migrater"
+	"github.com/shell/libraries/golang/guts/connection/service/psql_conn"
+	"github.com/shell/libraries/golang/guts/connection/service/sg_conn"
+	"github.com/shell/libraries/golang/guts/handlers"
+	"github.com/shell/services/public-api/constants"
+	"github.com/shell/services/public-api/mapper"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

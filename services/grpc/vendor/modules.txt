@@ -8,13 +8,13 @@ github.com/golang/protobuf/ptypes/duration
 github.com/golang/protobuf/ptypes/timestamp
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
+# github.com/shell/libraries/golang v0.0.0 => ../../libraries/golang
+github.com/shell/libraries/golang/pb/sg
+# github.com/shell/services/grpc v0.0.0 => ./
+github.com/shell/services/grpc/constants
 # github.com/stretchr/testify v1.6.1
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
-# github.com/web-microservice-shell/libraries/golang v0.0.0 => ../../libraries/golang
-github.com/web-microservice-shell/libraries/golang/pb/sg
-# github.com/web-microservice-shell/services/grpc v0.0.0 => ./
-github.com/web-microservice-shell/services/grpc/constants
 # golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2

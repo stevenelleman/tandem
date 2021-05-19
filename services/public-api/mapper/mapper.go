@@ -1,7 +1,7 @@
 package mapper
 
 import (
-	"github.com/web-microservice-shell/libraries/golang/guts/models"
+	"github.com/shell/libraries/golang/guts/models"
 
 	"gopkg.in/gorp.v2"
 )

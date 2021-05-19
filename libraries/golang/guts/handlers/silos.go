@@ -3,7 +3,7 @@ package handlers
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/web-microservice-shell/libraries/golang/guts/models"
+	"github.com/shell/libraries/golang/guts/models"
 )
 
 func (h *BaseHandler) ListSilos(ctx *gin.Context) {

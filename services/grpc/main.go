@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	pb "github.com/web-microservice-shell/libraries/golang/pb/sg"
+	pb "github.com/shell/libraries/golang/pb/sg"
 	"log"
 	"net"
 
 	"google.golang.org/grpc"
 
-	"github.com/web-microservice-shell/services/grpc/constants"
+	"github.com/shell/services/grpc/constants"
 )
 
 func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {

@@ -11,10 +11,11 @@ require (
 	github.com/lib/pq v1.2.0
 	github.com/rubenv/sql-migrate v0.0.0-20200616145509-8d140a17f351
 
-	github.com/web-microservice-shell/libraries/golang v0.0.0
+	github.com/shell/libraries/golang v0.0.0
 	google.golang.org/grpc v1.32.0
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/gorp.v2 v2.2.0
 )
 
-replace github.com/web-microservice-shell/libraries/golang v0.0.0 => ./
+// NOTE: there is no need to change directory in path (`shell`) when forked for new project
+replace github.com/shell/libraries/golang v0.0.0 => ./

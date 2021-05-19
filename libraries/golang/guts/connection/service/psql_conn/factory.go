@@ -3,7 +3,7 @@ package psql_conn
 import (
 	"database/sql"
 	"fmt"
-	"github.com/web-microservice-shell/libraries/golang/datastore/migrater"
+	"github.com/shell/libraries/golang/datastore/migrater"
 
 	"github.com/Masterminds/squirrel"
 	"gopkg.in/gorp.v2"
