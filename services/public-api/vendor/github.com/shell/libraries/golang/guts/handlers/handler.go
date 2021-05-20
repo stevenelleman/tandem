@@ -1,6 +1,6 @@
 package handlers
 
-import "sg/libraries/golang/guts/controller"
+import "github.com/shell/libraries/golang/guts/controller"
 
 type BaseHandler struct {
 	controller *controller.BaseController

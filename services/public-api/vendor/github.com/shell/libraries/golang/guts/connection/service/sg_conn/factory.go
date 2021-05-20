@@ -2,8 +2,7 @@ package sg_conn
 
 import (
 	"log"
-	"sg/libraries/golang/pb/sg"
-	pb "sg/libraries/golang/pb/sg"
+	"github.com/shell/libraries/golang/pb/sg"
 
 	"google.golang.org/grpc"
 )
@@ -33,7 +32,7 @@ func NewSgConnFactory(args *StoreArgs) *SgConnectionFactory {
 		log.Fatalf("did not connect: %v", err)
 	}
 
-	client := pb.NewSGClient(sgConn)
+	client := sg.NewSGClient(sgConn)
 
 	return &SgConnectionFactory{
 		conn:   sgConn,

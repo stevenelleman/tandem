@@ -2,7 +2,7 @@ package psql_conn
 
 import (
 	"errors"
-	"sg/libraries/golang/guts/models"
+	"github.com/shell/libraries/golang/guts/models"
 
 	"github.com/gin-gonic/gin"
 )

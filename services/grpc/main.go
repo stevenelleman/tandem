@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	pb "libraries/golang/pb/sg"
+	pb "github.com/shell/libraries/golang/pb/sg"
 	"log"
 	"net"
 
-	sg_constants "sg/services/sg/constants"
-
 	"google.golang.org/grpc"
+
+	"github.com/shell/services/grpc/constants"
 )
 
 func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
@@ -17,8 +17,8 @@ func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) 
 }
 
 func main() {
-	fmt.Printf("Listen on %s\n", sg_constants.Port)
-	lis, err := net.Listen("tcp", sg_constants.Port)
+	fmt.Printf("Listen on %s\n", constants.Port)
+	lis, err := net.Listen("tcp", constants.Port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
