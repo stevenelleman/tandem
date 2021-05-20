@@ -2,14 +2,11 @@ package main
 
 import (
 	"context"
-	"fmt"
 	pb "github.com/shell/libraries/golang/pb/sg"
+	"google.golang.org/grpc"
 	"log"
 	"net"
-
-	"google.golang.org/grpc"
-
-	"github.com/shell/services/grpc/constants"
+	"os"
 )
 
 func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
@@ -17,8 +14,12 @@ func sayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) 
 }
 
 func main() {
-	fmt.Printf("Listen on %s\n", constants.Port)
-	lis, err := net.Listen("tcp", constants.Port)
+	address := os.Getenv("GRPC_ADDRESS")
+	if address == "" {
+		panic("Port environment variable not defined")
+	}
+
+	lis, err := net.Listen("tcp", address)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

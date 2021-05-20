@@ -44,6 +44,9 @@ spec:
           ports:
             - containerPort: 80
               name: http
+          env:
+            - name: REACT_APP_HOST
+              value: {{ .Values.domain }}
           # readinessProbe:
           #  httpGet:
           #    path: /

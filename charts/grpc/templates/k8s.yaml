@@ -22,7 +22,7 @@ spec:
           ports:
             - containerPort: {{ .Values.grpcPort }}
           env:
-            - name: GRPC_PORT
+            - name: GRPC_ADDRESS
               value: {{ .Values.grpcAddress }}
 ---
 apiVersion: v1

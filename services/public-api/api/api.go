@@ -14,11 +14,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// TODO: Use same structure in sg service, but a grpc router instead of a rest one
-// 	Followed by handler which returns controller object into a specific interface, controller object will be dependent on data stores
-// 	and other connected services
 func main() {
-	// Pass in target IP of Public API service. Localhost for individually run, 172.17.0.2 for container
 	host := os.Args[1]
 	if host == "" {
 		panic("Host not defined")
@@ -64,7 +60,6 @@ func main() {
 	router.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
-			// TODO: Must change origin
 			isLocal := origin == constants.LocalWebFrontendHost
 			isContainer := origin == constants.DockerComposeHost
 			isTilt := origin == constants.TiltHost
