@@ -18,11 +18,11 @@ and navigate to `localhost` (no port).
 You can also run the services via `docker-compose up`, individually via dockerfile, or in terminal.
 
 ## AWS Deployment
-[Deployment Docs](./deployment/prod)
+[Deployment Docs](./deployment/README.md)
 
-1. Navigate to `./deployment/prod`
+1. Navigate to `./deployment`
 2. Run `terraform init` to download providers.
-3. `terraform plan`
+3. `TF_LOG=debug terraform plan`
 4. `terraform apply`
 5. Update kubectl config: `aws eks --region=us-west-1 update-kubeconfig --name=${cluster name}`
 

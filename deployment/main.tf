@@ -95,7 +95,7 @@ variable "services" {
 }
 
 variable "relativeChartPath" {
-  default = "../../charts"
+  default = "../charts"
 }
 
 resource "helm_release" "helm-releases" {

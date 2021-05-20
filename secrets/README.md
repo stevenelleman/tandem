@@ -19,6 +19,38 @@ Where `${...}` indicates a variable. Other info can be found [here](https://docs
 6. Run `terraform plan`. If everything has been set up properly, the call should be successful.
 7. Run `terraform apply` to spin up updated web service.
 
+## Organization 
+Deploying services requires several distinct steps: 
+1. Defining a domain specific variables in `./env` (which is intentionally not committed to github)
+2. Local images will be automatically rebuilt for each service with a Dockerfile here: `hub.docker.com/repository/docker/selleman/web-microservice-shell/builds`  
+3.. deploying services on cloud provider using terraform (AWS with EKS). 
+
+## Environment Variables 
+Located in `./env` there are three files, `shared.yaml` for shared variables, and `dev.yaml` and `prod.yaml` for environment-specific variables. 
+
+Sample `shared.yaml`:
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shared-env-vars
+type: Opaque
+data:
+  aws-access-key-id: < base64-encoded value >
+  aws-secret-access-key: < base64-encoded value >
+```
+
+Sample `dev.yaml` / `prod.yaml`: 
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: env-vars
+type: Opaque
+data:
+  aws-hosted-zone-id: < base64-encoded value >
+  domain-filter: < base64-encoded value >
+```
 
 ## Tips
 - `TF_LOG=debug terraform plan` is your best friend.

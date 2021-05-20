@@ -20,9 +20,9 @@ for s in services.keys():
         docker_build('{root}{service}'.format(root = registryRoot, service = s), context='services/{svc}'.format(svc = s))
 
 # 2. Load Environment Variable yamls
-k8s_yaml('./deployment/env/dev.yaml')
+k8s_yaml('./secrets/env/dev.yaml')
 
-# 3. Load k8s Resource charts
+# 3. Load k8s Charts
 charts = ['./charts/{svc}/'.format(svc = s) for s in services.keys()]
 for svc in charts:
     k8s_yaml(helm(svc, values=['./charts/values-dev.yaml']))
