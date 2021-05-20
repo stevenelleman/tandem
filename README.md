@@ -17,7 +17,7 @@ and navigate to `localhost` (no port).
 
 You can also run the services via `docker-compose up`, individually via dockerfile, or in terminal.
 
-## TF Deployment on AWS
+## AWS Deployment
 [Deployment Docs](./deployment/prod)
 
 1. Navigate to `./deployment/prod`

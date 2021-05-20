@@ -3,12 +3,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name:  web-frontend
-  domain: grouphouse.io
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: grouphouse.io
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.domain }}
 spec:
   type: LoadBalancer
-  selector: # NOTE: selector here
+  selector:
       app: web-frontend
   ports:
     - port: 80

@@ -5,9 +5,9 @@ metadata:
   labels:
     app: api-store
 data:
-  POSTGRES_DB: postgresdb
-  POSTGRES_USER: postgres-user
-  POSTGRES_PASSWORD: secret
+  POSTGRES_DB: {{ .Values.psqlName }}
+  POSTGRES_USER: {{ .Values.psqlUser }}
+  POSTGRES_PASSWORD: {{ .Values.psqlPassword }}
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -57,15 +57,15 @@ spec:
           image: postgres:12.3
           imagePullPolicy: "IfNotPresent"
           ports:
-            - containerPort: 5432
+            - containerPort: {{ .Values.psqlPort }}
           envFrom:
             - configMapRef:
                 name: api-store-config
           volumeMounts:
             - mountPath: /data
-              name: postgredb
+              name: {{ .Values.psqlName }}
       volumes:
-        - name: postgredb
+        - name: {{ .Values.psqlName }}
           persistentVolumeClaim:
             claimName: api-store-claim
 ---
@@ -78,6 +78,6 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 5432
+    - port: {{ .Values.psqlPort }}
   selector:
     app: api-store

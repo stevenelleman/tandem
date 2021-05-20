@@ -19,7 +19,7 @@ spec:
           image: docker.io/selleman/web-microservice-shell_public-api:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8000
+            - containerPort: {{ .Values.publicAPIPort }}
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +30,6 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8000
+    - port: {{ .Values.publicAPIPort }}
   selector:
     app: public-api

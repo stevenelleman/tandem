@@ -1,0 +1,26 @@
+# External DNS
+domainFilter: grouphouse.io
+dnsServiceAccount: external-dns
+
+# Web Frontend
+domain: grouphouse.io
+
+# Public API
+publicAPIPort: 8000
+
+# TODO: Pass via env var
+allowedOrigin: http://grouphouse.io
+
+# GRPC
+grpcName: grpc
+grpcPort: 8001
+
+# API Store
+psqlMaxConns: 40
+psqlDriver: postgres
+psqlPort: 5432
+psqlUser: postgres-user
+psqlPassword: secret # TODO: move to secrets
+psqlName: postgresdb
+psqlMigraterTableName: public-api
+psqlMigrationPath: ./migrations
