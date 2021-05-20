@@ -6,19 +6,18 @@ dnsServiceAccount: external-dns
 domain: grouphouse.io
 
 # Public API
-publicAPIPort: 8000
-
-# TODO: Pass via env var
+publicAPIPort: 8000 # NOTE: Must update this value manually in web-frontend/Dockerfile when changed
 allowedOrigin: http://grouphouse.io
 
 # GRPC
 grpcName: grpc
 grpcPort: 8001
+grpcAddress: :8001
 
 # API Store
-psqlMaxConns: 40
-psqlDriver: postgres
 psqlPort: 5432
+psqlPortString: "'5432'" # k8s doesn't like integer environment variables :-(
+psqlDriver: postgres
 psqlUser: postgres-user
 psqlPassword: secret # TODO: move to secrets
 psqlName: postgresdb

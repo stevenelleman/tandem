@@ -46,8 +46,3 @@ spec:
             - --txt-prefix=txt. #https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#im-using-an-elb-with-txt-registry-but-the-cname-record-clashes-with-the-txt-record-how-to-avoid-this
             - --interval=15s
             - --log-level=debug
-          securityContext:
-            # Sources:
-            # https://peiruwang.medium.com/eks-exposing-service-with-external-dns-3be8facc73b9
-            # https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/security-context.md
-            fsGroup: 65534 # For ExternalDNS to be able to read Kubernetes and AWS token files

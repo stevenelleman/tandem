@@ -41,7 +41,6 @@ spec:
               value: {{ .Values.allowedOrigin }}
             - name: PUBLIC_API_ADDRESS
               value: :{{ .Values.publicAPIPort }}
-
 ---
 apiVersion: v1
 kind: Service

@@ -16,7 +16,7 @@ grpcAddress: :8001
 
 # API Store
 psqlPort: 5432
-psqlPortString: "'5432'" # k8s doesn't like integer environment variables
+psqlPortString: "'5432'" # k8s doesn't like integer environment variables :-(
 psqlDriver: postgres
 psqlUser: postgres-user
 psqlPassword: secret # TODO: move to secrets

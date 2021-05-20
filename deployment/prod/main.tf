@@ -12,13 +12,12 @@ provider "aws" {
   shared_credentials_file = var.credential_source
 }
 
-provider "kubectl" {
-  # An attempt to retry on localhost error as per recommended here: https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1280#issuecomment-810533105
-  apply_retry_count = 15
-  host                   = data.aws_eks_cluster.cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
-  token                  = data.aws_eks_cluster_auth.cluster.token
-  load_config_file       = false
+provider "helm" {
+  kubernetes {
+    host = data.aws_eks_cluster.cluster.endpoint
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+    token = data.aws_eks_cluster_auth.cluster.token
+  }
 }
 
 provider "kubernetes" {
@@ -92,40 +91,23 @@ module "eks" {
 # Deploy services
 variable "services" {
   description = "Service names"
-  # default = ["api-store", "grpc", "public-api", "web-frontend", "external-dns"]
-  # default = ["grpc", "public-api", "web-frontend", "external-dns"]
-  default = ["web-frontend", "external-dns"]
-  # default = ["web-frontend"]
+  default = ["api-store", "grpc", "public-api", "web-frontend", "external-dns"]
 }
 
-# Loop over services to load per-service yaml manifests
-data "kubectl_file_documents" "manifest" {
+variable "relativeChartPath" {
+  default = "../../charts"
+}
+
+resource "helm_release" "helm-releases" {
   count = length(var.services)
-  content = file("../../services/${var.services[count.index]}/k8s.yaml")
-}
-
-# Merge service resources from manifests
-locals {
-  resources = flatten([
-  for svc in data.kubectl_file_documents.manifest  : [
-    svc.documents
-  ]
-  ])
-}
-
-# Run each yaml resource
-resource "kubectl_manifest" "resources" {
+  name = var.services[count.index]
 
   # Ensure service account exists before attempted deployment of external-dns
   depends_on = [kubernetes_service_account.external-dns]
 
-  count = length(local.resources)
-  yaml_body = element(local.resources, count.index)
-}
+  values = [
+    file("${var.relativeChartPath}/values-prod.yaml")
+  ]
 
-# Load secrets
-/*
-resource "kubectl_manifest" "env-vars" {
-  yaml_body = file("../../env/prod.yaml")
+  chart = "${var.relativeChartPath}/${var.services[count.index]}"
 }
-*/
