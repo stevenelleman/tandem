@@ -1,24 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"github.com/shell/libraries/golang/datastore/migrater"
-	"github.com/shell/libraries/golang/guts/connection/service/psql_conn"
-	"github.com/shell/libraries/golang/guts/connection/service/sg_conn"
-	"github.com/shell/libraries/golang/guts/handlers"
-	"github.com/shell/services/public-api/constants"
-	"github.com/shell/services/public-api/mapper"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/shell/libraries/golang/guts/handlers"
+	"os"
+	"github.com/shell/services/public-api/args"
 )
 
-// TODO: Use same structure in sg service, but a grpc router instead of a rest one
-// 	Followed by handler which returns controller object into a specific interface, controller object will be dependent on data stores
-// 	and other connected services
 func main() {
-	// Pass in target IP of Public API service. Localhost for individually run, 172.17.0.2 for container
 	host := os.Args[1]
 	if host == "" {
 		panic("Host not defined")
@@ -27,28 +17,10 @@ func main() {
 	if store == "" {
 		panic("Store not defined")
 	}
+
 	// Store host set to api-store
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
-
-	migraterArgs := migrater.MakeArgs(
-		constants.APIStoreDriver,
-		constants.APIStoreMigraterTableName,
-		constants.APIStoreMigrationPath,
-	)
-
-	psqlArgs := psql_conn.MakeArgs(
-		constants.APIStoreDriver,
-		store,
-		constants.APIStoreUser,
-		constants.APIStorePassword,
-		constants.APIStoreName,
-		constants.APIStorePort,
-		constants.MaxConns,
-		migraterArgs,
-		mapper.MapTables,
-	)
-
-	sgArgs := sg_conn.MakeArgs(constants.SGServiceAddress)
+	psqlArgs, sgArgs := args.MakeArgsFromEnv(store)
 
 	h := handlers.NewPublicAPIHandler(psqlArgs, sgArgs)
 	defer h.PublicAPIClose()
@@ -64,11 +36,7 @@ func main() {
 	router.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
-			// TODO: Must change origin
-			isLocal := origin == constants.LocalWebFrontendHost
-			isContainer := origin == constants.DockerComposeHost
-			isTilt := origin == constants.TiltHost
-			return isLocal || isContainer || isTilt
+			return origin == os.Getenv("ALLOWED_ORIGIN")
 		},
 	}))
 
@@ -79,6 +47,5 @@ func main() {
 	v1.PUT("/silos/:silo_id", h.UpdateSilo)
 	v1.DELETE("/silos/:silo_id", h.DeleteSilo)
 
-	origin := fmt.Sprintf(":%d", constants.PublicAPIPort)
-	router.Run(origin) // Public API IP:Port
+	router.Run(os.Getenv("PUBLIC_API_ADDRESS")) // Public API IP:Port
 }

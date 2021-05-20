@@ -75,7 +75,7 @@ github.com/shell/libraries/golang/guts/handlers
 github.com/shell/libraries/golang/guts/models
 github.com/shell/libraries/golang/pb/sg
 # github.com/shell/services/public-api v0.0.0 => ./
-github.com/shell/services/public-api/constants
+github.com/shell/services/public-api/args
 github.com/shell/services/public-api/mapper
 # github.com/sirupsen/logrus v1.4.2
 github.com/sirupsen/logrus

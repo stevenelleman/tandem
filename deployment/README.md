@@ -1,56 +1,53 @@
-# Deploy 
+# AWS Terraform Deployment 
 
-## Setup 
-1. (For intellij) Download the Hashicorp Terraform Plugin and restart the IDE.
-2. For macOS, install `terraform` CLI with `brew install terraform`. For other OSes download and install [`terraform` CLI](https://www.terraform.io/downloads.html). This tool will be used for executing terraform locally.
-3. Download and install [`aws-cli`](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html). This tool will be used for executing terraform files on an associated AWS account.
-4. In [AWS security credential console](https://console.aws.amazon.com/iam/home#/security_credentials) navigate to access keys and generate a new access key.
-5. Locally create a `credentials` file, the default location is `$HOME/.aws/credentials`.
- ```
-sudo vim ~/.aws/credentials
-```
-The format of the file should be as follows: 
-```
-[${profilename, set to default}]
-aws_access_key_id=${key id from console}
-aws_secret_access_key=${secret key from console}
-```
-Where `${...}` indicates a variable. Other info can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
-6. Run `terraform plan`. If everything has been set up properly, the call should be successful.
-7. Run `terraform apply` to spin up updated web service.
+# Setup: 
+1. Change local `project_name` variable in `var.tf` to your project. 
+2. Run `terraform init` to download providers. 
 
-## Organization 
-Deploying services requires several distinct steps: 
-1. Defining a domain specific variables in `./env` (which is intentionally not committed to github)
-2. Local images will be automatically rebuilt for each service with a Dockerfile here: `hub.docker.com/repository/docker/selleman/web-microservice-shell/builds`  
-3.. deploying services on cloud provider using terraform (AWS with EKS). 
+## Overview 
 
-## Environment Variables 
-Located in `./env` there are three files, `shared.yaml` for shared variables, and `dev.yaml` and `prod.yaml` for environment-specific variables. 
+Currently web-frontend and external-dns work. This is the setup for how to deploy it. 
 
-Sample `shared.yaml`:
+https://www.freecodecamp.org/news/how-to-setup-dns-for-a-website-using-kubernetes-eks-and-nginx/ was immensely helpful for figuring out the issue. 
+https://dzone.com/articles/how-to-use-aws-iam-role-on-aws-eks-pods
+
+## New Deployment 
+
 ```
-apiVersion: v1
-kind: Secret
-metadata:
-  name: shared-env-vars
-type: Opaque
-data:
-  aws-access-key-id: < base64-encoded value >
-  aws-secret-access-key: < base64-encoded value >
+terraform plan 
+
+terraform apply
+
+aws eks --region=us-west-1 update-kubeconfig --name=${cluster name}
 ```
 
-Sample `dev.yaml` / `prod.yaml`: 
-```
-apiVersion: v1
-kind: Secret
-metadata:
-  name: env-vars
-type: Opaque
-data:
-  aws-hosted-zone-id: < base64-encoded value >
-  domain-filter: < base64-encoded value >
-```
+## Old Deployment
+1. Run `terraform apply` w/o `external-dns` service (i.e. remove from service list in `main.tf`). 
+Note the cluster name. 
 
-## Tips
-- `TF_LOG=debug terraform plan` is your best friend.
+2. Updated kubectl for new cluster: `eksctl get cluster --region=us-west-1` and `aws eks --region=us-west-1 update-kubeconfig --name=<new cluster>`.
+
+2. After completion, make iam policy: 
+```
+aws iam create-policy \
+  --policy-name AllowExternalDNSUpdates \
+  --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["route53:ChangeResourceRecordSets"],"Resource":["arn:aws:route53:::hostedzone/*"]},{"Effect":"Allow","Action":["route53:ListHostedZones","route53:ListResourceRecordSets"],"Resource":["*"]}]}'
+```
+Note the created policy arn. 
+
+3. Make iam service account associated with the new iam policy: 
+```
+eksctl create iamserviceaccount --cluster=your-cluster-name --name=external-dns --namespace=default --attach-policy-arn=arn:aws:iam::123456789:policy/AllowExternalDNSUpdates
+```
+This command will generate a new iam role with a name like: `arn:aws:iam::123456789:role/eksctl-grouphouse-eks-6oHtMVpZ-addon-iamserv-Role1-1R0SEFHJ8Z7PN`. Note it for later. 
+
+4. Attach generated iam role name to external-dns service account `eks.amazonaws.com/role-arn`. 
+
+5. Uncomment out `external-dns` service in `main.tf` and deploy the associated resources. 
+
+Done! 
+
+## What's Next 
+
+The crux of the issue is getting the generated role-arn to associate with the `external-dns` service account. This generated role has special selection conditions for when to apply the new iam policy, such as: 
+```system:serviceaccount:default:external-dns``` is designated a trusted entity. 

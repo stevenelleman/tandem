@@ -1,0 +1,39 @@
+---
+# TODO: Simplify -- lots of details can be eliminated
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.grpcName }}
+  labels:
+    app: {{ .Values.grpcName }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.grpcName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.grpcName }}
+    spec:
+      containers:
+        - name: {{ .Values.grpcName }}
+          image: docker.io/selleman/web-microservice-shell_grpc:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.grpcPort }}
+          env:
+            - name: GRPC_ADDRESS
+              value: {{ .Values.grpcAddress }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.grpcName }}
+  labels:
+    app: {{ .Values.grpcName }}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: {{ .Values.grpcPort }}
+  selector:
+    app: {{ .Values.grpcName }}

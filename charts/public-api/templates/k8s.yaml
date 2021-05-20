@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: public-api
+  labels:
+    app: public-api
+spec:
+  selector:
+    matchLabels:
+      app: public-api
+  template:
+    metadata:
+      labels:
+        app: public-api
+    spec:
+      containers:
+        - name: public-api
+          image: docker.io/selleman/web-microservice-shell_public-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.publicAPIPort }}
+          env:
+            - name: PSQL_PORT
+              value: {{ .Values.psqlPortString }}
+            - name: PSQL_DRIVER
+              value: {{ .Values.psqlDriver }}
+            - name: PSQL_USER
+              value: {{ .Values.psqlUser }}
+            - name: PSQL_SECRET
+              value: {{ .Values.psqlPassword }}
+            - name: PSQL_NAME
+              value: {{ .Values.psqlName }}
+            - name: PSQL_MIGRATER_TABLE_NAME
+              value: {{ .Values.psqlMigraterTableName }}
+            - name: PSQL_MIGRATION_PATH
+              value: {{ .Values.psqlMigrationPath }}
+            - name: GPRC_ADDRESS
+              value: {{ .Values.grpcName }}{{ .Values.grpcAddress }}
+            - name: ALLOWED_ORIGIN
+              value: {{ .Values.allowedOrigin }}
+            - name: PUBLIC_API_ADDRESS
+              value: :{{ .Values.publicAPIPort }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-api
+  labels:
+    app: public-api
+spec:
+  type: LoadBalancer
+  ports:
+    - port: {{ .Values.publicAPIPort }}
+  selector:
+    app: public-api
