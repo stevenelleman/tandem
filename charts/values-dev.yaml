@@ -6,8 +6,7 @@ devMode: true
 domain: staging.grouphouse.io
 
 # Public API
-publicAPIPort: 8000
-publicAPIPortString: :8000
+publicAPIPort: 8000 # NOTE: Must update this value manually in web-frontend/Dockerfile when changed
 allowedOrigin: http://staging.grouphouse.io
 
 # GRPC

@@ -12,13 +12,11 @@ import { isValidUrl } from '../utils';
 
 export class Client {
   protocol: string;
-  origin: string;
-  port: number;
+  host: string;
 
-  constructor(protocol: string, origin: string, port:number) {
+  constructor(protocol: string, host: string) {
     this.protocol = protocol;
-    this.origin = origin;
-    this.port = port
+    this.host = host;
     // TODO: include cookies when instantiated.
   }
 
@@ -33,7 +31,7 @@ export class Client {
   //  - Better stateHandler type
   //  - Pass in a generic error action in App
   public request(verb: string, route: string, args: any, opts: any, stateHandler: any, errorHandler: any) {
-    const url = `${this.protocol}://${this.origin}:${this.port}/${route}`;
+    const url = `${this.protocol}://${this.host}/${route}`;
     if (!isValidUrl(url)) {
       return Client.emitError(`invalid url: ${url}`);
     }

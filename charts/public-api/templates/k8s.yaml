@@ -40,7 +40,7 @@ spec:
             - name: ALLOWED_ORIGIN
               value: {{ .Values.allowedOrigin }}
             - name: PUBLIC_API_ADDRESS
-              value: {{ .Values.publicAPIPortString }}
+              value: :{{ .Values.publicAPIPort }}
 
 ---
 apiVersion: v1
