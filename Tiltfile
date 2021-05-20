@@ -24,9 +24,11 @@ environment = 'dev'
 yamls = ['./deployment/env/{src}.yaml'.format(src = s) for s in [environment, 'shared']]
 k8s_yaml(yamls)
 
-# 3. Load k8s Resource yamls
-yamls = ['./services/{svc}/k8s.yaml'.format(svc = s) for s in services.keys()]
-k8s_yaml(yamls)
+# 3. Load k8s Resource charts
+# Get values from: https://docs.tilt.dev/helm.html
+yamls = ['./charts/{svc}/'.format(svc = s) for s in services.keys()]
+for svc in yamls:
+    k8s_yaml(helm(svc))
 
 # 4. Create k8s Resources (w/ Dependencies)
 k8s_resource('api-store')
