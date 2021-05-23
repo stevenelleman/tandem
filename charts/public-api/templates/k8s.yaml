@@ -1,4 +1,19 @@
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-api
+  labels:
+    app: public-api
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.publicAPIPort }}
+      protocol: TCP
+      targetPort: {{ .Values.publicAPIPort }}
+  selector:
+    app: public-api
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -41,16 +56,3 @@ spec:
               value: {{ .Values.allowedOrigin }}
             - name: PUBLIC_API_ADDRESS
               value: :{{ .Values.publicAPIPort }}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: public-api
-  labels:
-    app: public-api
-spec:
-  type: LoadBalancer
-  ports:
-    - port: {{ .Values.publicAPIPort }}
-  selector:
-    app: public-api

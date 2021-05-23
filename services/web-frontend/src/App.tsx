@@ -20,8 +20,7 @@ class App extends React.Component<any, StateType> {
   constructor(props: any) {
     super(props);
     // React App will only recognize environment variables with `REACT_APP_` prefix
-    const port = process.env.REACT_APP_API_PORT || ":8000";
-    const host = `${window.location.hostname}${port}`;
+    const host = `${window.location.hostname}`;
     const protocol = "http";
     this.state = {
       client: new Client(protocol, host),

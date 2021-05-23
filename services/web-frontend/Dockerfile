@@ -6,9 +6,7 @@ COPY package*.json /app/
 RUN yarn install
 COPY ./ /app/
 
-# NOTE: This is the single value that must be updated.
-# process.env does not include container environment variables :-(
-RUN REACT_APP_API_PORT=":8000" yarn run build
+RUN yarn run build
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.18

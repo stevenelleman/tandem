@@ -11,11 +11,9 @@
 - Maximize code reuse, minimize service directory size and complexity
 
 ## Development Setup
-Run `tilt up` 
+[Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. 
 
-and navigate to `localhost` (no port).
-
-You can also run the services via `docker-compose up`, individually via dockerfile, or in terminal.
+Run `tilt up` and navigate to `staging.grouphouse.io`.
 
 ## AWS Deployment
 [Deployment Docs](./deployment/README.md)
