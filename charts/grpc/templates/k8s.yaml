@@ -32,7 +32,7 @@ metadata:
   labels:
     app: {{ .Values.grpcName }}
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: {{ .Values.grpcPort }}
   selector:
