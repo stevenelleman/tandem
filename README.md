@@ -38,7 +38,7 @@ Run `tilt up` and navigate to `staging.grouphouse.io`.
 
 ## Docs
 - [TODO](./TODO.md)
-- [Libraries](./libraries/golang/README.md)
+- [Libraries](libraries/golang/README.md)
 - [Service Deployment](deployment/website/README.md)
 
 ## Tips

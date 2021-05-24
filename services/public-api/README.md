@@ -40,7 +40,7 @@ Useful Curl Commands:
 
 ## Layers 
 
-[API](./api) -request-> [Handler](../../libraries/golang/guts/handlers) -req-> [Controller](../../libraries/golang/guts/controller) -req-> [DBI](../../libraries/golang/guts/connection) -req-> [DB](../../libraries/golang/guts/connection/service/psql_conn/db) 
+[API](./api) -request-> [Handler](../../libraries/golang/layering/handler) -req-> [Controller](../../libraries/golang/layering/controller) -req-> [DBI](../../libraries/golang/layering/query) -req-> [DB](../../libraries/golang/layering/query/psql_conn/db) 
 
 API <-resp- Handlers <-resp- Controllers <-resp- DBI <-resp- DB
 
