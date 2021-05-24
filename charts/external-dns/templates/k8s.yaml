@@ -90,4 +90,4 @@ spec:
             - --txt-owner-id={{ .Values.domain }}
             - --txt-prefix=txt. #https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#im-using-an-elb-with-txt-registry-but-the-cname-record-clashes-with-the-txt-record-how-to-avoid-this
             - --interval=15s
-            - --log-level=debug
+            # - --log-level=debug
