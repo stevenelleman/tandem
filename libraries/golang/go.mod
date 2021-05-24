@@ -1,7 +1,7 @@
 // Note: Use full path to ensure GOPATH is correct
 module web.microservice.shell/libraries/golang
 
-go 1.13
+go 1.16
 
 require (
 	github.com/Masterminds/squirrel v1.4.0

@@ -1,7 +1,7 @@
 // Note: Use full path to ensure GOPATH is correct
 module web.microservice.shell/services/grpc-service
 
-go 1.13
+go 1.16
 
 require (
 	github.com/shell/libraries/golang v0.0.0
