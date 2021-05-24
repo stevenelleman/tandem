@@ -8,14 +8,16 @@ spec:
   selector:
       app: web-frontend
   ports:
-    - port: 80
+    - port: 443
       protocol: TCP
-      targetPort: 80
+      targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-frontend
+  labels:
+    app: web-frontend
 spec:
   replicas: 1
   selector:
@@ -40,9 +42,9 @@ spec:
           image: docker.io/selleman/web-microservice-shell_web-frontend:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
-              name: http
-          # readinessProbe:
-          #  httpGet:
+            - name: web-frontend
+              containerPort: 8080
+          # livenessProbe:
+          #   httpGet:
           #    path: /
-          #    port: 80
+          #    port: 8080
