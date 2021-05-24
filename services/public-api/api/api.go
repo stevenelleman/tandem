@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/shell/libraries/golang/guts/handlers"
-	"github.com/shell/services/public-api/args"
+	"web.microservice.shell/libraries/golang/layering/handler"
+	"web.microservice.shell/services/public-api/args"
 	"os"
 )
 
@@ -21,7 +21,7 @@ func main() {
 	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
 	psqlArgs, sgArgs := args.MakeArgsFromEnv(store)
 
-	h := handlers.NewPublicAPIHandler(psqlArgs, sgArgs)
+	h := handler.NewPublicAPIHandler(psqlArgs, sgArgs)
 	defer h.PublicAPIClose()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.

@@ -64,17 +64,6 @@ github.com/modern-go/reflect2
 # github.com/rubenv/sql-migrate v0.0.0-20200616145509-8d140a17f351
 github.com/rubenv/sql-migrate
 github.com/rubenv/sql-migrate/sqlparse
-# github.com/shell/libraries/golang v0.0.0 => ../../libraries/golang
-github.com/shell/libraries/golang/datastore/migrater
-github.com/shell/libraries/golang/guts/connection/service/psql_conn
-github.com/shell/libraries/golang/guts/connection/service/sg_conn
-github.com/shell/libraries/golang/guts/controller
-github.com/shell/libraries/golang/guts/handlers
-github.com/shell/libraries/golang/guts/models
-github.com/shell/libraries/golang/pb/sg
-# github.com/shell/services/public-api v0.0.0 => ./
-github.com/shell/services/public-api/args
-github.com/shell/services/public-api/mapper
 # github.com/sirupsen/logrus v1.4.2
 github.com/sirupsen/logrus
 # github.com/ugorji/go/codec v1.1.7
@@ -175,3 +164,11 @@ gopkg.in/gorp.v1
 gopkg.in/gorp.v2
 # gopkg.in/yaml.v2 v2.2.8
 gopkg.in/yaml.v2
+# web.microservice.shell/libraries/golang v0.0.0 => ../../libraries/golang
+web.microservice.shell/libraries/golang/datastore/migrater
+web.microservice.shell/libraries/golang/layering/controller
+web.microservice.shell/libraries/golang/layering/handler
+web.microservice.shell/libraries/golang/layering/models
+web.microservice.shell/libraries/golang/layering/query/psql_conn
+web.microservice.shell/libraries/golang/layering/query/sg_conn
+web.microservice.shell/libraries/golang/pb/sg
