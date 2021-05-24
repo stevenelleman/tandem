@@ -17,10 +17,7 @@ func main() {
 		panic("Store not defined")
 	}
 
-	// Store host set to api-store
-	// TODO: Re-use in other golang services -- all it should take is passing in store info and it should work
 	psqlArgs, sgArgs := args.MakeArgsFromEnv(store)
-
 	h := handler.NewPublicAPIHandler(psqlArgs, sgArgs)
 	defer h.PublicAPIClose()
 
