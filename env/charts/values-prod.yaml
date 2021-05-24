@@ -1,13 +1,15 @@
+email: steven.elleman@gmail.com
+
 # External DNS
 domainFilter: grouphouse.io
-devMode: true
+dnsServiceAccount: external-dns
 
 # Web Frontend
-domain: staging.grouphouse.io
+domain: grouphouse.io
 
 # Public API
 publicAPIPort: 8000 # NOTE: Must update this value manually in web-frontend/Dockerfile when changed
-allowedOrigin: http://staging.grouphouse.io
+allowedOrigin: http://grouphouse.io
 
 # GRPC
 grpcName: grpc

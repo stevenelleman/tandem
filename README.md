@@ -20,7 +20,7 @@ Run `tilt up` and navigate to `staging.grouphouse.io`.
 
 1. Navigate to `./deployment`
 2. Run `terraform init` to download providers.
-3. `TF_LOG=debug terraform plan`
+3. `terraform plan`
 4. `terraform apply`
 5. Update kubectl config: `aws eks --region=us-west-1 update-kubeconfig --name=${cluster name}`
 
@@ -40,3 +40,6 @@ Run `tilt up` and navigate to `staging.grouphouse.io`.
 - [TODO](./TODO.md)
 - [Libraries](./libraries/golang/README.md)
 - [Service Deployment](deployment/website/README.md)
+
+## Tips
+- `TF_LOG=debug terraform plan` is very handy.

@@ -106,7 +106,7 @@ resource "helm_release" "helm-releases" {
   depends_on = [kubernetes_service_account.external-dns]
 
   values = [
-    file("${var.relativeChartPath}/values-prod.yaml")
+    file("..env/charts/values-prod.yaml")
   ]
 
   chart = "${var.relativeChartPath}/${var.services[count.index]}"

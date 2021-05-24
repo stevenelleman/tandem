@@ -13,6 +13,7 @@ kubeconfig
 
 # Secrets
 credentials
+sensitive
 
 # Environment variables
 dev.yaml

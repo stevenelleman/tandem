@@ -1,11 +1,10 @@
 package main
 
 import (
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/shell/libraries/golang/guts/handlers"
-	"os"
 	"github.com/shell/services/public-api/args"
+	"os"
 )
 
 func main() {
@@ -33,13 +32,6 @@ func main() {
 	//	And confirm an overlap
 
 	router := gin.Default()
-	router.Use(cors.New(cors.Config{
-		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-			return origin == os.Getenv("ALLOWED_ORIGIN")
-		},
-	}))
-
 	v1 := router.Group("/v1")
 	v1.GET("/silos", h.ListSilos)
 	v1.GET("/silos/:silo_id", h.GetSilo)
