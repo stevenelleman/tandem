@@ -13,7 +13,6 @@ require (
 	github.com/lib/pq v1.2.0
 	github.com/poy/onpar v1.1.2 // indirect
 	github.com/rubenv/sql-migrate v0.0.0-20200616145509-8d140a17f351
-
 	google.golang.org/grpc v1.32.0
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/gorp.v2 v2.2.0
