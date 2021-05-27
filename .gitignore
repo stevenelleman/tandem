@@ -5,6 +5,9 @@
 .iml
 *.sublime-workspace
 
+# Golang
+vendor
+
 # Terraform
 .terraform*
 terraform.tfstate*
@@ -19,3 +22,5 @@ sensitive
 dev.yaml
 prod.yaml
 shared.yaml
+
+
