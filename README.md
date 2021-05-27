@@ -11,8 +11,8 @@
 - Maximize code reuse, minimize service directory size and complexity
 
 ## Development Setup
-[Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. 
-
+[Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. s
+Run `make vendor-all`.
 Run `tilt up` and navigate to `staging.grouphouse.io`.
 
 ## AWS Deployment
