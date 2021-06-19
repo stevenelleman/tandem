@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"web.microservice.shell/libraries/golang/layering/handler"
+	"web.microservice.shell/libraries/golang/layering/handler/psql_sg_handler"
 	"web.microservice.shell/services/public-api/args"
 	"os"
 )
@@ -18,7 +18,7 @@ func main() {
 	}
 
 	psqlArgs, sgArgs := args.MakeArgsFromEnv(store)
-	h := handler.NewPublicAPIHandler(psqlArgs, sgArgs)
+	h := psql_sg_handler.NewPublicAPIHandler(psqlArgs, sgArgs)
 	defer h.PublicAPIClose()
 
 	// TODO: need authz middleware to convert cookie into faceted identity list.

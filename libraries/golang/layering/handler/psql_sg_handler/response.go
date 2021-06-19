@@ -1,4 +1,4 @@
-package handler
+package psql_sg_handler
 
 import (
 	"log"

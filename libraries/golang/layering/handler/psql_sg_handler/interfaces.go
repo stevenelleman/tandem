@@ -1,7 +1,7 @@
-package handler
+package psql_sg_handler
 
 import (
-	"web.microservice.shell/libraries/golang/layering/controller"
+	"web.microservice.shell/libraries/golang/layering/controller/psql_sg_controller"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,7 +12,7 @@ type PublicAPIHandler interface {
 	PublicAPIClose()
 
 	// Should be the Controller specific to PublicAPI and used in methods
-	PublicAPIController() controller.PublicAPIController
+	PublicAPIController() psql_sg_controller.PublicAPIController
 
 	ListSilos(ctx *gin.Context)
 	GetSilo(ctx *gin.Context)
