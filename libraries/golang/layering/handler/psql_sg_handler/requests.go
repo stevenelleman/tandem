@@ -1,4 +1,4 @@
-package handler
+package psql_sg_handler
 
 // Note: The attribute field must be capitalized, otherwise it's private to BindJSON
 type createSiloReq struct {

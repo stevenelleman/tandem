@@ -1,4 +1,4 @@
-package controller
+package psql_sg_controller
 
 import (
 	"web.microservice.shell/libraries/golang/layering/models"
