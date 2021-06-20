@@ -18,15 +18,8 @@ func main() {
 	}
 
 	psqlArgs, sgArgs := args.MakeArgsFromEnv(store)
-	h := psql_sg_handler.NewPublicAPIHandler(psqlArgs, sgArgs)
-	defer h.PublicAPIClose()
-
-	// TODO: need authz middleware to convert cookie into faceted identity list.
-	// 	The faceted identity will be associated with a list of silos
-	// 	One or more FIs must belong to the subject silo
-	//	One or more Silos must belong to the subject forum
-	//	How to avoid leakage? Only want to grab relevant FI, not everything. Pass in FI list and subject forum/silo
-	//	And confirm an overlap
+	h := psql_sg_handler.NewHandler(psqlArgs, sgArgs)
+	defer h.Close()
 
 	router := gin.Default()
 	v1 := router.Group("/v1")
