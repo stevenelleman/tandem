@@ -6,9 +6,9 @@ import (
 	"web.microservice.shell/libraries/golang/layering/query/sg_conn"
 )
 
-func NewPublicAPIHandler(psqlArgs *psql_conn.StoreArgs, sgArgs *sg_conn.StoreArgs) PublicAPIHandler {
+func NewHandler(psqlArgs *psql_conn.StoreArgs, sgArgs *sg_conn.StoreArgs) *Handler {
 	cf := psql_sg_controller.NewControllerFactory(psqlArgs, sgArgs)
-	return &BaseHandler{
+	return &Handler{
 		controller: cf.Controller(),
 	}
 }

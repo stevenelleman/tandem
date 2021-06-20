@@ -76,7 +76,6 @@ func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
 	qb := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// Apply database migrations on Public-API Datastore
-	// TODO: Move outside of factory -- does not need to be run every time a new connection is initialized
 	m := migrater.MakeMigrater(args.migraterArgs)
 	count, err := m.Up(conn)
 	if err != nil {
@@ -94,6 +93,9 @@ func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
 	return cf
 }
 
+// Note: in the future if a subset of methods can be reused make a separate interface for them and move them out into a separate library,
+//	then compose them into the final connection type interface to reuse the logic. The same pattern goes for controller and handler levels.
+//	In the future I can forsee this kind of reuseability applying to profile / auth logic
 func (f *PsqlConnectionFactory) Connection() *PsqlConnection {
 	return &PsqlConnection{
 		db: f.db,

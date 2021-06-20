@@ -4,19 +4,15 @@ import (
 	"web.microservice.shell/libraries/golang/layering/controller/psql_sg_controller"
 )
 
-type BaseHandler struct {
-	controller *psql_sg_controller.BaseController
+type Handler struct {
+	controller *psql_sg_controller.Controller
 }
 
-func (h *BaseHandler) PublicAPIController() psql_sg_controller.PublicAPIController {
+func (h *Handler) Controller() *psql_sg_controller.Controller {
 	return h.controller
 }
 
-func (h *BaseHandler) Controller() *psql_sg_controller.BaseController {
-	return h.controller
-}
-
-func (c BaseHandler) PublicAPIClose() {
+func (c Handler) Close() {
 	c.controller.PsqlClose()
 	c.controller.SgClose()
 }

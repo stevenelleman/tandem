@@ -6,15 +6,15 @@ import (
 )
 
 // Has all connection types and all methods, interface layer between datastores
-type BaseController struct {
+type Controller struct {
 	psqlConn *psql_conn.PsqlConnection
 	sgConn   *sg_conn.SgConnection
 }
 
-func (c *BaseController) PsqlClose() {
+func (c *Controller) PsqlClose() {
 	c.psqlConn.Close()
 }
 
-func (c *BaseController) SgClose() {
+func (c *Controller) SgClose() {
 	c.sgConn.Close()
 }

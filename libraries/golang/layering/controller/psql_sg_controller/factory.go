@@ -10,8 +10,6 @@ type ControllerFactory struct {
 	sgConnFactory   *sg_conn.SgConnectionFactory
 }
 
-// I like the idea of passing in and instantiating all connections but empty args will simply return empty object
-// that way the Controller() for BaseController will still work, but the connection may not be live
 func NewControllerFactory(psqlArgs *psql_conn.StoreArgs, sgArgs *sg_conn.StoreArgs) *ControllerFactory {
 	cf := &ControllerFactory{}
 	cf.psqlConnFactory = psql_conn.NewPsqlConnFactory(psqlArgs)
@@ -19,14 +17,9 @@ func NewControllerFactory(psqlArgs *psql_conn.StoreArgs, sgArgs *sg_conn.StoreAr
 	return cf
 }
 
-// TODO: Down the line may need to remove this -- not sure as there are more data store relationships
-func (f *ControllerFactory) Controller() *BaseController {
-	return &BaseController{
+func (f *ControllerFactory) Controller() *Controller {
+	return &Controller{
 		psqlConn: f.psqlConnFactory.Connection(),
 		sgConn:   f.sgConnFactory.Connection(),
 	}
-}
-
-func (f *ControllerFactory) PublicAPIController() PublicAPIController {
-	return f.Controller()
 }
