@@ -6,8 +6,8 @@ import (
 	"web.microservice.shell/libraries/golang/layering/models"
 )
 
-func (h *BaseHandler) ListSilos(ctx *gin.Context) {
-	silos, err := h.PublicAPIController().ListSilos(ctx)
+func (h *Handler) ListSilos(ctx *gin.Context) {
+	silos, err := h.Controller().ListSilos(ctx)
 	if err != nil {
 		// TODO: Someone is going to forget to put the return statement - how to refactor to avoid?
 		ReturnError(ctx, 400, err)
@@ -16,9 +16,9 @@ func (h *BaseHandler) ListSilos(ctx *gin.Context) {
 	}
 }
 
-func (h *BaseHandler) GetSilo(ctx *gin.Context) {
+func (h *Handler) GetSilo(ctx *gin.Context) {
 	id := ctx.Param("silo_id")
-	silo, err := h.PublicAPIController().GetSilo(ctx, id)
+	silo, err := h.Controller().GetSilo(ctx, id)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
@@ -26,7 +26,7 @@ func (h *BaseHandler) GetSilo(ctx *gin.Context) {
 	}
 }
 
-func (h *BaseHandler) CreateSilo(ctx *gin.Context) {
+func (h *Handler) CreateSilo(ctx *gin.Context) {
 	// TODO: should the id be in the request rather than the path?
 	id := ctx.Param("silo_id")
 	silo := &models.Silo{
@@ -41,7 +41,7 @@ func (h *BaseHandler) CreateSilo(ctx *gin.Context) {
 		silo.State = req.State
 	}
 
-	err = h.PublicAPIController().CreateSilo(ctx, silo)
+	err = h.Controller().CreateSilo(ctx, silo)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
@@ -49,7 +49,7 @@ func (h *BaseHandler) CreateSilo(ctx *gin.Context) {
 	}
 }
 
-func (h *BaseHandler) UpdateSilo(ctx *gin.Context) {
+func (h *Handler) UpdateSilo(ctx *gin.Context) {
 	id := ctx.Param("silo_id")
 	silo := &models.Silo{
 		Id: id,
@@ -63,7 +63,7 @@ func (h *BaseHandler) UpdateSilo(ctx *gin.Context) {
 		silo.State = req.State
 	}
 
-	err = h.PublicAPIController().UpdateSilo(ctx, silo)
+	err = h.Controller().UpdateSilo(ctx, silo)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
@@ -71,9 +71,9 @@ func (h *BaseHandler) UpdateSilo(ctx *gin.Context) {
 	}
 }
 
-func (h *BaseHandler) DeleteSilo(ctx *gin.Context) {
+func (h *Handler) DeleteSilo(ctx *gin.Context) {
 	id := ctx.Param("silo_id")
-	err := h.PublicAPIController().DeleteSilo(ctx, id)
+	err := h.Controller().DeleteSilo(ctx, id)
 	if err != nil {
 		ReturnError(ctx, 400, err)
 	} else {
