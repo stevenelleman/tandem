@@ -4,9 +4,9 @@ module web.microservice.shell/services/grpc-service
 go 1.16
 
 require (
-	github.com/shell/libraries/golang v0.0.0
 	github.com/stretchr/testify v1.6.1
 	google.golang.org/grpc v1.32.0
+	web.microservice.shell/libraries/golang v0.0.0
 )
 
-replace github.com/shell/libraries/golang v0.0.0 => ../../libraries/golang
+replace web.microservice.shell/libraries/golang v0.0.0 => ../../libraries/golang

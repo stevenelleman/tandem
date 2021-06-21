@@ -13,5 +13,5 @@ COPY . .
 
 EXPOSE 8001
 
-RUN go build -mod=vendor -o main main.go
+RUN go build -mod=vendor -o main ./cmd/main.go
 CMD ["./main"]

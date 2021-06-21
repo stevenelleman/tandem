@@ -12,9 +12,12 @@
 - Maximize code reuse, minimize service directory size and complexity
 
 ## Development Setup
-[Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. s
-Run `make vendor-all`.
-Run `tilt up` and navigate to `staging.grouphouse.io`.
+1. Install [Tilt](https://docs.tilt.dev/install.html) (v0.20.8)
+2. Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) (v3.4.0)
+3. [Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. s
+4. [Apply](https://cert-manager.io/docs/installation/kubernetes/) cert manager.
+5. Run `make vendor-all`.
+6. Run `tilt up` and navigate to `staging.grouphouse.io`.
 
 ## AWS Deployment
 [Deployment Docs](./deployment/README.md)

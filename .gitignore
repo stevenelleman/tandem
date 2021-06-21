@@ -9,6 +9,10 @@
 # Golang
 vendor
 
+# Builds
+builds
+build
+
 # Terraform
 .terraform*
 terraform.tfstate*

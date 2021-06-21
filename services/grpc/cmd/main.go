@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pb "github.com/shell/libraries/golang/pb/sg"
+	pb "web.microservice.shell/libraries/golang/pb/sg"
 	"google.golang.org/grpc"
 	"log"
 	"net"

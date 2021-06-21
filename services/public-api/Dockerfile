@@ -10,9 +10,9 @@ COPY go.sum .
 COPY vendor ./vendor
 
 # Copy migrations
-COPY migrations ./migrations
+COPY internal/migrations ./migrations
 
 COPY . .
 
-RUN go build -mod=vendor -o main ./api/api.go
+RUN go build -mod=vendor -o main ./cmd/main.go
 CMD ["./main", "public-api", "api-store"]

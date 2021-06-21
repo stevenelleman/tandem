@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json /app/
 RUN yarn install
-COPY ./ /app/
+COPY internal /app/
 
 RUN yarn run build
 
@@ -13,4 +13,4 @@ FROM nginx:1.18
 COPY --from=build-stage /app/build/ /usr/share/nginx/html
 
 # Based on the default nginx.conf provided by tiangolo/node-frontend
-COPY /nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY /internal/nginx/default.conf /etc/nginx/conf.d/default.conf

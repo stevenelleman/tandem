@@ -1,22 +1,13 @@
-package main
+package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"web.microservice.shell/libraries/golang/layering/handler/psql_sg_handler"
-	"web.microservice.shell/services/public-api/args"
 	"os"
+	"web.microservice.shell/libraries/golang/layering/handler/psql_sg_handler"
+	"web.microservice.shell/services/public-api/internal/args"
 )
 
-func main() {
-	host := os.Args[1]
-	if host == "" {
-		panic("Host not defined")
-	}
-	store := os.Args[2]
-	if store == "" {
-		panic("Store not defined")
-	}
-
+func Run(store string) {
 	psqlArgs, sgArgs := args.MakeArgsFromEnv(store)
 	h := psql_sg_handler.NewHandler(psqlArgs, sgArgs)
 	defer h.Close()
