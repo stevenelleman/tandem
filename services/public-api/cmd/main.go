@@ -2,7 +2,7 @@ package main
 
 import (
 	"os"
-	"web.microservice.shell/services/public-api/api"
+	"web.microservice.shell/services/public-api/internal/api"
 )
 
 func main() {

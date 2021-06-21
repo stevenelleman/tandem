@@ -7,7 +7,7 @@ import (
 	"web.microservice.shell/libraries/golang/datastore/migrater"
 	"web.microservice.shell/libraries/golang/layering/query/psql_conn"
 	"web.microservice.shell/libraries/golang/layering/query/sg_conn"
-	"web.microservice.shell/services/public-api/mapper"
+	"web.microservice.shell/services/public-api/internal/mapper"
 )
 
 const (

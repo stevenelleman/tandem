@@ -1,2 +1,2 @@
 build:
-	go build -o main ./api/api.go
+	go build -o main ./cmd/main.go

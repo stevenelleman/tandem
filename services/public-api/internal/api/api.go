@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"os"
 	"web.microservice.shell/libraries/golang/layering/handler/psql_sg_handler"
-	"web.microservice.shell/services/public-api/args"
+	"web.microservice.shell/services/public-api/internal/args"
 )
 
 func Run(store string) {
