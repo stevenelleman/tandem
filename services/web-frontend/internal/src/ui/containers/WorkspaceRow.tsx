@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Sidebar } from '../components/reuseable/Sidebar';
 import { Workspace } from '../components/Workspace';
 import { fetchSilosIfNeeded } from '../../redux/actions/silos';
-import { Client } from '../../client';
+import { Client } from 'client';
 import { ReceiveSiloActionType } from '../../types';
 
 // Types

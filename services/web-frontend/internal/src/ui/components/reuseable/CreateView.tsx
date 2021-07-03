@@ -1,5 +1,5 @@
 import React from 'react';
-import { Client } from '../../../client';
+import { Client } from 'client';
 
 // General component for creating objects -- would love to generalize this as much as possible to avoid one-off components
 

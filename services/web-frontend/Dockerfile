@@ -3,7 +3,9 @@ FROM tiangolo/node-frontend:10 as build-stage
 WORKDIR /app
 
 COPY package*.json /app/
-RUN yarn install
+
+# Switched to `RUN yarn install --force` to also include local packages
+RUN yarn install --force
 COPY internal /app/
 
 RUN yarn run build

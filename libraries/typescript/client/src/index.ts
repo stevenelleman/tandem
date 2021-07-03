@@ -2,27 +2,42 @@
 // TODO: setting class-methods-use-this is related to not being able to define fetcher and its caller methods as static
 //  I'm still not sure why I cannot
 
-import {
-  VERB_GET,
-  VERB_POST,
-  VERB_PUT,
-  VERB_DELETE,
-} from './constants';
-import { isValidUrl } from '../utils';
+import { IsValidUrl } from 'utils';
+
+// TODO: Figure out how to export from multiple files
+export const VERB_GET = 'GET';
+export const VERB_POST = 'POST';
+export const VERB_PUT = 'PUT';
+export const VERB_DELETE = 'DELETE';
 
 export class Client {
   protocol: string;
   host: string;
+  port: number | null;
 
-  constructor(protocol: string, host: string) {
+  constructor(protocol: string, host: string, port: number | null) {
     this.protocol = protocol;
     this.host = host;
+    this.port = port;
     // TODO: include cookies when instantiated.
   }
 
-  // TODO: why can I not make this method static?
   private static emitError(msg: string): void {
     console.log(`ERROR: ${msg}`);
+  }
+
+  private origin(): string {
+    var origin = "";
+    if (this.protocol !== "") {
+      origin += `${this.protocol}://`;
+    }
+    if (this.host !== "") {
+      origin += this.host;
+    }
+    if (typeof this.port === "number") {
+      origin += `:${this.port}`;
+    }
+    return origin
   }
 
   // 1. Request API: by design this will be the _one_ method used 90% of the time by the reducers.
@@ -31,12 +46,9 @@ export class Client {
   //  - Better stateHandler type
   //  - Pass in a generic error action in App
   public request(verb: string, route: string, args: any, opts: any, stateHandler: any, errorHandler: any) {
-    var url = `${this.protocol}://${this.host}/${route}`;
-    if (this.protocol === "") {
-      url = `${this.host}/route`;
-    }
+    const url = `${this.origin()}/${route}`;
 
-    if (!isValidUrl(url)) {
+    if (!IsValidUrl(url)) {
       return Client.emitError(`invalid url: ${url}`);
     }
 

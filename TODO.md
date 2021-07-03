@@ -18,7 +18,7 @@ Architecture:
 - [ ] Representing Transformations, Actions, and UI as graph-doc 
 
 K8s/Deployment: 
-- [ ] Separate Development and Staging 
+- [ ] Append `staging.grouphouse.io` with credential username 
 - [ ] Investigate unclean docker containers/images -- how to keep things clean? 
 - [ ] Investigate Kustomize and migrate if preferred to Helm 
 - [ ] Envoy (https://www.envoyproxy.io/)
@@ -29,7 +29,8 @@ Ingress:
 - [ ] 404 on unknown endpoints 
 
 Web-Frontend: 
-- [ ] Move client out to typescript library 
+- [ ] Add jest tests to all typescript packages 
+- [ ] `node-frontend` uses npm rather than yarn, would be nice to keep things consistent
 
 Public-API: 
 - [ ] Retry establishing API-Store connection, or delay slightly 
@@ -67,6 +68,8 @@ Other:
 
 ## Completed
 From most recent to oldest.
+- [x] Move client out to typescript library 
+- [x] Separate Development and Staging 
 - [x] Connection/ConnectionFactory interface [Opted for: shared controller has multiple handlers, controller type is specific to data store combo]
 - [x] Tilt: Convert to using DNS names -- finally connected the web-frontend 
         and public-api by opening public-api -- need to make it private 

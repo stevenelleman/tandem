@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 
 // Import each function separately so specific functions can be imported, rather than everything
-export function isValidUrl(url: string): boolean {
+export function IsValidUrl(url: string): boolean {
   try {
     // Use the URL class to validate the url
     new URL(url);
