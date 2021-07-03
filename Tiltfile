@@ -10,7 +10,7 @@ services = {
     'grpc': True,
     'public-api': True,
     'web-frontend': True,
-    'external-dns': False
+    'ingress': False,
 }
 
 # TODO: change name to match the source directory, local images should take precedence
@@ -32,5 +32,10 @@ k8s_resource('api-store')
 k8s_resource('grpc')
 k8s_resource('public-api', resource_deps=['api-store', 'grpc'])
 k8s_resource('web-frontend', resource_deps=['public-api'])
-k8s_resource('external-dns', resource_deps=['web-frontend'])
+
+# Name notation: https://docs.tilt.dev/tiltfile_concepts.html#kubernetes-object-selectors
+k8s_resource(objects=['public-api-rule:ingress', 'web-frontend-rule:ingress'], new_name='ingress', resource_deps=['web-frontend', 'public-api'])
+
+if mode == 1 or mode == 2:
+    k8s_resource('external-dns', resource_deps=['ingress'])
 
