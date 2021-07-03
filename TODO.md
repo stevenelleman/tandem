@@ -1,35 +1,43 @@
 # TODO 
 
+## Overview 
+These are TODO items for the generic Tandem library 
+
 ## Table of Contents 
 - [Tasks](#todo)
 - [Backlog](#backlog)
 - [Known Unknowns](#known-unknowns)      
 - [Completed](#completed)
 
-Unordered Tasks: 
-- [ ] Fix go mod pathing
+Organization: 
+- [ ] Move TODOs to their given components 
 
 Architecture: 
-- [ ] Connection/ConnectionFactory interface 
-- [ ] Set up graph db source-store 
-    - [ ] Think of pattern for sg service and source-store
-        - [ ] Interface 
-        - [ ] Layering 
-        - [ ] Use-Cases / Requirements 
 - [ ] Where to apply transformations? How to represent? 
     - Would like some kind of function-db where functions are dumbly applied to objects
 - [ ] Representing Transformations, Actions, and UI as graph-doc 
 
-Environment:
-- [ ] Tilt: Convert to using DNS names -- finally connected the web-frontend 
-        and public-api by opening public-api -- need to make it private 
+K8s/Deployment: 
+- [ ] Separate Development and Staging 
+- [ ] Investigate unclean docker containers/images -- how to keep things clean? 
+- [ ] Investigate Kustomize and migrate if preferred to Helm 
 - [ ] Envoy (https://www.envoyproxy.io/)
+- [ ] Per-commit automated deployments 
+
+Ingress: 
+- [ ] Deploy https://kubernetes.github.io/ingress-nginx/deploy/#aws in-code 
+- [ ] 404 on unknown endpoints 
+
+Web-Frontend: 
+- [ ] Move client out to typescript library 
 
 Public-API: 
+- [ ] Retry establishing API-Store connection, or delay slightly 
 - [ ] Health endpoint (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Graceful shutdown (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)
 - [ ] Request JSON-to-Struct Mapping
 - [ ] Authz 
+    - [ ] Auth library (Use Auth0)
     - [ ] Require token with all requests + API calls 
     - [ ] Session object 
 - [ ] Backend Go Linter
@@ -38,11 +46,11 @@ Public-API:
 - [ ] API Service Test Pattern
 - [ ] API Service Error Handling 
 - [ ] API Service Logging
+- [ ] Role:Capabilities:Endpoints Model? (i.e. a single capability can map to many endpoints) 
 
-K8s/Deployment: 
-- [ ] Testing Public Zone for frontend 
-- [ ] Switch to port 443 for frontend 
-- [ ] Per-commit automated deployments 
+API-Store: 
+- [ ] Simply yaml setup, probably should make as independent from k8s as possible. 
+- [ ] Figure out why persistent volume and persistent volume claim are sometimes not created on `tilt up`.
 
 Other: 
 - [ ] Clean up READMEs 
@@ -57,9 +65,14 @@ Other:
 
 ## Known Unknowns
 
-
 ## Completed
 From most recent to oldest.
+- [x] Connection/ConnectionFactory interface [Opted for: shared controller has multiple handlers, controller type is specific to data store combo]
+- [x] Tilt: Convert to using DNS names -- finally connected the web-frontend 
+        and public-api by opening public-api -- need to make it private 
+- [x] Testing Public Zone for frontend 
+- [x] Switch to port 443 for frontend 
+- [x] Fix go mod pathing
 - [x] Cleaner client connection creation 
 - [x] Move Handler-Controller-Connection to libraries 
     need to pass in store information at beginning, if provided then connection is initialized. 

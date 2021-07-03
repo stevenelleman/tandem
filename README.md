@@ -11,13 +11,19 @@
 - As new items come up, add to [TODO](./TODO.md). 
 - Maximize code reuse, minimize service directory size and complexity
 
-## Development Setup
-1. Install [Tilt](https://docs.tilt.dev/install.html) (v0.20.8)
-2. Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) (v3.4.0)
-3. [Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. s
-4. [Apply](https://cert-manager.io/docs/installation/kubernetes/) cert manager.
-5. Run `make vendor-all`.
-6. Run `tilt up` and navigate to `staging.grouphouse.io`.
+## Installations: 
+1. Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) (v3.4.0) 
+2. Install [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) (v1.21.1) 
+3. Install [Tilt](https://docs.tilt.dev/install.html) (v0.20.8)
+4. Install Helm, `brew install helm`. 
+5. Install [golang](https://golang.org/doc/install) (go1.16.4)
+6. Install [yarn](https://yarnpkg.com/) (v1.22.10)
+
+## Setup
+1. [Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. 
+2. Run `make vendor-all`.
+3. Set environment type in `Tiltfile` (`dev` or `staging`). If `dev` navigate to `http://localhost`, else `https://staging.grouphouse.io`.
+4. Run `tilt up` and navigate to `staging.grouphouse.io`.
 
 ## AWS Deployment
 [Deployment Docs](./deployment/README.md)
@@ -42,8 +48,6 @@
 
 ## Docs
 - [TODO](./TODO.md)
+- [CHEATSHEET](./CHEATSHEET.md)
 - [Libraries](libraries/golang/README.md)
 - [Service Deployment](deployment/website/README.md)
-
-## Tips
-- `TF_LOG=debug terraform plan` is very handy.
