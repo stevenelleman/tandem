@@ -1,6 +1,6 @@
 {
-  "short_name": "web-microservice-shell",
-  "name": "shell",
+  "short_name": "tandem",
+  "name": "tm",
   "icons": [
     {
       "src": "favicon.ico",
