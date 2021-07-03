@@ -8,7 +8,7 @@ spec:
   selector:
     app: public-api
   ports:
-    - port: 443
+    - port: {{ .Values.ingressPort }}
       protocol: TCP
       targetPort: {{ .Values.publicAPIPort }}
 ---
