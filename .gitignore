@@ -2,7 +2,7 @@
 #############
 .vscode
 .idea
-.iml
+*.iml
 *.sublime-workspace
 .DS_Store
 
