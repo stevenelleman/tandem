@@ -5,6 +5,9 @@ import {
   Route
 } from 'react-router-dom';
 
+// Import env var
+import { EnvVars } from './env-vars';
+
 // Import all styles
 import './styles/App.css';
 import './styles/Sidebar.css';
@@ -19,9 +22,8 @@ type StateType = {client: Client};
 class App extends React.Component<any, StateType> {
   constructor(props: any) {
     super(props);
-    // React App will only recognize environment variables with `REACT_APP_` prefix
     const host = window.location.hostname;
-    const protocol = "https";
+    const protocol = EnvVars.protocol;
     this.state = {
       client: new Client(protocol, host),
     };
