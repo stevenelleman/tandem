@@ -6,7 +6,8 @@ COPY package*.json /app/
 RUN yarn install
 COPY internal /app/
 
-RUN yarn run build
+# Set correct web protocol
+RUN if [ "$APP_PROTOCOL" = "http" ] ; then yarn run build-http ; else yarn run build-https ; fi
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.18

@@ -1,20 +1,24 @@
-mode: production
+mode: staging
 email: steven.elleman@gmail.com
 
 # Ingress Port
 ingressPort: 443
 
+# TLS Certs
+environment: staging
+acmeStagingEndpoint: https://acme-staging-v02.api.letsencrypt.org/directory
+
 # External DNS
 domainFilter: grouphouse.io
-dnsServiceAccount: external-dns
+devMode: true
 
 # Web Frontend
 webProtocol: https
-domain: grouphouse.io
+domain: staging.grouphouse.io
 
 # Public API
 publicAPIPort: 8000 # NOTE: Must update this value manually in web-frontend/Dockerfile when changed
-allowedOrigin: http://grouphouse.io
+allowedOrigin: http://staging.grouphouse.io
 
 # GRPC
 grpcName: grpc

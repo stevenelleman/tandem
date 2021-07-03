@@ -31,7 +31,11 @@ export class Client {
   //  - Better stateHandler type
   //  - Pass in a generic error action in App
   public request(verb: string, route: string, args: any, opts: any, stateHandler: any, errorHandler: any) {
-    const url = `${this.protocol}://${this.host}/${route}`;
+    var url = `${this.protocol}://${this.host}/${route}`;
+    if (this.protocol === "") {
+      url = `${this.host}/route`;
+    }
+
     if (!isValidUrl(url)) {
       return Client.emitError(`invalid url: ${url}`);
     }

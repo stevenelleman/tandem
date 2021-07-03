@@ -7,6 +7,9 @@ const (
 	HIGHLIGHT
 )
 
+// Can take any arguments that are available to the document view, the more arguments that are defined, the more arguments types that can be used for defining transformations
+// Arguments must be calcuable, or they can be saved at each step. Args must be "deterministic".
+// Must be deterministics, invertible, bidirectional
 type FxnArgs struct {
 	FxnId        int
 	OffsetStart1 int

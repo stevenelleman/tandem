@@ -19,9 +19,10 @@ type StateType = {client: Client};
 class App extends React.Component<any, StateType> {
   constructor(props: any) {
     super(props);
-    // React App will only recognize environment variables with `REACT_APP_` prefix
     const host = window.location.hostname;
-    const protocol = "https";
+    // console.log("Check env", process.env);
+    // React App will only recognize environment variables with `REACT_APP_` prefix
+    const protocol = process.env.REACT_APP_PROTOCOL || "http";
     this.state = {
       client: new Client(protocol, host),
     };
