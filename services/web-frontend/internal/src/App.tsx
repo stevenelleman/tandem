@@ -5,6 +5,9 @@ import {
   Route
 } from 'react-router-dom';
 
+// External Library Imports
+import { Client } from 'client';
+
 // Import env var
 import { EnvVars } from './env-vars';
 
@@ -13,7 +16,6 @@ import './styles/App.css';
 import './styles/Sidebar.css';
 import './styles/Topbar.css';
 
-import { Client } from './client';
 import { Topbar } from './ui/containers/Topbar';
 import { WorkspaceRow } from './ui/containers/WorkspaceRow';
 import { CreateView } from './ui/components/reuseable/CreateView';
@@ -25,7 +27,7 @@ class App extends React.Component<any, StateType> {
     const host = window.location.hostname;
     const protocol = EnvVars.protocol;
     this.state = {
-      client: new Client(protocol, host),
+      client: new Client(protocol, host, null),
     };
   }
 
