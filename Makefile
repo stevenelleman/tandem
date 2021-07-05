@@ -1,16 +1,32 @@
 GO ?= go
 
-# Go Vendor Commands
-vendor-all: vendor-golang vendor-public-api vendor-grpc
+# NOTE: `*** missing separator.  Stop.` may be an indication of spaces being used, rather than tabs
 
-vendor-golang:
+# Go Vendor Commands
+deps-all: deps-ts-services deps-go-services
+
+deps-ts-services: deps-ts-libraries deps-web-frontend
+
+deps-go-services: deps-golang deps-public-api deps-grpc
+
+deps-ts-libraries:
+	for pkg in ./libraries/typescript/*; do \
+		if [ -d $$pkg ]; then \
+			echo $$pkg; cd $$pkg; yarn install --force; cd ../../../; \
+		fi; \
+	done;
+
+deps-golang:
 	cd ./libraries/golang; ${GO} mod tidy -v; ${GO} mod vendor -v;
 
-vendor-public-api:
+deps-public-api:
 	cd ./services/public-api; ${GO} mod tidy -v; ${GO} mod vendor -v;
 
-vendor-grpc:
+deps-grpc:
 	cd ./services/grpc; ${GO} mod tidy -v; ${GO} mod vendor -v;
+
+deps-web-frontend:
+	cd ./services/web-frontend; yarn install --force;
 
 # Service Builds
 build-all: build-grpc build-public-api build-web-frontend
