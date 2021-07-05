@@ -29,3 +29,5 @@ prod.yaml
 shared.yaml
 
 
+node_modules
+/lib
