@@ -13,12 +13,13 @@ import { EnvVars } from './env-vars';
 
 // Import all styles
 import './styles/App.css';
-import './styles/Sidebar.css';
-import './styles/Topbar.css';
+
+// Import fonts
+import './fonts/Fonts.css';
 
 import { Topbar } from './ui/containers/Topbar';
-import { WorkspaceRow } from './ui/containers/WorkspaceRow';
-import { CreateView } from './ui/components/reuseable/CreateView';
+import { Footer } from './ui/containers/Footer';
+import { Storyline } from "./ui/components/Storyline";
 
 type StateType = {client: Client};
 class App extends React.Component<any, StateType> {
@@ -36,19 +37,15 @@ class App extends React.Component<any, StateType> {
     const { client } = this.state;
     return (
       <div className="app">
-        <Topbar />
-        <WorkspaceRow client={client}>
+        <Topbar/>
           <Router>
             <Switch>
-              <Route path="/silos/create">
-                <CreateView client={client} type={"Silos"} />
-              </Route>
-              <Route path="/forums/create">
-                <CreateView client={client} type={"Forums"} />
+              <Route path="/">
+                <Storyline/>
               </Route>
             </Switch>
           </Router>
-        </WorkspaceRow>
+        <Footer/>
       </div>
     );
   }
