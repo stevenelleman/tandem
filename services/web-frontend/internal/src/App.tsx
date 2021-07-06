@@ -14,6 +14,13 @@ import { EnvVars } from './env-vars';
 // Import all styles
 import './styles/App.css';
 
+// Import fonts
+import './fonts/Fonts.css';
+
+import { Topbar } from './ui/containers/Topbar';
+import { Footer } from './ui/containers/Footer';
+import { Storyline } from "./ui/components/Storyline";
+
 type StateType = {client: Client};
 class App extends React.Component<unknown, StateType> {
   constructor(props: any) {
@@ -30,13 +37,15 @@ class App extends React.Component<unknown, StateType> {
     const { client } = this.state;
     return (
       <div className="app">
-        <Router>
-          <Switch>
-            <Route path="/getting-started">
-              <div>Insert cutesy explanatory paragraph here</div>
-            </Route>
-          </Switch>
-        </Router>
+        <Topbar/>
+          <Router>
+            <Switch>
+              <Route path="/">
+                <Storyline/>
+              </Route>
+            </Switch>
+          </Router>
+        <Footer/>
       </div>
     );
   }
