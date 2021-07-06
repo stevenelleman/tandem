@@ -10,33 +10,118 @@ html, body {margin:0;padding:0;height:100%;}
   height: 100%;
 }
 
-.left {
-  left: 0px;
+/* Topbar Styles */
+
+.topbar {
+    display: block;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.right {
-  right: 0px;
+.header-logo {
+    float: left;
 }
 
-.float-left {
-  float: left;
+/*.header-logo-img {
+    position: relative;
+    width: 100px;
+    margin: 10px;
+    margin-left: 40px;
+}*/
+
+.header-logo-title {
+    font-family: Montserrat;
+    float: left;
+    left: 25px;
+    color: #8c1ea7;
+    margin-top: 20px;
+    margin-left: 20px;
+    /* text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    border-radius: 38px;*/
 }
 
-.float-right {
-  float: right;
+.header-links {
+    margin-top: 20px;
+    margin-right: 50px;
+    display: inline;
+    float: right;
 }
 
-/* Workspace Styles */
-.workspace {
-  display: flex;
-  height: 100%;
-  background: #3249e2;
+.header-link {
+    font-family: Montserrat;
+    font-color: white;
+    display: inline;
+    margin: 10px;
 }
 
-/* Sidebar + Workspace Styles */
-.row {
-  display: flex;
-  flex-flow: row;
-  width: 100%;
-  height: 100%;
+.header-link:hover {
+    background-color: rgba(40, 112, 179, .5);
+}
+
+a, a:hover, a:active, a:visited, a:focus {
+    text-decoration:none;
+}
+
+.header-emphasis {
+    border: black;
+    padding: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(100,33,255,100);
+    border-radius: 10px;
+}
+
+/* Storyline */
+
+.storyline-container {
+    width: 100%;
+}
+
+.storyline-intro-image {
+    background-color: #8c1ea7;
+    width: 100%;
+    display: block;
+    height: 800px;
+    left: -8px;
+    top: 70px;
+    margin: auto;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+.storyline-section {
+
+}
+
+.storyline-section-title {
+    font-family: Montserrat;
+    margin-left: 25px;
+    color: #8c1ea7
+}
+
+.storyline-section-content {
+    width: 100%;
+    background-color: cornflowerblue;
+    height: 600px;
+}
+
+.storyline-section-transition {
+    width: 100%;
+    background-color: darkslateblue;
+    height: 200px;
+}
+
+/* Footer */
+
+.footer-container {
+    width: 100%;
+    background-color: palegreen;
+    min-height: 200px;
 }

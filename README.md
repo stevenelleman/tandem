@@ -1,4 +1,4 @@
-# Tandem
+# Grouphouse
 
 ## Install: 
 1. Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) (v3.4.0) 
