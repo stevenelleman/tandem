@@ -5,6 +5,7 @@ WORKDIR /app
 COPY package*.json /app/
 
 # Switched to `RUN yarn install --force` to also include local packages
+RUN yarn install
 RUN yarn install --force
 COPY internal /app/
 
