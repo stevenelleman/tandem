@@ -13,7 +13,7 @@ export class Topbar extends React.Component {
             <a href="#problem">Problem</a>
           </div>
           <div className="header-link">
-            <a href="#approach">Approach</a>
+            <a href="#our-mission">Mission</a>
           </div>
           <div className="header-link">
             <a href="#values">Values</a>

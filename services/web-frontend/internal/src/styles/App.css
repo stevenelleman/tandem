@@ -1,4 +1,4 @@
-html, body {margin:0;padding:0;height:100%;}
+html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
 
 #root {
   display: contents;
@@ -30,6 +30,7 @@ html, body {margin:0;padding:0;height:100%;}
     margin-left: 40px;
 }*/
 
+/* TODO: px -> em */
 .header-logo-title {
     font-family: Montserrat;
     float: left;
@@ -96,6 +97,14 @@ a, a:hover, a:active, a:visited, a:focus {
     margin-bottom: 2px;
 }
 
+.storyline-intro-text {
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 40px;
+    padding-top: 400px;
+    color: #2fa5ca;
+}
+
 .storyline-section {
 
 }
@@ -103,13 +112,18 @@ a, a:hover, a:active, a:visited, a:focus {
 .storyline-section-title {
     font-family: Montserrat;
     margin-left: 25px;
-    color: #8c1ea7
+    font-size: 25px;
+    color: #8c1ea7;
 }
 
 .storyline-section-content {
     width: 100%;
     background-color: cornflowerblue;
     height: 600px;
+}
+
+.storyline-section-text {
+
 }
 
 .storyline-section-transition {
