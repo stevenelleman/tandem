@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from 'react-router-dom';
 
 // External Library Imports
@@ -19,14 +19,14 @@ import './fonts/Fonts.css';
 
 import { Topbar } from './ui/containers/Topbar';
 import { Footer } from './ui/containers/Footer';
-import { Storyline } from "./ui/components/Storyline";
+import { Storyline } from './ui/components/Storyline';
 
 type StateType = {client: Client};
 class App extends React.Component<any, StateType> {
   constructor(props: any) {
     super(props);
     const host = window.location.hostname;
-    const protocol = EnvVars.protocol;
+    const { protocol } = EnvVars;
     this.state = {
       client: new Client(protocol, host, null),
     };
@@ -34,18 +34,18 @@ class App extends React.Component<any, StateType> {
 
   render() {
     // Pass client to all routes/components that need to make API requests
-    const { client } = this.state;
+    // const { client } = this.state;
     return (
       <div className="app">
-        <Topbar/>
-          <Router>
-            <Switch>
-              <Route path="/">
-                <Storyline/>
-              </Route>
-            </Switch>
-          </Router>
-        <Footer/>
+        <Topbar />
+        <Router>
+          <Switch>
+            <Route path="/">
+              <Storyline />
+            </Route>
+          </Switch>
+        </Router>
+        <Footer />
       </div>
     );
   }

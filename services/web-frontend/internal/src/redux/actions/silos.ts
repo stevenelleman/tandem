@@ -1,6 +1,7 @@
 import { Dispatch } from 'redux';
-import { dispatcher } from './utils';
 import { Client, VERB_GET } from 'client';
+
+import { dispatcher } from './utils';
 import { REQUEST_SILOS, REQUEST_SILOS_ERROR, RECEIVE_SILOS } from '../constants';
 
 function shouldFetchSilos(state: any) {

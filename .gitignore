@@ -28,6 +28,5 @@ dev.yaml
 prod.yaml
 shared.yaml
 
-
 node_modules
 /lib
