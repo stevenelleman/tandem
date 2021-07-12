@@ -18,6 +18,7 @@ import './styles/App.css';
 import './fonts/Fonts.css';
 
 import { Topbar } from './ui/containers/Topbar';
+// @ts-ignore
 import { Footer } from './ui/containers/Footer';
 import { Storyline } from './ui/components/Storyline';
 
