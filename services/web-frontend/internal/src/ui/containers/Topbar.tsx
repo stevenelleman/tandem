@@ -16,10 +16,10 @@ export class Topbar extends React.Component {
             <a href="#our-mission">Mission</a>
           </div>
           <div className="header-link">
-            <a href="#values">Values</a>
+            <a href="#aspirations">Aspirations</a>
           </div>
           <div className="header-link">
-            <a href="#code">Code</a>
+            <a href="#methods">Methods</a>
           </div>
           <div className="header-link header-emphasis">
             <a href="#community">Join the Community</a>
