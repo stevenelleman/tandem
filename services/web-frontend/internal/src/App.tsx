@@ -13,6 +13,12 @@ import { EnvVars } from './env-vars';
 
 // Import all styles
 import './styles/App.css';
+import './styles/Sidebar.css';
+import './styles/Topbar.css';
+
+import { Topbar } from './ui/containers/Topbar';
+import { WorkspaceRow } from './ui/containers/WorkspaceRow';
+import { CreateView } from './ui/components/reuseable/CreateView';
 
 type StateType = {client: Client};
 class App extends React.Component<unknown, StateType> {
@@ -30,13 +36,19 @@ class App extends React.Component<unknown, StateType> {
     const { client } = this.state;
     return (
       <div className="app">
-        <Router>
-          <Switch>
-            <Route path="/getting-started">
-              <div>Insert cutesy explanatory paragraph here</div>
-            </Route>
-          </Switch>
-        </Router>
+        <Topbar />
+        <WorkspaceRow client={client}>
+          <Router>
+            <Switch>
+              <Route path="/silos/create">
+                <CreateView client={client} type={"Silos"} />
+              </Route>
+              <Route path="/forums/create">
+                <CreateView client={client} type={"Forums"} />
+              </Route>
+            </Switch>
+          </Router>
+        </WorkspaceRow>
       </div>
     );
   }

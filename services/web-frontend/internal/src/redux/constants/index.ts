@@ -1,5 +1,4 @@
 // Plural Silo Actions
-
 export const REQUEST_SILOS = 'SILOS_LIST_REQUEST';
 export const REQUEST_SILOS_ERROR = 'SILOS_LIST_REQUEST_ERROR';
 export const RECEIVE_SILOS = 'SILOS_LIST_RESPONSE';

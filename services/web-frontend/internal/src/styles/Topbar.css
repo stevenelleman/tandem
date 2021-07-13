@@ -1,0 +1,22 @@
+/* Topbar Styles */
+
+.topbar {
+    width: 100%;
+    height: 50px;
+    background-color: slategray;
+}
+
+.searchbar {
+    float: right;
+    text-align: left;
+    width: 300px;
+    margin: 10px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.searchbar-text {
+    padding: 5px;
+}
