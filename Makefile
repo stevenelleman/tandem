@@ -2,10 +2,15 @@ GO ?= go
 
 # NOTE: `*** missing separator.  Stop.` may be an indication of spaces being used, rather than tabs
 
+# Script to make branch against Tandem
+checkout-against-tandem:
+	./scripts/checkout-against-tandem.sh
+
 # Go Vendor Commands
 deps-all: deps-ts-services deps-go-services
 
-deps-ts-services: deps-ts-libraries deps-web-frontend
+# Run ts dependencies to account for local ts cross-dependencies where order matters
+deps-ts-services: deps-ts-libraries deps-ts-libraries deps-web-frontend
 
 deps-go-services: deps-golang deps-public-api deps-grpc
 
