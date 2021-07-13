@@ -5,7 +5,7 @@ import { Sidebar } from '../components/reuseable/Sidebar';
 import { Workspace } from '../components/Workspace';
 import { fetchSilosIfNeeded } from '../../redux/actions/silos';
 import { Client } from 'client';
-import { ReceiveSiloActionType } from '../../types';
+import { ReceiveSiloActionType, AppDispatch } from '../../types';
 
 // Types
 type PropsType = {
@@ -70,7 +70,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
   fetchSilos: (client: Client) => dispatch(fetchSilosIfNeeded(client)),
 });
 
