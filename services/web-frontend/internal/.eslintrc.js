@@ -1,5 +1,5 @@
 module.exports = {
-  "parser": ["@typescript-eslint/parser"],
+  "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
     //"airbnb-typescript", // TODO: Figure out how to add back in eslint-config-airbnb-typescript without error
