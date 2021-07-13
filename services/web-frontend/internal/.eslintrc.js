@@ -2,7 +2,7 @@ module.exports = {
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
-    //"airbnb-typescript",
+    //"airbnb-typescript", // TODO: Figure out how to add back in eslint-config-airbnb-typescript without error
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
