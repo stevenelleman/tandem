@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// jsx-a11y/click-events-have-key-events: disabled because collapseBtn.onClick
+// jsx-a11y/click-events-have-key-events may need to be disabled because collapseBtn.onClick
 // should only be triggered by click, not keyboard return
 
 import React from 'react';

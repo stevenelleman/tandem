@@ -12,7 +12,7 @@ deps-go-services: deps-golang deps-public-api deps-grpc
 deps-ts-libraries:
 	for pkg in ./libraries/typescript/*; do \
 		if [ -d $$pkg ]; then \
-			echo $$pkg; cd $$pkg; yarn install --force; cd ../../../; \
+			cd $$pkg; yarn install --force; cd ../../../; \
 		fi; \
 	done;
 
@@ -26,7 +26,7 @@ deps-grpc:
 	cd ./services/grpc; ${GO} mod tidy -v; ${GO} mod vendor -v;
 
 deps-web-frontend:
-	cd ./services/web-frontend; yarn install --force;
+	cd ./services/web-frontend/internal; yarn install --force;
 
 # Service Builds
 build-all: build-grpc build-public-api build-web-frontend

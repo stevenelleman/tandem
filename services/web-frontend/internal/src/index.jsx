@@ -21,6 +21,8 @@ const store = createStore(
   applyMiddleware(...middleware),
 );
 
+export const StoreDispatch = store.dispatch;
+
 // TODO: Convert jsx -> tsx
 ReactDOM.render(
   <Provider store={store}>
