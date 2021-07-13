@@ -67,3 +67,5 @@ jobs:
           # VALIDATE_GO: true
           VALIDATE_TYPESCRIPT_ES: true
           TYPESCRIPT_ES_CONFIG_FILE: ../../services/web-frontend/internal/.eslintrc.js
+          # TODO: Add a separate lint step for libraries
+          FILTER_REGEX_EXCLUDE: libraries
