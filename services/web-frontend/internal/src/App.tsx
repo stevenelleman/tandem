@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-// External Library Imports
+// Local Library Imports
 import { Client } from 'client';
 
 // Import env var
@@ -23,11 +23,11 @@ import { Footer } from './ui/containers/Footer';
 import { Storyline } from './ui/components/Storyline';
 
 type StateType = {client: Client};
-class App extends React.Component<any, StateType> {
+class App extends React.Component<unknown, StateType> {
   constructor(props: any) {
     super(props);
-    const host = window.location.hostname;
-    const { protocol } = EnvVars;
+    const host: string = window.location.hostname;
+    const protocol: string = EnvVars.protocol;
     this.state = {
       client: new Client(protocol, host, null),
     };

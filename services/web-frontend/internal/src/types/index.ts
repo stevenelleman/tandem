@@ -1,3 +1,9 @@
+
+import { StoreDispatch } from '../index';
+
+// Store Types
+export type AppDispatch = typeof StoreDispatch;
+
 // Interface Definitions
 interface EmptyAction {
   type: string

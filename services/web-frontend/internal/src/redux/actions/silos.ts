@@ -4,7 +4,23 @@ import { Client, VERB_GET } from 'client';
 import { dispatcher } from './utils';
 import { REQUEST_SILOS, REQUEST_SILOS_ERROR, RECEIVE_SILOS } from '../constants';
 
-function shouldFetchSilos(state: any) {
+// Note: If these are ever used again move to `types` directory
+interface silos {
+  isFetching: boolean;
+  didInvalidate: boolean;
+  list: string[];
+}
+
+interface IState {
+  silos: silos;
+}
+
+interface IResp {
+  type: string;
+  list: string[];
+}
+
+function shouldFetchSilos(state: IState) {
   const { silos } = state;
   if (!silos || !Object.keys(silos).length) {
     return true;
@@ -28,8 +44,7 @@ function requestSilosError(error: string) {
   };
 }
 
-// TODO: update resp type as API becomes clearer
-function receiveSilos(resp: any) {
+function receiveSilos(resp: IResp) {
   return {
     type: RECEIVE_SILOS,
     silos: resp.list,
