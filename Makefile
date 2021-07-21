@@ -17,7 +17,7 @@ deps-go-services: deps-golang deps-public-api deps-grpc
 deps-ts-libraries:
 	for pkg in ./libraries/typescript/*; do \
 		if [ -d $$pkg ]; then \
-			cd $$pkg; yarn install --force; cd ../../../; \
+			cd $$pkg; yarn install --force; yarn build; cd ../../../; \
 		fi; \
 	done;
 
