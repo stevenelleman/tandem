@@ -10,7 +10,8 @@ type Edge struct {
 	TxnId string `db:"txnId"`
 	SourceDoc string `db:"sourceDoc"`
 	InverseDoc string `db:"inverseDoc`
-	Args string `db:"args"`
+	Args FxnArgs `db:"args"`
+	InverseArgs FxnArgs `db:"inverseArgs"`
 
 	// Metadata
 	Date string `db:"date"`
@@ -20,7 +21,7 @@ type Edge struct {
 type Scope struct {
 	Id string `db:"id"`
 	
-	// Scope consists of a set of node IDs, and the set of Edge IDs between those nodes
-    Nodes string[] `db:"nodes"`
-    Edges string[] `db:"edges"`
+	// Scope consists of a set of nodes, and the set of edges between them
+    Nodes string[] `db:"nodes"` // Node IDs
+    Edges string[] `db:"edges"` // Edge IDs
 }
