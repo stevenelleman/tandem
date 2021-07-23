@@ -40,3 +40,43 @@ func Call(region0, src0 string, args *FxnArgs) (string, string, *FxnArgs) {
 
 	return region1, iregion, iargs
 }
+
+// Create the fist node in a document, with no source edges
+func CreateSourceNode(doc string) (*Node) {
+	// Create metadata, todo
+	var date, author string
+	var nodeId int // We want an ID generator
+
+	node := &Node {
+		NodeId: nodeId,
+		CheckpointDoc: doc,
+		docIsPopulated: true,
+	}
+	return node
+}
+
+// Take in some source node, create an edge and a target node
+func ApplyTransformation(sourceNode *Node, args *FxnArgs, region0 string) {
+	// Create metadata, todo
+	var date, author string
+	
+	var sourceDoc string = AssembleDocForNode(*Node)
+	var targetDoc, inverseDoc string, invArgs *FxnArgs
+	targetDoc, inverseDoc, invArgs = Call(region0, sourceDoc, args)
+	
+	targetNode := &Node {
+		NodeId: //NodeId generator,
+		docIsPopulated: false,
+	}
+
+	edge := &Edge {
+		EdgeId: // EdgeId generator,
+		SourceDoc: sourceDoc,
+		TargetDoc: targetDoc,
+		Args: args,
+		InverseArgs:invArgs,
+
+		SourceNodeId: sourceNode.NodeId,
+		TargetNodeId: targetNode.NodeId
+	}
+}
