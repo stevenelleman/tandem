@@ -1,17 +1,26 @@
 package transformations
 
 type Node struct {
-	Id string `db:"id"`
+	NodeId string `db:"nodeId"`
 	Doc string `db:"doc"`
+
+	EdgesOut string[] `db:"edgesOut"` // IDs of edges whose destination is this node
+	EdgesIn string[] `db:"edgesIn"`   // ID of edges whose source is this node
+
+	// Metadata
+	Date string `db:"date"`
+	Author string `db:"author"`
 }
 
 type Edge struct {
-	Id string `db:"id"`
-	TxnId string `db:"txnId"`
+	EdgeId string `db:"edgeId"`
 	SourceDoc string `db:"sourceDoc"`
-	InverseDoc string `db:"inverseDoc`
-	Args FxnArgs `db:"args"`
-	InverseArgs FxnArgs `db:"inverseArgs"`
+	TargetDoc string `db:"targetDoc`
+	Args FxnArgs `db:"args"` 				// f(SourceDoc, Args) -> TargetDoc
+	InverseArgs FxnArgs `db:"inverseArgs"`  // f(TargetDoc, InverseArgs) -> SourceDoc
+
+	SourceNodeId string `db:"sourceNodeId"`
+	TargetNodeId string `db:"targetNodeId"`
 
 	// Metadata
 	Date string `db:"date"`
@@ -19,9 +28,9 @@ type Edge struct {
 }
 
 type Scope struct {
-	Id string `db:"id"`
+	ScopeId string `db:"scopeId"`
 	
-	// Scope consists of a set of nodes, and the set of edges between them
+	// Scope consists of a set of nodes, and thex set of edges between them
     Nodes string[] `db:"nodes"` // Node IDs
     Edges string[] `db:"edges"` // Edge IDs
 }
