@@ -8,6 +8,8 @@ type Node struct {
 	EdgesOut string[] `db:"edgesOut"` // IDs of edges whose destination is this node
 	EdgesIn string[] `db:"edgesIn"`   // ID of edges whose source is this node
 
+	Scopes string[] `db:"scopes"` // IDs of scopes this node belongs to
+
 	// Metadata
 	Date string `db:"date"`
 	Author string `db:"author"`
@@ -15,9 +17,7 @@ type Node struct {
 
 type Edge struct {
 	EdgeId string `db:"edgeId"`
-	SourceDoc string `db:"sourceDoc"`
-	TargetDoc string `db:"targetDoc`
-	Args FxnArgs `db:"args"` 				// f(SourceDoc, Args) -> TargetDoc
+	Args FxnArgs `db:"args"`                // f(SourceDoc, Args) -> TargetDoc
 	InverseArgs FxnArgs `db:"inverseArgs"`  // f(TargetDoc, InverseArgs) -> SourceDoc
 
 	SourceNodeId string `db:"sourceNodeId"`
@@ -30,10 +30,10 @@ type Edge struct {
 
 type Scope struct {
 	ScopeId string `db:"scopeId"`
-	
+
 	// Scope consists of a set of nodes, and the set of edges between them
+	// The set of edges is defined by the set of nodes
     Nodes string[] `db:"nodes"` // Node IDs
-    Edges string[] `db:"edges"` // Edge IDs
 
 	// Metadata struct, todo
 	ScopeMetadata string[] `db:"scopeMetadata"`
