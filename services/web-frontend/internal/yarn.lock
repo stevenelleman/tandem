@@ -3400,7 +3400,7 @@ cli-width@^3.0.0:
   dependencies:
     tsc "^2.0.3"
     typescript "^4.3.5"
-    utils "file:../../../../../../Library/Caches/Yarn/v6/npm-client-1.0.0-0e07466c-bf1e-41c8-ac30-a535155950f4-1627235947413/node_modules/utils"
+    utils "file:../../../../../../Library/Caches/Yarn/v6/npm-client-1.0.0-87cd96ad-b3b0-468f-afef-9bfa9b4f8f8f-1627250681623/node_modules/utils"
 
 cliui@^4.0.0:
   version "4.1.0"

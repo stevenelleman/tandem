@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// TODO: Remove
 func (c *PsqlConnection) ListSilos(ctx *gin.Context) ([]*models.Silo, error) {
 	query, args, err := c.qb.Select("*").From("silos").ToSql()
 	if err != nil {

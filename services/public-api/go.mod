@@ -4,6 +4,7 @@ module sg/services/public-api
 go 1.16
 
 require (
+	github.com/Masterminds/squirrel v1.4.0
 	github.com/gin-gonic/gin v1.6.3
 	github.com/stretchr/testify v1.5.1
 	gopkg.in/gorp.v2 v2.2.0
