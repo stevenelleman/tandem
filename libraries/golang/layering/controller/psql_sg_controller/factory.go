@@ -1,8 +1,8 @@
 package psql_sg_controller
 
 import (
-	"web.microservice.shell/libraries/golang/layering/query/psql_conn"
-	"web.microservice.shell/libraries/golang/layering/query/sg_conn"
+	"sg/libraries/golang/layering/query/psql_conn"
+	"sg/libraries/golang/layering/query/sg_conn"
 )
 
 type ControllerFactory struct {

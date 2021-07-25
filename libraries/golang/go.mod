@@ -1,5 +1,5 @@
 // Note: Use full path to ensure GOPATH is correct
-module web.microservice.shell/libraries/golang
+module sg/libraries/golang
 
 go 1.16
 

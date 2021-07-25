@@ -1,7 +1,7 @@
 package psql_sg_handler
 
 import (
-	"web.microservice.shell/libraries/golang/layering/controller/psql_sg_controller"
+	"sg/libraries/golang/layering/controller/psql_sg_controller"
 )
 
 type Handler struct {

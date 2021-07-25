@@ -2,7 +2,7 @@ package psql_conn
 
 import (
 	"errors"
-	"web.microservice.shell/libraries/golang/layering/models"
+	"sg/libraries/golang/layering/models"
 
 	"github.com/gin-gonic/gin"
 )

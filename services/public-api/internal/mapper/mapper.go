@@ -1,9 +1,10 @@
 package mapper
 
 import (
-	"web.microservice.shell/libraries/golang/layering/models"
 
 	"gopkg.in/gorp.v2"
+	"sg/services/public-api/internal/models"
+	example_models "sg/libraries/golang/layering/models"
 )
 
 // All table primary keys should be id

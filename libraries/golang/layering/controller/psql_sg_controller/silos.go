@@ -1,7 +1,7 @@
 package psql_sg_controller
 
 import (
-	"web.microservice.shell/libraries/golang/layering/models"
+	"sg/libraries/golang/layering/models"
 
 	"github.com/gin-gonic/gin"
 )

@@ -4,10 +4,10 @@ import (
 	"os"
 	"strconv"
 
-	"web.microservice.shell/libraries/golang/datastore/migrater"
-	"web.microservice.shell/libraries/golang/layering/query/psql_conn"
-	"web.microservice.shell/libraries/golang/layering/query/sg_conn"
-	"web.microservice.shell/services/public-api/internal/mapper"
+	"sg/libraries/golang/datastore/migrater"
+	"sg/libraries/golang/layering/query/psql_conn"
+	"sg/libraries/golang/layering/query/sg_conn"
+	"sg/services/public-api/internal/mapper"
 )
 
 const (

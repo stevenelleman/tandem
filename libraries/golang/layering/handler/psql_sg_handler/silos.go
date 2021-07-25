@@ -3,7 +3,7 @@ package psql_sg_handler
 import (
 	"github.com/gin-gonic/gin"
 
-	"web.microservice.shell/libraries/golang/layering/models"
+	"sg/libraries/golang/layering/models"
 )
 
 func (h *Handler) ListSilos(ctx *gin.Context) {

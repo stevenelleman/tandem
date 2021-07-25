@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"web.microservice.shell/services/public-api/internal/models"
+	"sg/services/public-api/internal/models"
 )
 
 // go test transformations_test.go transformations.go methods.go
