@@ -10,23 +10,30 @@ import (
 // TODO solidify the interface for Call()
 func TestGraphObjects(t *testing.T) {
 	doc0 := "graph test ..."
+	added := " and friends"
+	expected := "graph test ... and friends"
 
 	// Addition
-	args0 := &FxnArgs{}
-	doc1, idoc1, iargs1 := Call(" and friends", doc0, args0)
-	require.Equal(t, doc1, "graph test ... and friends")
+	args0 := &FxnArgs{
+		FxnId: REPLACE,
+		Source: added,
+		OffsetStart1: len(doc0),
+		OffsetEnd1: len(doc0),
+	}
+	doc1, iargs1 := Call(doc0, args0)
+	require.Equal(t, doc1, expected)
 
-	doc2, idoc2, iargs2 := Call(doc1, idoc1, iargs1)
-	require.Equal(t, doc2, doc0)
-	require.Equal(t, doc2, "graph test ...")
+	doc2, iargs2 := Call(doc1, iargs1)
+	require.Equal(t, doc0, doc2)
+	require.Equal(t, args0.Source, iargs2.Source)
 
 	// Create initial node
-	var nodeId int = 0
-	var node0 Node* = Createnode0(doc0, nodeId)
-	require.Equal(t, node0.nodeId, 0)
-	require.Equal(t, node0.CheckpointDoc, doc0)
+	node0 := ConstructNode(doc0, &Node{})
+	require.Equal(t, node0.Document, doc0)
 
-	// Create an edge with a transformation
-	var node1 Node*, edge01 *Edge = ApplyTransformation(node0, args0, doc0)
-	// TODO: results
+	// Apply transformation
+	node1, edge := Transform(node0, args0)
+	require.Equal(t, expected, node1.Document)
+	require.Equal(t, args0, edge.Args)
+	require.Equal(t, iargs1, edge.InverseArgs)
 }

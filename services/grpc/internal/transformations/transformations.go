@@ -1,82 +1,52 @@
 package transformations
 
 const (
+	// NOTE: Transformations can be the same operation but interpretted differently in the UI
+	//	eg Highlight and Take are the same operation but Highlight is surfaced on the doc while
+	//	Take moves the piece to a separate doc
 	REPLACE = iota
-	TRANSCLUDE
 	DRAG
 	HIGHLIGHT
+	TAKE
+	EMBED
 )
 
-type FxnArgs struct {
-	FxnId        int
-	OffsetStart1 int
-	OffsetEnd1   int
-	OffsetStart2 int
-}
-
-// NOTE: How to get all functions to conform to signature: Call(string, string, *FxnArgs) (string, string, *FxnArgs) ?
-func Call(region0, src0 string, args *FxnArgs) (string, string, *FxnArgs) {
-	var region1, iregion string
+func Call(parent string, args *FxnArgs) (string, *FxnArgs) {
+	var child, iregion string
 	var istart1, iend1, istart2 int
 
 	// NOTE: How to make functions extensible and discoverable?
+	// Idea: Make a scope of available transformations. Transformations have a special type.
+	// Text methods can be used on them. How to define types?
 	switch args.FxnId {
 	case REPLACE:
-		region1, iregion, istart1, iend1 = Replace(region0, src0, args.OffsetStart1, args.OffsetEnd1)
-	case TRANSCLUDE:
-		region1, iregion, istart1, iend1 = Transclude(region0, src0, args.OffsetStart1, args.OffsetEnd1)
+		child, iregion,  istart1, iend1 = Replace(parent, args.Source, args.OffsetStart1, args.OffsetEnd1)
 	case DRAG:
-		region1, istart1, iend1, istart2 = Drag(region0, args.OffsetStart1, args.OffsetEnd1, args.OffsetStart2)
+		child, istart1, iend1, istart2 = Drag(parent, args.OffsetStart1, args.OffsetEnd1, args.OffsetStart2)
 	case HIGHLIGHT:
-		region1 = Highlight(region0, args.OffsetStart1, args.OffsetEnd1)
+		child = Highlight(parent, args.OffsetStart1, args.OffsetEnd1)
+	case TAKE:
+		child = Take(parent, args.OffsetStart1, args.OffsetEnd1)
+	case EMBED:
+		child, iregion, istart1, iend1 = Embed(parent, args.Source, args.OffsetStart1, args.OffsetEnd1)
 	}
 
 	iargs := &FxnArgs{
 		FxnId:        args.FxnId,
+		Source:       iregion,
 		OffsetStart1: istart1,
 		OffsetEnd1:   iend1,
 		OffsetStart2: istart2,
 	}
 
-	return region1, iregion, iargs
-}
-
-// Create the fist node in a document, with no source edges
-func CreateInitialNode(doc string, id int) (*Node) {
-	// Create metadata, todo
-	var date, author string
-
-	node := &Node {
-		NodeId: id,
-		CheckpointDoc: doc,
-		docIsPopulated: true,
-	}
-	return node
+	return child, iargs
 }
 
 // Take in some source node, create an edge and a target node
-func ApplyTransformation(sourceNode *Node, args *FxnArgs, region0 string) (targetNode *Node, edge *Edge) {
-	// Create metadata, todo
-	var date, author string
-	
-	var sourceDoc string = AssembleDocForNode(*Node)
-	var targetDoc, inverseDoc string, invArgs *FxnArgs
-	targetDoc, inverseDoc, invArgs = Call(region0, sourceDoc, args)
-	
-	targetNode := &Node {
-		NodeId: // NodeId generator,
-		docIsPopulated: false,
-	}
-
-	edge := &Edge {
-		EdgeId: // EdgeId generator,
-		SourceDoc: sourceDoc,
-		TargetDoc: targetDoc,
-		Args: args,
-		InverseArgs:invArgs,
-
-		SourceNodeId: sourceNode.NodeId,
-		TargetNodeId: targetNode.NodeId
-	}
-	return targetNode, edge
+func Transform(parent *Node, args *FxnArgs) (*Node, *Edge) {
+	targetDoc, iargs := Call(parent.Document, args)
+	child := ConstructNode(targetDoc, parent)
+	edge := ConstructEdge(args, iargs, parent.Id, child.Id)
+	child.EdgeIn = edge.Id
+	return child, edge
 }

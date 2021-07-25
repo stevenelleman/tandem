@@ -11,7 +11,7 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-// go test fxns_test.go fxns.go -run TestReplace
+// go test -run TestReplace
 // go test
 func TestMethods(t *testing.T) {
 	src1 := "hello..."
@@ -56,14 +56,14 @@ func TestMethods(t *testing.T) {
 	require.Equal(t, 5, start)
 	require.Equal(t, 8, end)
 
-	// Transclude -- Is not inverse but still returns initial state
-	doc3, isrc, istart, iend := Transclude(doc2, " bye", 5, 5)
+	// Embed
+	doc3, isrc, istart, iend := Embed(doc2, " bye", 5, 5)
 	require.Equal(t, "hello bye hello", doc3)
 
-	idoc3, src, start, end := Transclude(doc3, isrc, istart, iend)
+	idoc3, src, start, end := Embed(doc3, isrc, istart, iend)
 	require.Equal(t, doc2, idoc3)
 
-	doc4, isrc, istart, iend := Transclude(doc3, " blah", 9, 9)
+	doc4, isrc, istart, iend := Embed(doc3, " blah", 9, 9)
 	require.Equal(t, "hello bye blah hello", doc4)
 
 	idoc4, _, _, _ := Replace(doc4, isrc, istart, iend)

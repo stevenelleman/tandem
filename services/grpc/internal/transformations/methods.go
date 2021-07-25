@@ -6,28 +6,33 @@ func Highlight(doc0 string, start, end int) string {
 }
 
 // Handles additions, deletions, substitutions
-func Replace(d, s string, start, end int) (string, string, int, int) {
-	removed := d[start:end]
+func Replace(doc0, s string, start, end int) (string, string, int, int) {
+	removed := doc0[start:end]
 	inverseStart := start
 	inverseEnd := start + len(s)
-	return d[0:start] + s + d[end:], removed, inverseStart, inverseEnd
-}
-
-// Return new doc with embedded source
-func Transclude(d, s string, start, end int) (string, string, int, int) {
-	inverseStart := start
-	inverseEnd := start + len(s)
-	return d[0:start] + s + d[end:], "", inverseStart, inverseEnd
+	return doc0[0:start] + s + doc0[end:], removed, inverseStart, inverseEnd
 }
 
 // Selected piece moved from one place to another
-func Drag(d string, start0, end0, start1 int) (string, int, int, int) {
-	drag := d[start0:end0]
+func Drag(doc0 string, start0, end0, start1 int) (string, int, int, int) {
+	drag := doc0[start0:end0]
 	start0Inverse := start1
 	end0Inverse := start1 + len(drag)
 	start1Inverse := start0
-	d1 := d[0:start0] + d[end0:]
-	return d1[0:start1] + drag + d1[start1:], start0Inverse, end0Inverse, start1Inverse
+	doc1 := doc0[0:start0] + doc0[end0:]
+	return doc1[0:start1] + drag + doc1[start1:], start0Inverse, end0Inverse, start1Inverse
+}
+
+// "Something given" vs "Something taken" -- Pull out a piece of a doc
+func Take(doc0 string, start, end int) string {
+	return doc0[start:end]
+}
+
+// Place source into doc
+func Embed(doc0 string, s string, start, end int) (string, string, int, int) {
+	inverseStart := start
+	inverseEnd := start + len(s)
+	return doc0[0:start] + s + doc0[end:], "", inverseStart, inverseEnd
 }
 
 // Other Transformation Types
@@ -49,4 +54,12 @@ func Reference() {}
 // Object is available in new context -- extremely important transformation
 // Could import a document directly -- for a ML project for instance
 // Import would make sense in a code context, not in a writing context
+// Or is this always available? Older parts of the graph are _always_ available?
+// One consequence is that privacy is immutable -- once shared there's no going back
+// In theory I like that -- there's no way to put the genie out of the bottle,
+// might as well be explicit about it
 func Import() {}
+
+// TODO: How to create composeable functions gracefully? Difficult to anticipate necessary arguments.
+// Logical Transformation Types:
+func Transclude() {} // Embed(doc1, Take(doc0, "", args0), args1)

@@ -1,5 +1,5 @@
 // Note: Use full path to ensure GOPATH is correct
-module web.microservice.shell/services/grpc-service
+module web.microservice.shell/services/grpc
 
 go 1.16
 
