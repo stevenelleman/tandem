@@ -1,28 +1,38 @@
 -- +migrate Up
 
 CREATE TABLE nodes (
-    nodeId varchar(255) UNIQUE,
-    doc varchar(255),
-    edgesOut varchar(255)[],
-    edgesIn varchar(255)[],
-    date varchar(255),
-    author varchar(255),
+    id varchar(255) UNIQUE NOT NULL,
+
+    edges_out varchar(255)[],
+    edge_in varchar(255) NOT NULL,
+    scopes varchar(255)[],
+
+    document jsonb NOT NULL,
+
+    -- Metadata
+    created_at timestamptz NOT NULL,
+    author varchar(255) NOT NULL,
 );
 
 CREATE TABLE edges (
-    edgeId varchar(255) UNIQUE,
-    sourceDoc varchar(255),
-    targetDoc varchar(255),
-    args varchar(255),
-    inverseArgs varchar(255),
-    sourceNodeId varchar(255),
-    targetNodeId varchar(255),
-    date varchar(255),
-    author varchar(255)
+    id varchar(255) UNIQUE,
+
+    args jsonb NOT NULL,
+    inverse_args jsonb NOT NULL,
+
+    parent_node_id varchar(255),
+    child_node_id varchar(255),
+
+    -- Metadata
+    created_at timestamptz NOT NULL,
+    author varchar(255) NOT NULL,
 );
 
 CREATE TABLE scopes (
-    scopeId varchar(255) UNIQUE,
-    nodes varchar(255)[],
-    edges varchar(255)[]
+    id varchar(255) UNIQUE,
+    node_ids varchar(255)[],
+
+    -- Metadata
+    created_at timestamptz NOT NULL,
+    author varchar(255) NOT NULL,
 );
