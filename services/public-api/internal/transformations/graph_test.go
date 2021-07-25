@@ -1,6 +1,7 @@
 package transformations
 
 import (
+	"web.microservice.shell/services/public-api/internal/models"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -14,7 +15,7 @@ func TestGraphObjects(t *testing.T) {
 	expected := "graph test ... and friends"
 
 	// Addition
-	args0 := &FxnArgs{
+	args0 := &models.FxnArgs{
 		FxnId: REPLACE,
 		Source: added,
 		OffsetStart1: len(doc0),
@@ -28,7 +29,7 @@ func TestGraphObjects(t *testing.T) {
 	require.Equal(t, args0.Source, iargs2.Source)
 
 	// Create initial node
-	node0 := ConstructNode(doc0, &Node{})
+	node0 := models.ConstructNode(doc0, &models.Node{})
 	require.Equal(t, node0.Document, doc0)
 
 	// Apply transformation
@@ -36,4 +37,7 @@ func TestGraphObjects(t *testing.T) {
 	require.Equal(t, expected, node1.Document)
 	require.Equal(t, args0, edge.Args)
 	require.Equal(t, iargs1, edge.InverseArgs)
+
+	// Mock edits
+	// 1. Each transform will need the current latest Node -- consider just needing the current document version
 }

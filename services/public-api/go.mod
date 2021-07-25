@@ -5,6 +5,7 @@ go 1.16
 
 require (
 	github.com/gin-gonic/gin v1.6.3
+	github.com/stretchr/testify v1.5.1
 	gopkg.in/gorp.v2 v2.2.0
 	web.microservice.shell/libraries/golang v0.0.0
 )

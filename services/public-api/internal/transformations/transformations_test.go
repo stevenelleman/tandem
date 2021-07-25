@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"web.microservice.shell/services/public-api/internal/models"
 )
 
 // go test transformations_test.go transformations.go methods.go
@@ -11,7 +12,7 @@ func TestTransformations(t *testing.T) {
 	src0 := "hello..."
 
 	// Addition
-	args := &FxnArgs{
+	args := &models.FxnArgs{
 		Source: src0,
 	}
 	doc1, iargs1 := Call("", args)

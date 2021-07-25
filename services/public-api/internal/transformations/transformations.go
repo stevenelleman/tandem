@@ -1,5 +1,7 @@
 package transformations
 
+import "web.microservice.shell/services/public-api/internal/models"
+
 const (
 	// NOTE: Transformations can be the same operation but interpretted differently in the UI
 	//	eg Highlight and Take are the same operation but Highlight is surfaced on the doc while
@@ -11,7 +13,7 @@ const (
 	EMBED
 )
 
-func Call(parent string, args *FxnArgs) (string, *FxnArgs) {
+func Call(parent string, args *models.FxnArgs) (string, *models.FxnArgs) {
 	var child, iregion string
 	var istart1, iend1, istart2 int
 
@@ -31,7 +33,7 @@ func Call(parent string, args *FxnArgs) (string, *FxnArgs) {
 		child, iregion, istart1, iend1 = Embed(parent, args.Source, args.OffsetStart1, args.OffsetEnd1)
 	}
 
-	iargs := &FxnArgs{
+	iargs := &models.FxnArgs{
 		FxnId:        args.FxnId,
 		Source:       iregion,
 		OffsetStart1: istart1,
@@ -43,10 +45,10 @@ func Call(parent string, args *FxnArgs) (string, *FxnArgs) {
 }
 
 // Take in some source node, create an edge and a target node
-func Transform(parent *Node, args *FxnArgs) (*Node, *Edge) {
+func Transform(parent *models.Node, args *models.FxnArgs) (*models.Node, *models.Edge) {
 	targetDoc, iargs := Call(parent.Document, args)
-	child := ConstructNode(targetDoc, parent)
-	edge := ConstructEdge(args, iargs, parent.Id, child.Id)
+	child := models.ConstructNode(targetDoc, parent)
+	edge := models.ConstructEdge(args, iargs, parent.Id, child.Id)
 	child.EdgeIn = edge.Id
 	return child, edge
 }
