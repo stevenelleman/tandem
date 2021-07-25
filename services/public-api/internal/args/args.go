@@ -2,7 +2,7 @@ package args
 
 import (
 	"os"
-	"sg/services/public-api/internal/queries/graph_queries/graph_psql_queries"
+	"sg/services/public-api/internal/queries/graph_queries/psql"
 	"strconv"
 
 	"sg/libraries/golang/datastore/migrater"
@@ -24,7 +24,7 @@ const (
 	maxConns = 40
 )
 
-func MakeArgsFromEnv(store string) *graph_psql_queries.StoreArgs {
+func MakeArgsFromEnv(store string) *psql.StoreArgs {
 	envPort := os.Getenv(psqlPort)
 	port, err := strconv.Atoi(envPort)
 	if err != nil {
@@ -73,7 +73,7 @@ func MakeArgsFromEnv(store string) *graph_psql_queries.StoreArgs {
 		migrationPath,
 	)
 
-	psqlArgs := graph_psql_queries.MakeArgs(
+	psqlArgs := psql.MakeArgs(
 		driver,
 		store,
 		user,

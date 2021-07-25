@@ -2,7 +2,7 @@ package reqs
 
 import "sg/services/public-api/internal/models"
 
-// TODO: Consider making generic request interface, BindJSON -> Obj directly + error handling 
+// TODO: Consider making generic request interface, BindJSON -> Obj directly + error handling
 
 // Note: The attribute field must be capitalized, otherwise it's private to BindJSON
 type CreateNodeReq struct {

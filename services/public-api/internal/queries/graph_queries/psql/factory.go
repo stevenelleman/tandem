@@ -1,4 +1,4 @@
-package graph_psql_queries
+package psql
 
 import (
 	"database/sql"

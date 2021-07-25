@@ -3,11 +3,11 @@ package graph_controller
 import (
 	"github.com/gin-gonic/gin"
 	"sg/services/public-api/internal/models"
-	"sg/services/public-api/internal/queries/graph_queries/graph_psql_queries"
+	"sg/services/public-api/internal/queries/graph_queries/psql"
 )
 
 type GraphController struct {
-	query *graph_psql_queries.GraphPsqlQueries
+	query *psql.GraphPsqlQueries
 }
 
 func (c *GraphController) Close() {

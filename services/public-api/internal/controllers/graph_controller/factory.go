@@ -1,14 +1,14 @@
 package graph_controller
 
-import "sg/services/public-api/internal/queries/graph_queries/graph_psql_queries"
+import "sg/services/public-api/internal/queries/graph_queries/psql"
 
 type GraphControllerFactory struct {
-	psqlConnFactory *graph_psql_queries.GraphPsqlConnectionFactory
+	psqlConnFactory *psql.GraphPsqlConnectionFactory
 }
 
-func NewControllerFactory(psqlArgs *graph_psql_queries.StoreArgs) *GraphControllerFactory {
+func NewControllerFactory(psqlArgs *psql.StoreArgs) *GraphControllerFactory {
 	cf := &GraphControllerFactory{}
-	cf.psqlConnFactory = graph_psql_queries.NewPsqlConnFactory(psqlArgs)
+	cf.psqlConnFactory = psql.NewPsqlConnFactory(psqlArgs)
 	return cf
 }
 
