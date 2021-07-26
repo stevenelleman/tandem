@@ -1,6 +1,6 @@
 package transformations
 
-import "web.microservice.shell/services/public-api/internal/models"
+import "sg/services/public-api/internal/models"
 
 const (
 	// NOTE: Transformations can be the same operation but interpretted differently in the UI

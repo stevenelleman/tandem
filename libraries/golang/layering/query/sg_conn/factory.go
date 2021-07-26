@@ -1,7 +1,7 @@
 package sg_conn
 
 import (
-	"web.microservice.shell/libraries/golang/pb/sg"
+	"sg/libraries/golang/pb/sg"
 	"log"
 
 	"google.golang.org/grpc"

@@ -1,14 +1,12 @@
-package psql_conn
+package psql
 
 import (
 	"database/sql"
 	"fmt"
-	"sg/libraries/golang/datastore/migrater"
-
 	"github.com/Masterminds/squirrel"
 	"gopkg.in/gorp.v2"
 
-	_ "github.com/lib/pq"
+	"sg/libraries/golang/datastore/migrater"
 )
 
 type StoreArgs struct {
@@ -66,12 +64,12 @@ func InitDbConn(args *StoreArgs) *sql.DB {
 	return db
 }
 
-type PsqlConnectionFactory struct {
+type GraphPsqlConnectionFactory struct {
 	db *gorp.DbMap
 	qb *squirrel.StatementBuilderType
 }
 
-func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
+func NewPsqlConnFactory(args *StoreArgs) *GraphPsqlConnectionFactory {
 	conn := InitDbConn(args)
 	qb := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
@@ -86,7 +84,7 @@ func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
 	dbMap := &gorp.DbMap{Db: conn, Dialect: gorp.PostgresDialect{}}
 	args.mapper(dbMap)
 
-	cf := &PsqlConnectionFactory{
+	cf := &GraphPsqlConnectionFactory{
 		db: dbMap,
 		qb: &qb,
 	}
@@ -96,8 +94,8 @@ func NewPsqlConnFactory(args *StoreArgs) *PsqlConnectionFactory {
 // Note: in the future if a subset of methods can be reused make a separate interface for them and move them out into a separate library,
 //	then compose them into the final connection type interface to reuse the logic. The same pattern goes for controller and handler levels.
 //	In the future I can forsee this kind of reuseability applying to profile / auth logic
-func (f *PsqlConnectionFactory) Connection() *PsqlConnection {
-	return &PsqlConnection{
+func (f *GraphPsqlConnectionFactory) Connection() *GraphPsqlQueries {
+	return &GraphPsqlQueries{
 		db: f.db,
 		qb: f.qb,
 	}

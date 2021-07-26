@@ -2,7 +2,7 @@ package models
 
 import (
 	"time"
-	"web.microservice.shell/libraries/golang/utils"
+	"sg/libraries/golang/utils"
 )
 
 type Node struct {

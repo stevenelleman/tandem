@@ -2,12 +2,11 @@ package args
 
 import (
 	"os"
+	"sg/services/public-api/internal/queries/graph_queries/psql"
 	"strconv"
 
-	"web.microservice.shell/libraries/golang/datastore/migrater"
-	"web.microservice.shell/libraries/golang/layering/query/psql_conn"
-	"web.microservice.shell/libraries/golang/layering/query/sg_conn"
-	"web.microservice.shell/services/public-api/internal/mapper"
+	"sg/libraries/golang/datastore/migrater"
+	"sg/services/public-api/internal/mapper"
 )
 
 const (
@@ -25,7 +24,7 @@ const (
 	maxConns = 40
 )
 
-func MakeArgsFromEnv(store string) (*psql_conn.StoreArgs, *sg_conn.StoreArgs) {
+func MakeArgsFromEnv(store string) *psql.StoreArgs {
 	envPort := os.Getenv(psqlPort)
 	port, err := strconv.Atoi(envPort)
 	if err != nil {
@@ -74,7 +73,7 @@ func MakeArgsFromEnv(store string) (*psql_conn.StoreArgs, *sg_conn.StoreArgs) {
 		migrationPath,
 	)
 
-	psqlArgs := psql_conn.MakeArgs(
+	psqlArgs := psql.MakeArgs(
 		driver,
 		store,
 		user,
@@ -86,7 +85,5 @@ func MakeArgsFromEnv(store string) (*psql_conn.StoreArgs, *sg_conn.StoreArgs) {
 		mapper.MapTables,
 	)
 
-	sgArgs := sg_conn.MakeArgs(address)
-
-	return psqlArgs, sgArgs
+	return psqlArgs
 }

@@ -1,7 +1,7 @@
 package transformations
 
 import (
-	"web.microservice.shell/services/public-api/internal/models"
+	"sg/services/public-api/internal/models"
 	"testing"
 
 	"github.com/stretchr/testify/require"
