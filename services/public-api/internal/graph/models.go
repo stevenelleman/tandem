@@ -25,6 +25,7 @@ type Node struct {
 
 	// TODO: Add chunk and type logic.
 	Document string `db:"document"`
+	DocIsPopulated bool `db:"docIsPopulated"`
 
 	// Metadata -- TODO: versioned metadata bytes
 	CreatedAt time.Time `db:"created_at"`
