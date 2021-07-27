@@ -88,10 +88,10 @@ func ConstructScope(nodes []*Node) (*Node) {
 }
 
 func AccumulateDocForEdge(edge Edge*) (doc string) {
-	var region string := "" // Do we need this?
-	var args Args* := edge.Args
-	var sourceNode Node* = GetNodeById(graph, edge.SourceNodeId) // TODO set up preprocessing to access graph as go object, cache as necessary
-	var sourceDoc string := AccumulateDocForNode(sourceNode)
+	region := "" // Do we need this?
+	args := edge.Args
+	sourceNode = GetNodeById(graph, edge.SourceNodeId) // TODO set up preprocessing to access graph as go object, cache as necessary
+	sourceDoc := AccumulateDocForNode(sourceNode)
 
 	targetDoc, inverseDoc, invArgs := Call(region, sourceDoc, args)
 	return targetDoc
