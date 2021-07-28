@@ -1,9 +1,19 @@
-package models
+package graph
 
 import (
 	"time"
 	"sg/libraries/golang/utils"
 )
+
+// Structs used in the graph implementation
+
+type FxnArgs struct {
+	FxnId        int
+	Source       string
+	OffsetStart1 int
+	OffsetEnd1   int
+	OffsetStart2 int
+}
 
 type Node struct {
 	Id string `db:"id"`
@@ -15,29 +25,11 @@ type Node struct {
 
 	// TODO: Add chunk and type logic.
 	Document string `db:"document"`
+	DocIsPopulated bool `db:"docIsPopulated"`
 
 	// Metadata -- TODO: versioned metadata bytes
 	CreatedAt time.Time `db:"created_at"`
 	Author string `db:"author"`
-}
-
-// Create the fist node in a document, with no source edges
-func ConstructNode(doc string, parent *Node) (*Node) {
-	return &Node {
-		Id: utils.UUIDv4().String(),
-		Document: doc,
-		Scopes: parent.Scopes, // Retain the same scopes as parent
-
-		CreatedAt: time.Now(), // TODO: Express as a PreInsert so db clock is source of truth
-	}
-}
-
-type FxnArgs struct {
-	FxnId        int
-	Source string
-	OffsetStart1 int
-	OffsetEnd1   int
-	OffsetStart2 int
 }
 
 type Edge struct {
@@ -53,20 +45,6 @@ type Edge struct {
 	// Metadata
 	CreatedAt time.Time `db:"created_at"`
 	Author string `db:"author"`
-}
-
-func ConstructEdge(args, iargs *FxnArgs, parentId, childId string) (*Edge) {
-	return &Edge{
-		Id: utils.UUIDv4().String(),
-
-		Args: args,
-		InverseArgs: iargs,
-
-		ParentNodeId: parentId,
-		ChildNodeId: childId,
-
-		CreatedAt: time.Now(), // TODO: Express as a PreInsert so db clock is source of truth
-	}
 }
 
 // TODO: Think about how to represent Scope as a document itself

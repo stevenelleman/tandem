@@ -43,12 +43,3 @@ func Call(parent string, args *models.FxnArgs) (string, *models.FxnArgs) {
 
 	return child, iargs
 }
-
-// Take in some source node, create an edge and a target node
-func Transform(parent *models.Node, args *models.FxnArgs) (*models.Node, *models.Edge) {
-	targetDoc, iargs := Call(parent.Document, args)
-	child := models.ConstructNode(targetDoc, parent)
-	edge := models.ConstructEdge(args, iargs, parent.Id, child.Id)
-	child.EdgeIn = edge.Id
-	return child, edge
-}

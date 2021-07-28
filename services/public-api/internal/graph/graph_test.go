@@ -1,4 +1,4 @@
-package transformations
+package graph
 
 import (
 	"sg/services/public-api/internal/models"
