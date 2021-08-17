@@ -151,7 +151,7 @@ a, a:hover, a:active, a:visited, a:focus {
 .storyline-section-transition {
     width: 100%;
     background-color: darkslateblue;
-    height: 200px;
+    height: 75px;
 }
 
 /* Footer */
@@ -163,16 +163,25 @@ a, a:hover, a:active, a:visited, a:focus {
     bottom: 0;
     left: 0;
     width: 100%;
-    margin-top: 1rem;
-    padding-top: 1rem;
+}
+
+.footer-content {
+    padding: 1rem;
 }
 
 .footer-links {
     float: right;
 }
 
-.footer-link {
+.footer-link{
     display: inline-flex;
-    margin: 5px;
+    margin-left: 5px;
 
+}
+
+.footer-text {
+    font-family: Montserrat;
+    font-color: white;
+    display: inline;
+    margin-top: 5px;
 }
