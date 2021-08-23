@@ -5,9 +5,9 @@ export class Storyline extends React.Component<PropsType> {
   render() {
     return (
       <div className="storyline-container">
-        <div className="storyline-intro-image">
+        <div className="storyline-intro-image"> </div>
           <div className="storyline-intro-text"> Change starts at home.</div>
-        </div>
+       
         { /* Change starts at home. */ }
         <div className="storyline-section">
           <div className="storyline-section-title">
