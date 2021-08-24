@@ -80,7 +80,7 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .storyline-intro-image {
-    background-image: url('/images/grouphouse-background.jpeg');
+    background-image: url('/images/grouphouse-background.jpg');
     opacity: 75%;
     width: 100%;
     display: block;
@@ -95,8 +95,8 @@ a, a:hover, a:active, a:visited, a:focus {
     background-size: cover;
     clear: both;
     overflow: hidden;
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
     /* filter: blur(8px);
     -webkit-filter: blur(8px); */
     margin-bottom: 2px;
