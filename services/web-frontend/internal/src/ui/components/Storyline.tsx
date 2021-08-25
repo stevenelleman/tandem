@@ -144,16 +144,16 @@ export class Storyline extends React.Component<PropsType> {
           </div>
           <div className="storyline-section-content">
             <div className="storyline-section-text">
-              <div className="row">
+              <div className="method-row">
                 <div className="method-column">
                   <div className="method-column-header">Houses & Co-Living Situations</div>
                   <div className="method-column-content" />
                 </div>
-                <div className="column">
+                <div className="method-column">
                   <div className="method-column-header">Individuals</div>
                   <div className="method-column-content" />
                 </div>
-                <div className="column">
+                <div className="method-column">
                   <div className="method-column-header">Developers</div>
                   <div className="method-column-content">
                     We&apos;re taking a different approach.
@@ -165,7 +165,7 @@ export class Storyline extends React.Component<PropsType> {
                     <br />
                     <br />
                     In this world a generic
-                    <a href="https://en.wikipedia.org/wiki/Library_(computing)">library</a>
+                    <a href="https://en.wikipedia.org/wiki/Library_(computing)"> library </a>
                     can be reused a huge number of times, multiplying the value the original efforts tenfold, hundredfold, even thousandfold!
                     <br />
                     We want to work our way to that reality.

@@ -109,6 +109,28 @@ a, a:hover, a:active, a:visited, a:focus {
 
 }
 
+.method-row {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.method-column {
+    width: 300px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    border-style: outset;
+    border-color:blue;
+    background-color: whitesmoke;
+}
+
+.method-column-header {
+    font-size: large;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
 .storyline-section-title {
     font-family: Montserrat;
     margin-left: 25px;
@@ -123,7 +145,7 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .storyline-section-text {
-
+    padding: 20px;
 }
 
 .storyline-section-transition {
