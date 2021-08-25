@@ -151,7 +151,7 @@ export class Storyline extends React.Component<PropsType> {
                 </div>
                 <div className="method-column">
                   <div className="method-column-header">Individuals</div>
-                  <div className="method-column-content" />
+                  <div className="method-column-content"> Here are the example methods for Individuals </div>
                 </div>
                 <div className="method-column">
                   <div className="method-column-header">Developers</div>

@@ -122,7 +122,7 @@ a, a:hover, a:active, a:visited, a:focus {
     border-radius: 8px;
     border-style: outset;
     border-color:blue;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .method-column-header {
@@ -151,13 +151,37 @@ a, a:hover, a:active, a:visited, a:focus {
 .storyline-section-transition {
     width: 100%;
     background-color: darkslateblue;
-    height: 200px;
+    height: 75px;
 }
 
 /* Footer */
 
 .footer-container {
     width: 100%;
-    background-color: palegreen;
-    min-height: 200px;
+    background-color: paleturquoise;
+    min-height: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-content {
+    padding: 1rem;
+}
+
+.footer-links {
+    float: right;
+}
+
+.footer-link{
+    display: inline-flex;
+    margin-left: 5px;
+
+}
+
+.footer-text {
+    font-family: Montserrat;
+    font-color: white;
+    display: inline;
+    margin-top: 5px;
 }
