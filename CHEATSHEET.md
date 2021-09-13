@@ -5,3 +5,5 @@
 - `docker system prune -a --volumes`: to purge unused docker resources 
 - `kubectl logs ingress-nginx-controller-57cb5bf694-kc6jr -n ingress-nginx --follow`
 - `kubectl logs -l app=public-api --tail=1500`
+- Make `tf` an alias for `terraform` with: `cd`, `vim .zshrc`, add `alias tf='terraform'`, save and exit, and then run `source .zshrc` 
+- `tf destroy -target=helm_release.helm-releases`

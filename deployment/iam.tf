@@ -55,11 +55,14 @@ variable cluster_role_name {
   default = "external-dns"
 }
 
+
 // K8s Cluster Role and Binding for Service Account
 resource "kubernetes_cluster_role" "external-dns" {
   metadata {
     name = var.cluster_role_name
   }
+
+  // TODO: how to attach to specific role?
 
   rule {
     api_groups = [""]
@@ -69,7 +72,7 @@ resource "kubernetes_cluster_role" "external-dns" {
 
   rule {
     api_groups = ["extensions","networking.k8s.io"]
-    resources = ["ingresses"]
+    resources = ["ingresses"] // TODO: Do I need this for the ingress components?
     verbs      = ["get", "list", "watch"]
   }
 
@@ -77,6 +80,13 @@ resource "kubernetes_cluster_role" "external-dns" {
     api_groups = [""]
     resources = ["nodes"]
     verbs      = ["list","watch"]
+  }
+
+  // TODO: Need `route53:ListHostedZonesByName` and `route53:GetChange` -- api_group for route53?
+  rule {
+    api_groups = ["networking.istio.io"]
+    resources  = ["gateways"]
+    verbs      = ["get", "list", "watch"]
   }
 }
 
@@ -87,7 +97,8 @@ resource "kubernetes_cluster_role_binding" "external-dns-viewer" {
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind      = "ClusterRole"
-    name      = var.cluster_role_name
+    name      = var.cluster_role_name // TODO Can this be replaced with already created role (i.e. route53-cert-manager?)
+    // name = "route53-cert-manager"
   }
   subject {
     kind      = "ServiceAccount"

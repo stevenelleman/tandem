@@ -91,23 +91,119 @@ module "eks" {
 # Deploy services
 variable "services" {
   description = "Service names"
-  default = ["api-store", "grpc", "public-api", "web-frontend", "external-dns"]
+  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress", "external-dns"]
 }
 
 variable "relativeChartPath" {
   default = "../charts"
 }
 
+# TODO: May need to do something similar for ingress
+
+# Create cert-managar namespace and resource before progressing
+resource "kubernetes_namespace" "cert-manager" {
+  metadata {
+    annotations = {
+      name = "cert-manager"
+    }
+
+    name = "cert-manager"
+  }
+}
+
+resource "helm_release" "cert-manager" {
+  name       = "cert-manager"
+  repository = "https://charts.jetstack.io"
+  chart      = "cert-manager"
+  version    = "v1.4.0"
+  namespace  = "cert-manager"
+  # namespace  = rancher2_namespace.cert-manager.name
+  # lint       = true
+  # atomic     = true
+  values = [
+    file("./values/cert-manager.yaml")
+  ]
+}
+
+/*variable "provider-eks" {
+  default = "kubernetes.eks"
+}*/
+
+# Nginx Ingress Controller
+
+// https://registry.terraform.io/modules/byuoitav/nginx-ingress-controller/kubernetes/latest
+module "nginx-ingress-controller" {
+  source  = "byuoitav/nginx-ingress-controller/kubernetes"
+  version = "0.2.1"
+  # insert the 1 required variable here
+}
+
+
+/*module "nginx-controller" {
+  # source  = "terraform-iaac/nginx-controller/helm"
+  source  = "terraform-iaac/nginx-controller/kubernetes"
+  version = "1.3.1"
+
+  additional_set = [
+    {
+      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
+      value = "nlb"
+      type  = "string"
+    },
+    {
+      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-cross-zone-load-balancing-enabled"
+      value = "true"
+      type  = "string"
+    }
+  ]
+}*/
+
+# ALB Ingress Controller
+/*module "alb_ingress_controller" {
+  source  = "iplabs/alb-ingress-controller/kubernetes"
+  version = "3.1.0"
+
+  providers = {
+    kubernetes = var.provider-eks
+  }
+
+  k8s_cluster_type = "eks"
+  k8s_namespace    = "kube-system"
+
+  aws_region_name  = var.aws_region
+  k8s_cluster_name = data.aws_eks_cluster.cluster.name
+}*/
+
+# TODO: remove external-dns from the list and instead follow: https://github.com/hashicorp/terraform-provider-kubernetes-alpha/issues/72
 resource "helm_release" "helm-releases" {
   count = length(var.services)
   name = var.services[count.index]
 
   # Ensure service account exists before attempted deployment of external-dns
-  depends_on = [kubernetes_service_account.external-dns]
+  depends_on = [
+    kubernetes_service_account.external-dns,
+    kubernetes_namespace.cert-manager,
+    helm_release.cert-manager,
+
+    kubernetes_cluster_role.external-dns,
+    kubernetes_cluster_role_binding.external-dns-viewer,
+    aws_iam_role.external-dns
+  ]
 
   values = [
-    file("..env/charts/values-prod.yaml")
+    file("../env/charts/values-prod.yaml")
   ]
 
   chart = "${var.relativeChartPath}/${var.services[count.index]}"
 }
+
+# Deploy external-dns
+
+# TODO: Create cert-manager namespace
+/*resource "kubernetes_manifest" "cert-manager-cluster-issuer" {
+  provider = kubernetes
+  manifest = yamldecode(templatefile("manifests/cert-manager-cluster-issuer.tmpl.yml", {
+    cluster_name=var.cluster_name
+  }))
+  depends_on = [helm_release.cert-manager]
+}*/

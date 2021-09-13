@@ -1,6 +1,10 @@
 mode: production
 email: steven.elleman@gmail.com
 
+# TLS Certs
+environment: prod
+acmeStagingEndpoint: https://acme-staging-v02.api.letsencrypt.org/directory
+
 # Ingress Port
 ingressPort: 443
 

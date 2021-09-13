@@ -5,6 +5,7 @@
 - [Docker Setup](#docker-setup)
 - [Available Scripts](#available-scripts)
     - [depcheck](#depcheck)
+- [Examples](#examples)
 - [Original README](#original-readme)
 
 ## Setup 
@@ -26,6 +27,9 @@ In the project directory, you can run:
 ### `depcheck`
 
 To check if dependencies are unused or missing.
+
+### `Examples`
+For examples of how redux actions/reducers are used in-code, refer to: https://github.com/stevenelleman/tandem/commit/5e6120f3eb0f93b83b148fbc05404373275f6d6a
 
 ## Original README
 

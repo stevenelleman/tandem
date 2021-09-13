@@ -21,6 +21,16 @@ terraform apply
 aws eks --region=us-west-1 update-kubeconfig --name=${cluster name}
 ```
 
+Possibly need to install some missing dependencies in helm: https://cert-manager.io/docs/installation/kubernetes/ 
+``` 
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.4.0 \
+  --set installCRDs=true
+```
+
 ## Old Deployment
 1. Run `terraform apply` w/o `external-dns` service (i.e. remove from service list in `main.tf`). 
 Note the cluster name. 

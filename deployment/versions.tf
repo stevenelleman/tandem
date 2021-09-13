@@ -7,6 +7,12 @@ terraform {
       version = "2.1.2"
     }
 
+    /*nginx-controller = {
+      source  = "terraform-iaac/nginx-controller/helm"
+      version = "1.3.1"
+      # insert the 1 required variable here
+    }*/
+
     aws = {
       source  = "hashicorp/aws"
       version = "3.35.0"

@@ -14,6 +14,7 @@ deps-ts-services: deps-ts-libraries deps-ts-libraries deps-web-frontend
 
 deps-go-services: deps-golang deps-public-api deps-grpc
 
+# TODO: Figure out how to install dependencies in packages w/o local cross-dependencies before the ones that do
 deps-ts-libraries:
 	for pkg in ./libraries/typescript/*; do \
 		if [ -d $$pkg ]; then \
@@ -31,6 +32,10 @@ deps-grpc:
 	cd ./services/grpc; ${GO} mod tidy -v; ${GO} mod vendor -v;
 
 deps-web-frontend:
+	@echo
+	@echo "Beware: typescript dependency errors most likely related to cross-dependency(ies) in local ts libraries"
+	@echo "Order matters -- local ts libraries without local dependencies should be initialized before libraries that do"
+	@echo
 	cd ./services/web-frontend/internal; yarn install --force;
 
 # Service Builds
