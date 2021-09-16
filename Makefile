@@ -7,7 +7,7 @@ checkout-against-tandem:
 	./scripts/checkout-against-tandem.sh
 
 # Go Vendor Commands
-deps-all: deps-ts-services deps-go-services
+deps: deps-ts-services deps-go-services
 
 # Run ts dependencies to account for local ts cross-dependencies where order matters
 deps-ts-services: deps-ts-libraries deps-ts-libraries deps-web-frontend

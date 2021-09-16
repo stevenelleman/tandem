@@ -6,6 +6,10 @@ import (
 	"web.microservice.shell/libraries/golang/layering/models"
 )
 
+func (h *Handler) Ping(ctx *gin.Context) {
+	ReturnJSON(ctx, 200, "Public-API Response")
+}
+
 func (h *Handler) ListSilos(ctx *gin.Context) {
 	silos, err := h.Controller().ListSilos(ctx)
 	if err != nil {

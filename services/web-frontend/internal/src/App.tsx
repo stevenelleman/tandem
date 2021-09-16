@@ -32,6 +32,9 @@ class App extends React.Component<unknown, StateType> {
       <div className="app">
         <Router>
           <Switch>
+            <Route path="/v0/">
+              <div>Web-Frontend Response</div>
+            </Route>
             <Route path="/getting-started">
               <div>Insert cutesy explanatory paragraph here</div>
             </Route>

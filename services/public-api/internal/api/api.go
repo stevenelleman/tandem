@@ -14,6 +14,7 @@ func Run(store string) {
 
 	router := gin.Default()
 	v1 := router.Group("/v1")
+	v1.GET("/", h.Ping)
 	v1.GET("/silos", h.ListSilos)
 	v1.GET("/silos/:silo_id", h.GetSilo)
 	v1.POST("/silos/:silo_id", h.CreateSilo)

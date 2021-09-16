@@ -12,7 +12,8 @@
 1. [Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. 
 2. Run `make vendor-all`.
 3. Set environment type in `Tiltfile` (`dev` or `staging`, `dev` by default).
-4. Run `tilt up`.  If `dev` navigate to `http://localhost`, else `https://staging.grouphouse.io`.
+4. `kubectl config use-context docker-desktop`
+5. Run `tilt up`.  If `dev` navigate to `http://localhost`, else `https://staging.grouphouse.io`.
 
 ## AWS Deployment
 [Deployment Docs](./deployment/README.md)
