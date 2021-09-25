@@ -1,15 +1,14 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: web-frontend-rule
+  name: internet-facing-services
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/use-regex: "true"
+    # TODO: Figure out another way to include
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.domain }}
     {{ if .Values.dnsServiceAccount }}
     cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.environment }}
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.domain }}
     kubernetes.io/tls-acme: "true"
     {{ end }}
 spec:
@@ -30,32 +29,7 @@ spec:
                 name: web-frontend
                 port:
                   number: {{ .Values.ingressPort }}
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: public-api-rule
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/cors-allow-origin: {{ .Values.allowedOrigin }}
-    nginx.ingress.kubernetes.io/rewrite-target: /v$1/$2
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    {{ if .Values.dnsServiceAccount }}
-    cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.environment }}
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.domain }}
-    loca{{ end }}
-spec:
-  {{ if .Values.dnsServiceAccount }}
-  tls:
-    - hosts:
-        - {{ .Values.domain }}
-      secretName: {{ .Values.environment }}-certificate
-  {{ end }}
-  rules:
-    - host: {{ .Values.domain }}
-      http:
-        paths:
-          - path: /v([0-9])/(.*)
+          - path: /v([1-9])/(.*)
             pathType: Prefix
             backend:
               service:

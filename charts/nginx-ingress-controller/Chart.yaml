@@ -1,6 +1,6 @@
 apiVersion: v3
-name: grpc
-description: Example grpc service
+name: nginx-ingress-controller
+description: Nginx ingress controller for services exposed to the internet.
 
 # A chart can be either an 'application' or a 'library' chart.
 #
