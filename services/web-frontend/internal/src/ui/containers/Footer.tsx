@@ -10,17 +10,17 @@ export class Footer extends React.Component {
           </div>
           <div className="footer-links">
             <div className="footer-link">
-              <a href="">
+              <a href="/#">
                 <img src="/images/logos/instagram_logo.png" alt="Instagram Logo" height="20px" width="20px"></img>
               </a>
             </div>
             <div className="footer-link">
-              <a href="">
+              <a href="/#">
                 <img src="/images/logos/facebook_logo.png" alt="Facebook Logo" height="20px" width="20px"></img>
               </a>
             </div>
             <div className="footer-link">
-              <a href="">
+              <a href="/#">
                 <img src="/images/logos/twitter_logo.png" alt="Twitter Logo" height="20px" width="20px"></img>
               </a>
             </div>

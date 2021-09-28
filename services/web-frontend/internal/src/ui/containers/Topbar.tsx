@@ -5,7 +5,7 @@ export class Topbar extends React.Component {
     return (
       <div className="topbar">
         <div className="header-logo">
-          <img src="/images/grouphouse-logo.png" className="header-logo-img"/>
+          <img src="/images/grouphouse-logo.png" alt="Mushroom Header"className="header-logo-img"/>
           <div className="header-logo-title">Grouphouse</div>
         </div>
         <div className="header-links">
