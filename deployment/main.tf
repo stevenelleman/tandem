@@ -91,7 +91,7 @@ module "eks" {
 # Deploy services
 variable "services" {
   description = "Service names"
-  default = ["api-store", "grpc", "public-api", "web-frontend", "external-dns"]
+  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "external-dns"]
 }
 
 variable "relativeChartPath" {
@@ -106,7 +106,7 @@ resource "helm_release" "helm-releases" {
   depends_on = [kubernetes_service_account.external-dns]
 
   values = [
-    file("..env/charts/values-prod.yaml")
+    file("../env/charts/values-prod.yaml")
   ]
 
   chart = "${var.relativeChartPath}/${var.services[count.index]}"

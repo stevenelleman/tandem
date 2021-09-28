@@ -5,15 +5,15 @@ email: steven.elleman@gmail.com
 environment: staging
 acmeStagingEndpoint: https://acme-staging-v02.api.letsencrypt.org/directory
 
+# Ingress Port
+ingressPort: 80 # 443
+
 # External DNS
 domainFilter: grouphouse.io
 devMode: true
 
-# Ingress Port
-ingressPort: 443
-
 # Web Frontend
-webProtocol: https
+webProtocol: http #https
 domain: staging.grouphouse.io
 
 # Public API

@@ -31,6 +31,10 @@ deps-grpc:
 	cd ./services/grpc; ${GO} mod tidy -v; ${GO} mod vendor -v;
 
 deps-web-frontend:
+	@echo
+	@echo "Beware: typescript dependency errors most likely related to cross-dependency(ies) in local ts libraries"
+	@echo "Order matters -- local ts libraries without local dependencies should be initialized before libraries that do"
+	@echo
 	cd ./services/web-frontend/internal; yarn install --force;
 
 # Service Builds

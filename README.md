@@ -8,6 +8,14 @@
 5. Install [golang](https://golang.org/doc/install) (go1.16.4)
 6. Install [yarn](https://yarnpkg.com/) (v1.22.10)
 
+## Fork Setup
+1. Set upstream: `git remote add upstream git@github.com:stevenelleman/tandem.git`
+
+## Fork Rebasing
+1. `git checkout -b rebase-onto-tandem`
+2. `git fetch upstream`
+3. `git rebase upstream/master`
+
 ## Setup
 1. [Apply](https://kubernetes.github.io/ingress-nginx/deploy/#aws) nginx ingress controller so that the ingress rules work. 
 2. Run `make vendor-all`.
