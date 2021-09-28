@@ -30,7 +30,13 @@
 2. Run `terraform init` to download providers.
 3. `terraform plan`
 4. `terraform apply`
-5. Update kubectl config: `aws eks --region=us-west-1 update-kubeconfig --name=${cluster name}`
+5. Update kubectl config: `aws eks --region=us-west-2 update-kubeconfig --name=${cluster name}`
+
+Fallback solution: 
+6. Currently nginx ingress is not working, so run `kubectl apply -f ./charts/ingress-nginx-controller/templates/k8s.yaml` manually.
+
+Before destroying, run: 
+`terraform refresh -target=data.aws_eks_cluster_auth.cluster`
 
 ## Repo Tree 
 _Docs denoted by all-caps filename_

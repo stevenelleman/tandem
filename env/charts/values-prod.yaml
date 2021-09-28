@@ -2,14 +2,14 @@ mode: production
 email: steven.elleman@gmail.com
 
 # Ingress Port
-ingressPort: 443
+ingressPort: 80 # 443
 
 # External DNS
 domainFilter: grouphouse.io
 dnsServiceAccount: external-dns
 
 # Web Frontend
-webProtocol: https
+webProtocol: http # https
 domain: grouphouse.io
 
 # Public API
@@ -20,6 +20,8 @@ allowedOrigin: http://grouphouse.io
 grpcName: grpc
 grpcPort: 8001
 grpcAddress: :8001
+
+# TODO: Add variable for docker.io repo associated specifically with project images (e.g. tandem vs grouphouse)
 
 # API Store
 psqlPort: 5432

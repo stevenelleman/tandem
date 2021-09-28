@@ -13,6 +13,7 @@ provider "aws" {
 }
 
 provider "helm" {
+  alias = "local_helm"
   kubernetes {
     host = data.aws_eks_cluster.cluster.endpoint
     cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
@@ -88,26 +89,51 @@ module "eks" {
   }
 }
 
+# TODO: Any way to get all chart names automatically?
 # Deploy services
 variable "services" {
   description = "Service names"
-  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "external-dns"]
+  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress", "external-dns"]
+  # default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "external-dns"]
 }
 
 variable "relativeChartPath" {
   default = "../charts"
 }
 
-resource "helm_release" "helm-releases" {
+resource "helm_release" "services" {
+  provider = helm.local_helm
+
   count = length(var.services)
   name = var.services[count.index]
 
   # Ensure service account exists before attempted deployment of external-dns
-  depends_on = [kubernetes_service_account.external-dns]
+  depends_on = [
+    kubernetes_service_account.external-dns,
+    kubernetes_cluster_role.external-dns,
+    kubernetes_cluster_role_binding.external-dns-viewer,
+    aws_iam_role.external-dns
+  ]
 
   values = [
     file("../env/charts/values-prod.yaml")
   ]
 
   chart = "${var.relativeChartPath}/${var.services[count.index]}"
+}
+
+resource "helm_release" "ingress-controller" {
+  provider = helm.local_helm
+
+  name = "ingress-nginx-controller"
+
+  depends_on = [
+    helm_release.services
+  ]
+
+  values = [
+    file("../env/charts/values-prod.yaml")
+  ]
+
+  chart = "${var.relativeChartPath}/ingress-nginx-controller"
 }
