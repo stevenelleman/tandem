@@ -48,6 +48,7 @@ spec:
           # Could also add a different directory root for dev vs prod using an environment variable
           # directory ./ vs ./grouphouse.io (or web-microservice-shell for now)
           # i.e. fictional.registry.example/imagename, `.` for dev, `dockerhub/...` for prod
+          # TODO: need to replace with a per-project image
           image: docker.io/selleman/web-microservice-shell_web-frontend:latest
           imagePullPolicy: Always
           ports:

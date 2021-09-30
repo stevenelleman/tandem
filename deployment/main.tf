@@ -89,12 +89,22 @@ module "eks" {
   }
 }
 
+// NOTE: Related to https://github.com/hashicorp/terraform-provider-helm/issues/427
+// Must create the namespace explicitly before attempting to deploy resources via helm into the namespace
+resource "kubernetes_namespace" "ingress-nginx" {
+  metadata {
+    name = "ingress-nginx"
+    annotations = {
+      name = "ingress-nginx"
+    }
+  }
+}
+
 # TODO: Any way to get all chart names automatically?
 # Deploy services
 variable "services" {
   description = "Service names"
-  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress", "external-dns"]
-  # default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "external-dns"]
+  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "external-dns"]
 }
 
 variable "relativeChartPath" {
@@ -109,6 +119,7 @@ resource "helm_release" "services" {
 
   # Ensure service account exists before attempted deployment of external-dns
   depends_on = [
+    kubernetes_namespace.ingress-nginx,
     kubernetes_service_account.external-dns,
     kubernetes_cluster_role.external-dns,
     kubernetes_cluster_role_binding.external-dns-viewer,
@@ -120,20 +131,4 @@ resource "helm_release" "services" {
   ]
 
   chart = "${var.relativeChartPath}/${var.services[count.index]}"
-}
-
-resource "helm_release" "ingress-controller" {
-  provider = helm.local_helm
-
-  name = "ingress-nginx-controller"
-
-  depends_on = [
-    helm_release.services
-  ]
-
-  values = [
-    file("../env/charts/values-prod.yaml")
-  ]
-
-  chart = "${var.relativeChartPath}/ingress-nginx-controller"
 }

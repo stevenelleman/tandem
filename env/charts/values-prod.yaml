@@ -1,3 +1,4 @@
+prod: true
 mode: production
 email: steven.elleman@gmail.com
 
