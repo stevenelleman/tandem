@@ -25,7 +25,7 @@ services = {
     'web-frontend': True,
     'ingress': False,
     'ingress-nginx-controller': False,
-    # cert-manager: False,
+    'cert-manager': False,
 }
 
 # Apply `external-dns` resources in Staging and Production
@@ -54,13 +54,10 @@ k8s_resource('api-store')
 k8s_resource('grpc')
 k8s_resource('public-api', resource_deps=['api-store', 'grpc'])
 k8s_resource('web-frontend', resource_deps=['public-api'])
-
-# Name notation: https://docs.tilt.dev/tiltfile_concepts.html#kubernetes-object-selectors
 k8s_resource('ingress-nginx-controller')
 k8s_resource(objects=['internet-facing-services:ingress'], new_name='ingress', resource_deps=['web-frontend', 'public-api', 'ingress-nginx-controller'])
 
-# k8s_resource('cert-manager', resource_deps=['external-dns', 'ingress-nginx-controller'])
-
 if mode == 1 or mode == 2:
     k8s_resource('external-dns', resource_deps=['ingress'])
+    k8s_resource('cert-manager', resource_deps=['external-dns', 'ingress-nginx-controller'])
 

@@ -6,14 +6,14 @@ environment: staging
 acmeStagingEndpoint: https://acme-staging-v02.api.letsencrypt.org/directory
 
 # Ingress Port
-ingressPort: 80 # 443
+ingressPort: 443 #80 # 443
 
 # External DNS
 domainFilter: grouphouse.io
 devMode: true
 
 # Web Frontend
-webProtocol: http #https
+webProtocol: https #http #https
 domain: staging.grouphouse.io
 
 # Public API

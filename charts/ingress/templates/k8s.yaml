@@ -8,17 +8,17 @@ metadata:
     # TODO: Figure out another way to include
     external-dns.alpha.kubernetes.io/hostname: {{ .Values.domain }}
     # Comment out until cert-manager added back, conditional on manager, not on service account
-    # {{ if .Values.dnsServiceAccount }}
-    # cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.environment }}
-    # kubernetes.io/tls-acme: "true"
-    # {{ end }}
+    {{ if .Values.dnsServiceAccount }}
+    cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.environment }}
+    kubernetes.io/tls-acme: "true"
+    {{ end }}
 spec:
-  # {{ if .Values.dnsServiceAccount }}
-  # tls:
-  #   - hosts:
-  #       - {{ .Values.domain }}
-  #     secretName: {{ .Values.environment }}-certificate
-  # {{ end }}
+  {{ if .Values.dnsServiceAccount }}
+  tls:
+    - hosts:
+      - {{ .Values.domain }}
+      secretName: {{ .Values.environment }}-certificate
+  {{ end }}
   rules:
     - host: {{ .Values.domain }}
       http:

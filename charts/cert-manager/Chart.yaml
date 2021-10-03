@@ -1,6 +1,6 @@
 apiVersion: v3
-name: external-dns
-description: External DNS
+name: cert-manager
+description: Jetstack Cert Manager
 
 # A chart can be either an 'application' or a 'library' chart.
 #

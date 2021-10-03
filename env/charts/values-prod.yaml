@@ -2,15 +2,19 @@ prod: true
 mode: production
 email: steven.elleman@gmail.com
 
+# TLS Certs
+environment: prod
+acmeStagingEndpoint: https://acme-staging-v02.api.letsencrypt.org/directory
+
 # Ingress Port
-ingressPort: 80 # 443
+ingressPort: 443 # 80
 
 # External DNS
 domainFilter: grouphouse.io
 dnsServiceAccount: external-dns
 
 # Web Frontend
-webProtocol: http # https
+webProtocol: https # http
 domain: grouphouse.io
 
 # Public API

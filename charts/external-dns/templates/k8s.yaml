@@ -1,3 +1,44 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-{{ .Values.environment }}
+  namespace: cert-manager # TODO: Seems like cluster issuer and cert need to be in the cert-manager namespace
+spec:
+  acme:
+    server: {{ .Values.acmeStagingEndpoint }}
+    email: {{ .Values.email }}
+    privateKeySecretRef:
+      name: account-key-{{ .Values.environment }}
+    solvers:
+      - selector:
+          dnsZones:
+            - {{ .Values.domain }}
+        dns01:
+          route53:
+            # TODO: Add region to values
+            region: us-west-2
+            {{ if .Values.devMode }}
+            # TODO: Make a note somewhere that the secret must be in the same namespace as the cert manager controller namespace
+            accessKeyID: AKIAQHVWSINA7X3GL5EW
+            secretAccessKeySecretRef:
+              name: env-vars
+              key: aws-secret-access-key
+            {{ end }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Values.environment }}-certificate
+  namespace: cert-manager
+spec:
+  secretName: {{ .Values.environment }}-certificate
+  issuerRef:
+    name: letsencrypt-{{ .Values.environment }}
+    kind: ClusterIssuer
+  dnsNames:
+    - {{ .Values.domain }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,7 +74,7 @@ spec:
                 secretKeyRef:
                   name: env-vars
                   key: aws-secret-access-key
-          {{ end }}
+            {{ end }}
           args:
             - --source=service
             - --source=ingress

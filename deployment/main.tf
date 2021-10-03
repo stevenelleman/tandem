@@ -89,6 +89,16 @@ module "eks" {
   }
 }
 
+# Cert Manager
+resource "kubernetes_namespace" "cert-manager" {
+  metadata {
+    name = "cert-manager"
+    annotations = {
+      name = "cert-manager"
+    }
+  }
+}
+
 // NOTE: Related to https://github.com/hashicorp/terraform-provider-helm/issues/427
 // Must create the namespace explicitly before attempting to deploy resources via helm into the namespace
 resource "kubernetes_namespace" "ingress-nginx" {
@@ -104,7 +114,7 @@ resource "kubernetes_namespace" "ingress-nginx" {
 # Deploy services
 variable "services" {
   description = "Service names"
-  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "external-dns"]
+  default = ["api-store", "grpc", "public-api", "web-frontend", "ingress-nginx-controller", "ingress", "cert-manager", "external-dns"]
 }
 
 variable "relativeChartPath" {
@@ -119,6 +129,7 @@ resource "helm_release" "services" {
 
   # Ensure service account exists before attempted deployment of external-dns
   depends_on = [
+    kubernetes_namespace.cert-manager,
     kubernetes_namespace.ingress-nginx,
     kubernetes_service_account.external-dns,
     kubernetes_cluster_role.external-dns,

@@ -31,11 +31,9 @@
 3. `terraform plan`
 4. `terraform apply`
 5. Update kubectl config: `aws eks --region=us-west-2 update-kubeconfig --name=${cluster name}`
+6. Navigate to `https://grouphouse.io`. Sometimes it will take a minute for the DNS updates to propagate.
 
-Fallback solution: 
-6. Currently nginx ingress is not working, so run `kubectl apply -f ./charts/ingress-nginx-controller/templates/k8s.yaml` manually.
-
-Before destroying, run: 
+To refresh credentials to make terraform changes, run: 
 `terraform refresh -target=data.aws_eks_cluster_auth.cluster`
 
 ## Repo Tree 
