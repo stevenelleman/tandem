@@ -51,7 +51,6 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
 
 .header-link {
     font-family: Montserrat;
-    font-color: white;
     display: inline;
     margin: 10px;
 }
@@ -79,14 +78,21 @@ a, a:hover, a:active, a:visited, a:focus {
     width: 100%;
 }
 
-.storyline-intro-image {
+#storyline-intro-image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+#storyline-intro-image {
     background-image: url('/images/grouphouse-background.jpg');
     opacity: 75%;
     width: 100%;
     display: block;
-    height: 800px;
-    left: -8px;
-    top: 70px;
+    height: 750px;
+    left: -15px;
+    top: -15px;
+    bottom: -15px;
+    right: -15px;
     margin: auto;
     background-position: 50% 50%;
     -webkit-background-size: cover;
@@ -113,7 +119,7 @@ a, a:hover, a:active, a:visited, a:focus {
     color:purple;
     font-weight: bold;
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -123,8 +129,25 @@ a, a:hover, a:active, a:visited, a:focus {
     
 }
 
-.storyline-section {
 
+.storyline-section-image {
+    display: block;
+    margin-left: 10px;
+    margin-right: auto;
+    width: 65%;
+    height: auto;
+    /* border: 2px solid black; */
+    border-radius: 2%;
+}
+
+#method-section-text {
+    /* width: -moz-fit-content;
+    width: fit-content; */
+    font-family: georgia;
+    color: black;
+    padding: 20px;
+    width: 100%;
+    background-color: lightblue;
 }
 
 .method-row {
@@ -157,13 +180,21 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .storyline-section-content {
-    width: 100%;
-    background-color: cornflowerblue;
-    height: 600px;
+    /* height: auto; */
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    height: 800px;
 }
 
 .storyline-section-text {
+    /* width: -moz-fit-content;
+    width: fit-content; */
+    font-family: georgia;
+    color: black;
     padding: 20px;
+    width: 35%;
+    background-color: lightblue;
 }
 
 .storyline-section-transition {
@@ -199,7 +230,7 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .footer-text {
     font-family: Montserrat;
-    font-color: white;
+    color: white;
     display: inline;
     margin-top: 5px;
 }

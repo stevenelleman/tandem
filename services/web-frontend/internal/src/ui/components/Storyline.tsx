@@ -5,7 +5,9 @@ export class Storyline extends React.Component<PropsType> {
   render() {
     return (
       <div className="storyline-container">
-        <div className="storyline-intro-image"> </div>
+        <div id="storyline-intro-image-container">
+          <div id="storyline-intro-image"> </div>
+        </div>
           <div className="storyline-intro-text"> Change starts at home.</div>
        
         { /* Change starts at home. */ }
@@ -42,7 +44,9 @@ export class Storyline extends React.Component<PropsType> {
               <br />
               <br />
             </div>
+            <img src="/images/grouphouse-entrance-nighttime.jpg" alt="Grouphouse Entrance Nighttime" className="storyline-section-image"></img>
           </div>
+          
           <div className="storyline-section-transition" />
         </div>
         <div className="storyline-section">
@@ -52,6 +56,7 @@ export class Storyline extends React.Component<PropsType> {
             </a>
           </div>
           <div className="storyline-section-content">
+            <img src="/images/grouphouse-livingroom-with-person.jpg" alt="Grouphouse Living Room" className="storyline-section-image"></img>
             <div className="storyline-section-text">
               Home is safety.
               <br />
@@ -133,6 +138,7 @@ export class Storyline extends React.Component<PropsType> {
               <br />
               <br />
             </div>
+            <img src="/images/grouphouse-flower.jpg" alt="Pink Flower" className="storyline-section-image"></img>
           </div>
           <div className="storyline-section-transition" />
         </div>
@@ -143,7 +149,7 @@ export class Storyline extends React.Component<PropsType> {
             </a>
           </div>
           <div className="storyline-section-content">
-            <div className="storyline-section-text">
+            <div id="method-section-text">
               <div className="method-row">
                 <div className="method-column">
                   <div className="method-column-header">Houses & Co-Living Situations</div>
@@ -203,6 +209,7 @@ export class Storyline extends React.Component<PropsType> {
               {' '}
               <a href="https://discord.gg/SejPVdUnM3">https://discord.gg/SejPVdUnM3</a>
             </div>
+            <img src="/images/grouphouse-peaches.jpg" alt="Peaches" className="storyline-section-image"></img>
           </div>
           <div className="storyline-section-transition" />
         </div>
