@@ -4,15 +4,24 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
   display: contents;
 }
 
+#problem, #mission, #process, #methods, #community {
+    color: black;
+}
+
 :root {
     --dark-grey-background-color: #555555 ;
     --light-grey-background-color: #656565;
     --light-grey-text: #CBCBCB;
 
-    --dark-green-background-color: #006400 ;
-    --light-green-background-color: #228B22;
+    --dark-green-background-color:#A9FFA2 ;
+    --light-green-background-color: #D0FFCD;
     --light-grey-text: #CBCBCB;
 }
+
+
+#228B22
+
+#0C7004
 
 .app {
   display: flex;
@@ -20,13 +29,62 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
   height: 100%;
 }
 
+.intro-image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.storyline-intro-image {
+    width: 60%;
+    display: block;
+    height: auto;
+    left: -10px;
+    right: -10px;
+    top: -10px;
+    bottom: -10px;
+
+    margin-right: auto;
+    margin-left: auto;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    clear: both;
+    overflow: hidden;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    border: 1em;
+}
+
+.storyline-intro-image-text {
+    text-align: center;
+    font-family: Monserrat;
+    color: var(--dark-green-background-color);
+    font-size: 2.5vw;
+    /* -webkit-text-stroke: .03em black; */
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 27%;
+    border-radius: 5px;
+    border-color: black;
+
+}
+
 /* Topbar Styles */
 
 .topbar {
     display: block;
-    height: 100px;
+    min-height: 3em;
+    overflow: hidden;
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 80px; */
+    background-color: black;
 }
   
 
@@ -44,9 +102,12 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
 .header-logo-title {
     font-family: Montserrat;
     float: left;
-    left: 25px;
-    margin-top: 20px;
-    margin-left: 20px;
+    /* left: 25px; */
+    margin-top: 0.5em;
+    /* margin-left: 20px; */
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    color: white;
 }
 
 .header-links {
@@ -77,7 +138,7 @@ a, a:hover, a:active, a:visited, a:focus {
     padding: 10px;
     border-style: solid;
     border-width: 2px;
-    border-color: rgba(100,33,255,100);
+    border-color: var(--dark-green-background-color);
     border-radius: 10px;
 }
 
@@ -90,26 +151,32 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .storyline-section-dark {
-    height:35em;
+    min-height:25em;
     background-color: var(--dark-green-background-color);
     flex-direction: row;
+    overflow: hidden;
+    /* This is to fix odd 1px line between divs*/
+    margin-bottom: -1px;
 }
 
 .storyline-section-light {
-    height: 35em;
+    min-height: 25em;
+    overflow: hidden;
 }
 
 .storyline-image-right {
-    width: 30%;
+    width: 35%;
     padding: 2rem;
+    margin-right: 1em;
     border-radius: 2.5rem;
     float: right;
 
 }
 
 .storyline-image-left {
-    width: 30%;
+    width: 35%;
     padding: 2rem;
+    margin-left: 1em;
     border-radius: 2.5rem;
     float: left
 }
@@ -119,15 +186,18 @@ a, a:hover, a:active, a:visited, a:focus {
 .storyline-section-title {
     font-family: Montserrat;
     margin: auto;
-    width: 30%;
+    width: 10%;
     text-align: center;
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 .storyline-section-hook {
-    color: white;
-    font-size: 2vw;
+    font-family: Montserrat;
+    color: black;
+    font-size: 3vw;
+    font-weight: bold;
     text-align: center;
     padding-top: 1rem;
 
@@ -135,24 +205,32 @@ a, a:hover, a:active, a:visited, a:focus {
 
 
 .storyline-section-text-left {
-    color: var(--light-grey-text);
+    font-family: Monserrat;
+    color: black;
     width: 40%;
     margin-left: 10%;
     margin-top: 3rem;
     text-align: left;
     float: left;
     font-size: 1.5vw;
+    border-style: ridge;
+    padding: 0.5em;
+    background-color: white;
 
 }
 
 .storyline-section-text-right {
-    color: var(--light-grey-text);
+    font-family: Monserrat;
+    color: black;
     width: 40%;
     margin-right: 10%;
     margin-top: 3rem;
     text-align: left;
     float: right;
     font-size: 1.5vw;
+    border-style: ridge;
+    padding: 0.5em;
+    background-color: white;
 }
 
 .transition-skew-left-flush-bottom {
@@ -218,7 +296,7 @@ a, a:hover, a:active, a:visited, a:focus {
 
 .footer-text {
     font-family: Montserrat;
-    color: white;
+    color: black;
     display: inline;
     margin-top: 5px;
 }
@@ -226,32 +304,74 @@ a, a:hover, a:active, a:visited, a:focus {
 
 /* Hiding topbar for mobile screens */
 @media only screen and (max-width: 800px) {
-    .topbar {
-      display: none;
+    .storyline-intro-image {
+        display: none;
     }
+
+    .intro-image-container {
+        display: none;
+    }
+    .topbar {
+        min-height: 3em;
+        overflow: hidden;
+        width: 100%;
+        background-color: black;
+    }
+    .header-logo-title {
+        font-family: Montserrat;
+        font-size: 3rem;
+        width: 100%;
+        text-align: center;
+        color: var(--light-grey-text)
+    }
+    .header-links {
+        display: none;
+    }
+
+    .header-logo {
+        display: none;
+    }
+
     .storyline-section-dark {
-        height: 60em;
+        min-height: 30em;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        overflow: hidden;
     }
     .storyline-section-light {
-        height: 60em;
+        min-height: 30em;
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
+        overflow: hidden;
+    }
+
+    .storyline-section-content {
+        display: flex;
         justify-content: space-around;
     }
     .storyline-section-text-left {
+        font-family: Montserrat;
+        color: black;
         font-size: 1.5rem;
-        width: 90%;
-        padding: 1em;
-        margin: 0;
+        width: 92%;
+        padding: 0.5em;
+        margin: 0.5em;
+        border-style: ridge;
+        background-color: white;
+        font-weight: bold;
     }
     .storyline-section-text-right {
+        font-family: Montserrat;
+        color: black;
         font-size: 1.5rem;
-        width: 90%;
-        padding: 1em;
-        margin: 0;
+        width: 92%;
+        padding: 0.5em;
+        margin: 0.5em;
+        border-style: ridge;
+        background-color: white;
+        font-weight: bold;
 
     }
     .storyline-image-right {
@@ -281,15 +401,17 @@ a, a:hover, a:active, a:visited, a:focus {
     .storyline-section-title {
         font-family: Montserrat;
         margin: auto;
-        width: 100%;
+        width: 30%;
         text-align: center;
         font-size: 3rem;
         font-weight: bold;
     }
 
     .storyline-section-hook {
-        color: white;
+        color: black;
         font-size: 2rem;
+        width: 80%;
+        margin: auto;
         text-align: center;
         padding-top: 1rem;
 

@@ -6,17 +6,17 @@ export class Topbar extends React.Component {
       <div className="topbar">
         <div className="header-logo">
           <img src="/images/grouphouse-logo.png" alt="Mushroom Header"className="header-logo-img"/>
-          <div className="header-logo-title">Grouphouse</div>
         </div>
+        <div className="header-logo-title">Grouphouse</div>
         <div className="header-links">
           <div className="header-link">
             <a href="#problem">Problem</a>
           </div>
           <div className="header-link">
-            <a href="#our-mission">Mission</a>
+            <a href="#mission">Mission</a>
           </div>
           <div className="header-link">
-            <a href="#aspirations">Aspirations</a>
+            <a href="#process">Process</a>
           </div>
           <div className="header-link">
             <a href="#methods">Methods</a>
