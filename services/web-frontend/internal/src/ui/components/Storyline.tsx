@@ -6,9 +6,11 @@ export class Storyline extends React.Component<PropsType> {
     return (
       <div className="storyline-container">
         <div className="intro-image-container">
-          <img src="/images/grouphouse-background.jpg"  className="storyline-intro-image" alt="Casa Bonita" />
+          <div className="image-wrapper">
+            <img src="/images/grouphouse-livingroom-with-person.jpg"  className="storyline-intro-image" alt="Casa Bonita" />
+          </div>
           <div className="storyline-intro-image-text">
-            Change Starts at Home
+            Change starts at home.
           </div>
         </div>
         <div className="transition-block"></div>
@@ -21,13 +23,11 @@ export class Storyline extends React.Component<PropsType> {
           <div className="storyline-section-hook">
             American community is disappearing.
           </div>
-          {/* <div className="storyline-section-content"> */}
             <img src="/images/grouphouse-entrance-nighttime.jpg" className="storyline-image-left" alt="Grouphouse Entrance Nighttime"></img>
             <div className="storyline-section-text-right">
                 There is a shared but divided struggle of feeling along, unsupported, unsafe.
                 Lack of community has forced the stakes to increase in romantic relationships, marriage, and family, placing extraordinary and unhealthy levels of stress on these relations.
             </div>
-          {/* </div> */}
         </div>
         <div className="transition-skew-right-flush-top"></div>
         <div className="storyline-section-light">

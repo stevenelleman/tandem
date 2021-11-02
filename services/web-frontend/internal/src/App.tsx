@@ -19,7 +19,6 @@ import './fonts/Fonts.css';
 
 import { Topbar } from './ui/containers/Topbar';
 // @ts-ignore
-import { Footer } from './ui/containers/Footer';
 import { Storyline } from './ui/components/Storyline';
 
 type StateType = {client: Client};
@@ -46,7 +45,6 @@ class App extends React.Component<unknown, StateType> {
             </Route>
           </Switch>
         </Router>
-        <Footer />
       </div>
     );
   }
