@@ -23,6 +23,9 @@
 4. `kubectl config use-context docker-desktop`
 5. Run `tilt up`.  If `dev` navigate to `http://localhost`, else `https://staging.grouphouse.io`.
 
+
+6. `kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.1.0/cert-manager.yaml`
+
 ## AWS Deployment
 [Deployment Docs](./deployment/README.md)
 

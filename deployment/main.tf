@@ -121,6 +121,8 @@ variable "relativeChartPath" {
   default = "../charts"
 }
 
+// TODO: helm_release by namespace, possibly need external-dns in cert-manager namespace
+//  tf destroy -target=helm_release.services
 resource "helm_release" "services" {
   provider = helm.local_helm
 
@@ -143,3 +145,18 @@ resource "helm_release" "services" {
 
   chart = "${var.relativeChartPath}/${var.services[count.index]}"
 }
+
+/*resource "helm_release" "cert-manager" {
+  name = "cert-manager"
+  repository = "https://charts.jetstack.io"
+  chart = "cert-manager"
+  version = "v1.4.0"
+  namespace = "cert-manager"
+  # namespace  = rancher2_namespace.cert-manager.name
+  # lint       = true
+  # atomic     = true
+  values = [
+    file("./values/cert-manager.yaml")
+  ]
+}*/
+

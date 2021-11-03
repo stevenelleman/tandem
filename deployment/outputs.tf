@@ -37,3 +37,8 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = local.cluster_name
 }
+
+# output "ingress-controller" {
+#   description = "Ingress Controller"
+#   value = helm_release.ingress-controller
+# }

@@ -3,10 +3,11 @@
 # Once working, add in
 # For more on Extensions, see: https://docs.tilt.dev/extensions.html
 # load('ext://restart_process', 'docker_build_with_restart')
+load('ext://helm_remote', 'helm_remote')
 
 # Environment Mode:
-mode = 0 # Dev
-# mode = 1 # Staging
+# mode = 0 # Dev
+mode = 1 # Staging
 # mode = 2 # Prod
 
 env = ''
