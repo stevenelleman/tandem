@@ -20,7 +20,9 @@ import './fonts/Fonts.css';
 import { Topbar } from './ui/containers/Topbar';
 // @ts-ignore
 import { Storyline } from './ui/components/Storyline';
-
+import { Login } from './auth/Login'
+import { Registration } from './auth/Registration'
+ 
 type StateType = {client: Client};
 class App extends React.Component<unknown, StateType> {
   constructor(props: any) {
@@ -37,11 +39,19 @@ class App extends React.Component<unknown, StateType> {
     // const { client } = this.state;
     return (
       <div className="app">
-        <Topbar />
         <Router>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
+              <Topbar />
               <Storyline />
+            </Route>
+            <Route path="/login">
+              <Topbar />
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Topbar />
+              <Registration />
             </Route>
           </Switch>
         </Router>
