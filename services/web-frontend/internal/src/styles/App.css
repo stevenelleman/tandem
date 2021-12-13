@@ -441,7 +441,7 @@ a, a:hover, a:active, a:visited, a:focus {
     .storyline-section-title {
         font-family: Montserrat;
         margin: auto;
-        width: 30%;
+        width: 100%;
         text-align: center;
         font-size: 3rem;
         font-weight: bold;
