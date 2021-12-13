@@ -312,7 +312,12 @@ a, a:hover, a:active, a:visited, a:focus {
     background-color: var(--dark-green-background-color);
     clip-path: polygon(0 1,100% 100%, 100% 0%);
     min-height: 5em;
+}
 
+.storyline-section-transition {
+    width: 100%;
+    background-color: darkslateblue;
+    height: 75px;
 }
 
 /* Footer */
@@ -456,4 +461,11 @@ a, a:hover, a:active, a:visited, a:focus {
         padding-top: 1rem;
 
     }
+}
+
+.footer-text {
+    font-family: Montserrat;
+    color: white;
+    display: inline;
+    margin-top: 5px;
 }
