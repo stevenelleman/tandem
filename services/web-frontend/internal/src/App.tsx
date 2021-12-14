@@ -20,6 +20,7 @@ import './fonts/Fonts.css';
 import { Topbar } from './ui/containers/Topbar';
 // @ts-ignore
 import { Storyline } from './ui/components/Storyline';
+import { Footer } from './ui/containers/Footer';
 import { Login } from './auth/Login'
 import { Registration } from './auth/Registration'
  
@@ -40,21 +41,20 @@ class App extends React.Component<unknown, StateType> {
     return (
       <div className="app">
         <Router>
-          <Switch>
-            <Route exact path="/">
-              <Topbar />
-              <Storyline />
-            </Route>
-            <Route path="/login">
-              <Topbar />
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Topbar />
-              <Registration />
-            </Route>
+          <Switch>                
+            <Topbar />
+              <Route exact path="/">
+                <Storyline />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/register">
+                <Registration />
+              </Route>
           </Switch>
         </Router>
+        <Footer />
       </div>
     );
   }
