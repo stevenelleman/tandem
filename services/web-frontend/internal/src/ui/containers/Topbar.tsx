@@ -5,18 +5,18 @@ export class Topbar extends React.Component {
     return (
       <div className="topbar">
         <div className="header-logo">
-          {/* <img src="grouphouse-logo.png" className="header-logo-img"/> */}
-          <div className="header-logo-title">Grouphouse</div>
+          <img src="/images/grouphouse-logo.png" alt="Mushroom Header"className="header-logo-img"/>
         </div>
+        <a href="/" className="header-logo-title">Grouphouse</a>
         <div className="header-links">
           <div className="header-link">
             <a href="#problem">Problem</a>
           </div>
           <div className="header-link">
-            <a href="#our-mission">Mission</a>
+            <a href="#mission">Mission</a>
           </div>
           <div className="header-link">
-            <a href="#aspirations">Aspirations</a>
+            <a href="#process">Process</a>
           </div>
           <div className="header-link">
             <a href="#methods">Methods</a>
@@ -25,6 +25,9 @@ export class Topbar extends React.Component {
             <a href="#community">Join the Community</a>
           </div>
         </div>
+          <a href="/login" id="login-icon">
+              <img src="/images/logos/user_icon.png" alt="Login Icon" id="login-icon-header"/>
+          </a>
       </div>
     );
   }
