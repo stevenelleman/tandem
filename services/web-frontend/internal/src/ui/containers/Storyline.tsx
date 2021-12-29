@@ -7,7 +7,7 @@ export class Storyline extends React.Component<PropsType> {
       <div className="storyline-container">
         <div className="intro-image-container">
           <div className="image-wrapper">
-            <img src="/images/grouphouse-livingroom-with-person.jpg"  className="storyline-intro-image" alt="Casa Bonita" />
+            <div className="storyline-intro-image" />
           </div>
           <div className="storyline-intro-image-text">
             Change starts at home.
@@ -16,7 +16,7 @@ export class Storyline extends React.Component<PropsType> {
         <div className="transition-block"></div>
         <div className="storyline-section-dark">
           <div className="storyline-section-title">
-            <a id="problem" href="/">
+            <a id="problem">
               Problem
             </a>
           </div>
@@ -25,59 +25,57 @@ export class Storyline extends React.Component<PropsType> {
           </div>
             <img src="/images/grouphouse-entrance-nighttime.jpg" className="storyline-image-left" alt="Grouphouse Entrance Nighttime"></img>
             <div className="storyline-section-text-right">
-                There is a shared but divided struggle of feeling along, unsupported, unsafe.
-                Lack of community has forced the stakes to increase in romantic relationships, marriage, and family, placing extraordinary and unhealthy levels of stress on these relations.
+              There is a shared but divided struggle of feeling unsupported, unsafe, alone.
+              Lack of community has raised the stakes in romantic relationships, marriage, and family, placing extraordinary and unhealthy levels of stress on these relations.
             </div>
         </div>
         <div className="transition-skew-right-flush-top"></div>
         <div className="storyline-section-light">
           <div className="storyline-section-title">
-            <a id="mission" href="/">
+            <a id="mission">
               Mission
             </a>
           </div>
           <div className="storyline-section-hook">
-            Our mission is to rebuild safety.
+            Rebuild safety by rebuilding community.
           </div>
           <img src="/images/grouphouse-flower.jpg" className="storyline-image-right"alt="Pink Flower"></img>
           <div className="storyline-section-text-right">
-                We all need safety. We all need a home. Our mission is to rebuild community through intentional group-living, so that you can find your people and your home.
+            Home means safety. Our mission is to rebuild community through intentional group-living, so that you can find your people and your home.
           </div>
         </div>
         <div className="transition-skew-left-flush-bottom"></div>
         <div className="storyline-section-dark">
           <div className="storyline-section-title">
-            <a id="process" href="/">
-              Process
+            <a id="method">
+              Method
             </a>
           </div>
           <div className="storyline-section-hook">
-            Build processes that fulfill needs and bring out the best in us.
+            We build tools for better living.
           </div>
           <img src="/images/grouphouse-livingroom-with-person.jpg" className="storyline-image-left"alt="Living Room"></img>
           <div className="storyline-section-text-right">
-                We're stuck in a terrible loop: needs to unfulfilled, depravation brings out the worst in each of us, "responsibility" falls on the individual,
-                blame and isolation compound the initial depravation. So many people are stuck in this loop, trapped as their worst selves and feeling it’s their fault. Individual responsibility is scapegoating. The burden of responsibility falls on process, ensuring circumstances and systems exist to bring out the best in all of us. 
-                Safety begets process, process begets safety.
-          </div> 
+            Group-living requires skin in the game.
+            It's hard. We crowdsource tools to make it easier.
+          </div>
         </div>
         <div className="transition-skew-left-flush-top"></div>
         <div className="storyline-section-light">
           <div className="storyline-section-title">
-            <a id="methods" href="/">
-              Methods
+            <a id="community">
+              Community
             </a>
           </div>
+          <div className="storyline-section-hook">
+            The smallest steps are the bravest.
+          </div>
+          <div className="storyline-section-text-right">
+            Join the <a href={"https://discord.gg/SejPVdUnM3"}>server</a>,
+            contribute to the <a href={"https://github.com/grouphouse-io/grouphouse"}>code</a>,
+            fork the <a href={"https://github.com/stevenelleman/tandem"}>parent</a>.
+          </div>
         </div>
-        <div className="transition-skew-left-flush-bottom"></div>
-        <div className="storyline-section-dark">
-          <div className="storyline-section-title">
-            <a id="community" href="/">
-              Community
-            </a>          
-          </div> 
-        </div>
-        <div className="transition-block"></div>
       </div>
     );
   }
