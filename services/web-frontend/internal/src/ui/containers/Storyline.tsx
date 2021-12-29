@@ -57,7 +57,7 @@ export class Storyline extends React.Component<PropsType> {
           <img src="/images/grouphouse-livingroom-with-person.jpg" className="storyline-image-left"alt="Living Room"></img>
           <div className="storyline-section-text-right">
             Group-living requires skin in the game.
-            It's hard. We crowdsource tools to make it easier.
+            It's hard. But you get out what you put in. We crowdsource tools to make it easier.
           </div>
         </div>
         <div className="transition-skew-left-flush-top"></div>
@@ -71,9 +71,9 @@ export class Storyline extends React.Component<PropsType> {
             The smallest steps are the bravest.
           </div>
           <div className="storyline-section-text-right">
-            Join the <a href={"https://discord.gg/SejPVdUnM3"}>server</a>,
-            contribute to the <a href={"https://github.com/grouphouse-io/grouphouse"}>code</a>,
-            fork the <a href={"https://github.com/stevenelleman/tandem"}>parent</a>.
+            Join the <a className="embedded-link" href={"https://discord.gg/SejPVdUnM3"}>server</a>,
+            contribute to the <a className="embedded-link" href={"https://github.com/grouphouse-io/grouphouse"}>code</a>,
+            fork the <a className="embedded-link" href={"https://github.com/stevenelleman/tandem"}>parent</a>.
           </div>
         </div>
       </div>
