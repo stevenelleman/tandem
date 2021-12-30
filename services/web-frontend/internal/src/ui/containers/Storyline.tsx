@@ -9,8 +9,10 @@ export class Storyline extends React.Component<PropsType> {
           <div className="image-wrapper">
             <div className="storyline-intro-image" />
           </div>
-          <div className="storyline-intro-image-text">
+          <div className="storyline-intro-image-text storyline-intro-centered">
             Change starts at home.
+          </div>
+          <div className="storyline-intro-image-text-blur storyline-intro-centered">
           </div>
         </div>
         <div className="transition-block"></div>

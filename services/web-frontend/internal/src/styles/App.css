@@ -85,16 +85,30 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     top: 70px;
 }
 
-.storyline-intro-image-text {
-    text-align: center;
-    font-size: 3vw;
+.storyline-intro-centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+}
+
+.storyline-intro-image-text {
     font-family: Montserrat;
+    font-size: 3vw;
     color: #8afc80;
     font-weight: bold;
+    -webkit-filter: blur(-10px);
+    z-index: 1;
+}
+
+.storyline-intro-image-text-blur {
+    background-color: black;
+    opacity: 0.8;
+    border-radius: 50px;
+    -webkit-filter: blur(10px);
+    width: 36%;
+    height: 8%;
 }
 
 /* Topbar Styles */
