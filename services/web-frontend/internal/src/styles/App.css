@@ -1,4 +1,4 @@
-html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
+html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-color: black}
 
 #root {
   display: contents;
@@ -73,7 +73,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
     border-style: ridge;
 }
 .storyline-intro-image {
-    background-image: url("/images/grouphouse-background.jpg");
+    background-image: url("/images/grouphouse-livingroom-with-person.jpg");
     margin: auto;
     background-size: cover;
     clear: both;
@@ -83,7 +83,6 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth;}
     height: 800px;
     left: -8px;
     top: 70px;
-    filter: blur(2px);
 }
 
 .storyline-intro-image-text {

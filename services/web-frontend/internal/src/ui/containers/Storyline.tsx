@@ -23,7 +23,7 @@ export class Storyline extends React.Component<PropsType> {
           <div className="storyline-section-hook">
             American community is disappearing.
           </div>
-            <img src="/images/grouphouse-entrance-nighttime.jpg" className="storyline-image-left" alt="Grouphouse Entrance Nighttime"></img>
+            <img src="/images/grouphouse-entrance-nighttime.jpg" className="storyline-image-left" alt="Gloom"></img>
             <div className="storyline-section-text-right">
               There is a shared but divided struggle of feeling unsupported, unsafe, alone.
               Lack of community has raised the stakes in romantic relationships, marriage, and family, placing extraordinary and unhealthy levels of stress on these relations.
@@ -39,7 +39,7 @@ export class Storyline extends React.Component<PropsType> {
           <div className="storyline-section-hook">
             Rebuild safety by rebuilding community.
           </div>
-          <img src="/images/grouphouse-flower.jpg" className="storyline-image-right"alt="Pink Flower"></img>
+          <img src="/images/grouphouse-flower.jpg" className="storyline-image-right"alt="Hope"></img>
           <div className="storyline-section-text-right">
             Home means safety. Our mission is to rebuild community through intentional group-living, so that you can find your people and your home.
           </div>
@@ -54,7 +54,7 @@ export class Storyline extends React.Component<PropsType> {
           <div className="storyline-section-hook">
             We build tools for better living.
           </div>
-          <img src="/images/grouphouse-livingroom-with-person.jpg" className="storyline-image-left"alt="Living Room"></img>
+          <img src="/images/grouphouse-porch-daytime.jpg" className="storyline-image-left" alt="Porch"></img>
           <div className="storyline-section-text-right">
             Group-living requires skin in the game.
             It's hard. But you get out what you put in. We crowdsource tools to make it easier.
