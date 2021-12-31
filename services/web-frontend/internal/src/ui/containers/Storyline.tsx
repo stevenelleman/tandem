@@ -5,7 +5,7 @@ export class Storyline extends React.Component<PropsType> {
   render() {
     return (
       <div className="storyline-container">
-        <div className="intro-image-container">
+        <div className="image-container">
           <div className="image-wrapper">
             <div className="storyline-intro-image" />
           </div>
@@ -62,20 +62,27 @@ export class Storyline extends React.Component<PropsType> {
             It's hard. But you get out what you put in. We crowdsource tools to make it easier.
           </div>
         </div>
-        <div className="transition-skew-left-flush-top"></div>
-        <div className="storyline-section-light">
-          <div className="storyline-section-title">
-            <a id="community">
-              Community
-            </a>
-          </div>
-          <div className="storyline-section-hook">
-            The smallest steps are the bravest.
+        <div className="storyline-section-grey">
+
+          <div className='image-container'>
+            <div className='image-wrapper'>
+              {/* <div className='community-image-corners'> */}
+                <div className='community-image'></div>
+              {/* </div> */}
+            </div>
+            <div className='community-centered community-image-text'>
+              <div className="community-section-title">
+                <a id="community">Community</a>
+              </div>
+              <div className='community-section-hook'>The smallest steps are the bravest.</div>
+              Join the <a className="embedded-link" href={"https://discord.gg/SejPVdUnM3"}>server</a>,
+              contribute to the <a className="embedded-link" href={"https://github.com/grouphouse-io/grouphouse"}>code</a>,
+              fork the <a className="embedded-link" href={"https://github.com/stevenelleman/tandem"}>parent</a>.
+            </div>
+            <div className='community-centered community-image-text-blur'></div>
           </div>
           <div className="storyline-section-text-right">
-            Join the <a className="embedded-link" href={"https://discord.gg/SejPVdUnM3"}>server</a>,
-            contribute to the <a className="embedded-link" href={"https://github.com/grouphouse-io/grouphouse"}>code</a>,
-            fork the <a className="embedded-link" href={"https://github.com/stevenelleman/tandem"}>parent</a>.
+
           </div>
         </div>
       </div>
