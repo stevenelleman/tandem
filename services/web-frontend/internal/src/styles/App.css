@@ -371,28 +371,25 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     clear: both;
     background-position: 50% 50%;
     display: block;
-    width: 60%;
-    height: 50vw;
+    width: 80%;
+    height: 60vw;
     left: -8px;
-    box-shadow: 0 0 12px 12px var(--community-background) inset;
-}
-
-.community-image-corners {
-    background-image: linear-gradient(to bottom right, var(--community-background), transparent);
+    box-shadow: 0 0 8px 8px var(--community-background) inset;
+    clip-path: polygon(50% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
 }
 
 .community-image-text-blur {
     background-color: black;
     opacity: 0.65;
-    border-radius: 100px;
+    border-radius: 500px;
     -webkit-filter: blur(10px);
-    width: 50%;
-    height: 50%;
+    width: 55%;
+    height: 30%;
 }
 
 .community-centered {
     position: absolute;
-    top: 25%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -410,7 +407,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     font-size: 1.8vw;
     position: absolute;
     z-index: 1;
-    top: 25%;
+    top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Montserrat;

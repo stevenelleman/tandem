@@ -66,9 +66,7 @@ export class Storyline extends React.Component<PropsType> {
 
           <div className='image-container'>
             <div className='image-wrapper'>
-              {/* <div className='community-image-corners'> */}
-                <div className='community-image'></div>
-              {/* </div> */}
+              <div className='community-image'></div>
             </div>
             <div className='community-centered community-image-text'>
               <div className="community-section-title">
