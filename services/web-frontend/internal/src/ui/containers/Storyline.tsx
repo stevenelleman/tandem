@@ -32,6 +32,7 @@ export class Storyline extends React.Component<PropsType> {
             </div>
         </div>
         <div className="transition-skew-right-flush-top"></div>
+
         <div className="storyline-section-light">
           <div className="storyline-section-title">
             <a id="mission">
@@ -42,11 +43,12 @@ export class Storyline extends React.Component<PropsType> {
             Rebuild safety by rebuilding community.
           </div>
           <img src="/images/grouphouse-flower.jpg" className="storyline-image-right"alt="Hope"></img>
-          <div className="storyline-section-text-right">
+          <div className="storyline-section-text-left">
             Home means safety. Our mission is to rebuild community through intentional group-living, so that you can find your people and your home.
           </div>
         </div>
         <div className="transition-skew-left-flush-bottom"></div>
+
         <div className="storyline-section-dark">
           <div className="storyline-section-title">
             <a id="method">
@@ -62,8 +64,9 @@ export class Storyline extends React.Component<PropsType> {
             It's hard. But you get out what you put in. We crowdsource tools to make it easier.
           </div>
         </div>
-        <div className="storyline-section-grey">
 
+        <div className="community-section-transition"></div>
+        <div className="storyline-section-grey">
           <div className='image-container'>
             <div className='image-wrapper'>
               <div className='community-image'></div>
