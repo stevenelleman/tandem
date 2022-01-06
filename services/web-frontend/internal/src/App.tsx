@@ -15,11 +15,11 @@ import { EnvVars } from './env-vars';
 import './styles/App.css';
 
 // Import fonts
-import './fonts/Fonts.css';
+import './styles/fonts/Fonts.css';
 
 import { Topbar } from './ui/containers/Topbar';
 // @ts-ignore
-import { Storyline } from './ui/components/Storyline';
+import { Storyline } from './ui/containers/Storyline';
 import { Login } from './auth/Login'
 import { Registration } from './auth/Registration'
  
