@@ -3400,7 +3400,7 @@ cli-width@^3.0.0:
   dependencies:
     tsc "^2.0.3"
     typescript "^4.3.5"
-    utils "file:../../../../../../Library/Caches/Yarn/v6/npm-client-1.0.0-1351ca12-ec0c-4dad-acf7-9208bb80c858-1626841066720/node_modules/utils"
+    utils "file:../../../libraries/typescript/utils"
 
 cliui@^4.0.0:
   version "4.1.0"
@@ -5376,9 +5376,9 @@ flush-write-stream@^1.0.0:
     readable-stream "^2.3.6"
 
 follow-redirects@^1.0.0:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
-  integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
+  version "1.14.8"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.8.tgz#016996fb9a11a100566398b1c6839337d7bfa8fc"
+  integrity sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==
 
 for-each@^0.3.3:
   version "0.3.3"
