@@ -18,9 +18,7 @@ export class Storyline extends React.Component<PropsType> {
         <div className="transition-block"></div>
         <div className="storyline-section-dark">
           <div className="storyline-section-title">
-            <a id="problem">
-              Problem
-            </a>
+            <div id="problem"> Problem </div>
           </div>
           <div className="storyline-section-hook">
             American community is disappearing.
@@ -35,9 +33,7 @@ export class Storyline extends React.Component<PropsType> {
 
         <div className="storyline-section-light">
           <div className="storyline-section-title">
-            <a id="mission">
-              Mission
-            </a>
+            <div id="mission"> Mission </div>
           </div>
           <div className="storyline-section-hook">
             Rebuild safety by rebuilding community.
@@ -51,9 +47,7 @@ export class Storyline extends React.Component<PropsType> {
 
         <div className="storyline-section-dark">
           <div className="storyline-section-title">
-            <a id="method">
-              Method
-            </a>
+            <div id="method"> Method </div>
           </div>
           <div className="storyline-section-hook">
             We build tools for better living.
@@ -99,7 +93,7 @@ export class Storyline extends React.Component<PropsType> {
             </div>
             <div className='community-centered community-image-text'>
               <div className="community-section-title">
-                <a id="community">Community</a>
+                <div id="community">Community</div>
               </div>
               <div className='community-section-hook'>The smallest steps are the bravest.</div>
               Join the <a className="embedded-link" href={"https://discord.gg/SejPVdUnM3"}>server</a>,
@@ -108,9 +102,7 @@ export class Storyline extends React.Component<PropsType> {
             </div>
             <div className='community-centered community-image-text-blur'></div>
           </div>
-          <div className="storyline-section-text-right">
 
-          </div>
         </div>
       </div>
     );

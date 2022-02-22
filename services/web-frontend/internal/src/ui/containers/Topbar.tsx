@@ -8,7 +8,7 @@ export class Topbar extends React.Component {
         <div className="header-logo">
           <img src="/images/grouphouse-logo.png" alt="Mushroom Header"className="header-logo-img"/>
         </div>
-        <a className="header-logo-title">Grouphouse</a>
+        <div className="header-logo-title">Grouphouse</div>
         <div className="header-links">
           <a className="header-link" href={`${origin}#problem`}>Problem</a>
           <a className="header-link" href={`${origin}#mission`}>Mission</a>
