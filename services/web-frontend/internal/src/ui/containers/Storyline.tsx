@@ -52,7 +52,7 @@ export class Storyline extends React.Component<PropsType> {
           <div className="storyline-section-hook">
             We build tools for better living.
           </div>
-          <img src="/images/grouphouse-porch-daytime.jpg" className="storyline-image-left" alt="Porch"></img>
+          <img src="/images/grouphouse-tea2.jpg" className="storyline-image-left" alt="Tea"></img>
           <div className="storyline-section-text-right">
             Group-living requires skin in the game.
             It's hard. But you get out what you put in. We crowdsource tools to make it easier.
