@@ -64,7 +64,7 @@ A scope must be able to express relationships between sources. It must also be a
 
 Can sources be deleted? Instinctively I am highly highly against source deletion. History feels like something sacred, and it feels highly destructive. When `doc2` references `doc1` it feels like the `doc2` at the very least the source should be completely persistent. I could be convinced that the version of `doc1` used at the time of the reference could be "hidden" but I'm also against that. The idea of the latest version of a document being converted to a private scope seems very reasonable to me, provided all earlier version retain the exact same privacy setting.
 
-##Interface
+## Interface
 
 The interface should deal with two things:
 1. Visualizing the accepted format(s)
