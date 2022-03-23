@@ -84,7 +84,10 @@ Transformation | UI | Explanation
 2. Reference | Embedded Source | The embedded source would relate to a source that enclosed a specific scope version.
 3. Replace | Edit | Document appendments and additions can both be described with the `replace` method
 4. Branch | The document _branches_ | In the graph-doc the document splits, which will likely be represented as a bidirectional link  [WIP: Not sure how to think of this, but it seems like an important transformation. Currently seems like it would require the concept of separate scopes to work - this is still assuming the end-document is a text-blob, rather than an actual text graph... food for thought...]
-5. Hook | A 
+
+Other transformation ideas: 
+- Hook/Flag 
+- Todo 
 
 For this idea to work, all file-types must be able to fit into _our_ system, not the other way around.
 
