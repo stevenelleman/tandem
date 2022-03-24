@@ -36,30 +36,41 @@ Software that allows users to collect, reference, interpret, and share sources.
 A **sourcegraph** (lowercase s) is a group of documents organized with connections and scopes. It's defined using a series of transformations (deltas) on another sourcegraph (originally, an empty one).
 **Sourcegraph** (capital S) is the software that allows users to make sourcegraphs.
 
+**Sourcegraph Notes**
+
+### Sean's Editing Notes;
+
+
+* I can see the rationale behind having transformations be pure functions, but will this become too restrictive?
+
 
 ## Feature List
 
-### Version 0.1
+### Version 0.1 
 
 * **Interace:** Make one that is good. TODO: MAKE THIS SUMMARY BETTER.
 * **Client Application:** Sourcegraph runs and stores all data on the user's local machine using cloud technologies.
-* **Transformation:** A sourcegraph is defined as a series of transformations applied on a blank sourcegraph. A transformation is a pure function to ensure documents are deterministic.
+* **Transformation:** A sourcegraph is defined as a series of git-like functional transformations applied on a blank sourcegraph. A transformation is a pure function to ensure documents are deterministic.
 	* **Deletion** is a transformation more akin to covering a picture with white paint than burning it. Just like you can always scrape off the paint, you can always revert a sourcegraph to an earlier point when the thing you deleted existed. **In sourcegaph, there is no deletion. There is only privacy.**
 * **Plaintext:** Users can create and edit plaintext documents
 * **Scopes:** Users can draw scopes around documents to represent categories they belong to. Scope s are infinitely recursive (scopes within scopes within scopes...) and their contents disappear when the user "zooms out" enough.
-* *** **Set Logic:** Set logic can be applied to scopes to support **sensible search** and so that new scopes can be derived from existing scopes..
+  *  **Set Logic:** Set logic can be applied to scopes to support **sensible search** and so that new scopes can be derived from existing scopes..
 * **Arrows:**  Users can draw arrows between documents and label the arrows to show what relationships they represent.
 * **References:** Users can refer to parts "snippets" of documents and bring them out as their own document. The new document will have an arrow pointing to its origin. Users can incorporate these snippets into other documents and the new document will point to the origin of the snippet. Basically, Sourcegraph keeps track of where you got things from.
 	* A **reference** is a superset of the more traditional idea of a link. It's like a link in that if you click on a snippet incorporated in a document, you can be redirected to to the document the snippet came from. It's *unlike* a link in that, even if you delete all the text of the entire snippet, the reference persists. *The text might be gone, but the influence remains.*
-	* They can be *unidirectional* or *bidirectional*.
+	* References can be *unidirectional* or *bidirectional*.
+	* References are represented by arrows with the *reference* label.
 
 ### Later Versions
 
 * **Time Dimension:** Each sourcegraph is a series of transformation layered like sediment on an original sourcegraph. Users can see these transformations as a **chain** of *deltas* "changes" and "look back" to what the sourcegraph looked like on an earlier delta. They can also **branch** away from the chain at a point to make an "alternate version" of their sourcegraph. They may also be able to **merge** two sourcegraph branches together if desired.
 * **More and Custom Types:** Sourcegraph supports different *types* of documents ranging from musical scores to video. Users can create their own types and define transformations on them.
+ * **Views:** Types have their own UI or *view*, which can feature transformations that the view creator deemed important for that type.  A view is like a workspace for a type.
   * **Type Attributes:** Different types of documents will have different attributes "author, date created, tempo etc." that the user can fill in. Users can define their own custom attributes for custom types or modify already-existing types with new attributes. 
 * **Custom Transformations:** Users can make their own transformation types that take an arbitrary number of parameters can apply to individual documents or the sourcegraph itself. Users can customize their UI to feature their favorite transformations.
-* **Tile View:** Users can view multiple UIs at once with a tiling window manager. Tiles "look at" the sourcegraph in ways the user can define and arrange themselves in sensible ways. The user can group and ungroup tiles as they wish.
+* **Tiles:** Users can see multiple views at once with a tiling window manager. Tiles "look at" the sourcegraph in ways the user can define and arrange themselves in sensible ways. The user can cluster and uncluster tiles into tabs, and they can save their favorite clusters. (One tile, one view) 
+* **Sensible Search:** Combines regular expressions and scope set logic for a powerful, elegant search tool.
+* 	 A **collapsing reference** happens when you *collapse* part of the major document into a minor document in a way that still allows you to see the contents of the minor document in their proper place in the major document with a  pres of a button.
 
 
 ### Aspirational
@@ -69,17 +80,19 @@ A **sourcegraph** (lowercase s) is a group of documents organized with connectio
  * **Universal Library**: Users can share documents, types, and transformations they've made on a paid or unpaid basis with other users.
  * **Monetization Scheme:** Users can make money with their creations on sourcegraph by charging other users a small fee to use their content, types, or transformations. This wouldn't be a one-time fee but rather a continuous cash flow that increased in proportion to how much value a downstream user got from the upstream user's content. Creators would be incentivized to make content that is high-quality and easy to remix, because the more users "branch off" from their content and become popular, the more money flows to the original creator. At the same time, there would also be a "distance discounting" feature so that the majority of the cash wouldn't flow to creators in the "far past." This will incentivize even popular creators to keep making new content.
  * **Privacy Features:** Users can define who can view, edit, and administrate scopes through the use of bounded communities called **silos.** Silos can pool creative resources and distribute income to members. In **forums**, silos come together to trade creative knowledge for money.
+ * **Multi-Device Support**: Sourcegraph should support mobile and VR devices as well as Windows, Linux, and Mac. 
+ * **Type Execution:** Sourcegraph should support creators *executing* documents of varying types from within Sourcegraph. For musicians, this means being able to play the songs in Sourcegraph. For programmers, it means compiler support. For animators, it means the ability to pause and play animations. 
+ * **Anchor Time Travel**: Users can highlight, or "anchor" to a certain piece of text or document and move back in time specifically for that text to see how it has changed.
 
 
 ## Philosophy
 *Data* is Latin for “a thing given”. We believe this is subtly incorrect. “Given” implies that reality has faithfully offered the data, and the viewer receives it. It over-emphasizes the place of reality and underemphasizes the observer's role. In this document, we will prefer *septa:* “a thing taken.” This emphasizes the role of the active observer, who distorts the viewed object. ~~Which dictionary did you get septa from? I only see it in wiktionary as the plural of the neuter noun *septum*, "enclosure." Datum is a common present participle of *do* "I give." I don't know of or see any Latin word for "to take" from which we may in like manner derive *septa.* I could be messing something.~~
 
-Sourcegraph has three ideals: *persistence*, *user ownership*, and I DON'T REMEMBER THE LAST ONE PLEASE HELP STEVEN
+Sourcegraph has three ideals: *persistence*, *user ownership*, and *version control.*
 
 ## Feature Description
 
 ### Interface
-
 The interface should deal with two things:
 1. Visualizing the accepted format(s)
 2. Mapping UI `actions` to functional transformation(s).
@@ -327,139 +340,39 @@ Imagine a world where new end-documents could be created between an infinite num
   The downside of this approach is that an individual can take a silo hostage, if they've contributed vital sources. While this is true, an individual would be sacrificing their future credibility as well, indicating either extreme integrity or desperation, either way such extremes indicate a real underlying problem, and giving recourse to individuals is essential for solving problems (or, even better, preventing them in the first place).
 - Increasingly I think a source and edge are fundamentally related. Is there any velocity-position metaphor that can be drawn? Intuitively they seem related (and I would love to rope the Heisenberg Principle into this idea)
 
-**Sourcegraph Notes**
+## General Questions
 
--   Document vs scope
--   Each branch represents one cogent doc
 
-  
+### Save Automatically?
+### Further Discuss Privacy
+### Checkpoints
+* Why have them if every transofrmation can be reverted back to?
+### Functional Invertibility?
 
-Sections:
 
-1.  Sourcegraph:
-
-1.  Persistent
-2.  Extensible
-3.  Version-Controlled
-
-3.  Git + Functional Transformations
-4.  Functional Transformations within a “document”
-
-1.  Doc as a (f(g(f(h(null, i1), i2) …) iN)
-2.  Checkpointing + Collapsing
-
-6.  Functional Transformations between “documents”
-
-1.  Highlight + Embed
-2.  Branches in, branches out
-
-8.  Scopes: graph boundaries
-
-1.  Some kind of set
-2.  How to define?
-
-1.  Follow the branch?
-2.  Singleton sources?
-3.  Scopes in Scopes
-
-10.  Sensible Search:
-
-1.  Set Logic applied with Scopes
-2.  Sensible, precise, search
-
-12.  1 Transformation : 1 Action
-
-1.  Function corresponds to a specific UI
-2.  Eg: Highlight transformation to color UI
-3.  Different device UIs can translate to the same transformation
-4.  Allows different user preferences
-
-14.  1 Type : 1 View [Later]
-
-1.  Just like Action, is a UI for a particular Type
-2.  Code vs Text type
-
-1.  Text: Word / Preview
-2.  Code: IntelliJ
-
-16.  1 View : N Actions
-
-1.  View is a workspace for a Type
-2.  Eg:  Preview PDF viewer
-
-18.  1 Tile : 1 View
-
-1.  UI is made up of tiles
-2.  Tiles correspond to View
-
-20.  1 Board: N Tile
-
-1.  Boards can be saved as a clustered tab
-2.  Eg: Highlight tiles
-3.  Position on document is saved, position between tiles is saved
-4.  Otherwise not using any memory, just need to get positions back
-
-22.  Going meta:
-
-1.  Transformation, Action, Type, and View are also types
-2.  Can read/write them with their own T / A / V
-3.  Represent default types
-4.  For this to work need to define simple contracts between each component
-5.  Users may specify the version of the T / A / V as they change (although it feels unlike T and A will change too much)
-
-24.  Questions:
-
-1.  Save explicitly or automatically
-2.  Privacy vs deletion
-3.  2D time
-4.  Privacy
-
-  
-
-Todo:
-
--   Tentative milestones / calendars
--   Generic client application for Mac and Linux using React-Native
-
--   Repurpose existing web frontend
-
--   Adding transformation logic to the sourcegraph version
--   Tile object
--   View object for text
-
--   Build in actions
-
--   Clearer understanding of scopes
--   Clearer understanding for monetization
-
-  
-
-  
-
-Questions:
-
--   Functional Invertibility?
--   Checkpoints?
-
-  
-
-Notes:
+### What Did Steven Mean by these?
 
 -   Prescriptive vs Nonsense
 
 -   Character vs Letters
-
--   Entrenchment vs Exploitative
 -   Entrenchment vs Security
--   Changes to references:
-
--   Sedimentary
-
--   Blame / anchor — move back over time in same area6
 
 
 
-### Sean's Editing Notes;
+## Discussions to Have
 
+* Entrenchment vs. security in the context of our monetization system
+	* Discounted cash flow could make retiring on sourcegraph income impossible. Is this what we want
 
-* I can see the rationale behind having transformations be pure functions, but will this become too restrictive?
+## Sean's Questions
+
+22.  Going meta:
+
+23.  Transformation, Action, Type, and View are also types
+24.  Can read/write them with their own T / A / V
+25.  Represent default types
+26.  For this to work need to define simple contracts between each component
+27.  Users may specify the version of the T / A / V as they change (although it feels unlike T and A will change too much)
+28.
+
+*I'm skeptical of this.* If the code that drives types is also a Type that the user can modify, then the user can break Types. If they break types, they break everything that uses Types, which is their entire Sourcegraph. If the time dimensions also uses types, they break that too and can't branch off from an earlier version to revert their changes. In summary, this could allow people to irreparably ruin their sourcegraphs. 
