@@ -1,33 +1,47 @@
 
-# Sourcegraph
+# __Sourcegraph__
 
-## Table of Contents
+# Table of Contents
 - [Problem](#problem)
 - [Objective](#objective)
+- [Note](#note)
+- [Feature List](#feature-list)
+-- [Version 0.1](#version-0.1)
+-- [Later Versions](#later-versions)
+-- [Aspirational](#aspirational)
 - [Philosophy](#philosophy)
-- [Description](#description)
-- [Transformation Examples](#transformation-examples)
-- [Scope Example](#scope-example)
-- [Interface](#interface)
-- [V0 Requirements](#v0-requirements)
-- [V0 TODO](#v0-todo)
-- [Data Structure](#data-structure)
-- [Social Abstractions](#social-abstractions-siloes-and-forums)
-    - [Siloes](#silo-vertical-trust-network)
-    - [Forums](#forum-horizontal-collider)
-- [Faceted Identity](#faceted-identity)
-- [The Place of the Creator](#the-creator-as-the-middleman)
-- [The Economic Layer](#the-economic-layer)
-    - [Siloes](#siloes)
-    - [Forums as Niche Markets](#forum-markets)
-- [Layering](#layering)
-- [Notes](#scratch-notes)
+- [Feature Description](#feature-description)
+-- [Interface](#interface)
+-- [Client Application](#client-application)
+-- [Transformation](#transformation)
+-- [Plaintext](#plaintext)
+-- [Scopes](#scopes)
+-- [Arrows](#arrows)
+-- [References](#references)
+-- [Time Dimensions](#time-dimensions)
+-- [Types](#types)
+-- [Views](#views)
+-- [Type Attributes](#type-attributes)
+-- [Custom Transformations](#custom-transformations)
+-- [Tiles](#tiles)
+-- [Sensible Search](#sensible-search)
+-- [Creation Suites](#creation-suites)
+-- [Attribute Axis](#attribute-axis)
+-- [Universal Axis](#universal-axis)
+-- [Universal Library](#universal-library)
+-- [Monetization Scheme](#monetization-scheme)
+-- [Privacy Features](#privacy-features)
+-- [Multi-Device Support](#multi-device-support)
+-- [Type Execution](#type-execution)
+-- [Anchor Time Travel](#anchor-time-travel)
+- [Move to a Different File](#the-following-should-probably-be-moved-to-a-different-file)
 
-## Problem
+
+# Problem
 
 Our mind aggregates and connects sensory and symbolic information in a single embedded entity. There is no software that allows a similar process of accumulation, referencing, and interpretation.
 
-## Objective
+# Objective
 
 Software that allows users to collect, reference, interpret, and share sources.
 
@@ -36,30 +50,21 @@ Software that allows users to collect, reference, interpret, and share sources.
 A **sourcegraph** (lowercase s) is a group of documents organized with connections and scopes. It's defined using a series of transformations (deltas) on another sourcegraph (originally, an empty one).
 **Sourcegraph** (capital S) is the software that allows users to make sourcegraphs.
 
-**Sourcegraph Notes**
-
-### Sean's Editing Notes;
-
-
-* I can see the rationale behind having transformations be pure functions, but will this become too restrictive?
-
-
 ## Feature List
+
+
 
 ### Version 0.1 
 
-* **Interace:** Make one that is good. TODO: MAKE THIS SUMMARY BETTER.
+* **Interface:** Make one that is good. TODO: MAKE THIS SUMMARY BETTER.
 * **Client Application:** Sourcegraph runs and stores all data on the user's local machine using cloud technologies.
 * **Transformation:** A sourcegraph is defined as a series of git-like functional transformations applied on a blank sourcegraph. A transformation is a pure function to ensure documents are deterministic.
-	* **Deletion** is a transformation more akin to covering a picture with white paint than burning it. Just like you can always scrape off the paint, you can always revert a sourcegraph to an earlier point when the thing you deleted existed. **In sourcegaph, there is no deletion. There is only privacy.**
 * **Plaintext:** Users can create and edit plaintext documents
 * **Scopes:** Users can draw scopes around documents to represent categories they belong to. Scope s are infinitely recursive (scopes within scopes within scopes...) and their contents disappear when the user "zooms out" enough.
   *  **Set Logic:** Set logic can be applied to scopes to support **sensible search** and so that new scopes can be derived from existing scopes..
 * **Arrows:**  Users can draw arrows between documents and label the arrows to show what relationships they represent.
-* **References:** Users can refer to parts "snippets" of documents and bring them out as their own document. The new document will have an arrow pointing to its origin. Users can incorporate these snippets into other documents and the new document will point to the origin of the snippet. Basically, Sourcegraph keeps track of where you got things from.
-	* A **reference** is a superset of the more traditional idea of a link. It's like a link in that if you click on a snippet incorporated in a document, you can be redirected to to the document the snippet came from. It's *unlike* a link in that, even if you delete all the text of the entire snippet, the reference persists. *The text might be gone, but the influence remains.*
-	* References can be *unidirectional* or *bidirectional*.
-	* References are represented by arrows with the *reference* label.
+* **References:** Sourcegraph keeps track of where the user gets their ideas from by displaying relationships between referencing and referenced document. These relationships persist even if the referencing snippet is deleted.
+
 
 ### Later Versions
 
@@ -90,32 +95,63 @@ A **sourcegraph** (lowercase s) is a group of documents organized with connectio
 
 Sourcegraph has three ideals: *persistence*, *user ownership*, and *version control.*
 
+### Persistence
+
+Can sources be deleted? Instinctively I am highly against source deletion. History feels like something sacred, and it feels highly destructive. When `doc2` references `doc1` it feels like the `doc2` at the very least the source should be completely persistent. I could be convinced that the version of `doc1` used at the time of the reference could be "hidden" but I'm also against that. The idea of the latest version of a document being converted to a private scope seems very reasonable to me, provided all earlier version retain the exact same privacy setting.
+
+### User Ownership
+
+The user will be able to own almost every aspect of sourcegraph. Firstly, the sourcegraph code itself will be open-source, so tech-savvy users can make their own splinters of the software. However, most user control will be built into the software itself. Content, transformations, document types, and interfaces can all be generated, shared, and monetized by users.
+
+### Version Control
+
+Much like git, Sourcegraph allows users to view and manage the history of their sourcegraphs. A sourcegraph is defined as a series of transformations, and the user can view the entire chain of transformations back from its origin point. They can also view the state of the sourcegraph at an earlier transformation and, if they desire, fork the sourcegraph from that point in order to make an alternate sourcegraph.
+
+Later, when  users are able to share sourcegraphs with each other, the Sourcegraph ecosystem will be based largely on following and forking sourcegraphs in silos.
+
+Let's imagine a scenario where we have an old-school text document like Lord of the Rings. Single author, no references to external scopes. Now let's imagine a fan-fiction community growing around that document, branching off (and branching back in!) at every conceivable point of the document. For scopes to be powerful they will need to be able to express the base document, the entire braided fan-fiction universe document, and all the sub-story documents in a simple way
+
 ## Feature Description
+
+
+**Version 0.1**
+---
+
 
 ### Interface
 The interface should deal with two things:
 1. Visualizing the accepted format(s)
 2. Mapping UI `actions` to functional transformation(s).
 
-An iPad highlight using an Apple Pencil and a cursor highlight are two distinct UI `actions` but each should make to the same functional transformation for creating a source. The highlight visuals are part of the `action`. Behind the scenes, in both cases a new source is being created from the current scope version.
+On an iPad, you can highlight text with an Apple Pencil. On a laptop, you do that with a cursor. These are two distinct UI `actions`that map to the same functional transformation. The highlight visuals are part of the `action`. Behind the scenes, in both cases a new sourcegraph is created by applying a transformation to the current sourcegraph.
 
 How mutable is an interface? Should the interface in any way impact the sourcegraph version? What limits what interfaces can view a specific scope end-document? One option is that for a scope to be viewable in an interface, the interface must support _all_ its constituent transformation types. A second option is that the type of the end-document must be supported. A third option is both: an end-document can be supported to the extent defined by its scope.
 
-Naturally the interface types that dominate will accommodate the most transformation types in a cogent way. On the other hand, specialty interfaces would be created, similar to software like photoshop today (where, again, each button represents a transformation on some enclosed source).
-
-What dictates whether two scopes can interact? An overlap in transformations? This is a known unknown that I note in the [Known Unknown section](#known-unknowns).
+The dominant interfaces will incorporate a wide range of the transformations that the users like the most. On the other hand, users will create specialty interfaces, similar to software like Photoshop today (see [Creation Suites](#creation-suites)).
 
 ### Client Application
 
+Version 0.1 will edit and save sourcegraphs locally. However, it will leverage React cloud technologies to easily integrate it in the cloud in the future.
+
+TODO: DISCUSS AND WRITE DOWN IMPLEMENTATION DETAILS, MENTION TANDEM.
+
 ### Transformations
 
-A Source is first-degree septum: it is the first observation.
+In the purest terms, a transformation is a **function** that takes **arbitrary parameters** and changes a sourcegraph.
 
-In the future a Source will be an image, video, audio, "sensory" data that is signed upon creation with a hardware provider's private key (or, more likely, a secure hardware enclave on the device, which in turn can prove its hardware provider identity) to prove it has not been distorted or adapted. In an era of deep-fakes hardware providers will be entrusted with the integrity of "sensory" data. We must anticipate and build for that future.
+__Examples of Transformations:__
 
-Text is always a nth-degree septum: it is always referring to a first-degree septum (like an image) or to other nth-degree septa (other interpretations). For every "degree" there is another level of re-observation and interpretation, and every re-observation comes both clarifying and distorting simplicity. It is critical to tell which septum is "closer" to reality, the septum that has been observed least. When I reference an image and write about it the edge and the text represent second-degree septa, it is commenting on the image. When I reference that same text to related ideas that is a third-degree septum, etc. For every added degree, the risk of drift and distortion increases, but the upside is clarifying simplicity.
+* Drawing an arrow from one document to another.
+* Changing text in a document
+* Drawing a scope around three specific documents (in other words, making a new scope and putting three documents in it)
 
-Is a document a single source? A document was created from a constant process of being re-referenced and re-interpreted. A document is a collection of sources with a specific relationship between each source, but that doesn't give it a sacred or special status compared to any other set of references. Therefore, a document is one application of a scope. A scope is a collection of sources. Versions only make sense in the context of scopes. Sources are immutable. Scopes can be taken as an argument but their history is immutable.
+__Philosophy of Transformations:__
+
+A Source is a piece of sensory data (image, video, audio) that is signed upon creation with a hardware provider's private key (or, more likely, a secure hardware enclave on the device, which in turn can prove its hardware provider identity) to prove it has not been distorted or adapted. In an era of deep-fakes, hardware providers will be entrusted with the integrity of "sensory" data. We must anticipate and build for that future.
+
+Text is always a nth-degree septum: it refers to a first-degree septum (like an image) or to other nth-degree septa (other interpretations). For every "degree" there is another level of re-observation and interpretation, and every re-observation comes both clarifying and distorting simplicity. It is critical to tell which septum is "closer" to reality, the septum that has been observed least. When I reference an image and write about it the edge and the text represent second-degree septa, it is commenting on the image. When I reference that same text to related ideas that is a third-degree septum, etc. For every added degree, the risk of drift and distortion increases, but the upside is clarifying simplicity.
+
+Is a document a single source? A document was created from a constant process of being re-referenced and re-interpreted. A document is a collection of sources with a specific relationship between each source, but that doesn't give it a sacred or special status compared to any other set of references. Therefore, a document is one application of a scope. A scope is a collection of documents. Versions only make sense in the context of scopes. Sources are immutable. Scopes can be taken as an argument but their history is immutable.
 
 What is that relationship in a text document? The process of editing a document takes two forms: writing new content (appended to the end) or editing existing content. In both cases the new content is referencing the current version of the document, and the current version of the document is a chain of sources.
 
@@ -123,39 +159,11 @@ A text document can be imagined as:
 ```
 v5 = f(s4, f(s3, f(s2, f(s1, s0))))
 ```
-The fifth version of the doc is the product of its constituent sources. `f()` expresses how the sources relate to each other, which can be expressed through the `replace` method. While a scope can be a simple collection of sources, in the case of a document it also expresses some relationship between the sources. I suspect (emphasis on suspect) the power of scopes will only be fully realized if we can generalize and express relationships between sources such that different scopes could produce wholly different end-documents in a meaningful way. To see an example of this, jump to the [Scope Example](#scope-example).
+The fifth version of the doc is the product of its constituent sources. `f()` expresses how the sources relate to each other, which can be expressed through the `replace` method. While a scope can be a simple collection of sources, in the case of a document it also expresses some relationship between the sources. I suspect (emphasis on suspect) the power of scopes will only be fully realized if we can generalize and express relationships between sources such that different scopes could produce wholly different end-documents in a meaningful way.
 
 Books are linear because a graph-document is inconceivable to publish. Speaking (i.e. the source of language) has a vital timing component: two words cannot be spoken at once (and to a lesser extent two thoughts cannot be fully conceived at once), consequently the structure of language is linear (vis-a-vis sentences). This is not true with writing. Reading is time-agnostic, in the sense that _two things can be spoken at once_ in a document. This software will allow the emergence of graph-based documents where narratives can branch and re-emerge seemlessly: braid docs. This is already what fanfiction, comics, research, and the Bible are. They are interweaving stories written by many authors often following (and bounded by) some larger overarching narrative.
 
-Let's imagine a scenario where we have an old-school text document like Lord of the Rings. Single author, no references to external scopes. Now let's imagine a fan-fiction community growing around that document, branching off (and branching back in!) at every conceivable point of the document. For scopes to be powerful they will need to be able to express the base document, the entire braided fan-fiction universe document, and all the sub-story documents in a simple way.
-
-In my current thinking, an end-document is imagined as a chain of transformations of its constituent sources. Philosophically, the "edge" is a functional transformation, applied to the current version of the end-document and a newly created source. This feels philosophically compelling, the process of observation _always_ distorts, and the edge denotes that transformation. This example assumes that a scope is append-only and "moving forward in time". Ideally we will generalize the functional transformations to allow for documents that do not share this same assumption.
-
-If you jump to the [Scope Example](#scope-example) you can see this in action.
-
-A scope must be able to express relationships between sources. It must also be able to express relationships between scopes. Wikipedia is a top-down encyclopedia: it starts with a topic and then fills in the topic with text, images, and external references. Scope-on-scopes could allow bottom-up encyclopedic knowledge simply by taking smaller, more specific scopes and aggregating them into a larger scope. Initially one way of thinking about this is set logic. Can scopes that use other scopes produce end-documents? Should it be allowed to make an end-document from its chapter scopes? This is one example of an end-documents from constituent scopes. I can more easily picture it as an aggregation and categorization tool. This is a known unknown that I note in the [Known Unknown section](#known-unknowns).
-
-Can sources be deleted? Instinctively I am highly highly against source deletion. History feels like something sacred, and it feels highly destructive. When `doc2` references `doc1` it feels like the `doc2` at the very least the source should be completely persistent. I could be convinced that the version of `doc1` used at the time of the reference could be "hidden" but I'm also against that. The idea of the latest version of a document being converted to a private scope seems very reasonable to me, provided all earlier version retain the exact same privacy setting.
-
-
-#### Transformation Examples
-Transformation | UI | Explanation
-1. New source | Highlight | a new source is created from a version of the end-document of a specific scope. Why is a new source necessary? Why not reference the versioned end-document directly? Going back to the philosophy section, the enclosure itself is a transformation that must be made explicit in a source.
-2. Reference | Embedded Source | The embedded source would relate to a source that enclosed a specific scope version.
-3. Replace | Edit | Document appendments and additions can both be described with the `replace` method
-4. Branch | The document _branches_ | In the graph-doc the document splits, which will likely be represented as a bidirectional link  [WIP: Not sure how to think of this, but it seems like an important transformation. Currently seems like it would require the concept of separate scopes to work - this is still assuming the end-document is a text-blob, rather than an actual text graph... food for thought...]
-
-Other transformation ideas: 
-- Hook/Flag 
-- Todo 
-
-For this idea to work, all file-types must be able to fit into _our_ system, not the other way around.
-
-#### Deletion
-
-### Plaintext
-
-### Scopes
+__Example:__
 
 Let's imagine a scientific paper. The paper is broken into different chapters, but the edits for each chapters were not made in order; the author went back to edit previous chapters.
 
@@ -169,52 +177,98 @@ There are two edit types:
 Edit (`f()`): `s1`, `s2`, `s3`, `s5`, `s6`, `s8`, `s9`
 Reference (`g()`): `s4`, `s7`, `s10`
 
-The document scope can be imagined as a function: `doc_10` = g(`s10`, f(`s9`, f(`s8`, g(`s7`, f(`s6`, f(`s5`, g(`s4`, f(`s3`, f(`s2`, f(`s1`, `0`))))))))))
+The sourcegraph for this paper can be imagined as a function: `doc_10` = g(`s10`, f(`s9`, f(`s8`, g(`s7`, f(`s6`, f(`s5`, g(`s4`, f(`s3`, f(`s2`, f(`s1`, `0`))))))))))
 `Chapter1_3` = g(`s7`, f(`s2`, f(`s1`, `0`)))
 `Chapter2_4` = f(`s9`, f(`s5`, g(`s4`, f(`s3`, `0`))))
 `Chapter3_3` = g(`s10`, f(`s8`, f(`s6`, `0`)))
+
+Other transformation ideas: 
+- Hook/Flag 
+- Todo 
+
+For this idea to work, all file-types must be able to fit into _our_ system, not the other way around.
+
+#### Deletion
+
+**Deletion** is also a transformation, but because you can go back and recover an earlier version of your sourcegraph, deletion is never permanent. It is a transformation more akin to covering a picture with white paint than burning it. Just like you can always scrape off the paint, you can always revert a sourcegraph to an earlier point when the thing you deleted existed.
+
+We imagine that most deletions happen because of mistakes. Because storage is cheap, the user has no need to delete something they can hide instead. Sourcegraph's strong privacy features will ensure that they can.  **In sourcegaph, there is no deletion. There is only privacy.** 
+
+### Plaintext
+
+Sourcegraph will have the ability to edit plaintext. Maybe we can add a markdown type in version 0.2 to support markdown, but for the first prototype, plaintext is enough.
+
+### Scopes
+
+A scope is a collection of documents. A sourcegraph can hold any number of documents and any number of scopes; a single document can be in any number of scopes and a single scope can contain any number of documents. The user can name scopes.
+
+In practice, the use of scopes will vary from user to user. One usecase is to represent *groups* of documents that share a certain attribute that the user thinks is important.
+
+The user can search for documents in any combination of scopes using set logic. For example:
+
+`[SCOPE1]&&[![SCOPE2]]`
+
+Will return all the documents that are in set 1 and that *aren't* in set 2. Syntax details may differ in the final  product.
 
 The underscored value specifies the version of the scope.
 
 These four scopes should be consistent.
 
-If Chapter3 is edited, how can that transformation be applied to `doc_10` and `Chapter3_3`? For it to be applied, all produced scopes would need to be stored in-memory and applied to each scope. This would likely need to be expressed in a UI option, e.g. a checkbox for current scopes.
-
-If a sentence in Chapter2 is highlighted, creating a new source, only one new source would be created, but it would be applied to all scopes that apply to it. Thus, the transformation is a scope-level concept.
-
-Let's imagine author2 overlaps `s1` to `s7` with their own scope. If author adds `s11` it _could_ be difficult to infer whether the edit is applied to the new scope. Therefore it should be made explicit.
-
-Let's say that the author starts Chapter4. How would they specify the new chapter? There would need to be an accessible UI to create the new scope at the point that `Chapter3_3` is complete.
-
-While implicitly `Chapter3_3` _is_ enclosed by `doc_10` should there be a way to specify a relationship between the scopes? This is a [known unknown](#known-unknowns).
-
-What limits the transformations to `f()` and `g()`? I believe this should be determined at the UI level. It's limited to the number of effective ways the browser can interact with the end-document.
-
-How should signature types (arguments, outputs) be considered? This is a [known unknown](#known-unknowns).
-
-Should an argument only be able to take two arguments, the original document and the new source? Will there ever be a situation where multiple values are required at once? For v0 it may make sense to use two arguments, and see if we run into any snags.
-
 ### Arrows
+
+Users often want to understand the relationships between documents or objects. To support this, sourcegraph allows them to draw arrows between documents and label the arrows to show what relationships they represent. This will be useful to indicate relationships such as causality, influence, social connection, and chronology. Arrows will be unlabelled by default, the user can click on them to add a label.
+
+Arrows can be unidirectional or bidirectional.
 
 ### References
 
+References are a special type of relationship between documents. They are represented by an arrow labelled "references" and have special properties. References are asymmetrical: there is a *referencing* document and a *referenced* document. To make a reference, the user will highlight a snippet of the referenced document and drag it over to a place in the referencing document. The will now be an arrow pointing to the referenced document from the referencing document, and when the user clicks that arrow, sourcegraph will show them the exact snippet the referencing document references.
+
+A **reference** is a superset of the more traditional idea of a link. It's like a link in that if you click on a snippet incorporated in a document, you can be redirected to to the document the snippet came from. It's *unlike* a link in that, even if you delete all the text of the entire snippet, the reference persists. *The text might be gone, but the influence remains.*
+
 ### Time Dimension
+
+---
+**Later Versions**
+
+---
+Later on, the user will be able to view previous transformations of their sourcegraph as a chain of transformations, like commits in GitHub. They can also view earlier transformations and branch a new sourcegraph from one of them, thus creating two alternate versions of the same sourcegraphs. Depending on whether we can easily merge sourcegraphs (we suspect we can), the user will be able to merge these two branches easily.
 
 ### More and Custom Types
 
+We'll add support for many more types of documents, ranging from rich text documents to midi files to pngs. We'll give users the opportunity to define their own types and the best transformations on them, so that (ideally) the users will do the work of the developers.
+
 #### Type Attributes
+
+Types will contain many attributes. For example, a user-defined "city" data type might have average climate and altitude as attributes. These attributes can be used as aids for the user and as inputs for  user-defined and already-made functions.
+
+*Question:* *Will the user need to know how to code in order to create custom transformations and types? If so, in what language?*
 
 ### Custom Transformations
 
+Just as the user can define custom types, they can define custom transformations on those types. It's important that these two features are released at the same type, because custom types aren't really that useful until the user can transform them easily. These transformations will come with UI elements the user can also define.
+
+*Question:* *Will the user need to know how to code in order to create custom transformations and types? If so, in what language?*
+
 ### Tile View
+
+A view is a UI interface with various buttons that activate various transformations. The user can modify views just as they can modify the transformations they contain. If they like, they can see multiple views at once through a type of tiling window manager. This will be supported on laptops, mobile, and VR.
 
 ### Creation Suites
 
+Eventually, users will create views that utilize custom types and UIs that are so powerful they rival already-existing creative tools like the Adobe Creative Suite. Though these tools might not have the raw power and capability of already-existing tools, their integration within Sourcegraph, which creators will already be using to organize their sources, might give them an edge.
+
 ### Attribute Axis
+
+Users can sort documents in their sourcegraph by a certain numerical attribute. This will make it easier to visualize timelines and chronologies.
 
 ### Universal Library
 
+Users can draw from a giant library of documents common to everyone that they would not need to pay for. Users could also add to this repository.
+
 ### Monetization Scheme
+
+I'm not touching this too closely for now. Basically, if they want, creators will be able to monetize the stuff that create, whether that be content (video, audio, text, etc.), transformations, types, or views.
 
 #### Silos
 
@@ -273,13 +327,13 @@ That being said, if a second user made a source from a now-closed source, these 
 
 This approach seems like the best way of balancing the rights of creators and users. It gives creator's leverage while also respecting the rights of others.
 
+### Multi-Device Support
 
-## Use Case: Synthetic Biology [WIP]
+Sourcegraph should support mobile and VR devices as well as Windows, Linux, and Mac. Ideally, the ecosystem for types, transformations, views, and content will be the same for all these platforms
 
-How to show a sequence of plasmid transformation as a simulation?
-
-1. There should be a scope specifically for the transformations, and there should be a time dimension in the source-material
-2. The history of edits is still saved, but it's separate from the end document.
+### Anchor Time Travel:
+.
+Users can highlight, or "anchor" to a certain piece of text or document and move back in time specifically for that text to see how it has changed.
 
 
 ## Implementation
@@ -362,9 +416,12 @@ Imagine a world where new end-documents could be created between an infinite num
 ## Discussions to Have
 
 * Entrenchment vs. security in the context of our monetization system
-	* Discounted cash flow could make retiring on sourcegraph income impossible. Is this what we want
+	* Discounted cash flow could make retiring on sourcegraph income impossible. Is this what we want?
+
 
 ## Sean's Questions
+
+* **Note:** My general philosophy while editing this document was **change, don't question.** If I saw something Steven wrote that I didn't understand, I replaced it with the concept I thought it mapped to in our discussions over the past few days that I did understand. I know that this slash-and-burn style editing could lead to my missing something, but I didn't want to constantly bug Steven with questions while he was working and figured that we could revert any unwise deletions. In the cases where I did choose to question, I put these questions here.
 
 22.  Going meta:
 
@@ -376,3 +433,18 @@ Imagine a world where new end-documents could be created between an infinite num
 28.
 
 *I'm skeptical of this.* If the code that drives types is also a Type that the user can modify, then the user can break Types. If they break types, they break everything that uses Types, which is their entire Sourcegraph. If the time dimensions also uses types, they break that too and can't branch off from an earlier version to revert their changes. In summary, this could allow people to irreparably ruin their sourcegraphs. 
+
+* Why is a source signed upon creation with a hardware provider's public key? 
+
+
+* I can see the rationale behind having transformations be pure functions, but will this become too restrictive?
+
+From **transformations**:
+
+> Text is always a nth-degree septum: it refers to a first-degree septum (like an image) or to other nth-degree septa (other interpretations
+
+Can text never be a first-degree septum?
+
+* What is a *source?*
+
+Are we trying to build *the one notetaking app to rule them all?* If so, why do we have so many features? We should probably focus on a niche and cut down expected features to fit that niche.
