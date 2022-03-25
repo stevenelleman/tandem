@@ -383,22 +383,24 @@ CREATE TABLE scope_doc {
 # The Following Should Probably be Moved to a Different File
 
 ## V0 TODO
+
 1. Text Editor React Front End
-    - Save button converts text box to document sends to backend
-    2. Encoding link into file (some kind of markup?)
-    3. Link Database UUID -> (Source_Head, Source_Tail), Links are functional
-    4. Git-like diff management for versions, Edits are functional
-    5. UI for visualizing sourcegraph (to motivate further development on scope UI/logic)
+- Save button converts text box to document sends to backend
+2. Encoding link into file (some kind of markup?)
+3. Link Database UUID -> (Source_Head, Source_Tail), Links are functional
+4. Git-like diff management for versions, Edits are functional
+5. UI for visualizing sourcegraph (to motivate further development on scope UI/logic)
 
 ## Scratch Notes:
-    Imagine a world where new end-documents could be created between an infinite number of file types, creating currently inconceivable document formats and creative production. I want a Renaissance in the framing of thought itself, Sourcegraph is a meta-framing, and its strength will come from how expressively it describe new framings.   \
-        -- privacy information should be immutable, set at the time of creation and respected forever afterwards... but that also means it can't be publicized... Seems like a one-direction issue, i.e. private -> public is possible but the reverse is not.
-        - reference, makes new source, most basic transformation is enclosure
-          Does it require a defined transformation? Is there a case where a source should be created but the transformation not recorded? Maybe at the base-layer all transformations to produce new sources are created. Let's go
-            Where do edges fit into this model? If a septum encloses, it must enclose something. The edge points to what is being enclosed and distilled. Therefore, the edge is fundamental to what the septum is describing. A first-degree septum has no edge: it connects to Reality.
-              I'm inclined to think of an edge as fundamental to a source. What does it even mean to have an edge between two undefined documents? An edge only makes sense within its necessary context.
-                The downside of this approach is that an individual can take a silo hostage, if they've contributed vital sources. While this is true, an individual would be sacrificing their future credibility as well, indicating either extreme integrity or desperation, either way such extremes indicate a real underlying problem, and giving recourse to individuals is essential for solving problems (or, even better, preventing them in the first place).
-                - Increasingly I think a source and edge are fundamentally related. Is there any velocity-position metaphor that can be drawn? Intuitively they seem related (and I would love to rope the Heisenberg Principle into this idea)
+
+Imagine a world where new end-documents could be created between an infinite number of file types, creating currently inconceivable document formats and creative production. I want a Renaissance in the framing of thought itself, Sourcegraph is a meta-framing, and its strength will come from how expressively it describe new framings.   \
+-- privacy information should be immutable, set at the time of creation and respected forever afterwards... but that also means it can't be publicized... Seems like a one-direction issue, i.e. private -> public is possible but the reverse is not.
+- reference, makes new source, most basic transformation is enclosure
+Does it require a defined transformation? Is there a case where a source should be created but the transformation not recorded? Maybe at the base-layer all transformations to produce new sources are created. Let's go
+Where do edges fit into this model? If a septum encloses, it must enclose something. The edge points to what is being enclosed and distilled. Therefore, the edge is fundamental to what the septum is describing. A first-degree septum has no edge: it connects to Reality.
+I'm inclined to think of an edge as fundamental to a source. What does it even mean to have an edge between two undefined documents? An edge only makes sense within its necessary context.
+The downside of this approach is that an individual can take a silo hostage, if they've contributed vital sources. While this is true, an individual would be sacrificing their future credibility as well, indicating either extreme integrity or desperation, either way such extremes indicate a real underlying problem, and giving recourse to individuals is essential for solving problems (or, even better, preventing them in the first place).
+- Increasingly I think a source and edge are fundamentally related. Is there any velocity-position metaphor that can be drawn? Intuitively they seem related (and I would love to rope the Heisenberg Principle into this idea)
 
 ## General Questions
 
@@ -406,51 +408,49 @@ CREATE TABLE scope_doc {
 ### Save Automatically?
 ### Further Discuss Privacy
 ### Checkpoints
-    * Why have them if every transofrmation can be reverted back to?
+* Why have them if every transofrmation can be reverted back to?
 ### Functional Invertibility?
 
 
 ### What Did Steven Mean by these?
 
-    -   Prescriptive vs Nonsense
-
-    -   Character vs Letters
-    -   Entrenchment vs Security
+-   Prescriptive vs Nonsense
+-   Character vs Letters
+-   Entrenchment vs Security
 
 
 
 ## Discussions to Have
 
-    * Entrenchment vs. security in the context of our monetization system
-        * Discounted cash flow could make retiring on sourcegraph income impossible. Is this what we want?
+* Entrenchment vs. security in the context of our monetization system
+   * Discounted cash flow could make retiring on sourcegraph income impossible. Is this what we want?
 
 
 ## Sean's Questions
 
-        * **Note:** My general philosophy while editing this document was **change, don't question.** If I saw something Steven wrote that I didn't understand, I replaced it with the concept I thought it mapped to in our discussions over the past few days that I did understand. I know that this slash-and-burn style editing could lead to my missing something, but I didn't want to constantly bug Steven with questions while he was working and figured that we could revert any unwise deletions. In the cases where I did choose to question, I put these questions here.
+* **Note:** My general philosophy while editing this document was **change, don't question.** If I saw something Steven wrote that I didn't understand, I replaced it with the concept I thought it mapped to in our discussions over the past few days that I did understand. I know that this slash-and-burn style editing could lead to my missing something, but I didn't want to constantly bug Steven with questions while he was working and figured that we could revert any unwise deletions. In the cases where I did choose to question, I put these questions here.
 
-        22.  Going meta:
+22.  Going meta:
+23.  Transformation, Action, Type, and View are also types
+24.  Can read/write them with their own T / A / V
+25.  Represent default types
+26.  For this to work need to define simple contracts between each component
+27.  Users may specify the version of the T / A / V as they change (although it feels unlike T and A will change too much)
+28.
 
-        23.  Transformation, Action, Type, and View are also types
-        24.  Can read/write them with their own T / A / V
-        25.  Represent default types
-        26.  For this to work need to define simple contracts between each component
-        27.  Users may specify the version of the T / A / V as they change (although it feels unlike T and A will change too much)
-    28.
+*I'm skeptical of this.* If the code that drives types is also a Type that the user can modify, then the user can break Types. If they break types, they break everything that uses Types, which is their entire Sourcegraph. If the time dimensions also uses types, they break that too and can't branch off from an earlier version to revert their changes. In summary, this could allow people to irreparably ruin their sourcegraphs. 
 
-    *I'm skeptical of this.* If the code that drives types is also a Type that the user can modify, then the user can break Types. If they break types, they break everything that uses Types, which is their entire Sourcegraph. If the time dimensions also uses types, they break that too and can't branch off from an earlier version to revert their changes. In summary, this could allow people to irreparably ruin their sourcegraphs. 
-
-    * Why is a source signed upon creation with a hardware provider's public key? 
+* Why is a source signed upon creation with a hardware provider's public key? 
 
 
-    * I can see the rationale behind having transformations be pure functions, but will this become too restrictive?
+* I can see the rationale behind having transformations be pure functions, but will this become too restrictive?
 
-    From **transformations**:
+From **transformations**:
 
-    > Text is always a nth-degree septum: it refers to a first-degree septum (like an image) or to other nth-degree septa (other interpretations
+> Text is always a nth-degree septum: it refers to a first-degree septum (like an image) or to other nth-degree septa (other interpretations
 
-            Can text never be a first-degree septum?
+Can text never be a first-degree septum?
 
-            * What is a *source?*
+* What is a *source?*
 
-            Are we trying to build *the one notetaking app to rule them all?* If so, why do we have so many features? We should probably focus on a niche and cut down expected features to fit that niche.
+Are we trying to build *the one notetaking app to rule them all?* If so, why do we have so many features? We should probably focus on a niche and cut down expected features to fit that niche.
