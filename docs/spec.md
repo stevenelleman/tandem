@@ -186,6 +186,9 @@ The sourcegraph for this paper can be imagined as a function: `doc_10` = g(`s10`
 `Chapter2_4` = f(`s9`, f(`s5`, g(`s4`, f(`s3`, `0`))))
 `Chapter3_3` = g(`s10`, f(`s8`, f(`s6`, `0`)))
 
+
+```
+
 Other transformation ideas: 
 - Hook/Flag 
 - Todo 
