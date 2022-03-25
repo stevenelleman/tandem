@@ -33,7 +33,7 @@ __Sourcegraph__
    * [Multi-Device Support](#multi-device-support)
    * [Type Execution](#type-execution)
    * [Anchor Time Travel](#anchor-time-travel)
-   * [Move to a Different File](#the-following-should-probably-be-moved-to-a-different-file)
+* [Move to a Different File](#the-following-should-probably-be-moved-to-a-different-file)
 
 
 # Problem
