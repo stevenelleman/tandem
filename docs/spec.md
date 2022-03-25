@@ -90,13 +90,14 @@ __Sourcegraph__
 
 
 ## Philosophy
-                *Data* is Latin for “a thing given”. We believe this is subtly incorrect. “Given” implies that reality has faithfully offered the data, and the viewer receives it. It over-emphasizes the place of reality and underemphasizes the observer's role. In this document, we will prefer *septa:* “a thing taken.” This emphasizes the role of the active observer, who distorts the viewed object. ~~Which dictionary did you get septa from? I only see it in wiktionary as the plural of the neuter noun *septum*, "enclosure." Datum is a common present participle of *do* "I give." I don't know of or see any Latin word for "to take" from which we may in like manner derive *septa.* I could be messing something.~~
+                
+*Data* is Latin for “a thing given”. We believe this is subtly incorrect. “Given” implies that reality has faithfully offered the data, and the viewer receives it. It over-emphasizes the place of reality and underemphasizes the observer's role. In this document, we will prefer *septa:* “a thing taken.” This emphasizes the role of the active observer, who distorts the viewed object. ~~Which dictionary did you get septa from? I only see it in wiktionary as the plural of the neuter noun *septum*, "enclosure." Datum is a common present participle of *do* "I give." I don't know of or see any Latin word for "to take" from which we may in like manner derive *septa.* I could be messing something.~~
 
                 Sourcegraph has three ideals: *persistence*, *user ownership*, and *version control.*
 
 ### Persistence
 
-                Can sources be deleted? Instinctively I am highly against source deletion. History feels like something sacred, and it feels highly destructive. When `doc2` references `doc1` it feels like the `doc2` at the very least the source should be completely persistent. I could be convinced that the version of `doc1` used at the time of the reference could be "hidden" but I'm also against that. The idea of the latest version of a document being converted to a private scope seems very reasonable to me, provided all earlier version retain the exact same privacy setting.
+Can sources be deleted? Instinctively I am highly against source deletion. History feels like something sacred, and it feels highly destructive. When `doc2` references `doc1` it feels like the `doc2` at the very least the source should be completely persistent. I could be convinced that the version of `doc1` used at the time of the reference could be "hidden" but I'm also against that. The idea of the latest version of a document being converted to a private scope seems very reasonable to me, provided all earlier version retain the exact same privacy setting.
 
 ### User Ownership
 
