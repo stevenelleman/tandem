@@ -354,7 +354,7 @@ Should each version of a scope end-document be re-saved? That's what github does
 For transformation-heavy types, maximize the number of checkpoints. For storage-heavy types, minimize the number of checkpoints. This is a fun optimization problem that should absolutely be abstracted away from the user.
 I suspect that the optimization would be inclined towards more checkpoints rather than less, from a UX and cost perspective storage is "cheaper" than processing.
 
-    ```
+```
     CREATE TABLE source {
             id uuid NOT NULL, -- immutable 
                     degree uint64 NOT NULL, -- immutable
@@ -375,6 +375,7 @@ CREATE TABLE scope_doc {
                            source uuid NOT NULL, -- Ever a situation where multiple sources are applied at once?  
                                transformation uuid NOT NULL, -- id for transformation method
 }
+
 ``` 
 
 
@@ -453,4 +454,4 @@ Can text never be a first-degree septum?
 
 * What is a *source?*
 
-Are we trying to build *the one notetaking app to rule them all?* If so, why do we have so many features? We should probably focus on a niche and cut down expected features to fit that niche.
+Are we trying to build *the one notetaking app to rule them all?* If not, why do we have so many features? We should probably focus on a niche and cut down expected features to fit that niche.
