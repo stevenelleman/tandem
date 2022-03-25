@@ -1,7 +1,7 @@
 __Sourcegraph__
 
 # Table of Contents
-- [Problem](#problem)
+    * [Problem](#problem)
     * [Objective](#objective)
     * [Note](#note)
     * [Feature List](#feature-list)
