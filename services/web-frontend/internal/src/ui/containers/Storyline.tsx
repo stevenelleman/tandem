@@ -91,20 +91,24 @@ export class Storyline extends React.Component<PropsType> {
               <div className='community-image-triangle-left triangle-13-left'></div>
               <div className='community-image'></div>
             </div>
-            <div className='community-centered community-image-text'>
+            <div className="community-centered community-image-text">
               <div className="community-section-title">
                 <div id="community">Community</div>
               </div>
-              <div className='community-section-hook'>The smallest steps are the bravest.</div>
-              Join the <a className="embedded-link" href={"https://discord.gg/SejPVdUnM3"}>server</a>,
-              contribute to the <a className="embedded-link" href={"https://github.com/grouphouse-io/grouphouse"}>code</a>,
-              fork the <a className="embedded-link" href={"https://github.com/stevenelleman/tandem"}>parent</a>.
-            </div>
-            <div className='community-centered community-image-text-blur'></div>
+              <div className="community-section-hook">The smallest steps are the bravest.</div>
+              <div className="community-button">
+                <a className="embedded-link" href="https://discord.gg/SejPVdUnM3">Join the server</a>
+              </div>
+              <div className="community-button">
+                <a className="embedded-link" href="https://github.com/grouphouse-io/grouphouse">Contribute to the code</a>
+              </div>
+              <div className="community-button">
+                <a className="embedded-link" href="https://github.com/stevenelleman/tandem">Fork the parent</a>
+              </div>
+            <div className="community-centered community-image-text-blur"></div>
           </div>
-
         </div>
       </div>
     );
-  }
-}
+  };
+};

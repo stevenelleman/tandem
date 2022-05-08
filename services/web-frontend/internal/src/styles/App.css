@@ -123,7 +123,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     width: 100%;
     background-color: black;
 }
-  
+
 
 .header-logo {
     float: left;
@@ -226,7 +226,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     margin: 2rem;
     margin-right: 4em;
     float: right;
-    
+
 }
 
 .storyline-image-left {
@@ -335,7 +335,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
 .community-section-transition {
     width: 100%;
     height: 100px;
-    background-image: linear-gradient(var(--dark-green-background-color), var(--community-background)); 
+    background-image: linear-gradient(var(--dark-green-background-color), var(--community-background));
 }
 
 /* Footer */
@@ -465,7 +465,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     z-index: 9;
     border-top: 40vw solid var(--community-background);
     border-right: 40vw solid transparent;
-    opacity: 0.3;  
+    opacity: 0.3;
 }
 .triangle-9-left {
     z-index: 10;
@@ -544,7 +544,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
     z-index: 9;
     border-top: 40vw solid var(--community-background);
     border-left: 40vw solid transparent;
-    opacity: 0.3;  
+    opacity: 0.3;
 }
 .triangle-9-right {
     z-index: 10;
@@ -596,7 +596,7 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
 }
 
 .community-section-title {
-    color: white;
+    color: #a61e69;
     text-decoration: underline;
     font-family: Montserrat;
     font-size: 4vw;
@@ -617,9 +617,14 @@ html, body {margin:0;padding:0;height:100%;scroll-behavior: smooth; background-c
 }
 
 .community-section-hook {
+    color: #a61e69;
     font-size: 2.5vw;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+}
+
+.community-button {
+    text-align: center;
 }
 
 /* Hiding topbar for mobile screens */
