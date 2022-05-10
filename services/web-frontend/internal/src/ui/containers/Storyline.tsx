@@ -60,6 +60,7 @@ export class Storyline extends React.Component<PropsType> {
         </div>
 
         <div className="community-section-transition"></div>
+
         <div className="storyline-section-grey">
           <div className='image-container'>
             <div className='community-image-wrapper'>
@@ -96,19 +97,25 @@ export class Storyline extends React.Component<PropsType> {
                 <div id="community">Community</div>
               </div>
               <div className="community-section-hook">The smallest steps are the bravest.</div>
-              <div className="community-button">
-                <a className="embedded-link" href="https://discord.gg/SejPVdUnM3">Join the server</a>
+            </div>
+            <div className="community-centered community-image-text-blur"/>
+
+            <div className="community-buttons-centered">
+              <div className="community-buttons">
+                <div className="community-button">
+                  <a className="community-link" href="https://discord.gg/SejPVdUnM3">JOIN SERVER</a>
+                </div>
+                <div className="community-button">
+                  <a className="community-link" href="https://github.com/grouphouse-io/grouphouse">WRITE CODE</a>
+                </div>
+                <div className="community-button">
+                  <a className="community-link" href="https://github.com/stevenelleman/tandem">FORK PARENT</a>
+                </div>
               </div>
-              <div className="community-button">
-                <a className="embedded-link" href="https://github.com/grouphouse-io/grouphouse">Contribute to the code</a>
-              </div>
-              <div className="community-button">
-                <a className="embedded-link" href="https://github.com/stevenelleman/tandem">Fork the parent</a>
-              </div>
-            <div className="community-centered community-image-text-blur"></div>
+            </div>
           </div>
         </div>
       </div>
     );
-  };
-};
+  }
+}
