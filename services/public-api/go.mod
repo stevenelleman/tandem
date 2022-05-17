@@ -4,7 +4,7 @@ module web.microservice.shell/services/public-api
 go 1.16
 
 require (
-	github.com/gin-gonic/gin v1.6.3
+	github.com/gin-gonic/gin v1.7.0
 	gopkg.in/gorp.v2 v2.2.0
 	web.microservice.shell/libraries/golang v0.0.0
 )
