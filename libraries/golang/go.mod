@@ -5,7 +5,7 @@ go 1.16
 
 require (
 	github.com/Masterminds/squirrel v1.4.0
-	github.com/gin-gonic/gin v1.6.3
+	github.com/gin-gonic/gin v1.7.0
 	github.com/go-gorp/gorp v2.2.0+incompatible // indirect
 	github.com/gobuffalo/packr/v2 v2.8.0
 	github.com/golang/protobuf v1.4.1
