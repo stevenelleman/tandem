@@ -9,15 +9,19 @@ export class Topbar extends React.Component {
           <img src="/images/grouphouse-logo.png" alt="Mushroom Header"className="header-logo-img"/>
         </div>
         <div className="header-logo-title">Grouphouse</div>
-        <div className="header-links">
-          <a className="header-link" href={`${origin}#problem`}>Problem</a>
-          <a className="header-link" href={`${origin}#mission`}>Mission</a>
-          <a className="header-link" href={`${origin}#method`}>Method</a>
-          <a className="header-link header-emphasis" href={`${origin}#community`}>Join the Community</a>
-        </div>
-        {/*<a href="/login" id="login-icon">
-          <img src="/images/logos/user_icon.png" alt="Login Icon" id="login-icon-header"/>
-        </a>*/}
+
+        <ul className="header-links">
+          <li><a className="header-link" href={`${origin}#problem`}>Problem</a></li>
+          <li><a className="header-link" href={`${origin}#mission`}>Mission</a></li>
+          <li><a className="header-link" href={`${origin}#method`}>Method</a></li>
+          <li>
+            <a className="header-link" href={`${origin}#community`}>Locations &#9662;</a>
+            <ul className="header-dropdown">
+              <li><a href="https://berkeley.grouphouse.io">Berkeley</a></li>
+            </ul>
+          </li>
+          <li><a className="header-link header-emphasis" href={`${origin}#community`}>Join the Community</a></li>
+        </ul>
       </div>
     );
   }
